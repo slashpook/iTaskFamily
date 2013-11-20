@@ -14,7 +14,7 @@
 		6D6B3ED5183CF75B009542A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3ED4183CF75B009542A8 /* main.m */; };
 		6D6B3ED9183CF75B009542A8 /* DDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3ED8183CF75B009542A8 /* DDAppDelegate.m */; };
 		6D6B3EDC183CF75B009542A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B3EDA183CF75B009542A8 /* Main.storyboard */; };
-		6D6B3EDF183CF75B009542A8 /* DDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3EDE183CF75B009542A8 /* DDViewController.m */; };
+		6D6B3EDF183CF75B009542A8 /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3EDE183CF75B009542A8 /* DDRootViewController.m */; };
 		6D6B3EE1183CF75B009542A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B3EE0183CF75B009542A8 /* Images.xcassets */; };
 		6D6B3EE8183CF75C009542A8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B3EE7183CF75C009542A8 /* XCTest.framework */; };
 		6D6B3EE9183CF75C009542A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B3EC8183CF75B009542A8 /* Foundation.framework */; };
@@ -22,7 +22,8 @@
 		6D6B3EF2183CF75C009542A8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B3EF0183CF75C009542A8 /* InfoPlist.strings */; };
 		6D6B3EF4183CF75C009542A8 /* iTaskFamilyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3EF3183CF75C009542A8 /* iTaskFamilyTests.m */; };
 		6D6B3F03183CF92B009542A8 /* iTaskFamily.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3F01183CF92B009542A8 /* iTaskFamily.xcdatamodeld */; };
-		6D6B3F0A183CFA11009542A8 /* DDConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3F09183CFA11009542A8 /* DDConstant.m */; };
+		6D6B3F12183D116F009542A8 /* DDMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3F11183D116F009542A8 /* DDMenuView.m */; };
+		6D6B3F16183D28D8009542A8 /* DDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3F15183D28D8009542A8 /* DDHomeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +48,8 @@
 		6D6B3ED7183CF75B009542A8 /* DDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDAppDelegate.h; sourceTree = "<group>"; };
 		6D6B3ED8183CF75B009542A8 /* DDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDAppDelegate.m; sourceTree = "<group>"; };
 		6D6B3EDB183CF75B009542A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6D6B3EDD183CF75B009542A8 /* DDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDViewController.h; sourceTree = "<group>"; };
-		6D6B3EDE183CF75B009542A8 /* DDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDViewController.m; sourceTree = "<group>"; };
+		6D6B3EDD183CF75B009542A8 /* DDRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDRootViewController.h; sourceTree = "<group>"; };
+		6D6B3EDE183CF75B009542A8 /* DDRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDRootViewController.m; sourceTree = "<group>"; };
 		6D6B3EE0183CF75B009542A8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6D6B3EE6183CF75C009542A8 /* iTaskFamilyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTaskFamilyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D6B3EE7183CF75C009542A8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -57,7 +58,10 @@
 		6D6B3EF3183CF75C009542A8 /* iTaskFamilyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iTaskFamilyTests.m; sourceTree = "<group>"; };
 		6D6B3F02183CF92B009542A8 /* iTaskFamily.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iTaskFamily.xcdatamodel; sourceTree = "<group>"; };
 		6D6B3F08183CFA11009542A8 /* DDConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDConstant.h; sourceTree = "<group>"; };
-		6D6B3F09183CFA11009542A8 /* DDConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDConstant.m; sourceTree = "<group>"; };
+		6D6B3F10183D116F009542A8 /* DDMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMenuView.h; sourceTree = "<group>"; };
+		6D6B3F11183D116F009542A8 /* DDMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMenuView.m; sourceTree = "<group>"; };
+		6D6B3F14183D28D8009542A8 /* DDHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHomeViewController.h; sourceTree = "<group>"; };
+		6D6B3F15183D28D8009542A8 /* DDHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHomeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,8 +127,6 @@
 				6D6B3EFD183CF896009542A8 /* Ressources */,
 				6D6B3ED7183CF75B009542A8 /* DDAppDelegate.h */,
 				6D6B3ED8183CF75B009542A8 /* DDAppDelegate.m */,
-				6D6B3EDD183CF75B009542A8 /* DDViewController.h */,
-				6D6B3EDE183CF75B009542A8 /* DDViewController.m */,
 				6D6B3ECF183CF75B009542A8 /* Supporting Files */,
 			);
 			path = iTaskFamily;
@@ -170,6 +172,8 @@
 		6D6B3EFE183CF8A9009542A8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6D6B3F13183D2609009542A8 /* HomeViewController */,
+				6D6B3F0F183D10BB009542A8 /* RootViewController */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -177,6 +181,7 @@
 		6D6B3EFF183CF8BB009542A8 /* Customs */ = {
 			isa = PBXGroup;
 			children = (
+				6D6B3F0B183D1044009542A8 /* MenuView */,
 			);
 			name = Customs;
 			sourceTree = "<group>";
@@ -211,9 +216,35 @@
 			isa = PBXGroup;
 			children = (
 				6D6B3F08183CFA11009542A8 /* DDConstant.h */,
-				6D6B3F09183CFA11009542A8 /* DDConstant.m */,
 			);
 			name = Others;
+			sourceTree = "<group>";
+		};
+		6D6B3F0B183D1044009542A8 /* MenuView */ = {
+			isa = PBXGroup;
+			children = (
+				6D6B3F10183D116F009542A8 /* DDMenuView.h */,
+				6D6B3F11183D116F009542A8 /* DDMenuView.m */,
+			);
+			name = MenuView;
+			sourceTree = "<group>";
+		};
+		6D6B3F0F183D10BB009542A8 /* RootViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6D6B3EDD183CF75B009542A8 /* DDRootViewController.h */,
+				6D6B3EDE183CF75B009542A8 /* DDRootViewController.m */,
+			);
+			name = RootViewController;
+			sourceTree = "<group>";
+		};
+		6D6B3F13183D2609009542A8 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6D6B3F14183D28D8009542A8 /* DDHomeViewController.h */,
+				6D6B3F15183D28D8009542A8 /* DDHomeViewController.m */,
+			);
+			name = HomeViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,8 +346,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D6B3ED9183CF75B009542A8 /* DDAppDelegate.m in Sources */,
-				6D6B3F0A183CFA11009542A8 /* DDConstant.m in Sources */,
-				6D6B3EDF183CF75B009542A8 /* DDViewController.m in Sources */,
+				6D6B3F16183D28D8009542A8 /* DDHomeViewController.m in Sources */,
+				6D6B3EDF183CF75B009542A8 /* DDRootViewController.m in Sources */,
+				6D6B3F12183D116F009542A8 /* DDMenuView.m in Sources */,
 				6D6B3F03183CF92B009542A8 /* iTaskFamily.xcdatamodeld in Sources */,
 				6D6B3ED5183CF75B009542A8 /* main.m in Sources */,
 			);
