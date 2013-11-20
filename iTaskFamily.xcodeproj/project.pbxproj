@@ -21,6 +21,8 @@
 		6D6B3EEA183CF75C009542A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B3ECC183CF75B009542A8 /* UIKit.framework */; };
 		6D6B3EF2183CF75C009542A8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B3EF0183CF75C009542A8 /* InfoPlist.strings */; };
 		6D6B3EF4183CF75C009542A8 /* iTaskFamilyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3EF3183CF75C009542A8 /* iTaskFamilyTests.m */; };
+		6D6B3F03183CF92B009542A8 /* iTaskFamily.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3F01183CF92B009542A8 /* iTaskFamily.xcdatamodeld */; };
+		6D6B3F0A183CFA11009542A8 /* DDConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3F09183CFA11009542A8 /* DDConstant.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,9 @@
 		6D6B3EEF183CF75C009542A8 /* iTaskFamilyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iTaskFamilyTests-Info.plist"; sourceTree = "<group>"; };
 		6D6B3EF1183CF75C009542A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6D6B3EF3183CF75C009542A8 /* iTaskFamilyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iTaskFamilyTests.m; sourceTree = "<group>"; };
+		6D6B3F02183CF92B009542A8 /* iTaskFamily.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iTaskFamily.xcdatamodel; sourceTree = "<group>"; };
+		6D6B3F08183CFA11009542A8 /* DDConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDConstant.h; sourceTree = "<group>"; };
+		6D6B3F09183CFA11009542A8 /* DDConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDConstant.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,12 +117,14 @@
 		6D6B3ECE183CF75B009542A8 /* iTaskFamily */ = {
 			isa = PBXGroup;
 			children = (
+				6D6B3F07183CF9F9009542A8 /* Others */,
+				6D6B3F00183CF8D5009542A8 /* Model */,
+				6D6B3F06183CF995009542A8 /* Classes */,
+				6D6B3EFD183CF896009542A8 /* Ressources */,
 				6D6B3ED7183CF75B009542A8 /* DDAppDelegate.h */,
 				6D6B3ED8183CF75B009542A8 /* DDAppDelegate.m */,
-				6D6B3EDA183CF75B009542A8 /* Main.storyboard */,
 				6D6B3EDD183CF75B009542A8 /* DDViewController.h */,
 				6D6B3EDE183CF75B009542A8 /* DDViewController.m */,
-				6D6B3EE0183CF75B009542A8 /* Images.xcassets */,
 				6D6B3ECF183CF75B009542A8 /* Supporting Files */,
 			);
 			path = iTaskFamily;
@@ -150,6 +157,63 @@
 				6D6B3EF0183CF75C009542A8 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6D6B3EFD183CF896009542A8 /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				6D6B3EE0183CF75B009542A8 /* Images.xcassets */,
+			);
+			name = Ressources;
+			sourceTree = "<group>";
+		};
+		6D6B3EFE183CF8A9009542A8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6D6B3EFF183CF8BB009542A8 /* Customs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Customs;
+			sourceTree = "<group>";
+		};
+		6D6B3F00183CF8D5009542A8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6D6B3F01183CF92B009542A8 /* iTaskFamily.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		6D6B3F05183CF98C009542A8 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				6D6B3EDA183CF75B009542A8 /* Main.storyboard */,
+			);
+			name = Graphics;
+			sourceTree = "<group>";
+		};
+		6D6B3F06183CF995009542A8 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				6D6B3EFE183CF8A9009542A8 /* ViewControllers */,
+				6D6B3F05183CF98C009542A8 /* Graphics */,
+				6D6B3EFF183CF8BB009542A8 /* Customs */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		6D6B3F07183CF9F9009542A8 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				6D6B3F08183CFA11009542A8 /* DDConstant.h */,
+				6D6B3F09183CFA11009542A8 /* DDConstant.m */,
+			);
+			name = Others;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,7 +315,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D6B3ED9183CF75B009542A8 /* DDAppDelegate.m in Sources */,
+				6D6B3F0A183CFA11009542A8 /* DDConstant.m in Sources */,
 				6D6B3EDF183CF75B009542A8 /* DDViewController.m in Sources */,
+				6D6B3F03183CF92B009542A8 /* iTaskFamily.xcdatamodeld in Sources */,
 				6D6B3ED5183CF75B009542A8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,6 +539,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6D6B3F01183CF92B009542A8 /* iTaskFamily.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6D6B3F02183CF92B009542A8 /* iTaskFamily.xcdatamodel */,
+			);
+			currentVersion = 6D6B3F02183CF92B009542A8 /* iTaskFamily.xcdatamodel */;
+			path = iTaskFamily.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6D6B3EBD183CF75B009542A8 /* Project object */;
 }
