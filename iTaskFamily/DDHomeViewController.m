@@ -29,10 +29,6 @@
 	
     //set the backgound of the view
     [[self view] setBackgroundColor:COULEUR_BACKGROUND];
-    
-    [self.viewPlayer.layer setCornerRadius:10.0];
-    [self.viewPlayer.layer setBorderColor:[UIColor colorWithRed:210/255.0 green:210/255.0 blue:210/255.0 alpha:1.0].CGColor];
-    [self.viewPlayer.layer setBorderWidth:1.0];
 }
 
 - (void)didReceiveMemoryWarning

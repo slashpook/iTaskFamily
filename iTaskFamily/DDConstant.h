@@ -13,6 +13,7 @@
 #pragma mark - Couleur de l'application
 
 #define COULEUR_BARRE [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1.0]
+#define COULEUR_BLUR [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5]
 #define COULEUR_BACKGROUND [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0]
 #define COULEUR_HOME [UIColor colorWithRed:56/255.0 green:143/255.0 blue:218/255.0 alpha:1.0]
 #define COULEUR_PLAYER [UIColor colorWithRed:36/255.0 green:199/255.0 blue:90/255.0 alpha:1.0]

@@ -7,14 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DDPlayerView.h"
+#import "DDDateView.h"
+#import "DDMenuView.h"
 
 @interface DDHomeViewController : UIViewController
 
 
 #pragma mark - Variables
 
-//View du joueur
-@property (weak, nonatomic) IBOutlet UIView *viewPlayer;
+//View du player
+@property (weak, nonatomic) IBOutlet DDPlayerView *viewPlayer;
+
+//View de la date
+@property (weak, nonatomic) IBOutlet UIView *viewDate;
+
+//View de la météo
+@property (weak, nonatomic) IBOutlet UIView *viewMeteo;
 
 
 #pragma mark - Fonctions

@@ -143,13 +143,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="WbM-Qv-pYZ" secondAttribute="trailing" id="3Lg-Er-UAK"/>
-                            <constraint firstItem="Fwd-hy-d4V" firstAttribute="top" secondItem="WbM-Qv-pYZ" secondAttribute="bottom" id="5bC-gB-yha"/>
-                            <constraint firstItem="WbM-Qv-pYZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="110" id="IlL-dd-6p0"/>
+                            <constraint firstAttribute="trailing" secondItem="WbM-Qv-pYZ" secondAttribute="trailing" id="554-tL-PTc"/>
                             <constraint firstItem="gI3-uO-3Yu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="JAs-kT-teV"/>
-                            <constraint firstItem="WbM-Qv-pYZ" firstAttribute="top" secondItem="gI3-uO-3Yu" secondAttribute="top" id="Kpl-MI-Kgl"/>
+                            <constraint firstItem="Fwd-hy-d4V" firstAttribute="top" secondItem="WbM-Qv-pYZ" secondAttribute="bottom" id="KqY-v0-mpr"/>
+                            <constraint firstItem="WbM-Qv-pYZ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="UYB-FE-OMe"/>
                             <constraint firstItem="gI3-uO-3Yu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Yp5-Mh-MCc"/>
-                            <constraint firstItem="ZLZ-sl-dcZ" firstAttribute="top" secondItem="WbM-Qv-pYZ" secondAttribute="bottom" constant="-748" id="Z5r-GS-TTw"/>
+                            <constraint firstItem="WbM-Qv-pYZ" firstAttribute="leading" secondItem="gI3-uO-3Yu" secondAttribute="trailing" id="pQQ-VR-76J"/>
                             <constraint firstItem="Fwd-hy-d4V" firstAttribute="top" secondItem="gI3-uO-3Yu" secondAttribute="bottom" id="pZM-v8-d8d"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -172,23 +171,77 @@
                         <rect key="frame" x="0.0" y="0.0" width="914" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5kf-DG-coE">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5kf-DG-coE" customClass="DDPlayerView">
                                 <rect key="frame" x="30" y="60" width="240" height="240"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Automne" translatesAutoresizingMaskIntoConstraints="NO" id="koM-g8-BGF" userLabel="Image View - Player">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="N2D-Mh-pJX" userLabel="Image View - Header">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="06Q-Da-do7"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XB3-yt-cub" userLabel="Image View - Bottom">
+                                        <rect key="frame" x="0.0" y="190" width="240" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="EUV-RQ-Qhl"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="9N9-JE-Yhj"/>
+                                    <constraint firstAttribute="trailing" secondItem="koM-g8-BGF" secondAttribute="trailing" id="Czo-Rv-g9l"/>
+                                    <constraint firstAttribute="bottom" secondItem="koM-g8-BGF" secondAttribute="bottom" id="EWT-64-YNr"/>
+                                    <constraint firstAttribute="trailing" secondItem="N2D-Mh-pJX" secondAttribute="trailing" id="Ezp-Rz-G5g"/>
                                     <constraint firstAttribute="height" constant="240" id="GJI-8M-WPD"/>
+                                    <constraint firstItem="N2D-Mh-pJX" firstAttribute="leading" secondItem="5kf-DG-coE" secondAttribute="leading" id="JV8-TD-e8G"/>
+                                    <constraint firstItem="koM-g8-BGF" firstAttribute="top" secondItem="5kf-DG-coE" secondAttribute="top" id="PD8-9J-ZTS"/>
+                                    <constraint firstItem="koM-g8-BGF" firstAttribute="leading" secondItem="5kf-DG-coE" secondAttribute="leading" id="Pgz-ZU-UbD"/>
+                                    <constraint firstItem="koM-g8-BGF" firstAttribute="leading" secondItem="5kf-DG-coE" secondAttribute="leading" id="Xsl-yZ-keT"/>
+                                    <constraint firstItem="N2D-Mh-pJX" firstAttribute="top" secondItem="5kf-DG-coE" secondAttribute="top" id="jWU-7X-lyC"/>
+                                    <constraint firstAttribute="trailing" secondItem="koM-g8-BGF" secondAttribute="trailing" id="k7Y-xH-Mt0"/>
+                                    <constraint firstItem="XB3-yt-cub" firstAttribute="leading" secondItem="N2D-Mh-pJX" secondAttribute="leading" id="kAH-UX-8ta"/>
+                                    <constraint firstItem="XB3-yt-cub" firstAttribute="trailing" secondItem="N2D-Mh-pJX" secondAttribute="trailing" id="oUO-ej-MXg"/>
+                                    <constraint firstAttribute="bottom" secondItem="XB3-yt-cub" secondAttribute="bottom" id="tCs-ko-ss6"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="imageViewBottom" destination="XB3-yt-cub" id="zXj-eW-cMZ"/>
+                                    <outlet property="imageViewHeader" destination="N2D-Mh-pJX" id="QD3-df-Lhi"/>
+                                    <outlet property="imageViewPlayer" destination="koM-g8-BGF" id="Tfe-4a-Ge3"/>
+                                </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QYW-iF-6pV">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QYW-iF-6pV" customClass="DDDateView">
                                 <rect key="frame" x="337" y="60" width="240" height="240"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dsZ-b1-CjT">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="x2M-Bk-XBi"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="4aD-Gj-taV"/>
+                                    <constraint firstAttribute="trailing" secondItem="dsZ-b1-CjT" secondAttribute="trailing" id="FqI-GV-3MB"/>
                                     <constraint firstAttribute="width" constant="240" id="LIg-2i-ZBY"/>
+                                    <constraint firstItem="dsZ-b1-CjT" firstAttribute="leading" secondItem="QYW-iF-6pV" secondAttribute="leading" id="iGA-gU-JAj"/>
+                                    <constraint firstItem="dsZ-b1-CjT" firstAttribute="top" secondItem="QYW-iF-6pV" secondAttribute="top" id="uF7-S3-5EW"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="imageViewHeader" destination="dsZ-b1-CjT" id="cem-Za-tin"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCn-oZ-CVr">
                                 <rect key="frame" x="644" y="60" width="240" height="240"/>
@@ -215,7 +268,9 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="viewPlayer" destination="5kf-DG-coE" id="NNY-KC-yBa"/>
+                        <outlet property="viewDate" destination="QYW-iF-6pV" id="eUc-WA-PmQ"/>
+                        <outlet property="viewMeteo" destination="qCn-oZ-CVr" id="awt-Mu-Kni"/>
+                        <outlet property="viewPlayer" destination="5kf-DG-coE" id="8AE-e3-qup"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MHV-DT-CqJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -224,6 +279,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Automne" width="240" height="240"/>
         <image name="home" width="61" height="54"/>
         <image name="player" width="64" height="61"/>
         <image name="setting" width="63" height="64"/>

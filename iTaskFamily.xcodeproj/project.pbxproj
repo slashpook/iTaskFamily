@@ -24,6 +24,12 @@
 		6D6B3F03183CF92B009542A8 /* iTaskFamily.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3F01183CF92B009542A8 /* iTaskFamily.xcdatamodeld */; };
 		6D6B3F12183D116F009542A8 /* DDMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3F11183D116F009542A8 /* DDMenuView.m */; };
 		6D6B3F16183D28D8009542A8 /* DDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3F15183D28D8009542A8 /* DDHomeViewController.m */; };
+		6DAB86F3183E530000F42CA8 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DAB86F2183E530000F42CA8 /* Media.xcassets */; };
+		6DCE47B5183E029200D64363 /* DDDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE47B4183E029200D64363 /* DDDateView.m */; };
+		6DCE47B9183E066100D64363 /* DDPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE47B8183E066100D64363 /* DDPlayerView.m */; };
+		6DCE47BD183E08AA00D64363 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE47BC183E08AA00D64363 /* UIImage+ImageEffects.m */; };
+		6DCE47C1183E10E000D64363 /* DDHelperController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE47C0183E10E000D64363 /* DDHelperController.m */; };
+		6DCE47C3183E12FF00D64363 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DCE47C2183E12FF00D64363 /* Accelerate.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +68,16 @@
 		6D6B3F11183D116F009542A8 /* DDMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMenuView.m; sourceTree = "<group>"; };
 		6D6B3F14183D28D8009542A8 /* DDHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHomeViewController.h; sourceTree = "<group>"; };
 		6D6B3F15183D28D8009542A8 /* DDHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHomeViewController.m; sourceTree = "<group>"; };
+		6DAB86F2183E530000F42CA8 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		6DCE47B3183E029200D64363 /* DDDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDateView.h; sourceTree = "<group>"; };
+		6DCE47B4183E029200D64363 /* DDDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDateView.m; sourceTree = "<group>"; };
+		6DCE47B7183E066100D64363 /* DDPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPlayerView.h; sourceTree = "<group>"; };
+		6DCE47B8183E066100D64363 /* DDPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPlayerView.m; sourceTree = "<group>"; };
+		6DCE47BB183E08AA00D64363 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		6DCE47BC183E08AA00D64363 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		6DCE47BF183E10E000D64363 /* DDHelperController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHelperController.h; sourceTree = "<group>"; };
+		6DCE47C0183E10E000D64363 /* DDHelperController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHelperController.m; sourceTree = "<group>"; };
+		6DCE47C2183E12FF00D64363 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DCE47C3183E12FF00D64363 /* Accelerate.framework in Frameworks */,
 				6D6B3ECB183CF75B009542A8 /* CoreGraphics.framework in Frameworks */,
 				6D6B3ECD183CF75B009542A8 /* UIKit.framework in Frameworks */,
 				6D6B3EC9183CF75B009542A8 /* Foundation.framework in Frameworks */,
@@ -91,6 +108,7 @@
 		6D6B3EBC183CF75B009542A8 = {
 			isa = PBXGroup;
 			children = (
+				6DAB86F2183E530000F42CA8 /* Media.xcassets */,
 				6D6B3ECE183CF75B009542A8 /* iTaskFamily */,
 				6D6B3EED183CF75C009542A8 /* iTaskFamilyTests */,
 				6D6B3EC7183CF75B009542A8 /* Frameworks */,
@@ -110,6 +128,7 @@
 		6D6B3EC7183CF75B009542A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6DCE47C2183E12FF00D64363 /* Accelerate.framework */,
 				6D6B3EC8183CF75B009542A8 /* Foundation.framework */,
 				6D6B3ECA183CF75B009542A8 /* CoreGraphics.framework */,
 				6D6B3ECC183CF75B009542A8 /* UIKit.framework */,
@@ -181,6 +200,8 @@
 		6D6B3EFF183CF8BB009542A8 /* Customs */ = {
 			isa = PBXGroup;
 			children = (
+				6DCE47B6183E065400D64363 /* PlayerView */,
+				6DCE47B2183E027700D64363 /* DateView */,
 				6D6B3F0B183D1044009542A8 /* MenuView */,
 			);
 			name = Customs;
@@ -215,6 +236,8 @@
 		6D6B3F07183CF9F9009542A8 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				6DCE47BE183E10CA00D64363 /* Helper */,
+				6DCE47BA183E088C00D64363 /* Blur */,
 				6D6B3F08183CFA11009542A8 /* DDConstant.h */,
 			);
 			name = Others;
@@ -245,6 +268,42 @@
 				6D6B3F15183D28D8009542A8 /* DDHomeViewController.m */,
 			);
 			name = HomeViewController;
+			sourceTree = "<group>";
+		};
+		6DCE47B2183E027700D64363 /* DateView */ = {
+			isa = PBXGroup;
+			children = (
+				6DCE47B3183E029200D64363 /* DDDateView.h */,
+				6DCE47B4183E029200D64363 /* DDDateView.m */,
+			);
+			name = DateView;
+			sourceTree = "<group>";
+		};
+		6DCE47B6183E065400D64363 /* PlayerView */ = {
+			isa = PBXGroup;
+			children = (
+				6DCE47B7183E066100D64363 /* DDPlayerView.h */,
+				6DCE47B8183E066100D64363 /* DDPlayerView.m */,
+			);
+			name = PlayerView;
+			sourceTree = "<group>";
+		};
+		6DCE47BA183E088C00D64363 /* Blur */ = {
+			isa = PBXGroup;
+			children = (
+				6DCE47BB183E08AA00D64363 /* UIImage+ImageEffects.h */,
+				6DCE47BC183E08AA00D64363 /* UIImage+ImageEffects.m */,
+			);
+			name = Blur;
+			sourceTree = "<group>";
+		};
+		6DCE47BE183E10CA00D64363 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				6DCE47BF183E10E000D64363 /* DDHelperController.h */,
+				6DCE47C0183E10E000D64363 /* DDHelperController.m */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,6 +385,7 @@
 			files = (
 				6D6B3EE1183CF75B009542A8 /* Images.xcassets in Resources */,
 				6D6B3ED3183CF75B009542A8 /* InfoPlist.strings in Resources */,
+				6DAB86F3183E530000F42CA8 /* Media.xcassets in Resources */,
 				6D6B3EDC183CF75B009542A8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,11 +406,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D6B3ED9183CF75B009542A8 /* DDAppDelegate.m in Sources */,
+				6DCE47B9183E066100D64363 /* DDPlayerView.m in Sources */,
 				6D6B3F16183D28D8009542A8 /* DDHomeViewController.m in Sources */,
 				6D6B3EDF183CF75B009542A8 /* DDRootViewController.m in Sources */,
 				6D6B3F12183D116F009542A8 /* DDMenuView.m in Sources */,
+				6DCE47BD183E08AA00D64363 /* UIImage+ImageEffects.m in Sources */,
 				6D6B3F03183CF92B009542A8 /* iTaskFamily.xcdatamodeld in Sources */,
+				6DCE47C1183E10E000D64363 /* DDHelperController.m in Sources */,
 				6D6B3ED5183CF75B009542A8 /* main.m in Sources */,
+				6DCE47B5183E029200D64363 /* DDDateView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,6 +625,7 @@
 				6D6B3EF9183CF75C009542A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6D6B3EFA183CF75C009542A8 /* Build configuration list for PBXNativeTarget "iTaskFamilyTests" */ = {
 			isa = XCConfigurationList;
@@ -569,6 +634,7 @@
 				6D6B3EFC183CF75C009542A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
