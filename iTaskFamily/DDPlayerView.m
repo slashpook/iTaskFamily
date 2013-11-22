@@ -26,6 +26,12 @@
     [self.layer setCornerRadius:10.0];
     [self.layer setMasksToBounds:YES];
     
+    //On set la police et la couleur des labels
+    [self.labelNamePlayer setFont:POLICE_HEADER];
+    [self.labelNamePlayer setTextColor:COULEUR_WHITE];
+    [self.labelPointPlayer setFont:POLICE_HEADER];
+    [self.labelPointPlayer setTextColor:COULEUR_WHITE];
+    
     //On met un effet flou au header et bottom
     [self setBlurEffect];
 }
@@ -43,8 +49,8 @@
     UIImage *imageBottom = [DDHelperController snapshotFromImage:imageOriginal withRect:self.imageViewBottom.frame];
     
     //On applique le flou
-    imageHeader = [imageHeader applyBlurWithRadius:2 tintColor:COULEUR_BLUR saturationDeltaFactor:0.8 maskImage:nil];
-    imageBottom = [imageBottom applyBlurWithRadius:2 tintColor:COULEUR_BLUR saturationDeltaFactor:0.8 maskImage:nil];
+    imageHeader = [imageHeader applyBlurWithRadius:2 tintColor:COULEUR_BLUR_BLACK saturationDeltaFactor:0.8 maskImage:nil];
+    imageBottom = [imageBottom applyBlurWithRadius:2 tintColor:COULEUR_BLUR_BLACK saturationDeltaFactor:0.8 maskImage:nil];
     
     //On rajoute les images à la vue
     [self.imageViewHeader setImage:imageHeader];

@@ -24,6 +24,8 @@
 		6D6B3F03183CF92B009542A8 /* iTaskFamily.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3F01183CF92B009542A8 /* iTaskFamily.xcdatamodeld */; };
 		6D6B3F12183D116F009542A8 /* DDMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3F11183D116F009542A8 /* DDMenuView.m */; };
 		6D6B3F16183D28D8009542A8 /* DDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3F15183D28D8009542A8 /* DDHomeViewController.m */; };
+		6D9B323E183F60A60038D7DB /* DDMeteoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B323D183F60A60038D7DB /* DDMeteoView.m */; };
+		6D9B3242183F99860038D7DB /* DDWeatherInfos.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3241183F99860038D7DB /* DDWeatherInfos.m */; };
 		6DAB86F3183E530000F42CA8 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DAB86F2183E530000F42CA8 /* Media.xcassets */; };
 		6DCE47B5183E029200D64363 /* DDDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE47B4183E029200D64363 /* DDDateView.m */; };
 		6DCE47B9183E066100D64363 /* DDPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE47B8183E066100D64363 /* DDPlayerView.m */; };
@@ -68,6 +70,10 @@
 		6D6B3F11183D116F009542A8 /* DDMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMenuView.m; sourceTree = "<group>"; };
 		6D6B3F14183D28D8009542A8 /* DDHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHomeViewController.h; sourceTree = "<group>"; };
 		6D6B3F15183D28D8009542A8 /* DDHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHomeViewController.m; sourceTree = "<group>"; };
+		6D9B323C183F60A60038D7DB /* DDMeteoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMeteoView.h; sourceTree = "<group>"; };
+		6D9B323D183F60A60038D7DB /* DDMeteoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMeteoView.m; sourceTree = "<group>"; };
+		6D9B3240183F99860038D7DB /* DDWeatherInfos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDWeatherInfos.h; sourceTree = "<group>"; };
+		6D9B3241183F99860038D7DB /* DDWeatherInfos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDWeatherInfos.m; sourceTree = "<group>"; };
 		6DAB86F2183E530000F42CA8 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		6DCE47B3183E029200D64363 /* DDDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDateView.h; sourceTree = "<group>"; };
 		6DCE47B4183E029200D64363 /* DDDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDateView.m; sourceTree = "<group>"; };
@@ -202,6 +208,7 @@
 			children = (
 				6DCE47B6183E065400D64363 /* PlayerView */,
 				6DCE47B2183E027700D64363 /* DateView */,
+				6D9B323B183F60870038D7DB /* MeteoView */,
 				6D6B3F0B183D1044009542A8 /* MenuView */,
 			);
 			name = Customs;
@@ -236,6 +243,7 @@
 		6D6B3F07183CF9F9009542A8 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				6D9B323F183F99710038D7DB /* Weather */,
 				6DCE47BE183E10CA00D64363 /* Helper */,
 				6DCE47BA183E088C00D64363 /* Blur */,
 				6D6B3F08183CFA11009542A8 /* DDConstant.h */,
@@ -268,6 +276,24 @@
 				6D6B3F15183D28D8009542A8 /* DDHomeViewController.m */,
 			);
 			name = HomeViewController;
+			sourceTree = "<group>";
+		};
+		6D9B323B183F60870038D7DB /* MeteoView */ = {
+			isa = PBXGroup;
+			children = (
+				6D9B323C183F60A60038D7DB /* DDMeteoView.h */,
+				6D9B323D183F60A60038D7DB /* DDMeteoView.m */,
+			);
+			name = MeteoView;
+			sourceTree = "<group>";
+		};
+		6D9B323F183F99710038D7DB /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				6D9B3240183F99860038D7DB /* DDWeatherInfos.h */,
+				6D9B3241183F99860038D7DB /* DDWeatherInfos.m */,
+			);
+			name = Weather;
 			sourceTree = "<group>";
 		};
 		6DCE47B2183E027700D64363 /* DateView */ = {
@@ -405,6 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D9B3242183F99860038D7DB /* DDWeatherInfos.m in Sources */,
 				6D6B3ED9183CF75B009542A8 /* DDAppDelegate.m in Sources */,
 				6DCE47B9183E066100D64363 /* DDPlayerView.m in Sources */,
 				6D6B3F16183D28D8009542A8 /* DDHomeViewController.m in Sources */,
@@ -414,6 +441,7 @@
 				6D6B3F03183CF92B009542A8 /* iTaskFamily.xcdatamodeld in Sources */,
 				6DCE47C1183E10E000D64363 /* DDHelperController.m in Sources */,
 				6D6B3ED5183CF75B009542A8 /* main.m in Sources */,
+				6D9B323E183F60A60038D7DB /* DDMeteoView.m in Sources */,
 				6DCE47B5183E029200D64363 /* DDDateView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

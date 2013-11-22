@@ -13,11 +13,20 @@
 
 #pragma mark - Variables
 
+//Fond flou du haut de la vue
 @property (weak, nonatomic)IBOutlet UIImageView *imageViewHeader;
 
+//Fond flou du bas de la vue
 @property (weak, nonatomic)IBOutlet UIImageView *imageViewBottom;
 
+//Image du joueur
 @property (weak, nonatomic)IBOutlet UIImageView *imageViewPlayer;
+
+//Label nom du joueur
+@property (weak, nonatomic)IBOutlet UILabel *labelNamePlayer;
+
+//Label des points du joueur
+@property (weak, nonatomic)IBOutlet UILabel *labelPointPlayer;
 
 
 #pragma mark - Fonctions

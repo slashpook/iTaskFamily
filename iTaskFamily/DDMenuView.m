@@ -21,7 +21,7 @@
 
 - (void)awakeFromNib
 {
-    [self setBackgroundColor:COULEUR_BARRE];
+    [self setBackgroundColor:COULEUR_BLACK];
 }
 
 

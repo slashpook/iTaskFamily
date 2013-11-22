@@ -19,4 +19,22 @@
 //Retourne un snapshot d'une partie de l'écran
 + (UIImage *)snapshotFromImage:(UIImage *)imageOriginal withRect:(CGRect)frameSnapshot;
 
+//Récupère le jour en lettre
++ (NSString *)getDayInLetter;
+
+//Récupère le numéro du jour
++ (NSString *)getDayInNumber;
+
+//Récupère le mois en cours
++ (NSString *)getMonthInLetter;
+
+//Récupère l'année en cours
++ (NSString *)getYearInLetter;
+
+//Récupère l'heure en cours
++ (NSString *)getHour;
+
+//Récupère les minutes en cours
++ (NSString *)getMin;
+
 @end

@@ -25,8 +25,42 @@
     [self.layer setCornerRadius:10.0];
     [self.layer setMasksToBounds:YES];
     
-    //On met le header en couleur
-    [self.imageViewHeader setBackgroundColor:COULEUR_BARRE];
+    //On set la police et la couleur des labels
+    [self.labelDay setFont:POLICE_HEADER];
+    [self.labelDay setTextColor:COULEUR_WHITE];
+    [self.labelNumberOfDay setFont:POLICE_DATE_BIG];
+    [self.labelNumberOfDay setTextColor:COULEUR_BLACK];
+    [self.labelMonth setFont:POLICE_DATE_MEDIUM];
+    [self.labelMonth setTextColor:COULEUR_BLACK];
+    [self.labelYear setFont:POLICE_DATE_MEDIUM];
+    [self.labelYear setTextColor:COULEUR_BLACK];
+    [self.labelHour setFont:POLICE_DATE_BIG];
+    [self.labelHour setTextColor:COULEUR_BLACK];
+    [self.labelMin setFont:POLICE_DATE_BIG];
+    [self.labelMin setTextColor:COULEUR_BLACK];
+    [self.labelSeparatorHourMin setFont:POLICE_DATE_PONCTUATION];
+    [self.labelSeparatorHourMin setTextColor:COULEUR_HOME];
+    
+    //On met les images en couleurs
+    [self.imageViewHeader setBackgroundColor:COULEUR_BLACK];
+    [self.imageSeparatorDayMonth setBackgroundColor:COULEUR_HOME];
+    [self.imageSeparatorDayHour setBackgroundColor:COULEUR_BACKGROUND];
+    
+    //On lance une première fois la mise à jour de la date pour pas avoir la latence d'une seconde
+    [self updateDate];
+    //On met à jour la date toute les secondes
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateDate) userInfo:nil repeats:YES];
+}
+
+//On met à jour la date
+- (void)updateDate
+{
+    [self.labelDay setText:[DDHelperController getDayInLetter]];
+    [self.labelNumberOfDay setText:[DDHelperController getDayInNumber]];
+    [self.labelMonth setText:[DDHelperController getMonthInLetter]];
+    [self.labelYear setText:[DDHelperController getYearInLetter]];
+    [self.labelHour setText:[DDHelperController getHour]];
+    [self.labelMin setText:[DDHelperController getMin]];
 }
 
 @end
