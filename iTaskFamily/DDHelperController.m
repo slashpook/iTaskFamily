@@ -16,7 +16,10 @@
 //Retourne un snapshot d'une partie de l'écran
 + (UIImage *)snapshotFromImage:(UIImage *)imageOriginal withRect:(CGRect)frameSnapshot
 {
-    CGImageRef imageRef = CGImageCreateWithImageInRect([imageOriginal CGImage], frameSnapshot);
+    float scale = [[UIScreen mainScreen] scale];
+    CGRect finalFrame = CGRectMake(frameSnapshot.origin.x * scale, frameSnapshot.origin.y * scale, frameSnapshot.size.width * scale, frameSnapshot.size.height * scale);
+    
+    CGImageRef imageRef = CGImageCreateWithImageInRect([imageOriginal CGImage], finalFrame);
     UIImage *imageSnapshot = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);
     

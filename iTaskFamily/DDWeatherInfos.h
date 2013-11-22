@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol WeatherInfosProtocol <NSObject>
+@protocol DDWeatherInfosProtocol <NSObject>
 
+//Recherche terminée avec succès
 -(void)searchEnded:(id)weatherInfos;
+
+//Recherche terminée avec erreur
 -(void)searchEndedWithError:(id)weatherInfos;
 
 @end
@@ -20,27 +23,37 @@
 
 #pragma mark - Variables
 
-@property(nonatomic, retain) NSString *condition;
-
-@property(nonatomic, retain) NSString *location;
-
-@property(nonatomic, retain) NSURL *conditionImageURL;
-
-@property(nonatomic, assign) NSInteger currentTemp;
-
-@property(nonatomic, assign) NSInteger lowTemp;
-
-@property(nonatomic, assign) NSInteger hightTemp;
-
+//URL Connection pour lancer la récupération du JSON
 @property(nonatomic, retain) NSURLConnection *connection;
 
+//Web data pour récupérer le JSON de météo
 @property(nonatomic, retain) NSMutableData *webData;
 
-@property(nonatomic, retain) id<WeatherInfosProtocol> delegate;
+//Condition pour savoir quelle image afficher
+@property(nonatomic, retain) NSString *condition;
+
+//Nom de la ville
+@property(nonatomic, retain) NSString *location;
+
+//Température courante
+@property(nonatomic, assign) NSInteger currentTemp;
+
+//Température minimum
+@property(nonatomic, assign) NSInteger lowTemp;
+
+//Température maximum
+@property(nonatomic, assign) NSInteger hightTemp;
+
+//Delegate de l'objet
+@property(nonatomic, retain) id<DDWeatherInfosProtocol> delegate;
 
 
 #pragma mark - Fonctions
 
-- (DDWeatherInfos *)initWithQuery:(NSString *)query andDelegate:(id<WeatherInfosProtocol>)delegate;
+//Fonction d'initialisation
+- (DDWeatherInfos *)initWithDelegate:(id<DDWeatherInfosProtocol>)delegate;
+
+//On met à jour la météo avec la requette passé en paramètre
+- (void)updateMeteoWithQuery:(NSString *)query;
 
 @end

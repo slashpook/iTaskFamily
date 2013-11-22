@@ -26,7 +26,6 @@
 		6D6B3F16183D28D8009542A8 /* DDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3F15183D28D8009542A8 /* DDHomeViewController.m */; };
 		6D9B323E183F60A60038D7DB /* DDMeteoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B323D183F60A60038D7DB /* DDMeteoView.m */; };
 		6D9B3242183F99860038D7DB /* DDWeatherInfos.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3241183F99860038D7DB /* DDWeatherInfos.m */; };
-		6DAB86F3183E530000F42CA8 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DAB86F2183E530000F42CA8 /* Media.xcassets */; };
 		6DCE47B5183E029200D64363 /* DDDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE47B4183E029200D64363 /* DDDateView.m */; };
 		6DCE47B9183E066100D64363 /* DDPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE47B8183E066100D64363 /* DDPlayerView.m */; };
 		6DCE47BD183E08AA00D64363 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE47BC183E08AA00D64363 /* UIImage+ImageEffects.m */; };
@@ -74,7 +73,6 @@
 		6D9B323D183F60A60038D7DB /* DDMeteoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMeteoView.m; sourceTree = "<group>"; };
 		6D9B3240183F99860038D7DB /* DDWeatherInfos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDWeatherInfos.h; sourceTree = "<group>"; };
 		6D9B3241183F99860038D7DB /* DDWeatherInfos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDWeatherInfos.m; sourceTree = "<group>"; };
-		6DAB86F2183E530000F42CA8 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		6DCE47B3183E029200D64363 /* DDDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDateView.h; sourceTree = "<group>"; };
 		6DCE47B4183E029200D64363 /* DDDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDateView.m; sourceTree = "<group>"; };
 		6DCE47B7183E066100D64363 /* DDPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPlayerView.h; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 		6D6B3EBC183CF75B009542A8 = {
 			isa = PBXGroup;
 			children = (
-				6DAB86F2183E530000F42CA8 /* Media.xcassets */,
 				6D6B3ECE183CF75B009542A8 /* iTaskFamily */,
 				6D6B3EED183CF75C009542A8 /* iTaskFamilyTests */,
 				6D6B3EC7183CF75B009542A8 /* Frameworks */,
@@ -411,7 +408,6 @@
 			files = (
 				6D6B3EE1183CF75B009542A8 /* Images.xcassets in Resources */,
 				6D6B3ED3183CF75B009542A8 /* InfoPlist.strings in Resources */,
-				6DAB86F3183E530000F42CA8 /* Media.xcassets in Resources */,
 				6D6B3EDC183CF75B009542A8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

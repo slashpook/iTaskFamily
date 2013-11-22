@@ -10,6 +10,7 @@
 
 @interface DDConstant : NSObject
 
+
 #pragma mark - Couleur de l'application
 
 #define COULEUR_BLUR_WHITE [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5]
@@ -23,11 +24,17 @@
 #define COULEUR_BLACK [UIColor colorWithRed:0 green:0 blue:0 alpha:1.0]
 #define COULEUR_WHITE [UIColor colorWithRed:1 green:1 blue:1 alpha:1.0]
 
+
 #pragma mark - Police de l'application
 
 #define POLICE_HEADER [UIFont fontWithName:@"HelveticaNeue" size:35.0]
 #define POLICE_DATE_BIG [UIFont fontWithName:@"HelveticaNeue-Thin" size:85.0]
 #define POLICE_DATE_MEDIUM [UIFont fontWithName:@"HelveticaNeue-Thin" size:37.0]
 #define POLICE_DATE_PONCTUATION [UIFont fontWithName:@"HelveticaNeue-Thin" size:45.0]
+#define POLICE_METEO_BIG [UIFont fontWithName:@"HelveticaNeue-Light" size:30.0]
+#define POLICE_METEO_MEDIUM [UIFont fontWithName:@"HelveticaNeue-Thin" size:16.0]
+
+
+#pragma mark - Image de la météo
 
 @end
