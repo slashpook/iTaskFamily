@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D29FC00184282C90059AA35 /* DDEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D29FBFF184282C90059AA35 /* DDEventView.m */; };
 		6D6B3EC9183CF75B009542A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B3EC8183CF75B009542A8 /* Foundation.framework */; };
 		6D6B3ECB183CF75B009542A8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B3ECA183CF75B009542A8 /* CoreGraphics.framework */; };
 		6D6B3ECD183CF75B009542A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B3ECC183CF75B009542A8 /* UIKit.framework */; };
@@ -44,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D29FBFE184282C90059AA35 /* DDEventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDEventView.h; sourceTree = "<group>"; };
+		6D29FBFF184282C90059AA35 /* DDEventView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDEventView.m; sourceTree = "<group>"; };
 		6D6B3EC5183CF75B009542A8 /* iTaskFamily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTaskFamily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D6B3EC8183CF75B009542A8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6D6B3ECA183CF75B009542A8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -109,6 +112,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D29FBFD184282B40059AA35 /* EventView */ = {
+			isa = PBXGroup;
+			children = (
+				6D29FBFE184282C90059AA35 /* DDEventView.h */,
+				6D29FBFF184282C90059AA35 /* DDEventView.m */,
+			);
+			name = EventView;
+			sourceTree = "<group>";
+		};
 		6D6B3EBC183CF75B009542A8 = {
 			isa = PBXGroup;
 			children = (
@@ -203,10 +215,11 @@
 		6D6B3EFF183CF8BB009542A8 /* Customs */ = {
 			isa = PBXGroup;
 			children = (
+				6D6B3F0B183D1044009542A8 /* MenuView */,
 				6DCE47B6183E065400D64363 /* PlayerView */,
 				6DCE47B2183E027700D64363 /* DateView */,
 				6D9B323B183F60870038D7DB /* MeteoView */,
-				6D6B3F0B183D1044009542A8 /* MenuView */,
+				6D29FBFD184282B40059AA35 /* EventView */,
 			);
 			name = Customs;
 			sourceTree = "<group>";
@@ -434,6 +447,7 @@
 				6D6B3EDF183CF75B009542A8 /* DDRootViewController.m in Sources */,
 				6D6B3F12183D116F009542A8 /* DDMenuView.m in Sources */,
 				6DCE47BD183E08AA00D64363 /* UIImage+ImageEffects.m in Sources */,
+				6D29FC00184282C90059AA35 /* DDEventView.m in Sources */,
 				6D6B3F03183CF92B009542A8 /* iTaskFamily.xcdatamodeld in Sources */,
 				6DCE47C1183E10E000D64363 /* DDHelperController.m in Sources */,
 				6D6B3ED5183CF75B009542A8 /* main.m in Sources */,
@@ -570,6 +584,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iTaskFamily/iTaskFamily-Prefix.pch";
 				INFOPLIST_FILE = "iTaskFamily/iTaskFamily-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -583,6 +598,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iTaskFamily/iTaskFamily-Prefix.pch";
 				INFOPLIST_FILE = "iTaskFamily/iTaskFamily-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

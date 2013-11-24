@@ -28,8 +28,12 @@
 {
     [super viewDidLoad];
 	
-    //set the backgound of the view
+    //On set le background de la vue
     [[self view] setBackgroundColor:COULEUR_BACKGROUND];
+    
+    //On configure le pageControl
+    [self.pageControlPlayer setTintColor:COULEUR_BLACK];
+    [self.pageControlPlayer setCurrentPageIndicatorTintColor:COULEUR_HOME];
 }
 
 - (void)didReceiveMemoryWarning

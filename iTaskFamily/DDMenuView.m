@@ -21,7 +21,11 @@
 
 - (void)awakeFromNib
 {
+    //On set le fond du menu
     [self setBackgroundColor:COULEUR_BLACK];
+    
+    //On enlève le toucher multiple sur le menu
+    [self.subviews makeObjectsPerformSelector:@selector(setExclusiveTouch:) withObject:[NSNumber numberWithBool:YES]];
 }
 
 

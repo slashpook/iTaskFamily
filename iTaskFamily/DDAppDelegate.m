@@ -12,14 +12,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    //On set le booléen pour indiquer que l'on vient de lancer l'application pour la première fois
+    [self setIsFirstLaunch:YES];
+    
+    //On cache la barre de status
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    
     return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -35,7 +39,11 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    //Si ce n'est pas le premier lancement, on met à jour la météo et la date
+    if (!self.isFirstLaunch)
+        [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(updateDateAndMeteo) userInfo:nil repeats:NO];
+    
+    [self setIsFirstLaunch:NO];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -43,4 +51,12 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)updateDateAndMeteo
+{
+    //On lance les notification pour mettre à jour la date et la météo
+    [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_DATE object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_METEO object:nil];
+}
+
 @end
+    

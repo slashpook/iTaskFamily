@@ -33,8 +33,12 @@
 #define POLICE_DATE_PONCTUATION [UIFont fontWithName:@"HelveticaNeue-Thin" size:45.0]
 #define POLICE_METEO_BIG [UIFont fontWithName:@"HelveticaNeue-Light" size:30.0]
 #define POLICE_METEO_MEDIUM [UIFont fontWithName:@"HelveticaNeue-Thin" size:16.0]
+#define POLICE_EVENT_DAY [UIFont fontWithName:@"HelveticaNeue" size:20.0]
 
 
-#pragma mark - Image de la météo
+#pragma mark - Notification
+
+#define UPDATE_METEO @"UPDATE_METEO"
+#define UPDATE_DATE @"UPDATE_DATE"
 
 @end

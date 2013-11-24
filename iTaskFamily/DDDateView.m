@@ -50,6 +50,9 @@
     [self updateDate];
     //On met à jour la date toute les secondes
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateDate) userInfo:nil repeats:YES];
+    
+    //On rajoute une notification pour mettre à jour la date quand on allume l'application
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateDate) name:UPDATE_DATE object:nil];
 }
 
 //On met à jour la date

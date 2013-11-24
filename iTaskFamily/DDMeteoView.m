@@ -62,7 +62,10 @@
     //On lance une première fois la mise à jour
     [self updateMeteo];
     //On met à jour la météo toute les 3 h
-    [NSTimer scheduledTimerWithTimeInterval:10800.0 target:self selector:@selector(updateMeteo) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:3600.0 target:self selector:@selector(updateMeteo) userInfo:nil repeats:YES];
+    
+    //On rajoute une notification pour mettre à jour la météo quand on allume l'application
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMeteo) name:UPDATE_METEO object:nil];
 }
 
 //On met à jour la météo

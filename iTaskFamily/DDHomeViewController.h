@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DDPlayerView.h"
-#import "DDDateView.h"
-#import "DDMenuView.h"
+
+@class DDPlayerView;
+@class DDDateView;
+@class DDMeteoView;
+@class DDMenuView;
 
 @interface DDHomeViewController : UIViewController
 
@@ -20,10 +22,13 @@
 @property (weak, nonatomic) IBOutlet DDPlayerView *viewPlayer;
 
 //View de la date
-@property (weak, nonatomic) IBOutlet UIView *viewDate;
+@property (weak, nonatomic) IBOutlet DDDateView *viewDate;
 
 //View de la météo
-@property (weak, nonatomic) IBOutlet UIView *viewMeteo;
+@property (weak, nonatomic) IBOutlet DDMeteoView *viewMeteo;
+
+//Page control de la vue de joueur
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControlPlayer;
 
 
 #pragma mark - Fonctions
