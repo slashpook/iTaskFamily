@@ -18,6 +18,19 @@
     //On cache la barre de status
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     
+    //On set le premier joueur
+    [[DDManagerSingleton instance] setCurrentPlayer:[[DDDatabaseAccess instance] getFirstPlayer]];
+    
+    //Alloc the window and set the mainStoryboard
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor clearColor];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    //Set the tabBar controller
+	_rootViewController = [mainStoryboard instantiateInitialViewController];
+    [self.window setRootViewController:self.rootViewController];
+    [self.window makeKeyAndVisible];
+        
     return YES;
 }
 							
@@ -39,6 +52,9 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    //On charge les images du imagePicker pour les joueurs
+    [[DDManagerSingleton instance] loadImagePicker];
+    
     //Si ce n'est pas le premier lancement, on met à jour la météo et la date
     if (!self.isFirstLaunch)
         [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(updateDateAndMeteo) userInfo:nil repeats:NO];

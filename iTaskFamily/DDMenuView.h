@@ -8,6 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DDMenuViewProtocol <NSObject>
+
+//On affiche la page d'accueil
+- (void)openHomePage;
+
+//On affiche la page des joueurs
+- (void)openPlayerPageWithSens:(int)sens;
+
+//On affiche la page des taches
+- (void)openTaskPageWithSens:(int)sens;
+
+//On affiche la page des podiums
+- (void)openPodiumPageWithSens:(int)sens;
+
+//On affiche la page des settings
+- (void)openSettingPage;
+
+@end
+
+
 @interface DDMenuView : UIView
 
 
@@ -18,6 +38,9 @@
 
 //Image view de la barre de gauche
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewLeftBar;
+
+//Delegate de la vue de menu
+@property (weak, nonatomic) id<DDMenuViewProtocol> delegate;
 
 
 #pragma mark - Functions

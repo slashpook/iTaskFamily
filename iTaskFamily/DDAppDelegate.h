@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class DDRootViewController;
+
 @interface DDAppDelegate : UIResponder <UIApplicationDelegate>
 
 
@@ -19,6 +21,10 @@
 //Booléen pour savoir si c'est le premier lancement de l'application ou non
 @property (assign, nonatomic) BOOL isFirstLaunch;
 
+//Référence du rootViewController
+@property (strong, nonatomic) DDRootViewController *rootViewController;
+
 
 #pragma mark - Fonctions
+
 @end

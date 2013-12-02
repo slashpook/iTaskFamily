@@ -16,6 +16,7 @@
 //Retourne un snapshot d'une partie de l'écran
 + (UIImage *)snapshotFromImage:(UIImage *)imageOriginal withRect:(CGRect)frameSnapshot
 {
+    //On récupère l'echelle de l'ipad (rétina ou non)
     float scale = [[UIScreen mainScreen] scale];
     CGRect finalFrame = CGRectMake(frameSnapshot.origin.x * scale, frameSnapshot.origin.y * scale, frameSnapshot.size.width * scale, frameSnapshot.size.height * scale);
     
@@ -25,6 +26,20 @@
     
     return imageSnapshot;
 }
+
+//Retourne un snapshot d'une vue
++ (UIImage *)snapshotFromView:(UIView *)viewOriginal withRect:(CGRect)frameSnapshot
+{
+    //On fait un snapshot de la vue
+    UIGraphicsBeginImageContext(frameSnapshot.size);
+    [viewOriginal.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    UIImage *imageSnapshot = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return imageSnapshot;
+}
+
 
 #pragma mark - Date fonctions
 

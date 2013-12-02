@@ -19,6 +19,9 @@
 //Image de sélection du jour
 @property (weak, nonatomic)IBOutlet UIImageView *imageViewSelection;
 
+//Label d'indication pour savoir si il y a des joueurs ou non
+@property (retain, nonatomic) IBOutlet UILabel *labelNoPlayer;
+
 //Boutton du Lundi
 @property (retain, nonatomic) IBOutlet UIButton *buttonLundi;
 

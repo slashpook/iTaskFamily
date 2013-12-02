@@ -26,6 +26,8 @@
     [self.layer setMasksToBounds:YES];
     
     //On configure les polices et couleur des boutons et labels
+    [self.labelNoPlayer setTextColor:COULEUR_BLACK];
+    [self.labelNoPlayer setFont:POLICE_EVENT_NO_PLAYER];
     [[self.buttonLundi titleLabel] setTextColor:COULEUR_WHITE];
     [[self.buttonLundi titleLabel] setFont:POLICE_EVENT_DAY];
     [[self.buttonMardi titleLabel] setTextColor:COULEUR_WHITE];

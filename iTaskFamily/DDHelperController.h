@@ -16,9 +16,14 @@
 
 #pragma mark - Fonctions
 
+////SNAPSHO////
 //Retourne un snapshot d'une partie de l'écran
 + (UIImage *)snapshotFromImage:(UIImage *)imageOriginal withRect:(CGRect)frameSnapshot;
 
+//Retourne un snapshot d'une vue
++ (UIImage *)snapshotFromView:(UIView *)viewOriginal withRect:(CGRect)frameSnapshot;
+
+////DATE////
 //Récupère le jour en lettre
 + (NSString *)getDayInLetter;
 

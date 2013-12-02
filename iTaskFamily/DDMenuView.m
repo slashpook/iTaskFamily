@@ -34,31 +34,76 @@
 //Switch on Home view
 - (IBAction)onPushHomeButton:(UIButton *)sender
 {
-    [self moveView:sender.frame andColor:COULEUR_HOME];
+    //On vérifie que l'on est pas déjà sur la page courante
+    if (self.imageViewSelection.frame.origin.y != [(UIButton *)sender frame].origin.y)
+    {
+        //On lance les animations
+        [self moveView:sender.frame andColor:COULEUR_HOME];
+        [self.delegate openHomePage];
+    }
 }
 
 //Switch on Player view
 - (IBAction)onPushPlayerButton:(UIButton *)sender
 {
-    [self moveView:sender.frame andColor:COULEUR_PLAYER];
+    //On vérifie que l'on est pas déjà sur la page courante
+    if (self.imageViewSelection.frame.origin.y != [(UIButton *)sender frame].origin.y)
+    {
+        //On récupère le sens de l'animation
+        int sens = 1;
+        if (self.imageViewSelection.frame.origin.y > [(UIButton *)sender frame].origin.y)
+            sens = -1;
+
+        //On lance les animations
+        [self moveView:sender.frame andColor:COULEUR_PLAYER];
+        [self.delegate openPlayerPageWithSens:sens];
+    }
 }
 
 //Switch on Task view
 - (IBAction)onPushTaskButton:(UIButton *)sender
 {
-    [self moveView:sender.frame andColor:COULEUR_TASK];
+    //On vérifie que l'on est pas déjà sur la page courante
+    if (self.imageViewSelection.frame.origin.y != [(UIButton *)sender frame].origin.y)
+    {
+        //On récupère le sens de l'animation
+        int sens = 1;
+        if (self.imageViewSelection.frame.origin.y > [(UIButton *)sender frame].origin.y)
+            sens = -1;
+
+        //On lance les animations
+        [self moveView:sender.frame andColor:COULEUR_TASK];
+        [self.delegate openTaskPageWithSens:sens];
+    }
 }
 
 //Switch on Trophy view
 - (IBAction)onPushTrophyButton:(UIButton *)sender
 {
-    [self moveView:sender.frame andColor:COULEUR_TROPHY];
+    //On vérifie que l'on est pas déjà sur la page courante
+    if (self.imageViewSelection.frame.origin.y != [(UIButton *)sender frame].origin.y)
+    {
+        //On récupère le sens de l'animation
+        int sens = 1;
+        if (self.imageViewSelection.frame.origin.y > [(UIButton *)sender frame].origin.y)
+            sens = -1;
+
+        //On lance les animations
+        [self moveView:sender.frame andColor:COULEUR_TROPHY];
+        [self.delegate openPodiumPageWithSens:sens];
+    }
 }
 
 //Switch on Setting view
 - (IBAction)onPushSettingButton:(UIButton *)sender
 {
-    [self moveView:sender.frame andColor:COULEUR_SETTING];
+    //On vérifie que l'on est pas déjà sur la page courante
+    if (self.imageViewSelection.frame.origin.y != [(UIButton *)sender frame].origin.y)
+    {
+        //On lance les animations
+        [self moveView:sender.frame andColor:COULEUR_SETTING];
+        [self.delegate openSettingPage];
+    }
 }
 
 //On bouge la vue qui sélectionne la page

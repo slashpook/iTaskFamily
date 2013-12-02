@@ -13,6 +13,13 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import <AssetsLibrary/AssetsLibrary.h>
+    #import <QuartzCore/QuartzCore.h>
+    #import <CoreData/CoreData.h>
     #import "DDConstant.h"
     #import "DDHelperController.h"
+    #import "DDRootViewController.h"
+    #import "DDManagerSingleton.h"
+    #import "DDDatabaseAccess.h"
+    #import "DDCustomAlertView.h"
 #endif

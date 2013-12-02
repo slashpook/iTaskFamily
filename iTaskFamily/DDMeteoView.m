@@ -88,9 +88,9 @@
     [self.activityIndicator stopAnimating];
     
     [self.labelMeteo setText:self.weatherInfos.location];
-    [self.labelTempCurrent setText:[NSString stringWithFormat:@"%i", self.weatherInfos.currentTemp]];
-    [self.labelTempMax setText:[NSString stringWithFormat:@"%i", self.weatherInfos.hightTemp]];
-    [self.labelTempMin setText:[NSString stringWithFormat:@"%i", self.weatherInfos.lowTemp]];
+    [self.labelTempCurrent setText:[NSString stringWithFormat:@"%li", (long)self.weatherInfos.currentTemp]];
+    [self.labelTempMax setText:[NSString stringWithFormat:@"%li", (long)self.weatherInfos.hightTemp]];
+    [self.labelTempMin setText:[NSString stringWithFormat:@"%li", (long)self.weatherInfos.lowTemp]];
     
     //On regarde si on a la météo ou non pour setter l'image de la météo
     if ([self.weatherInfos.condition length] == 0)

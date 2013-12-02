@@ -7,15 +7,30 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DDMenuView.h"
 
 @class DDHomeViewController;
+@class DDPlayerViewController;
 
-@interface DDRootViewController : UIViewController
+@interface DDRootViewController : UIViewController <DDMenuViewProtocol>
 
 
 #pragma mark - Variables
 
+//View du menu
+@property (strong, nonatomic) IBOutlet DDMenuView *viewMenu;
+
+//Home controller
+@property (strong, nonatomic) UIViewController *currentViewController;
+
+//La vue qui contient les viewController
+@property (weak, nonatomic) IBOutlet UIView *viewContainer;
+
+//Home controller
 @property (strong, nonatomic) DDHomeViewController *homeViewController;
+
+//Player controller
+@property (strong, nonatomic) DDPlayerViewController *playerViewController;
 
 
 #pragma mark - Fonctions
