@@ -8,13 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		6D03B0AF184C976800399A7D /* DDPlayerMiniatureCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D03B0AE184C976800399A7D /* DDPlayerMiniatureCollectionViewCell.m */; };
-		6D03B0B5184CDDA900399A7D /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D03B0B4184CDDA900399A7D /* Player.m */; };
 		6D03B0B7184CE77500399A7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D03B0B6184CE77500399A7D /* Main.storyboard */; };
 		6D29FC00184282C90059AA35 /* DDEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D29FBFF184282C90059AA35 /* DDEventView.m */; };
 		6D46EB9A1843486F00287ACC /* DDPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D46EB991843486F00287ACC /* DDPlayerViewController.m */; };
 		6D5549F01844ECC7009022C5 /* DDPopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5549EF1844ECC7009022C5 /* DDPopOverViewController.m */; };
 		6D5549F41844F823009022C5 /* DDPlayerManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5549F31844F823009022C5 /* DDPlayerManagerViewController.m */; };
 		6D62E88518479AD500D376FA /* DDCustomNavigationBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D62E88418479AD500D376FA /* DDCustomNavigationBarController.m */; };
+		6D6A1BF9184DDA6400319C71 /* DDParserXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6A1BF8184DDA6400319C71 /* DDParserXML.m */; };
+		6D6A1C8C184E2B6800319C71 /* Realisation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6A1C8B184E2B6800319C71 /* Realisation.m */; };
+		6D6A1C8F184E2B6900319C71 /* Trophy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6A1C8E184E2B6900319C71 /* Trophy.m */; };
+		6D6A1C92184E2B6900319C71 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6A1C91184E2B6900319C71 /* Player.m */; };
+		6D6A1C95184E2B6900319C71 /* Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6A1C94184E2B6900319C71 /* Categories.m */; };
+		6D6A1C98184E2B6900319C71 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6A1C97184E2B6900319C71 /* Event.m */; };
+		6D6A1C9B184E2B6900319C71 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6A1C9A184E2B6900319C71 /* Task.m */; };
 		6D6B3EC9183CF75B009542A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B3EC8183CF75B009542A8 /* Foundation.framework */; };
 		6D6B3ECB183CF75B009542A8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B3ECA183CF75B009542A8 /* CoreGraphics.framework */; };
 		6D6B3ECD183CF75B009542A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B3ECC183CF75B009542A8 /* UIKit.framework */; };
@@ -50,6 +56,9 @@
 		6DCE47C1183E10E000D64363 /* DDHelperController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE47C0183E10E000D64363 /* DDHelperController.m */; };
 		6DCE47C3183E12FF00D64363 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DCE47C2183E12FF00D64363 /* Accelerate.framework */; };
 		6DDAE5D6184CFBFF00B6DA70 /* DDTrophyRootCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDAE5D5184CFBFF00B6DA70 /* DDTrophyRootCell.m */; };
+		6DDAE5D8184CFE2200B6DA70 /* Data.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6DDAE5D7184CFE2200B6DA70 /* Data.xml */; };
+		6DF00ECC184F416800F8F3C5 /* DDPlayerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF00ECB184F416800F8F3C5 /* DDPlayerListViewController.m */; };
+		6DF00ED0184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF00ECF184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +74,6 @@
 /* Begin PBXFileReference section */
 		6D03B0AD184C976800399A7D /* DDPlayerMiniatureCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPlayerMiniatureCollectionViewCell.h; sourceTree = "<group>"; };
 		6D03B0AE184C976800399A7D /* DDPlayerMiniatureCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPlayerMiniatureCollectionViewCell.m; sourceTree = "<group>"; };
-		6D03B0B3184CDDA900399A7D /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
-		6D03B0B4184CDDA900399A7D /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		6D03B0B6184CE77500399A7D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6D29FBFE184282C90059AA35 /* DDEventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDEventView.h; sourceTree = "<group>"; };
 		6D29FBFF184282C90059AA35 /* DDEventView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDEventView.m; sourceTree = "<group>"; };
@@ -78,6 +85,20 @@
 		6D5549F31844F823009022C5 /* DDPlayerManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPlayerManagerViewController.m; sourceTree = "<group>"; };
 		6D62E88318479AD500D376FA /* DDCustomNavigationBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomNavigationBarController.h; sourceTree = "<group>"; };
 		6D62E88418479AD500D376FA /* DDCustomNavigationBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomNavigationBarController.m; sourceTree = "<group>"; };
+		6D6A1BF7184DDA6400319C71 /* DDParserXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDParserXML.h; sourceTree = "<group>"; };
+		6D6A1BF8184DDA6400319C71 /* DDParserXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDParserXML.m; sourceTree = "<group>"; };
+		6D6A1C8A184E2B6800319C71 /* Realisation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Realisation.h; sourceTree = "<group>"; };
+		6D6A1C8B184E2B6800319C71 /* Realisation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Realisation.m; sourceTree = "<group>"; };
+		6D6A1C8D184E2B6900319C71 /* Trophy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trophy.h; sourceTree = "<group>"; };
+		6D6A1C8E184E2B6900319C71 /* Trophy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trophy.m; sourceTree = "<group>"; };
+		6D6A1C90184E2B6900319C71 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		6D6A1C91184E2B6900319C71 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		6D6A1C93184E2B6900319C71 /* Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Categories.h; sourceTree = "<group>"; };
+		6D6A1C94184E2B6900319C71 /* Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Categories.m; sourceTree = "<group>"; };
+		6D6A1C96184E2B6900319C71 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		6D6A1C97184E2B6900319C71 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		6D6A1C99184E2B6900319C71 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		6D6A1C9A184E2B6900319C71 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		6D6B3EC5183CF75B009542A8 /* iTaskFamily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTaskFamily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D6B3EC8183CF75B009542A8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6D6B3ECA183CF75B009542A8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -139,6 +160,11 @@
 		6DCE47C2183E12FF00D64363 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		6DDAE5D4184CFBFF00B6DA70 /* DDTrophyRootCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTrophyRootCell.h; sourceTree = "<group>"; };
 		6DDAE5D5184CFBFF00B6DA70 /* DDTrophyRootCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTrophyRootCell.m; sourceTree = "<group>"; };
+		6DDAE5D7184CFE2200B6DA70 /* Data.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Data.xml; sourceTree = "<group>"; };
+		6DF00ECA184F416800F8F3C5 /* DDPlayerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPlayerListViewController.h; sourceTree = "<group>"; };
+		6DF00ECB184F416800F8F3C5 /* DDPlayerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPlayerListViewController.m; sourceTree = "<group>"; };
+		6DF00ECE184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomPlayerListCollectionViewCell.h; sourceTree = "<group>"; };
+		6DF00ECF184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomPlayerListCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +249,15 @@
 			name = CustomNavigationBar;
 			sourceTree = "<group>";
 		};
+		6D6A1BF6184DDA4600319C71 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				6D6A1BF7184DDA6400319C71 /* DDParserXML.h */,
+				6D6A1BF8184DDA6400319C71 /* DDParserXML.m */,
+			);
+			name = Parser;
+			sourceTree = "<group>";
+		};
 		6D6B3EBC183CF75B009542A8 = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +335,7 @@
 		6D6B3EFD183CF896009542A8 /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
+				6DDAE5D7184CFE2200B6DA70 /* Data.xml */,
 				6D03B0B6184CE77500399A7D /* Main.storyboard */,
 				6D6B3EE0183CF75B009542A8 /* Images.xcassets */,
 			);
@@ -309,6 +345,7 @@
 		6D6B3EFE183CF8A9009542A8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6DF00EC9184F413C00F8F3C5 /* PlayerListViewController */,
 				6D8970DB1848DCF700F815CD /* CropperViewController */,
 				6D8970C81848926500F815CD /* CustomImagePickerViewController */,
 				6D62E882184799F000D376FA /* CustomNavigationBar */,
@@ -336,8 +373,18 @@
 			isa = PBXGroup;
 			children = (
 				6D6B3F01183CF92B009542A8 /* iTaskFamily.xcdatamodeld */,
-				6D03B0B3184CDDA900399A7D /* Player.h */,
-				6D03B0B4184CDDA900399A7D /* Player.m */,
+				6D6A1C99184E2B6900319C71 /* Task.h */,
+				6D6A1C9A184E2B6900319C71 /* Task.m */,
+				6D6A1C96184E2B6900319C71 /* Event.h */,
+				6D6A1C97184E2B6900319C71 /* Event.m */,
+				6D6A1C93184E2B6900319C71 /* Categories.h */,
+				6D6A1C94184E2B6900319C71 /* Categories.m */,
+				6D6A1C90184E2B6900319C71 /* Player.h */,
+				6D6A1C91184E2B6900319C71 /* Player.m */,
+				6D6A1C8D184E2B6900319C71 /* Trophy.h */,
+				6D6A1C8E184E2B6900319C71 /* Trophy.m */,
+				6D6A1C8A184E2B6800319C71 /* Realisation.h */,
+				6D6A1C8B184E2B6800319C71 /* Realisation.m */,
 				6D8970EA1848EF9900F815CD /* DDDatabaseManager.h */,
 				6D8970EB1848EF9900F815CD /* DDDatabaseManager.m */,
 				6D8970ED1848F1AB00F815CD /* DDDatabaseAccess.h */,
@@ -368,6 +415,7 @@
 		6D6B3F07183CF9F9009542A8 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				6D6A1BF6184DDA4600319C71 /* Parser */,
 				6D8970F01848F55300F815CD /* CustomAlertView */,
 				6D8970E21848DDB300F815CD /* ImageCropper */,
 				6D8970CC1848931300F815CD /* Categories */,
@@ -456,6 +504,7 @@
 		6D8970DA1848DCD700F815CD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				6DF00ECD184F442800F8F3C5 /* CustomPlayerListCollectionViewCell */,
 				6DDAE5D3184CFBE600B6DA70 /* CustomTrophyRootCell */,
 				6D03B0AC184C972F00399A7D /* CustomPlayerMiniatureCell */,
 				6D8970D91848C90300F815CD /* CustomCollectionViewCell */,
@@ -553,6 +602,24 @@
 			name = CustomTrophyRootCell;
 			sourceTree = "<group>";
 		};
+		6DF00EC9184F413C00F8F3C5 /* PlayerListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6DF00ECA184F416800F8F3C5 /* DDPlayerListViewController.h */,
+				6DF00ECB184F416800F8F3C5 /* DDPlayerListViewController.m */,
+			);
+			name = PlayerListViewController;
+			sourceTree = "<group>";
+		};
+		6DF00ECD184F442800F8F3C5 /* CustomPlayerListCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				6DF00ECE184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.h */,
+				6DF00ECF184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.m */,
+			);
+			name = CustomPlayerListCollectionViewCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -631,6 +698,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D03B0B7184CE77500399A7D /* Main.storyboard in Resources */,
+				6DDAE5D8184CFE2200B6DA70 /* Data.xml in Resources */,
 				6D6B3EE1183CF75B009542A8 /* Images.xcassets in Resources */,
 				6D6B3ED3183CF75B009542A8 /* InfoPlist.strings in Resources */,
 			);
@@ -663,11 +731,17 @@
 				6D6B3F12183D116F009542A8 /* DDMenuView.m in Sources */,
 				6D8970D318489A0C00F815CD /* DDManagerSingleton.m in Sources */,
 				6D5549F01844ECC7009022C5 /* DDPopOverViewController.m in Sources */,
-				6D03B0B5184CDDA900399A7D /* Player.m in Sources */,
+				6D6A1C98184E2B6900319C71 /* Event.m in Sources */,
+				6D6A1C95184E2B6900319C71 /* Categories.m in Sources */,
 				6DCE47BD183E08AA00D64363 /* UIImage+ImageEffects.m in Sources */,
+				6DF00ED0184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.m in Sources */,
+				6D6A1C8C184E2B6800319C71 /* Realisation.m in Sources */,
+				6D6A1C9B184E2B6900319C71 /* Task.m in Sources */,
+				6D6A1C92184E2B6900319C71 /* Player.m in Sources */,
 				6D46EB9A1843486F00287ACC /* DDPlayerViewController.m in Sources */,
 				6D852D431843664800CA43EC /* DDRootTrophyViewController.m in Sources */,
 				6D29FC00184282C90059AA35 /* DDEventView.m in Sources */,
+				6D6A1C8F184E2B6900319C71 /* Trophy.m in Sources */,
 				6D8970D81848C8F500F815CD /* DDCustomCollectionViewCell.m in Sources */,
 				6D6B3F03183CF92B009542A8 /* iTaskFamily.xcdatamodeld in Sources */,
 				6DCE47C1183E10E000D64363 /* DDHelperController.m in Sources */,
@@ -676,11 +750,13 @@
 				6D9B323E183F60A60038D7DB /* DDMeteoView.m in Sources */,
 				6DCE47B5183E029200D64363 /* DDDateView.m in Sources */,
 				6D5549F41844F823009022C5 /* DDPlayerManagerViewController.m in Sources */,
+				6D6A1BF9184DDA6400319C71 /* DDParserXML.m in Sources */,
 				6D8970EC1848EF9900F815CD /* DDDatabaseManager.m in Sources */,
 				6D8970CF1848933500F815CD /* UIImage+CustomImage.m in Sources */,
 				6D8970E61848DDC600F815CD /* DDImageCropper.m in Sources */,
 				6D8970CB1848928500F815CD /* DDCustomImagePickerViewController.m in Sources */,
 				6D8970E11848DD2D00F815CD /* DDCropperController.m in Sources */,
+				6DF00ECC184F416800F8F3C5 /* DDPlayerListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import "DDHomeViewController.h"
+#import "DDPlayerView.h"
 
 @interface DDHomeViewController ()
 
@@ -37,6 +38,16 @@
     //On configure le pageControl
     [self.pageControlPlayer setTintColor:COULEUR_BLACK];
     [self.pageControlPlayer setCurrentPageIndicatorTintColor:COULEUR_HOME];
+    
+    //On set le pageControl à la vue
+    [self.viewPlayer setPageControl:self.pageControlPlayer];
+    [self.pageControlPlayer addTarget:self.viewPlayer action:@selector(changePlayerInPageControl:) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    //On charge la scrollview
+    [self.viewPlayer refreshPageControlWithScrollView:self.viewPlayer.scrollViewPlayer];
 }
 
 - (void)didReceiveMemoryWarning

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class DDRootViewController;
+@class DDParserXML;
 
 @interface DDAppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -23,6 +24,9 @@
 
 //Référence du rootViewController
 @property (strong, nonatomic) DDRootViewController *rootViewController;
+
+//On crée le parser pour récupérer les taches et les trophées
+@property (strong, nonatomic) DDParserXML *parser;
 
 
 #pragma mark - Fonctions

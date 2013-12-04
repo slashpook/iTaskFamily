@@ -27,6 +27,9 @@
 //Dictionnaire des images du joueur
 @property (strong, nonatomic) NSMutableDictionary *dictImagePlayer;
 
+//Dictinonaire des couleurs des catégories
+@property (strong, nonatomic) NSDictionary *dictColor;
+
 
 #pragma mark - Fonctions
 

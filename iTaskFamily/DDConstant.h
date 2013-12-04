@@ -11,11 +11,17 @@
 @interface DDConstant : NSObject
 
 
+#pragma mark - Autres
+
+#define SCALE_HEIGHT_BLUR 0.2083
+
+
 #pragma mark - Couleur de l'application
 
 #define COULEUR_BLUR_WHITE [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5]
 #define COULEUR_BLUR_BLACK [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4]
 #define COULEUR_TRANSPARENT_BLACK [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]
+#define COULEUR_TRANSPARENT_BLACK_FONCE [UIColor colorWithRed:0 green:0 blue:0 alpha:0.9]
 #define COULEUR_BACKGROUND [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0]
 #define COULEUR_HOME [UIColor colorWithRed:56/255.0 green:143/255.0 blue:218/255.0 alpha:1.0]
 #define COULEUR_PLAYER [UIColor colorWithRed:36/255.0 green:199/255.0 blue:90/255.0 alpha:1.0]
@@ -25,6 +31,14 @@
 #define COULEUR_BLACK [UIColor colorWithRed:0 green:0 blue:0 alpha:1.0]
 #define COULEUR_WHITE [UIColor colorWithRed:1 green:1 blue:1 alpha:1.0]
 #define COULEUR_DISABLED [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]
+#define COULEUR_AUTRE [UIColor colorWithRed:44/255.0 green:62/255.0 blue:80/255.0 alpha:1.0]
+#define COULEUR_CHAMBRE [UIColor colorWithRed:230/255.0 green:126/255.0 blue:34/255.0 alpha:1.0]
+#define COULEUR_CUISINE [UIColor colorWithRed:225/255.0 green:51/255.0 blue:41/255.0 alpha:1.0]
+#define COULEUR_DOUCHE [UIColor colorWithRed:56/255.0 green:143/255.0 blue:218/255.0 alpha:1.0]
+#define COULEUR_EXTERIEUR [UIColor colorWithRed:36/255.0 green:199/255.0 blue:90/255.0 alpha:1.0]
+#define COULEUR_GARAGE [UIColor colorWithRed:241/255.0 green:196/255.0 blue:15/255.0 alpha:1.0]
+#define COULEUR_SALON [UIColor colorWithRed:142/255.0 green:68/255.0 blue:173/255.0 alpha:1.0]
+#define COULEUR_PLUS_UTILISE [UIColor colorWithRed:127/255.0 green:140/255.0 blue:141/255.0 alpha:1.0]
 
 
 #pragma mark - Police de l'application

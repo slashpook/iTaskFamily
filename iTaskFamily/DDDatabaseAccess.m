@@ -8,6 +8,10 @@
 
 #import "DDDatabaseAccess.h"
 #import "Player.h"
+#import "Categories.h"
+#import "Trophy.h"
+#import "Realisation.h"
+#import "Task.h"
 
 @implementation DDDatabaseAccess
 
@@ -51,6 +55,60 @@
 - (void)rollback
 {
     [self.dataBaseManager.managedObjectContext rollback];
+}
+
+//On récupère toutes les catégories
+- (NSMutableArray *)getCategories
+{
+    NSMutableArray *arrayCategories = nil;
+    
+    //On Défini la classe pour la requète
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Categories" inManagedObjectContext:self.dataBaseManager.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    
+    NSError *error;
+    NSArray *fetchedObjects = [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    //Si on a des joueurs, on les rentres dans le tableau
+    if (fetchedObjects.count > 0)
+    {
+        fetchedObjects = [fetchedObjects sortedArrayUsingComparator:^NSComparisonResult(Categories *obj1, Categories *obj2) {
+            return (NSComparisonResult)[obj1.name compare:obj2.name];
+        }];
+        
+        //On récupère le premier joueur
+        arrayCategories = [NSMutableArray arrayWithArray:fetchedObjects];
+    }
+    
+    return arrayCategories;
+}
+
+//On récupère le nombre de trophées réalisé pour un joueur donnée à une catégorie donnée
+- (int)getNumberOfTrophiesRealizedForPlayer:(Player *)player inCategory:(Categories *)category
+{
+    int counter = 0;
+    
+    //On boucle sur les taches du joueur
+    for (Task *task in [player.task allObjects])
+    {
+        //Si la tache est dans la catégorie donnée
+        if ([task.categories.name isEqualToString:category.name])
+        {
+            //On boucle sur toute les réalisations et on regarde si on les a faites ou pas
+            for (Realisation *realisation in [task realisation])
+            {
+                if ([[realisation realized] intValue] >= [[realisation total] intValue])
+                {
+                    counter += 1;
+                }
+            }
+        }
+    }
+    
+    return counter;
 }
 
 //On récupère le premier joueur

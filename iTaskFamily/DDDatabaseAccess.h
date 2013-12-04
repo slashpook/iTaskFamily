@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "DDDatabaseManager.h"
 
+@class Player;
+@class Categories;
+
 @interface DDDatabaseAccess : NSObject
 
 
@@ -28,6 +31,12 @@
 
 //Annulation de l'action
 - (void)rollback;
+
+//On récupère toutes les catégories
+- (NSMutableArray *)getCategories;
+
+//On récupère le nombre de trophées réalisé pour un joueur donnée à une catégorie donnée
+- (int)getNumberOfTrophiesRealizedForPlayer:(Player *)player inCategory:(Categories *)category;
 
 //On récupère le premier joueur
 - (Player *)getFirstPlayer;

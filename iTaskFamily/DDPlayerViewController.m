@@ -9,6 +9,7 @@
 #import "DDPlayerViewController.h"
 #import "DDPopOverViewController.h"
 #import "DDPlayerMiniatureCollectionViewCell.h"
+#import "DDRootTrophyViewController.h"
 #import "Player.h"
 
 @interface DDPlayerViewController ()
@@ -112,6 +113,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSString * segueName = segue.identifier;
+    if ([segueName isEqualToString: @"PushRootTrophy"])
+    {
+        _rootTrophyNavigationViewController = (UINavigationController *)[segue destinationViewController];
+    }
+}
 
 #pragma mark - Controller fonctions
 
@@ -148,10 +157,19 @@
 {
     //On met à jour le tableau des joueurs
     [self setArrayPlayer:[[DDDatabaseAccess instance] getPlayers]];
+   
+    //On récupère une référence vers le trophyRootViewController
+    DDRootTrophyViewController *rootTrophyViewController = [[self.rootTrophyNavigationViewController viewControllers] objectAtIndex:0];
     
     //Suivant si on a des joueurs ou non, on applique des configurations différentes
     if ([self.arrayPlayer count] > 0)
     {
+        if (self.currentPlayer == nil)
+        {
+            [[DDManagerSingleton instance] setCurrentPlayer:[[DDDatabaseAccess instance] getFirstPlayer]];
+            self.currentPlayer = [[DDDatabaseAccess instance] getFirstPlayer];
+        }
+        
         //On configure les boutons de modification et suppression des joueur
         [self.buttonRemovePlayer setEnabled:YES];
         [self.buttonUpdatePlayer setEnabled:YES];
@@ -162,6 +180,10 @@
         [self.labelNbrTrophy setText:[self.currentPlayer.tropheesRealised stringValue]];
         [self.labelWeekScore setText:[self.currentPlayer.scoreSemaine stringValue]];
         [self.labelTotalScore setText:[self.currentPlayer.scoreTotal stringValue]];
+        
+        //On rend la tableView accessible
+        [[self.rootTrophyNavigationViewController view] setUserInteractionEnabled:YES];
+        [rootTrophyViewController.tableViewTrophy reloadData];
     }
     else
     {
@@ -174,6 +196,13 @@
         [self.labelNbrTrophy setText:@"0"];
         [self.labelWeekScore setText:@"0"];
         [self.labelTotalScore setText:@"0"];
+        
+        //On désactive la tableView
+        [self.rootTrophyNavigationViewController popToRootViewControllerAnimated:YES];
+        [[self.rootTrophyNavigationViewController view] setUserInteractionEnabled:NO];
+        
+        //On fait scroller la vue vers le haut
+        [rootTrophyViewController.tableViewTrophy scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
     }
     
     //On recharge la collection view

@@ -7,6 +7,7 @@
 //
 
 #import "DDAppDelegate.h"
+#import "DDParserXML.h"
 
 @implementation DDAppDelegate
 
@@ -30,10 +31,15 @@
 	_rootViewController = [mainStoryboard instantiateInitialViewController];
     [self.window setRootViewController:self.rootViewController];
     [self.window makeKeyAndVisible];
-        
+    
+    //On initialise le parser
+    _parser = [[DDParserXML alloc] init];
+    //On parse les données
+    [self parseData];
+    
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
 
@@ -67,11 +73,24 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+//On met à jour la date et la météo
 - (void)updateDateAndMeteo
 {
     //On lance les notification pour mettre à jour la date et la météo
     [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_DATE object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_METEO object:nil];
+}
+
+
+//On parse les données du fichier XML si on a aucune tache
+- (void)parseData
+{
+    //Si on a aucune catégories donc aucune données, on parse le document xml
+    if ([[DDDatabaseAccess instance] getCategories] == nil)
+    {
+        //On parse
+        [self.parser parseXMLFile];
+    }
 }
 
 @end

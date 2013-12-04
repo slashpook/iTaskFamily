@@ -10,6 +10,7 @@
 #import "DDPlayerManagerViewController.h"
 
 @class DDPopOverViewController;
+@class DDRootTrophyViewController;
 @class Player;
 
 @interface DDPlayerViewController : UIViewController <DDPlayerManagerViewProtocol, UIAlertViewDelegate>
@@ -76,6 +77,9 @@
 
 //Vue pour manager les joueurs (création et édition)
 @property (strong, nonatomic) DDPlayerManagerViewController *playerManagerViewController;
+
+//Root view des trophées du joueur
+@property (strong, nonatomic) UINavigationController *rootTrophyNavigationViewController;
 
 //tableau des joueurs
 @property (strong, nonatomic) NSMutableArray *arrayPlayer;

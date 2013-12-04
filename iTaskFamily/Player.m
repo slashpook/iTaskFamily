@@ -2,11 +2,14 @@
 //  Player.m
 //  iTaskFamily
 //
-//  Created by Damien DELES on 02/12/2013.
+//  Created by Damien DELES on 03/12/2013.
 //  Copyright (c) 2013 Damien DELES. All rights reserved.
 //
 
 #import "Player.h"
+#import "Event.h"
+#import "Task.h"
+#import "Trophy.h"
 
 
 @implementation Player
@@ -17,5 +20,8 @@
 @dynamic scoreSemainePrecedente;
 @dynamic scoreTotal;
 @dynamic tropheesRealised;
+@dynamic events;
+@dynamic trophy;
+@dynamic task;
 
 @end

@@ -16,11 +16,7 @@
 //Retourne un snapshot d'une partie de l'écran
 + (UIImage *)snapshotFromImage:(UIImage *)imageOriginal withRect:(CGRect)frameSnapshot
 {
-    //On récupère l'echelle de l'ipad (rétina ou non)
-    float scale = [[UIScreen mainScreen] scale];
-    CGRect finalFrame = CGRectMake(frameSnapshot.origin.x * scale, frameSnapshot.origin.y * scale, frameSnapshot.size.width * scale, frameSnapshot.size.height * scale);
-    
-    CGImageRef imageRef = CGImageCreateWithImageInRect([imageOriginal CGImage], finalFrame);
+    CGImageRef imageRef = CGImageCreateWithImageInRect([imageOriginal CGImage], frameSnapshot);
     UIImage *imageSnapshot = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);
     

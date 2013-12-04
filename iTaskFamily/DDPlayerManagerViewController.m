@@ -54,7 +54,7 @@
     self.textFieldPseudo.leftViewMode = UITextFieldViewModeAlways;
     
     //On met en place la barre de navigation
-    _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:COULEUR_PLAYER andImage:[UIImage imageNamed:@"PlayerButtonNavBar"]];
+    _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:COULEUR_PLAYER andImage:[UIImage imageNamed:@"PlayerAddButtonNavBar"]];
     [[self.custoNavBar view] setFrame:CGRectMake(0, 0, 380, 50)];
     [[self.custoNavBar buttonRight] setTitle:@"Sauver" forState:UIControlStateNormal];
     [[self.custoNavBar buttonLeft] setTitle:@"Annuler" forState:UIControlStateNormal];
@@ -135,13 +135,13 @@
     //Suivant si on ajoute ou modifie les données, on configure les composants
     if ([self isModifyPlayer] == NO)
     {
-        [self.custoNavBar.imageViewBackground setImage:[UIImage imageNamed:@"PlayerButtonNavBar"]];
+        [self.custoNavBar.imageViewBackground setImage:[UIImage imageNamed:@"PlayerAddButtonNavBar"]];
         [self.textFieldPseudo setText:@""];
         [self.imageViewProfil setImage:[UIImage imageNamed:@"PlayerManageProfil"]];
     }
     else
     {
-        [self.custoNavBar.imageViewBackground setImage:[UIImage imageNamed:@"PlayerButtonNavBar"]];
+        [self.custoNavBar.imageViewBackground setImage:[UIImage imageNamed:@"PlayerEditButtonNavBar"]];
         [self.textFieldPseudo setText:self.player.pseudo];
         [self.imageViewProfil setImage:[[[DDManagerSingleton instance] dictImagePlayer] objectForKey:self.player.pseudo]];
     }

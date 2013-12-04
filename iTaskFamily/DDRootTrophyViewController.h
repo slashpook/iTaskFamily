@@ -16,6 +16,9 @@
 //La tableView qui contient des trophées
 @property (weak, nonatomic) IBOutlet UITableView *tableViewTrophy;
 
+//Tableau des catégories
+@property (strong, nonatomic) NSMutableArray *arrayCategory;
+
 
 #pragma mark - Fonctions
 
