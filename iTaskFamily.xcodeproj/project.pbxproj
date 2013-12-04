@@ -59,6 +59,9 @@
 		6DDAE5D8184CFE2200B6DA70 /* Data.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6DDAE5D7184CFE2200B6DA70 /* Data.xml */; };
 		6DF00ECC184F416800F8F3C5 /* DDPlayerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF00ECB184F416800F8F3C5 /* DDPlayerListViewController.m */; };
 		6DF00ED0184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF00ECF184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.m */; };
+		6DF00ED4184F8DE100F8F3C5 /* DDTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF00ED3184F8DE100F8F3C5 /* DDTaskViewController.m */; };
+		6DF00ED8184F952100F8F3C5 /* DDCategoryMiniatureCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF00ED7184F952100F8F3C5 /* DDCategoryMiniatureCollectionViewCell.m */; };
+		6DF00EDC184F9E3600F8F3C5 /* DDCustomCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF00EDB184F9E3600F8F3C5 /* DDCustomCategoryCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +168,12 @@
 		6DF00ECB184F416800F8F3C5 /* DDPlayerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPlayerListViewController.m; sourceTree = "<group>"; };
 		6DF00ECE184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomPlayerListCollectionViewCell.h; sourceTree = "<group>"; };
 		6DF00ECF184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomPlayerListCollectionViewCell.m; sourceTree = "<group>"; };
+		6DF00ED2184F8DE100F8F3C5 /* DDTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTaskViewController.h; sourceTree = "<group>"; };
+		6DF00ED3184F8DE100F8F3C5 /* DDTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTaskViewController.m; sourceTree = "<group>"; };
+		6DF00ED6184F952100F8F3C5 /* DDCategoryMiniatureCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCategoryMiniatureCollectionViewCell.h; sourceTree = "<group>"; };
+		6DF00ED7184F952100F8F3C5 /* DDCategoryMiniatureCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCategoryMiniatureCollectionViewCell.m; sourceTree = "<group>"; };
+		6DF00EDA184F9E3600F8F3C5 /* DDCustomCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomCategoryCell.h; sourceTree = "<group>"; };
+		6DF00EDB184F9E3600F8F3C5 /* DDCustomCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomCategoryCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,6 +362,7 @@
 				6D6B3F0F183D10BB009542A8 /* RootViewController */,
 				6D6B3F13183D2609009542A8 /* HomeViewController */,
 				6D46EB971843485600287ACC /* PlayerViewController */,
+				6DF00ED1184F8CF400F8F3C5 /* TaskViewController */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -504,6 +514,8 @@
 		6D8970DA1848DCD700F815CD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				6DF00ED9184F9E1E00F8F3C5 /* CustomCategoryCell */,
+				6DF00ED5184F94FB00F8F3C5 /* CustomCategoryMiniatureCell */,
 				6DF00ECD184F442800F8F3C5 /* CustomPlayerListCollectionViewCell */,
 				6DDAE5D3184CFBE600B6DA70 /* CustomTrophyRootCell */,
 				6D03B0AC184C972F00399A7D /* CustomPlayerMiniatureCell */,
@@ -620,6 +632,33 @@
 			name = CustomPlayerListCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		6DF00ED1184F8CF400F8F3C5 /* TaskViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6DF00ED2184F8DE100F8F3C5 /* DDTaskViewController.h */,
+				6DF00ED3184F8DE100F8F3C5 /* DDTaskViewController.m */,
+			);
+			name = TaskViewController;
+			sourceTree = "<group>";
+		};
+		6DF00ED5184F94FB00F8F3C5 /* CustomCategoryMiniatureCell */ = {
+			isa = PBXGroup;
+			children = (
+				6DF00ED6184F952100F8F3C5 /* DDCategoryMiniatureCollectionViewCell.h */,
+				6DF00ED7184F952100F8F3C5 /* DDCategoryMiniatureCollectionViewCell.m */,
+			);
+			name = CustomCategoryMiniatureCell;
+			sourceTree = "<group>";
+		};
+		6DF00ED9184F9E1E00F8F3C5 /* CustomCategoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				6DF00EDA184F9E3600F8F3C5 /* DDCustomCategoryCell.h */,
+				6DF00EDB184F9E3600F8F3C5 /* DDCustomCategoryCell.m */,
+			);
+			name = CustomCategoryCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -724,12 +763,14 @@
 				6D03B0AF184C976800399A7D /* DDPlayerMiniatureCollectionViewCell.m in Sources */,
 				6D6B3ED9183CF75B009542A8 /* DDAppDelegate.m in Sources */,
 				6DCE47B9183E066100D64363 /* DDPlayerView.m in Sources */,
+				6DF00ED8184F952100F8F3C5 /* DDCategoryMiniatureCollectionViewCell.m in Sources */,
 				6D8970F31848F56B00F815CD /* DDCustomAlertView.m in Sources */,
 				6D6B3F16183D28D8009542A8 /* DDHomeViewController.m in Sources */,
 				6D62E88518479AD500D376FA /* DDCustomNavigationBarController.m in Sources */,
 				6D6B3EDF183CF75B009542A8 /* DDRootViewController.m in Sources */,
 				6D6B3F12183D116F009542A8 /* DDMenuView.m in Sources */,
 				6D8970D318489A0C00F815CD /* DDManagerSingleton.m in Sources */,
+				6DF00ED4184F8DE100F8F3C5 /* DDTaskViewController.m in Sources */,
 				6D5549F01844ECC7009022C5 /* DDPopOverViewController.m in Sources */,
 				6D6A1C98184E2B6900319C71 /* Event.m in Sources */,
 				6D6A1C95184E2B6900319C71 /* Categories.m in Sources */,
@@ -757,6 +798,7 @@
 				6D8970CB1848928500F815CD /* DDCustomImagePickerViewController.m in Sources */,
 				6D8970E11848DD2D00F815CD /* DDCropperController.m in Sources */,
 				6DF00ECC184F416800F8F3C5 /* DDPlayerListViewController.m in Sources */,
+				6DF00EDC184F9E3600F8F3C5 /* DDCustomCategoryCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

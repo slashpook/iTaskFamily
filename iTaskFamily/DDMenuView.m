@@ -7,6 +7,8 @@
 //
 
 #import "DDMenuView.h"
+#import "DDPopOverViewController.h"
+#import "Player.h"
 
 @implementation DDMenuView
 
@@ -21,11 +23,39 @@
 
 - (void)awakeFromNib
 {
-    //On set le fond du menu
+    //On set la couleur de base des imageViews
     [self setBackgroundColor:COULEUR_BLACK];
+    [self.imageViewLeftBar setBackgroundColor:COULEUR_HOME];
+    [self.imageViewSelection setBackgroundColor:COULEUR_HOME];
+    [self.imageViewBackgroundPlayer setBackgroundColor:COULEUR_HOME];
+    
+    //On configure le boutton pour sélectionner le joueur principal
+    [self.buttonPlayer.imageView setContentMode:UIViewContentModeScaleAspectFill];
+    [[self.buttonPlayer layer] setCornerRadius:44.0];
+    [[self.buttonPlayer layer] setMasksToBounds:true];
     
     //On enlève le toucher multiple sur le menu
     [self.subviews makeObjectsPerformSelector:@selector(setExclusiveTouch:) withObject:[NSNumber numberWithBool:YES]];
+    
+    //On récupère le storyboard
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    //On initialise le popOver
+    _popOverViewController = [storyboard instantiateViewControllerWithIdentifier:@"PopOverViewController"];
+    [self.popOverViewController.view setBackgroundColor:COULEUR_TRANSPARENT_BLACK_FONCE];
+    
+    //On initialise le controller qui affiche la liste des joueurs
+    _playerListViewController = [storyboard instantiateViewControllerWithIdentifier:@"PlayerListViewController"];
+    [self.playerListViewController setDelegate:self];
+    
+    //On met à jour le joueur principal
+    [self updateMainPlayer];
+    
+    //On met en place la notification pour modifier le joueur
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateMainPlayer)
+                                                 name:UPDATE_PLAYER
+                                               object:nil];
 }
 
 
@@ -114,7 +144,54 @@
         [self.imageViewSelection setFrame:location];
         [self.imageViewSelection setBackgroundColor:color];
         [self.imageViewLeftBar setBackgroundColor:color];
+        [self.imageViewBackgroundPlayer setBackgroundColor:color];
     } completion:nil];
+}
+
+//On ouvre la popUp pour changer de joueur
+- (IBAction)onPushSelectPlayerButton:(UIButton *)sender
+{
+    [[[[[[UIApplication sharedApplication] delegate] window] rootViewController] view] addSubview:self.popOverViewController.view];
+    
+    //On présente la popUp
+    CGRect frame = self.playerListViewController.view.frame;
+    [self.popOverViewController presentPopOverWithContentView:self.playerListViewController.view andSize:frame.size andOffset:CGPointMake(0, 0)];
+}
+
+- (void)updateMainPlayer
+{
+    //On set le current player
+    [self setCurrentPlayer:[[DDManagerSingleton instance] currentPlayer]];
+    
+    //Si on a un joueur on affiche l'image
+    if (self.currentPlayer != nil)
+    {
+        [self.buttonPlayer setBackgroundImage:[[[DDManagerSingleton instance] dictImagePlayer] objectForKey:self.currentPlayer.pseudo] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.buttonPlayer setBackgroundImage:[UIImage imageNamed:@"PlayerProfil"] forState:UIControlStateNormal];
+    }
+}
+
+
+#pragma mark Fonctions de PlayerListViewProtocol
+
+//On récupère le joueur sélectionné dans la liste
+-(void)closePopOverPlayerListWithIndex:(int)index
+{
+    //Si on a cliqué sur un joueur, on met à jour
+    if (index != - 1)
+    {
+        [self setCurrentPlayer:[[[DDDatabaseAccess instance] getPlayers] objectAtIndex:index]];
+        [[DDManagerSingleton instance] setCurrentPlayer:self.currentPlayer];
+        
+        //On met à jour le joueur principal
+        [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_PLAYER object:nil];
+    }
+    
+    //On enlève la popUp
+    [self.popOverViewController hide];
 }
 
 @end

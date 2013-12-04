@@ -8,6 +8,7 @@
 
 #import "DDHomeViewController.h"
 #import "DDPlayerView.h"
+#import "Player.h"
 
 @interface DDHomeViewController ()
 
@@ -46,7 +47,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    //On charge la scrollview
+    //On recharge la scrollView
     [self.viewPlayer refreshPageControlWithScrollView:self.viewPlayer.scrollViewPlayer];
 }
 
@@ -55,5 +56,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+#pragma mark - Controller function
+
 
 @end

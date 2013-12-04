@@ -35,6 +35,9 @@
 //On récupère toutes les catégories
 - (NSMutableArray *)getCategories;
 
+//On récupère les taches pour une category
+- (NSMutableArray *)getTasksForCategory:(Categories *)category;
+
 //On récupère le nombre de trophées réalisé pour un joueur donnée à une catégorie donnée
 - (int)getNumberOfTrophiesRealizedForPlayer:(Player *)player inCategory:(Categories *)category;
 

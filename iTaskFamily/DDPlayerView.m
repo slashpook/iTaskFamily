@@ -50,12 +50,19 @@
     //On récupère le storyboard
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    //On initialise le popOver, le navigation controller et le playerManagerViewController
+    //On initialise le popOver
     _popOverViewController = [storyboard instantiateViewControllerWithIdentifier:@"PopOverViewController"];
     [self.popOverViewController.view setBackgroundColor:COULEUR_TRANSPARENT_BLACK_FONCE];
     
+    //On initialise le controller qui affiche la liste des joueurs
     _playerListViewController = [storyboard instantiateViewControllerWithIdentifier:@"PlayerListViewController"];
     [self.playerListViewController setDelegate:self];
+    
+    //On met en place la notification pour modifier le joueur
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updatePlayer)
+                                                 name:UPDATE_PLAYER
+                                               object:nil];
 }
 
 
@@ -103,6 +110,17 @@
     }
 }
 
+- (void)updatePlayer
+{
+    Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
+    int indexPlayer = [[[DDDatabaseAccess instance] getPlayers] indexOfObject:currentPlayer];
+    [self.pageControl setCurrentPage:indexPlayer];
+    
+    //On reload la scrollView
+    [self changePlayerInPageControl:self.pageControl];
+}
+
+
 
 #pragma mark - ScrollView fonctions
 
@@ -126,9 +144,10 @@
     //Si il y a des joueurs
     if ([self.arrayPlayer count] > 0)
     {
+        Player *player = [self.arrayPlayer objectAtIndex:self.pageControl.currentPage];
+        
         //On change le joueur courant et on met à jour le menu
-        [[DDManagerSingleton instance] setCurrentPlayer:[self.arrayPlayer objectAtIndex:self.pageControl.currentPage]];
-        Player *player = [[DDManagerSingleton instance] currentPlayer];
+        [[DDManagerSingleton instance] setCurrentPlayer:player];
         
         //On met à jour les infos du joueur sur la page
         [self.labelNamePlayer setText:player.pseudo];
@@ -161,6 +180,7 @@
     [buttonProfil setImage:[[[DDManagerSingleton instance] dictImagePlayer] objectForKey:[[self.arrayPlayer objectAtIndex:page] pseudo]] forState:UIControlStateNormal];
     [buttonProfil setAdjustsImageWhenHighlighted:NO];
     [buttonProfil addTarget:self action:@selector(onPushPlayer:) forControlEvents:UIControlEventTouchUpInside];
+    
     //On met un effet flou au header et bottom
     //[self setBlurEffectWithImage:[[[DDManagerSingleton instance] dictImagePlayer] objectForKey:[[self.arrayPlayer objectAtIndex:page] pseudo]] forButton:buttonProfil];
     
@@ -183,6 +203,7 @@
 {
     //On rafraichis les données
     [self refreshPageControlWithScrollView:scrollView];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_PLAYER object:nil];
 }
 
 //Fonction utilisé pour mettre à jour les données du joueur
@@ -241,8 +262,9 @@
     //Si on a cliqué sur un joueur, on met à jour
     if (index != - 1)
     {
+        [[DDManagerSingleton instance] setCurrentPlayer:[self.arrayPlayer objectAtIndex:index]];
         [self.pageControl setCurrentPage:index];
-        [self changePlayerInPageControl:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_PLAYER object:nil];
     }
     
     //On enlève la popUp

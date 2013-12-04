@@ -59,11 +59,13 @@
 #define POLICE_PLAYER_CONTENT [UIFont fontWithName:@"HelveticaNeue" size:18.0]
 #define POLICE_CROPPER_TITLE [UIFont fontWithName:@"HelveticaNeue-Light" size:35.0]
 #define POLICE_CROPPER_BUTTON [UIFont fontWithName:@"HelveticaNeue-Light" size:25.0]
+#define POLICE_CATEGORY_MINIATURE [UIFont fontWithName:@"HelveticaNeue-Light" size:25.0]
 
 
 #pragma mark - Notification
 
 #define UPDATE_METEO @"UPDATE_METEO"
 #define UPDATE_DATE @"UPDATE_DATE"
+#define UPDATE_PLAYER @"UPDATE_PLAYER"
 
 @end

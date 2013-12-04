@@ -9,6 +9,7 @@
 #import "DDRootViewController.h"
 #import "DDHomeViewController.h"
 #import "DDPlayerViewController.h"
+#import "DDTaskViewController.h"
 
 @interface DDRootViewController ()
 
@@ -27,6 +28,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     _homeViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
     _playerViewController = [storyboard instantiateViewControllerWithIdentifier:@"PlayerViewController"];
+    _taskViewController = [storyboard instantiateViewControllerWithIdentifier:@"TaskViewController"];
     
     //On initialise le currentViewController et on lui set le homeViewController de base
     _currentViewController = [[UIViewController alloc] init];
@@ -86,7 +88,7 @@
 //On affiche la page des taches
 - (void)openTaskPageWithSens:(int)sens
 {
-    
+    [self displayController:self.taskViewController andSens:sens];
 }
 
 //On affiche la page des podiums

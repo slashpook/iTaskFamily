@@ -87,11 +87,14 @@
     //On récupère tous les joueurs
     _arrayPlayer = [[NSMutableArray alloc] init];
     
-    //On met à jour le tableau des joueurs
-    //[self setArrayPlayer:[[DDDatabaseAccess instance] getPlayers]];
-    
     //On récupère le joueur sélectionné
     [self setCurrentPlayer:[[DDManagerSingleton instance] currentPlayer]];
+    
+    //On met en place la notification pour modifier le joueur
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateComponent)
+                                                 name:UPDATE_PLAYER
+                                               object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -164,11 +167,18 @@
     //Suivant si on a des joueurs ou non, on applique des configurations différentes
     if ([self.arrayPlayer count] > 0)
     {
+        //Si on vient de créer le joueur on le set
         if (self.currentPlayer == nil)
         {
             [[DDManagerSingleton instance] setCurrentPlayer:[[DDDatabaseAccess instance] getFirstPlayer]];
             self.currentPlayer = [[DDDatabaseAccess instance] getFirstPlayer];
         }
+        else
+        {
+            self.currentPlayer = [[DDManagerSingleton instance] currentPlayer];
+        }
+        
+        
         
         //On configure les boutons de modification et suppression des joueur
         [self.buttonRemovePlayer setEnabled:YES];
@@ -275,8 +285,6 @@
     [cell.imageViewPlayer.layer setMasksToBounds:YES];
     [cell.imageViewPlayer setImage:[dictImagePlayer objectForKey:player.pseudo]];
     
-    [cell.labelPseudo setText:player.pseudo];
-    
     return cell;
 }
 
@@ -287,7 +295,7 @@
     [[DDManagerSingleton instance] setCurrentPlayer:player];
     [self setCurrentPlayer:player];
     
-    [self updateComponent];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_PLAYER object:nil];
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section

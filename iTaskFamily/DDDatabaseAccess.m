@@ -86,6 +86,19 @@
     return arrayCategories;
 }
 
+//On récupère les taches pour une category
+- (NSMutableArray *)getTasksForCategory:(Categories *)category
+{
+    NSArray *arrayTask = [NSArray arrayWithArray:[category.task allObjects]];
+    
+    arrayTask = [arrayTask sortedArrayUsingComparator:^NSComparisonResult(Task *obj1, Task *obj2) {
+        return (NSComparisonResult)[obj1.name compare:obj2.name];
+    }];
+    
+    return [NSMutableArray arrayWithArray:arrayTask];
+}
+
+
 //On récupère le nombre de trophées réalisé pour un joueur donnée à une catégorie donnée
 - (int)getNumberOfTrophiesRealizedForPlayer:(Player *)player inCategory:(Categories *)category
 {

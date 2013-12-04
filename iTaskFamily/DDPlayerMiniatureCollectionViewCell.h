@@ -16,7 +16,4 @@
 //ImageView du joueur
 @property (strong, nonatomic) IBOutlet UIImageView *imageViewPlayer;
 
-//Nom du joueur
-@property (weak, nonatomic) IBOutlet UILabel *labelPseudo;
-
 @end
