@@ -68,7 +68,8 @@
     if (self.imageViewSelection.frame.origin.y != [(UIButton *)sender frame].origin.y)
     {
         //On lance les animations
-        [self moveView:sender.frame andColor:COULEUR_HOME];
+        [self setFrameImageSelection:sender.frame];
+        [self setColorSelection:COULEUR_HOME];
         [self.delegate openHomePage];
     }
 }
@@ -83,9 +84,10 @@
         int sens = 1;
         if (self.imageViewSelection.frame.origin.y > [(UIButton *)sender frame].origin.y)
             sens = -1;
-
+        
         //On lance les animations
-        [self moveView:sender.frame andColor:COULEUR_PLAYER];
+        [self setFrameImageSelection:sender.frame];
+        [self setColorSelection:COULEUR_PLAYER];
         [self.delegate openPlayerPageWithSens:sens];
     }
 }
@@ -100,9 +102,11 @@
         int sens = 1;
         if (self.imageViewSelection.frame.origin.y > [(UIButton *)sender frame].origin.y)
             sens = -1;
-
+        
         //On lance les animations
-        [self moveView:sender.frame andColor:COULEUR_TASK];
+        //On lance les animations
+        [self setFrameImageSelection:sender.frame];
+        [self setColorSelection:COULEUR_TASK];
         [self.delegate openTaskPageWithSens:sens];
     }
 }
@@ -117,9 +121,10 @@
         int sens = 1;
         if (self.imageViewSelection.frame.origin.y > [(UIButton *)sender frame].origin.y)
             sens = -1;
-
+        
         //On lance les animations
-        [self moveView:sender.frame andColor:COULEUR_TROPHY];
+        [self setFrameImageSelection:sender.frame];
+        [self setColorSelection:COULEUR_TROPHY];
         [self.delegate openPodiumPageWithSens:sens];
     }
 }
@@ -131,7 +136,8 @@
     if (self.imageViewSelection.frame.origin.y != [(UIButton *)sender frame].origin.y)
     {
         //On lance les animations
-        [self moveView:sender.frame andColor:COULEUR_SETTING];
+        [self setFrameImageSelection:sender.frame];
+        [self setColorSelection:COULEUR_SETTING];
         [self.delegate openSettingPage];
     }
 }
@@ -140,22 +146,28 @@
 - (void)moveView:(CGRect)location andColor:(UIColor *)color
 {
     //Lance l'animation et change la couleur en fonction du bouton sélectionné
-    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        [self.imageViewSelection setFrame:location];
-        [self.imageViewSelection setBackgroundColor:color];
-        [self.imageViewLeftBar setBackgroundColor:color];
-        [self.imageViewBackgroundPlayer setBackgroundColor:color];
-    } completion:nil];
+    [self.imageViewSelection setFrame:location];
+    [self.imageViewSelection setBackgroundColor:color];
+    [self.imageViewLeftBar setBackgroundColor:color];
+    [self.imageViewBackgroundPlayer setBackgroundColor:color];
 }
 
 //On ouvre la popUp pour changer de joueur
 - (IBAction)onPushSelectPlayerButton:(UIButton *)sender
 {
-    [[[[[[UIApplication sharedApplication] delegate] window] rootViewController] view] addSubview:self.popOverViewController.view];
-    
-    //On présente la popUp
-    CGRect frame = self.playerListViewController.view.frame;
-    [self.popOverViewController presentPopOverWithContentView:self.playerListViewController.view andSize:frame.size andOffset:CGPointMake(0, 0)];
+    if (self.currentPlayer != nil)
+    {
+        [[[[[[UIApplication sharedApplication] delegate] window] rootViewController] view] addSubview:self.popOverViewController.view];
+        
+        //On présente la popUp
+        CGRect frame = self.playerListViewController.view.frame;
+        [self.popOverViewController presentPopOverWithContentView:self.playerListViewController.view andSize:frame.size andOffset:CGPointMake(0, 0)];
+    }
+    else
+    {
+        //On affiche la page d'ajout de joueur
+        [[NSNotificationCenter defaultCenter] postNotificationName:ADD_PLAYER object:nil];
+    }
 }
 
 - (void)updateMainPlayer
@@ -166,11 +178,13 @@
     //Si on a un joueur on affiche l'image
     if (self.currentPlayer != nil)
     {
-        [self.buttonPlayer setBackgroundImage:[[[DDManagerSingleton instance] dictImagePlayer] objectForKey:self.currentPlayer.pseudo] forState:UIControlStateNormal];
+        [self.buttonPlayer setImage:[[[DDManagerSingleton instance] dictImagePlayer] objectForKey:self.currentPlayer.pseudo] forState:UIControlStateNormal];
+        [self.buttonPlayer setBackgroundColor:[UIColor clearColor]];
     }
     else
     {
-        [self.buttonPlayer setBackgroundImage:[UIImage imageNamed:@"PlayerProfil"] forState:UIControlStateNormal];
+        [self.buttonPlayer setImage:[UIImage imageNamed:@"PlayerManageProfil"] forState:UIControlStateNormal];
+        [self.buttonPlayer setBackgroundColor:COULEUR_WHITE];
     }
 }
 

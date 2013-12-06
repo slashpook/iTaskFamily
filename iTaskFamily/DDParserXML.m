@@ -107,7 +107,7 @@
         Realisation *realisation = [NSEntityDescription
                      insertNewObjectForEntityForName:@"Realisation"
                      inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
-        realisation.total = [NSNumber numberWithInt:[[attributeDict objectForKey:@"occurence"] intValue]];
+        realisation.total = [NSNumber numberWithInt:[[attributeDict objectForKey:@"total"] intValue]];
         realisation.type = [attributeDict objectForKey:@"type"];
         
         //On ajoute la réalisation au tableau

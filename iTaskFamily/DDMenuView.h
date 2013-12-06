@@ -49,6 +49,9 @@
 //Bouton de sélection du joueur
 @property (weak, nonatomic) IBOutlet UIButton *buttonPlayer;
 
+//Bouton de sélection de la page de joueur
+@property (weak, nonatomic) IBOutlet UIButton *buttonPlayerPage;
+
 //Delegate de la vue de menu
 @property (weak, nonatomic) id<DDMenuViewProtocol> delegate;
 
@@ -60,6 +63,12 @@
 
 //Joueur principal
 @property (strong, nonatomic) Player *currentPlayer;
+
+//Frame de déplacement de la vue
+@property (assign, nonatomic) CGRect frameImageSelection;
+
+//Couleur de la sélection
+@property (strong, nonatomic) UIColor *colorSelection;
 
 
 #pragma mark - Functions
@@ -81,5 +90,8 @@
 
 //On ouvre la popUp pour changer de joueur
 - (IBAction)onPushSelectPlayerButton:(UIButton *)sender;
+
+//On bouge la vue qui sélectionne la page
+- (void)moveView:(CGRect)location andColor:(UIColor *)color;
 
 @end

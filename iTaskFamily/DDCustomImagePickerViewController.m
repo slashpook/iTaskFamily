@@ -35,7 +35,7 @@
     _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:COULEUR_PLAYER andImage:[UIImage imageNamed:@"PlayerButtonLibraryNavBar"]];
     [[self.custoNavBar view] setFrame:CGRectMake(0, 0, 380, 50)];
     [[self.custoNavBar buttonLeft] setTitle:@"Retour" forState:UIControlStateNormal];
-    [[self.custoNavBar buttonRight] setHidden:true];
+    [[self.custoNavBar buttonRight] setHidden:YES];
     [self.view addSubview:self.custoNavBar.view];
     
     //On s'abonne a un type de cellule
@@ -94,13 +94,8 @@
     DDCustomCollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
     
     //On met un background blanc par défaut
-    [cell.buttonImage setBackgroundImage:nil forState:UIControlStateNormal];
-    [cell.buttonImage setBackgroundColor:COULEUR_WHITE];
-    
-    if (![cell.buttonImage respondsToSelector:@selector(onPushImage:)])
-    {
-        [[cell buttonImage] addTarget:self action:@selector(onPushImage:) forControlEvents:UIControlEventTouchUpInside];
-    }
+    [cell.imageViewPhoto setImage:nil];
+    [cell.imageViewPhoto setBackgroundColor:COULEUR_WHITE];
     
     //On rentre l'image
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -125,12 +120,18 @@
         }
         
         //On affiche l'image
-        [cell.buttonImage setBackgroundImage:image forState:UIControlStateNormal];
+        [cell.imageViewPhoto setImage:image];
     });
     
-    [cell.buttonImage setTag:indexPath.row];
-    
     return cell;
+}
+
+
+//On sélectionne la cellule
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	self.selectedImage = [UIImage imageWithCGImage:[[[self.assets objectAtIndex:indexPath.row] defaultRepresentation] fullScreenImage]];
+    [self.navigationController popViewControllerAnimated:true];
 }
 
 

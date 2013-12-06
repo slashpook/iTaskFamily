@@ -45,7 +45,7 @@
     [self.buttonLibrary.layer setMasksToBounds:YES];
     [self.buttonPhoto.layer setCornerRadius:10.0];
     [self.buttonPhoto.layer setMasksToBounds:YES];
-    [self.textFieldPseudo.layer setCornerRadius:10.0];
+    [self.textFieldPseudo.layer setCornerRadius:5.0];
     [self.textFieldPseudo.layer setMasksToBounds:YES];
     
     //On rajoute un padding sur le textfield
@@ -178,7 +178,8 @@
                       insertNewObjectForEntityForName:@"Player"
                       inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
         
-            [self.player setPseudo:self.textFieldPseudo.text];
+        [self.player setPseudo:self.textFieldPseudo.text];
+        [self.player setTask:[NSSet setWithArray:[[DDDatabaseAccess instance] getTasks]]];
         [[DDManagerSingleton instance] saveImgProfilForPlayer:self.player withImage:self.imageViewProfil.image];
         //On affiche une alertView pour indiquer que le joueur a bien été ajouté
         [DDCustomAlertView displayInfoMessage:@"Joueur enregistré"];
@@ -251,7 +252,7 @@
     else
     {
         //On affiche un message d'erreur
-        [DDCustomAlertView displayErrorMessage:@"Veuillez rentrer un pseudo svp!"];
+        [DDCustomAlertView displayErrorMessage:@"Veuillez rentrer un pseudo svp !"];
     }
 }
 

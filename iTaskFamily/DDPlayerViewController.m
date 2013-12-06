@@ -172,6 +172,7 @@
         {
             [[DDManagerSingleton instance] setCurrentPlayer:[[DDDatabaseAccess instance] getFirstPlayer]];
             self.currentPlayer = [[DDDatabaseAccess instance] getFirstPlayer];
+            [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_PLAYER object:nil];
         }
         else
         {
@@ -283,6 +284,7 @@
     //On configure l'image du joueur
     [cell.imageViewPlayer.layer setCornerRadius:10.0];
     [cell.imageViewPlayer.layer setMasksToBounds:YES];
+    [cell.imageViewPlayer setContentMode:UIViewContentModeScaleAspectFill];
     [cell.imageViewPlayer setImage:[dictImagePlayer objectForKey:player.pseudo]];
     
     return cell;
@@ -341,7 +343,7 @@
             [[DDManagerSingleton instance] setCurrentPlayer:nil];
         }
         
-        [self updateComponent];
+        [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_PLAYER object:nil];
     }
 }
 

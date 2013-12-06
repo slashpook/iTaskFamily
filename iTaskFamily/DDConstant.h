@@ -39,6 +39,7 @@
 #define COULEUR_GARAGE [UIColor colorWithRed:241/255.0 green:196/255.0 blue:15/255.0 alpha:1.0]
 #define COULEUR_SALON [UIColor colorWithRed:142/255.0 green:68/255.0 blue:173/255.0 alpha:1.0]
 #define COULEUR_PLUS_UTILISE [UIColor colorWithRed:127/255.0 green:140/255.0 blue:141/255.0 alpha:1.0]
+#define COULEUR_CELL_SELECTED [UIColor colorWithRed:208/255.0 green:208/255.0 blue:208/255.0 alpha:1.0]
 
 
 #pragma mark - Police de l'application
@@ -55,11 +56,17 @@
 #define POLICE_NAVBAR_BUTTON [UIFont fontWithName:@"HelveticaNeue" size:20.0]
 #define POLICE_NAVBAR_TITLE [UIFont fontWithName:@"HelveticaNeue-Medium" size:22.0]
 #define POLICE_PLAYER_NAME [UIFont fontWithName:@"HelveticaNeue-Medium" size:25.0]
-#define POLICE_PLAYER_TITLE [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0]
-#define POLICE_PLAYER_CONTENT [UIFont fontWithName:@"HelveticaNeue" size:18.0]
+#define POLICE_PLAYER_TITLE [UIFont fontWithName:@"HelveticaNeue-Light" size:22.0]
+#define POLICE_PLAYER_CONTENT [UIFont fontWithName:@"HelveticaNeue" size:17.0]
 #define POLICE_CROPPER_TITLE [UIFont fontWithName:@"HelveticaNeue-Light" size:35.0]
 #define POLICE_CROPPER_BUTTON [UIFont fontWithName:@"HelveticaNeue-Light" size:25.0]
 #define POLICE_CATEGORY_MINIATURE [UIFont fontWithName:@"HelveticaNeue-Light" size:25.0]
+#define POLICE_INFO_TACHE [UIFont fontWithName:@"HelveticaNeue-Light" size:25.0]
+#define POLICE_INFO_TROPHE [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0]
+#define POLICE_INFO_TROPHE_REALISED [UIFont fontWithName:@"HelveticaNeue-Light" size:25.0]
+#define POLICE_TASK_TITLE [UIFont fontWithName:@"HelveticaNeue-Light" size:22.0]
+#define POLICE_TASK_CELL [UIFont fontWithName:@"HelveticaNeue" size:17.0]
+#define POLICE_TASK_CONTENT [UIFont fontWithName:@"HelveticaNeue" size:17.0]
 
 
 #pragma mark - Notification
@@ -67,5 +74,7 @@
 #define UPDATE_METEO @"UPDATE_METEO"
 #define UPDATE_DATE @"UPDATE_DATE"
 #define UPDATE_PLAYER @"UPDATE_PLAYER"
+#define ADD_PLAYER @"ADD_PLAYER"
+#define UP_POPOVER @"UP_POPOVER"
 
 @end

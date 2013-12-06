@@ -44,7 +44,5 @@
 //On charge les images
 - (void)loadImages;
 
-//On sélectionne une image
-- (IBAction)onPushImage:(id)sender;
 
 @end

@@ -37,8 +37,11 @@
     [[self view] setBackgroundColor:COULEUR_BACKGROUND];
     
     //On configure le pageControl
-    [self.pageControlPlayer setTintColor:COULEUR_BLACK];
-    [self.pageControlPlayer setCurrentPageIndicatorTintColor:COULEUR_HOME];
+    if ([self.pageControlPlayer respondsToSelector:@selector(setTintColor:)])
+    {
+        [self.pageControlPlayer setTintColor:COULEUR_BLACK];
+        [self.pageControlPlayer setCurrentPageIndicatorTintColor:COULEUR_HOME];
+    }
     
     //On set le pageControl à la vue
     [self.viewPlayer setPageControl:self.pageControlPlayer];
@@ -49,6 +52,7 @@
 {
     //On recharge la scrollView
     [self.viewPlayer refreshPageControlWithScrollView:self.viewPlayer.scrollViewPlayer];
+    [self.viewPlayer updatePlayer];
 }
 
 - (void)didReceiveMemoryWarning

@@ -37,6 +37,12 @@
     [self.viewContainer addSubview:self.currentViewController.view];
     
     [[self viewMenu] setDelegate:self];
+    
+    //On met en place la notification pour modifier le joueur
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onPushAddPlayer)
+                                                 name:ADD_PLAYER
+                                               object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,6 +70,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         [viewSnapshot setFrame:CGRectMake(controller.view.frame.origin.x, 768 * -sens, controller.view.frame.size.width, controller.view.frame.size.height)];
         [[controller view] setFrame:CGRectMake(controller.view.frame.origin.x, 0, controller.view.frame.size.width, controller.view.frame.size.height)];
+        [[self viewMenu] moveView:self.viewMenu.frameImageSelection andColor:self.viewMenu.colorSelection];
     } completion:^(BOOL finished) {
         [self setCurrentViewController:controller];
         [viewSnapshot removeFromSuperview];
@@ -101,6 +108,13 @@
 - (void)openSettingPage
 {
     
+}
+
+//On affiche la page des joueurs avec la vue pour ajouter les joueurs
+-(void)onPushAddPlayer
+{
+    [self.viewMenu onPushPlayerButton:self.viewMenu.buttonPlayerPage];
+    [self.playerViewController onPushAddPlayer:nil];
 }
 
 @end

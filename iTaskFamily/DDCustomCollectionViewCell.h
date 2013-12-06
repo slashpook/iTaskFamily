@@ -13,7 +13,7 @@
 
 #pragma mark - Variables
 
-@property (weak, nonatomic) IBOutlet UIButton *buttonImage;
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewPhoto;
 
 
 #pragma mark - Fonctions

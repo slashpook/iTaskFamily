@@ -24,28 +24,28 @@
 #pragma mark - Variables
 
 //URL Connection pour lancer la récupération du JSON
-@property(nonatomic, retain) NSURLConnection *connection;
+@property(strong, nonatomic) NSURLConnection *connection;
 
 //Web data pour récupérer le JSON de météo
-@property(nonatomic, retain) NSMutableData *webData;
+@property(strong, nonatomic) NSMutableData *webData;
 
 //Condition pour savoir quelle image afficher
-@property(nonatomic, retain) NSString *condition;
+@property(strong, nonatomic) NSString *condition;
 
 //Nom de la ville
-@property(nonatomic, retain) NSString *location;
+@property(strong, nonatomic) NSString *location;
 
 //Température courante
-@property(nonatomic, assign) NSInteger currentTemp;
+@property(assign, nonatomic) NSInteger currentTemp;
 
 //Température minimum
-@property(nonatomic, assign) NSInteger lowTemp;
+@property(assign, nonatomic) NSInteger lowTemp;
 
 //Température maximum
-@property(nonatomic, assign) NSInteger hightTemp;
+@property(assign, nonatomic) NSInteger hightTemp;
 
 //Delegate de l'objet
-@property(nonatomic, retain) id<DDWeatherInfosProtocol> delegate;
+@property(weak, nonatomic) id<DDWeatherInfosProtocol> delegate;
 
 
 #pragma mark - Fonctions

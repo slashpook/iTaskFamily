@@ -22,9 +22,6 @@
 //On présente le popOver avec son contenu et sa position
 - (void)presentPopOverWithContentView:(UIView *)contentView andSize:(CGSize)size andOffset:(CGPoint)offset;
 
-//On appuie sur la vue
-- (IBAction)tapGestureTouched:(UITapGestureRecognizer *)sender;
-
 //On lance l'animation de disparition
 - (void)hide;
 

@@ -94,6 +94,8 @@
     //On ajoute les images au bouton
     [button addSubview:imageViewHeader];
     [button addSubview:imageViewBottom];
+    
+    [self updatePlayer];
 }
 
 //On appuie sur le boutton pour ajouter un joueur
@@ -108,8 +110,14 @@
         CGRect frame = self.playerListViewController.view.frame;
         [self.popOverViewController presentPopOverWithContentView:self.playerListViewController.view andSize:frame.size andOffset:CGPointMake(0, 0)];
     }
+    else
+    {
+        //On affiche la page d'ajout de joueur
+        [[NSNotificationCenter defaultCenter] postNotificationName:ADD_PLAYER object:nil];
+    }
 }
 
+//On met à jour le joueur
 - (void)updatePlayer
 {
     Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
@@ -118,6 +126,22 @@
     
     //On reload la scrollView
     [self changePlayerInPageControl:self.pageControl];
+    
+    //On cache ou non les éléments suivant si on a un joueur ou non
+    if (currentPlayer == nil)
+    {
+        [self.viewHeader setHidden:YES];
+        [self.viewBottom setHidden:YES];
+        [self.labelNamePlayer setHidden:YES];
+        [self.labelPointPlayer setHidden:YES];
+    }
+    else
+    {
+        [self.viewHeader setHidden:NO];
+        [self.viewBottom setHidden:NO];
+        [self.labelNamePlayer setHidden:NO];
+        [self.labelPointPlayer setHidden:NO];
+    }
 }
 
 

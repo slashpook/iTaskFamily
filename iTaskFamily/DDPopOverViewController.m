@@ -32,6 +32,12 @@
     [self.view setBackgroundColor:COULEUR_TRANSPARENT_BLACK];
     
     _viewContainer = [[UIView alloc] init];
+    
+    //On s'abonne à la notification
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(upPopOver:)
+                                                 name:UP_POPOVER
+                                               object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,14 +113,17 @@
 }
 
 //On appuie sur la vue
-- (IBAction)tapGestureTouched:(UITapGestureRecognizer *)sender
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-    //On récupère l'endroit ou on a appuyé
-    CGPoint pointTouched = [sender locationInView:self.view];
-    
-    if (!CGRectContainsPoint(self.viewContainer.frame, pointTouched))
+    //On dismiss le popUp si on ne touche pas la vue contenu
+    if ([touch view] != self.viewContainer && [touch view] != self.view)
+    {
+        return NO;
+    }
+    else
     {
         [self hide];
+        return YES;
     }
 }
 
@@ -158,5 +167,28 @@
     }];
 }
 
+//On monte le popUp ou on le descend
+-(void)upPopOver:(NSNotification *) notification
+{
+    if ([notification object] != nil)
+    {
+        CGRect frame = self.viewContainer.frame;
+        
+        if ([(NSNumber *)notification.object boolValue] == true)
+        {
+            frame.origin.y = -130;
+            [UIView animateWithDuration:0.3 animations:^{
+                [self.viewContainer setFrame:frame];
+            }];
+        }
+        else
+        {
+            frame.origin.y = (728 - frame.size.height)/2;
+            [UIView animateWithDuration:0.3 animations:^{
+                [self.viewContainer setFrame:frame];
+            }];
+        }
+    }
+}
 
 @end

@@ -27,7 +27,7 @@ UINavigationControllerDelegate, DDCustomNavBarProtocol, DDCropperProtocol>
 #pragma mark - Variables
 
 //Delegate de la vue
-@property (strong, nonatomic) id<DDPlayerManagerViewProtocol> delegate;
+@property (weak, nonatomic) id<DDPlayerManagerViewProtocol> delegate;
 
 //Navigation bar
 @property (strong, nonatomic) DDCustomNavigationBarController *custoNavBar;

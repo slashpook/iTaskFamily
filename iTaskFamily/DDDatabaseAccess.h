@@ -11,6 +11,8 @@
 
 @class Player;
 @class Categories;
+@class Realisation;
+@class Task;
 
 @interface DDDatabaseAccess : NSObject
 
@@ -35,8 +37,17 @@
 //On récupère toutes les catégories
 - (NSMutableArray *)getCategories;
 
+//On récupère toutes les taches
+- (NSMutableArray *)getTasks;
+
+//On supprime la tache données
+- (void)deleteTask:(Task *)task;
+
 //On récupère les taches pour une category
 - (NSMutableArray *)getTasksForCategory:(Categories *)category;
+
+//On teste si la tache existe déjà ou non
+- (BOOL)taskExistWithName:(NSString *)taskName;
 
 //On récupère le nombre de trophées réalisé pour un joueur donnée à une catégorie donnée
 - (int)getNumberOfTrophiesRealizedForPlayer:(Player *)player inCategory:(Categories *)category;
@@ -55,5 +66,14 @@
 
 //On vérifie si un joueur portant ce pseudo existe déjà ou non
 - (BOOL)playerExistForPseudo:(NSString *)pseudo;
+
+//On récupère la réalisation de bronze pour la tache donnée du player donné
+- (Realisation *)getRealisationBronzeForTask:(Task *)task toPlayer:(Player *)player;
+
+//On récupère la réalisation d'argent pour la tache donnée du player donné
+- (Realisation *)getRealisationArgentForTask:(Task *)task toPlayer:(Player *)player;
+
+//On récupère la réalisation d'or pour la tache donnée du player donné
+- (Realisation *)getRealisationOrForTask:(Task *)task toPlayer:(Player *)player;
 
 @end

@@ -86,6 +86,54 @@
     return arrayCategories;
 }
 
+//On récupère toutes les taches
+- (NSMutableArray *)getTasks
+{
+    NSArray *arrayTask = nil;
+    
+    //On Défini la classe pour la requète
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Categories" inManagedObjectContext:self.dataBaseManager.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    
+    NSError *error;
+    NSArray *fetchedObjects = [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    //Si on a des joueurs, on les rentres dans le tableau
+    if (fetchedObjects.count > 0)
+    {
+        fetchedObjects = [fetchedObjects sortedArrayUsingComparator:^NSComparisonResult(Categories *obj1, Categories *obj2) {
+            return (NSComparisonResult)[obj1.name compare:obj2.name];
+        }];
+        
+        for (Categories *categorie in fetchedObjects)
+        {
+            arrayTask = [NSArray arrayWithArray:[arrayTask arrayByAddingObjectsFromArray:[[categorie task] allObjects]]];
+        }
+    }
+    
+    return [NSMutableArray arrayWithArray:arrayTask];
+}
+
+//On teste si la tache existe déjà ou non
+- (BOOL)taskExistWithName:(NSString *)taskName
+{
+    NSMutableArray *arrayTask = [self getTasks];
+    
+    //On boucle sur le tableau de tache pour voir si elle existe déjà
+    for (Task *task in arrayTask)
+    {
+        if ([task.name isEqualToString:taskName])
+        {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 //On récupère les taches pour une category
 - (NSMutableArray *)getTasksForCategory:(Categories *)category
 {
@@ -98,6 +146,16 @@
     return [NSMutableArray arrayWithArray:arrayTask];
 }
 
+//On supprime la tache données
+- (void)deleteTask:(Task *)task
+{
+//    for (Player *player in [self getPlayers])
+//    {
+//        Task *playerTask = self gett
+//        [self.dataBaseManager.managedObjectContext deleteObject:player.t];
+//        [self saveContext:nil];
+//    }
+}
 
 //On récupère le nombre de trophées réalisé pour un joueur donnée à une catégorie donnée
 - (int)getNumberOfTrophiesRealizedForPlayer:(Player *)player inCategory:(Categories *)category
@@ -122,6 +180,81 @@
     }
     
     return counter;
+}
+
+//On récupère la réalisation de bronze pour la tache donnée du player donné
+- (Realisation *)getRealisationBronzeForTask:(Task *)task toPlayer:(Player *)player
+{
+    Realisation *realisation = nil;
+    
+    //On boucle sur les taches du joueur
+    for (Task *taskPlayer in [player.task allObjects])
+    {
+        //Si la tache est dans la catégorie donnée
+        if ([taskPlayer.name isEqualToString:task.name])
+        {
+            //On boucle sur toute les réalisations et on regarde si on les a faites ou pas
+            for (Realisation *realisationTask in [taskPlayer realisation])
+            {
+                if ([[realisationTask type] isEqualToString:@"Bronze"])
+                {
+                    realisation = realisationTask;
+                }
+            }
+        }
+    }
+    
+    return realisation;
+}
+
+//On récupère la réalisation d'argent pour la tache donnée du player donné
+- (Realisation *)getRealisationArgentForTask:(Task *)task toPlayer:(Player *)player
+{
+    Realisation *realisation = nil;
+    
+    //On boucle sur les taches du joueur
+    for (Task *taskPlayer in [player.task allObjects])
+    {
+        //Si la tache est dans la catégorie donnée
+        if ([taskPlayer.name isEqualToString:task.name])
+        {
+            //On boucle sur toute les réalisations et on regarde si on les a faites ou pas
+            for (Realisation *realisationTask in [taskPlayer realisation])
+            {
+                if ([[realisationTask type] isEqualToString:@"Argent"])
+                {
+                    realisation = realisationTask;
+                }
+            }
+        }
+    }
+    
+    return realisation;
+}
+
+//On récupère la réalisation d'or pour la tache donnée du player donné
+- (Realisation *)getRealisationOrForTask:(Task *)task toPlayer:(Player *)player
+{
+    Realisation *realisation = nil;
+    
+    //On boucle sur les taches du joueur
+    for (Task *taskPlayer in [player.task allObjects])
+    {
+        //Si la tache est dans la catégorie donnée
+        if ([taskPlayer.name isEqualToString:task.name])
+        {
+            //On boucle sur toute les réalisations et on regarde si on les a faites ou pas
+            for (Realisation *realisationTask in [taskPlayer realisation])
+            {
+                if ([[realisationTask type] isEqualToString:@"Or"])
+                {
+                    realisation = realisationTask;
+                }
+            }
+        }
+    }
+    
+    return realisation;
 }
 
 //On récupère le premier joueur

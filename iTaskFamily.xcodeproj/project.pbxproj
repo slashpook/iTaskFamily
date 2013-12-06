@@ -13,6 +13,9 @@
 		6D46EB9A1843486F00287ACC /* DDPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D46EB991843486F00287ACC /* DDPlayerViewController.m */; };
 		6D5549F01844ECC7009022C5 /* DDPopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5549EF1844ECC7009022C5 /* DDPopOverViewController.m */; };
 		6D5549F41844F823009022C5 /* DDPlayerManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5549F31844F823009022C5 /* DDPlayerManagerViewController.m */; };
+		6D61F6631851DBB600759AFC /* DDCategorieListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D61F6621851DBB600759AFC /* DDCategorieListViewController.m */; };
+		6D61F6671851DC1400759AFC /* DDCustomCategoryListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D61F6661851DC1400759AFC /* DDCustomCategoryListCell.m */; };
+		6D61F66918521FF600759AFC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D61F66818521FF600759AFC /* Images.xcassets */; };
 		6D62E88518479AD500D376FA /* DDCustomNavigationBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D62E88418479AD500D376FA /* DDCustomNavigationBarController.m */; };
 		6D6A1BF9184DDA6400319C71 /* DDParserXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6A1BF8184DDA6400319C71 /* DDParserXML.m */; };
 		6D6A1C8C184E2B6800319C71 /* Realisation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6A1C8B184E2B6800319C71 /* Realisation.m */; };
@@ -28,7 +31,6 @@
 		6D6B3ED5183CF75B009542A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3ED4183CF75B009542A8 /* main.m */; };
 		6D6B3ED9183CF75B009542A8 /* DDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3ED8183CF75B009542A8 /* DDAppDelegate.m */; };
 		6D6B3EDF183CF75B009542A8 /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B3EDE183CF75B009542A8 /* DDRootViewController.m */; };
-		6D6B3EE1183CF75B009542A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B3EE0183CF75B009542A8 /* Images.xcassets */; };
 		6D6B3EE8183CF75C009542A8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B3EE7183CF75C009542A8 /* XCTest.framework */; };
 		6D6B3EE9183CF75C009542A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B3EC8183CF75B009542A8 /* Foundation.framework */; };
 		6D6B3EEA183CF75C009542A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B3ECC183CF75B009542A8 /* UIKit.framework */; };
@@ -50,6 +52,8 @@
 		6D8970F31848F56B00F815CD /* DDCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8970F21848F56B00F815CD /* DDCustomAlertView.m */; };
 		6D9B323E183F60A60038D7DB /* DDMeteoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B323D183F60A60038D7DB /* DDMeteoView.m */; };
 		6D9B3242183F99860038D7DB /* DDWeatherInfos.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3241183F99860038D7DB /* DDWeatherInfos.m */; };
+		6DC986F6185092A200A5A65F /* DDCustomProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC986F5185092A200A5A65F /* DDCustomProgressBar.m */; };
+		6DC986FA1850E89B00A5A65F /* DDTaskManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC986F91850E89B00A5A65F /* DDTaskManagerViewController.m */; };
 		6DCE47B5183E029200D64363 /* DDDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE47B4183E029200D64363 /* DDDateView.m */; };
 		6DCE47B9183E066100D64363 /* DDPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE47B8183E066100D64363 /* DDPlayerView.m */; };
 		6DCE47BD183E08AA00D64363 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE47BC183E08AA00D64363 /* UIImage+ImageEffects.m */; };
@@ -86,6 +90,11 @@
 		6D5549EF1844ECC7009022C5 /* DDPopOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPopOverViewController.m; sourceTree = "<group>"; };
 		6D5549F21844F823009022C5 /* DDPlayerManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPlayerManagerViewController.h; sourceTree = "<group>"; };
 		6D5549F31844F823009022C5 /* DDPlayerManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPlayerManagerViewController.m; sourceTree = "<group>"; };
+		6D61F6611851DBB600759AFC /* DDCategorieListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCategorieListViewController.h; sourceTree = "<group>"; };
+		6D61F6621851DBB600759AFC /* DDCategorieListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCategorieListViewController.m; sourceTree = "<group>"; };
+		6D61F6651851DC1400759AFC /* DDCustomCategoryListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomCategoryListCell.h; sourceTree = "<group>"; };
+		6D61F6661851DC1400759AFC /* DDCustomCategoryListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomCategoryListCell.m; sourceTree = "<group>"; };
+		6D61F66818521FF600759AFC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = iTaskFamily/Images.xcassets; sourceTree = "<group>"; };
 		6D62E88318479AD500D376FA /* DDCustomNavigationBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomNavigationBarController.h; sourceTree = "<group>"; };
 		6D62E88418479AD500D376FA /* DDCustomNavigationBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomNavigationBarController.m; sourceTree = "<group>"; };
 		6D6A1BF7184DDA6400319C71 /* DDParserXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDParserXML.h; sourceTree = "<group>"; };
@@ -114,7 +123,6 @@
 		6D6B3ED8183CF75B009542A8 /* DDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDAppDelegate.m; sourceTree = "<group>"; };
 		6D6B3EDD183CF75B009542A8 /* DDRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDRootViewController.h; sourceTree = "<group>"; };
 		6D6B3EDE183CF75B009542A8 /* DDRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDRootViewController.m; sourceTree = "<group>"; };
-		6D6B3EE0183CF75B009542A8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6D6B3EE6183CF75C009542A8 /* iTaskFamilyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTaskFamilyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D6B3EE7183CF75C009542A8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6D6B3EEF183CF75C009542A8 /* iTaskFamilyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iTaskFamilyTests-Info.plist"; sourceTree = "<group>"; };
@@ -152,6 +160,10 @@
 		6D9B323D183F60A60038D7DB /* DDMeteoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMeteoView.m; sourceTree = "<group>"; };
 		6D9B3240183F99860038D7DB /* DDWeatherInfos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDWeatherInfos.h; sourceTree = "<group>"; };
 		6D9B3241183F99860038D7DB /* DDWeatherInfos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDWeatherInfos.m; sourceTree = "<group>"; };
+		6DC986F4185092A200A5A65F /* DDCustomProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomProgressBar.h; sourceTree = "<group>"; };
+		6DC986F5185092A200A5A65F /* DDCustomProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomProgressBar.m; sourceTree = "<group>"; };
+		6DC986F81850E89B00A5A65F /* DDTaskManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTaskManagerViewController.h; sourceTree = "<group>"; };
+		6DC986F91850E89B00A5A65F /* DDTaskManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTaskManagerViewController.m; sourceTree = "<group>"; };
 		6DCE47B3183E029200D64363 /* DDDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDateView.h; sourceTree = "<group>"; };
 		6DCE47B4183E029200D64363 /* DDDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDateView.m; sourceTree = "<group>"; };
 		6DCE47B7183E066100D64363 /* DDPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPlayerView.h; sourceTree = "<group>"; };
@@ -249,6 +261,24 @@
 			name = PlayerManagerViewController;
 			sourceTree = "<group>";
 		};
+		6D61F6601851DB9E00759AFC /* CategorieListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6D61F6611851DBB600759AFC /* DDCategorieListViewController.h */,
+				6D61F6621851DBB600759AFC /* DDCategorieListViewController.m */,
+			);
+			name = CategorieListViewController;
+			sourceTree = "<group>";
+		};
+		6D61F6641851DBE100759AFC /* CustomCategoryListCell */ = {
+			isa = PBXGroup;
+			children = (
+				6D61F6651851DC1400759AFC /* DDCustomCategoryListCell.h */,
+				6D61F6661851DC1400759AFC /* DDCustomCategoryListCell.m */,
+			);
+			name = CustomCategoryListCell;
+			sourceTree = "<group>";
+		};
 		6D62E882184799F000D376FA /* CustomNavigationBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +300,7 @@
 		6D6B3EBC183CF75B009542A8 = {
 			isa = PBXGroup;
 			children = (
+				6D61F66818521FF600759AFC /* Images.xcassets */,
 				6D6B3ECE183CF75B009542A8 /* iTaskFamily */,
 				6D6B3EED183CF75C009542A8 /* iTaskFamilyTests */,
 				6D6B3EC7183CF75B009542A8 /* Frameworks */,
@@ -346,7 +377,6 @@
 			children = (
 				6DDAE5D7184CFE2200B6DA70 /* Data.xml */,
 				6D03B0B6184CE77500399A7D /* Main.storyboard */,
-				6D6B3EE0183CF75B009542A8 /* Images.xcassets */,
 			);
 			name = Ressources;
 			sourceTree = "<group>";
@@ -354,6 +384,7 @@
 		6D6B3EFE183CF8A9009542A8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6D61F6601851DB9E00759AFC /* CategorieListViewController */,
 				6DF00EC9184F413C00F8F3C5 /* PlayerListViewController */,
 				6D8970DB1848DCF700F815CD /* CropperViewController */,
 				6D8970C81848926500F815CD /* CustomImagePickerViewController */,
@@ -370,6 +401,7 @@
 		6D6B3EFF183CF8BB009542A8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6DC986F31850922000A5A65F /* ProgressView */,
 				6D6B3F0B183D1044009542A8 /* MenuView */,
 				6DCE47B6183E065400D64363 /* PlayerView */,
 				6DCE47B2183E027700D64363 /* DateView */,
@@ -514,6 +546,7 @@
 		6D8970DA1848DCD700F815CD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				6D61F6641851DBE100759AFC /* CustomCategoryListCell */,
 				6DF00ED9184F9E1E00F8F3C5 /* CustomCategoryCell */,
 				6DF00ED5184F94FB00F8F3C5 /* CustomCategoryMiniatureCell */,
 				6DF00ECD184F442800F8F3C5 /* CustomPlayerListCollectionViewCell */,
@@ -567,6 +600,24 @@
 				6D9B3241183F99860038D7DB /* DDWeatherInfos.m */,
 			);
 			name = Weather;
+			sourceTree = "<group>";
+		};
+		6DC986F31850922000A5A65F /* ProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				6DC986F4185092A200A5A65F /* DDCustomProgressBar.h */,
+				6DC986F5185092A200A5A65F /* DDCustomProgressBar.m */,
+			);
+			name = ProgressView;
+			sourceTree = "<group>";
+		};
+		6DC986F71850E88800A5A65F /* TaskManagerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6DC986F81850E89B00A5A65F /* DDTaskManagerViewController.h */,
+				6DC986F91850E89B00A5A65F /* DDTaskManagerViewController.m */,
+			);
+			name = TaskManagerViewController;
 			sourceTree = "<group>";
 		};
 		6DCE47B2183E027700D64363 /* DateView */ = {
@@ -635,6 +686,7 @@
 		6DF00ED1184F8CF400F8F3C5 /* TaskViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6DC986F71850E88800A5A65F /* TaskManagerViewController */,
 				6DF00ED2184F8DE100F8F3C5 /* DDTaskViewController.h */,
 				6DF00ED3184F8DE100F8F3C5 /* DDTaskViewController.m */,
 			);
@@ -737,8 +789,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D03B0B7184CE77500399A7D /* Main.storyboard in Resources */,
+				6D61F66918521FF600759AFC /* Images.xcassets in Resources */,
 				6DDAE5D8184CFE2200B6DA70 /* Data.xml in Resources */,
-				6D6B3EE1183CF75B009542A8 /* Images.xcassets in Resources */,
 				6D6B3ED3183CF75B009542A8 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,6 +813,7 @@
 				6D9B3242183F99860038D7DB /* DDWeatherInfos.m in Sources */,
 				6D8970EF1848F1AB00F815CD /* DDDatabaseAccess.m in Sources */,
 				6D03B0AF184C976800399A7D /* DDPlayerMiniatureCollectionViewCell.m in Sources */,
+				6D61F6671851DC1400759AFC /* DDCustomCategoryListCell.m in Sources */,
 				6D6B3ED9183CF75B009542A8 /* DDAppDelegate.m in Sources */,
 				6DCE47B9183E066100D64363 /* DDPlayerView.m in Sources */,
 				6DF00ED8184F952100F8F3C5 /* DDCategoryMiniatureCollectionViewCell.m in Sources */,
@@ -778,6 +831,7 @@
 				6DF00ED0184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.m in Sources */,
 				6D6A1C8C184E2B6800319C71 /* Realisation.m in Sources */,
 				6D6A1C9B184E2B6900319C71 /* Task.m in Sources */,
+				6D61F6631851DBB600759AFC /* DDCategorieListViewController.m in Sources */,
 				6D6A1C92184E2B6900319C71 /* Player.m in Sources */,
 				6D46EB9A1843486F00287ACC /* DDPlayerViewController.m in Sources */,
 				6D852D431843664800CA43EC /* DDRootTrophyViewController.m in Sources */,
@@ -795,6 +849,8 @@
 				6D8970EC1848EF9900F815CD /* DDDatabaseManager.m in Sources */,
 				6D8970CF1848933500F815CD /* UIImage+CustomImage.m in Sources */,
 				6D8970E61848DDC600F815CD /* DDImageCropper.m in Sources */,
+				6DC986F6185092A200A5A65F /* DDCustomProgressBar.m in Sources */,
+				6DC986FA1850E89B00A5A65F /* DDTaskManagerViewController.m in Sources */,
 				6D8970CB1848928500F815CD /* DDCustomImagePickerViewController.m in Sources */,
 				6D8970E11848DD2D00F815CD /* DDCropperController.m in Sources */,
 				6DF00ECC184F416800F8F3C5 /* DDPlayerListViewController.m in Sources */,

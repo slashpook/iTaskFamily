@@ -55,6 +55,9 @@
 //On change le joueur quand on appuie sur le page control
 - (IBAction)changePlayerInPageControl:(id)sender;
 
+//On met à jour le joueur
+- (void)updatePlayer;
+
 //On appelle la fonction pour rafraichir le page control et la scroll view
 - (void)refreshPageControlWithScrollView:(UIScrollView *)scrollView;
 
