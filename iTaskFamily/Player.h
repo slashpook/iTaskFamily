@@ -2,7 +2,7 @@
 //  Player.h
 //  iTaskFamily
 //
-//  Created by Damien DELES on 03/12/2013.
+//  Created by Damien DELES on 09/12/2013.
 //  Copyright (c) 2013 Damien DELES. All rights reserved.
 //
 
@@ -20,8 +20,8 @@
 @property (nonatomic, retain) NSNumber * scoreTotal;
 @property (nonatomic, retain) NSNumber * tropheesRealised;
 @property (nonatomic, retain) NSSet *events;
-@property (nonatomic, retain) NSSet *trophy;
 @property (nonatomic, retain) NSSet *task;
+@property (nonatomic, retain) NSSet *trophy;
 @end
 
 @interface Player (CoreDataGeneratedAccessors)
@@ -31,14 +31,14 @@
 - (void)addEvents:(NSSet *)values;
 - (void)removeEvents:(NSSet *)values;
 
-- (void)addTrophyObject:(Trophy *)value;
-- (void)removeTrophyObject:(Trophy *)value;
-- (void)addTrophy:(NSSet *)values;
-- (void)removeTrophy:(NSSet *)values;
-
 - (void)addTaskObject:(Task *)value;
 - (void)removeTaskObject:(Task *)value;
 - (void)addTask:(NSSet *)values;
 - (void)removeTask:(NSSet *)values;
+
+- (void)addTrophyObject:(Trophy *)value;
+- (void)removeTrophyObject:(Trophy *)value;
+- (void)addTrophy:(NSSet *)values;
+- (void)removeTrophy:(NSSet *)values;
 
 @end

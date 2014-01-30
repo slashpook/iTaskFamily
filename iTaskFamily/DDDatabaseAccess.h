@@ -37,6 +37,9 @@
 //On récupère toutes les catégories
 - (NSMutableArray *)getCategories;
 
+//On récupère la catégorie avec le nom donnée
+- (Categories *)getCategoryWithName:(NSString *)categoryName;
+
 //On récupère toutes les taches
 - (NSMutableArray *)getTasks;
 
@@ -45,6 +48,12 @@
 
 //On récupère les taches pour une category
 - (NSMutableArray *)getTasksForCategory:(Categories *)category;
+
+//On récupère la tache pour un joueur donnée
+- (Task *)getTasksForPlayer:(Player *)player withTaskName:(NSString *)taskName;
+
+//On récupère la tache pour lié à la catégorie
+- (Task *)getTaskInCategory:(NSString *)categoryName WithTaskName:(NSString *)taskName;
 
 //On teste si la tache existe déjà ou non
 - (BOOL)taskExistWithName:(NSString *)taskName;
@@ -68,12 +77,24 @@
 - (BOOL)playerExistForPseudo:(NSString *)pseudo;
 
 //On récupère la réalisation de bronze pour la tache donnée du player donné
-- (Realisation *)getRealisationBronzeForTask:(Task *)task toPlayer:(Player *)player;
+- (Realisation *)getRealisationBronzeForTask:(Task *)task inPlayer:(Player *)player;
 
 //On récupère la réalisation d'argent pour la tache donnée du player donné
-- (Realisation *)getRealisationArgentForTask:(Task *)task toPlayer:(Player *)player;
+- (Realisation *)getRealisationArgentForTask:(Task *)task inPlayer:(Player *)player;
 
 //On récupère la réalisation d'or pour la tache donnée du player donné
-- (Realisation *)getRealisationOrForTask:(Task *)task toPlayer:(Player *)player;
+- (Realisation *)getRealisationOrForTask:(Task *)task inPlayer:(Player *)player;
+
+//On récupère la réalisation de bronze pour la tache donnée de la catégorie donnée
+- (Realisation *)getRealisationBronzeForTask:(Task *)task inCategory:(Categories *)category;
+
+//On récupère la réalisation d'argent pour la tache donnée de la catégorie donnée
+- (Realisation *)getRealisationArgentForTask:(Task *)task inCategory:(Categories *)category;
+
+//On récupère la réalisation d'or pour la tache donnée de la catégorie donnée
+- (Realisation *)getRealisationOrForTask:(Task *)task inCategory:(Categories *)category;
+
+//On récupère les event lié à la tache pour un joueur donnée
+- (NSMutableArray *)getEventsForPlayer:(Player *)player withTaskName:(NSString *)taskName;
 
 @end

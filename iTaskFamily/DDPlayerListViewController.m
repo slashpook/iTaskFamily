@@ -41,10 +41,10 @@
     //Implémentation du collection View
     _collectionViewLayout = [[UICollectionViewLayout alloc] init];
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [flowLayout setItemSize:CGSizeMake(250, 285)];
+    [flowLayout setItemSize:CGSizeMake(250, 275)];
     [flowLayout setMinimumInteritemSpacing:20.0];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-
+    
     //On set la collectionView
     _collectionViewPlayer = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, 768, 500) collectionViewLayout:flowLayout];
     [self.collectionViewPlayer setBackgroundColor:[UIColor clearColor]];
@@ -53,31 +53,34 @@
     [[self view] insertSubview:_collectionViewPlayer belowSubview:_gestureRecognizer.view];
     [self.collectionViewPlayer registerClass:[DDCustomPlayerListCollectionViewCell class] forCellWithReuseIdentifier:@"DefaultCell"];
     [self.collectionViewPlayer reloadData];
-    [self.collectionViewPlayer setIndicatorStyle:UIScrollViewIndicatorStyleDefault];
+    [self.collectionViewPlayer setIndicatorStyle:UIScrollViewIndicatorStyleWhite];
     
-    //On set le tableau
-    _arrayPlayer = [[NSMutableArray alloc] initWithArray:[[DDDatabaseAccess instance] getPlayers]];
+    //On initialise le tableau
+    _arrayPlayer = [[NSMutableArray alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    //On récupère les joueurs
+    [self setArrayPlayer:[NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getPlayers]]];
+     
     //On calcule la taille de la tableView
     float numberOfSection = [self.arrayPlayer count] / 3.0;
-       
+    
     if (numberOfSection <= 1.0)
     {
         int widthCollectionView;
         if ([self.arrayPlayer count] == 1)
             widthCollectionView = 250;
         else if ([self.arrayPlayer count] == 2)
-            widthCollectionView = 520;
+            widthCollectionView = 540;
         else
-            widthCollectionView = 790;
+            widthCollectionView = 810;
         
-        [self.collectionViewPlayer setFrame:CGRectMake((1024 - widthCollectionView)/2, 231.5, widthCollectionView, 285)];
+        [self.collectionViewPlayer setFrame:CGRectMake((860 - widthCollectionView)/2, 231.5, widthCollectionView, 285)];
     }
     else
-        [self.collectionViewPlayer setFrame:CGRectMake(117, 139, 800, 590)];
+        [self.collectionViewPlayer setFrame:CGRectMake(0, 65, 860, 560)];
     
     [self.collectionViewPlayer reloadData];
 }
@@ -97,12 +100,14 @@
 
 
 #pragma mark - UICollectionView Datasource
+
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section
 {
     return [self.arrayPlayer count];
 }
 
-- (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
+- (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView
+{
     return 1;
 }
 
@@ -113,30 +118,17 @@
     //On récupère le joueur à l'index donnée
     Player *player = [self.arrayPlayer objectAtIndex:indexPath.row];
     
-    if (![cell.buttonPlayer respondsToSelector:@selector(onPushPlayer:)])
-    {
-        [[cell buttonPlayer] addTarget:self action:@selector(onPushPlayer:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    
-    //On set l'index au tag
-    [cell.buttonPlayer setTag:indexPath.row];
-    
-    [[cell buttonPlayer] setImage:[[[DDManagerSingleton instance] dictImagePlayer] objectForKey:player.pseudo] forState:UIControlStateNormal];
+    [[cell imagePlayer] setImage:[[[DDManagerSingleton instance] dictImagePlayer] objectForKey:player.pseudo]];
     
     [[cell labelPseudo] setText:player.pseudo];
     
     return cell;
 }
 
-
-#pragma mark - UICollectionViewDelegate
-
-
-//On appuie sur un joueur
-- (IBAction)onPushPlayer:(id)sender
+//On sélectionne la cellule
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIButton *button = (UIButton *)sender;
-    [self.delegate closePopOverPlayerListWithIndex:button.tag];
+    [self.delegate closePopOverPlayerListWithIndex:indexPath.row];
 }
 
 

@@ -12,6 +12,7 @@
 #import "Trophy.h"
 #import "Realisation.h"
 #import "Task.h"
+#import "Event.h"
 
 @implementation DDDatabaseAccess
 
@@ -57,6 +58,9 @@
     [self.dataBaseManager.managedObjectContext rollback];
 }
 
+
+#pragma mark - CRUD Category
+
 //On récupère toutes les catégories
 - (NSMutableArray *)getCategories
 {
@@ -85,6 +89,27 @@
     
     return arrayCategories;
 }
+
+//On récupère la catégorie avec le nom donnée
+- (Categories *)getCategoryWithName:(NSString *)categoryName
+{
+    //On récupère le tableau des catégories
+    NSMutableArray *arrayCategory = [self getCategories];
+    
+    //On parse le tableau pour renvoyer la catégorie recherchée
+    for (Categories *category in arrayCategory)
+    {
+        if ([category.name isEqualToString:categoryName])
+        {
+            return category;
+        }
+    }
+
+    return nil;
+}
+
+
+#pragma mark - CRUD Task
 
 //On récupère toutes les taches
 - (NSMutableArray *)getTasks
@@ -146,16 +171,63 @@
     return [NSMutableArray arrayWithArray:arrayTask];
 }
 
+//On récupère la tache pour un joueur donnée
+- (Task *)getTasksForPlayer:(Player *)player withTaskName:(NSString *)taskName
+{
+    //On boucle sur les taches du joueur pour trouver la tache
+    for (Task *task in [player.task allObjects])
+    {
+        if ([task.name isEqualToString:taskName])
+            return task;
+    }
+
+    return nil;
+}
+
+//On récupère la tache pour lié à la catégorie
+- (Task *)getTaskInCategory:(NSString *)categoryName WithTaskName:(NSString *)taskName
+{
+    //On récupère la categorie donnée
+    Categories *category = [self getCategoryWithName:categoryName];
+    
+    //On boucle sur les taches de la categorie pour trouver la tache
+    for (Task *task in [category.task allObjects])
+    {
+        if ([task.name isEqualToString:taskName])
+            return task;
+    }
+    
+    return nil;
+}
+
 //On supprime la tache données
 - (void)deleteTask:(Task *)task
 {
-//    for (Player *player in [self getPlayers])
-//    {
-//        Task *playerTask = self gett
-//        [self.dataBaseManager.managedObjectContext deleteObject:player.t];
-//        [self saveContext:nil];
-//    }
+    //On supprime la tache pour les joueurs ainsi que les éventuels évènements
+    for (Player *player in [self getPlayers])
+    {
+        //Suppression de la tache du joueur
+        Task *taskPlayer = [self getTasksForPlayer:player withTaskName:task.name];
+        [self.dataBaseManager.managedObjectContext deleteObject:taskPlayer];
+        
+        //Suppression des events du joueur liés à la tache
+        NSMutableArray *arrayEventPlayer = [self getEventsForPlayer:player withTaskName:task.name];
+        for (Event *eventPlayer in arrayEventPlayer)
+        {
+            [self.dataBaseManager.managedObjectContext deleteObject:eventPlayer];
+#warning Enlever les éventuels points gagnés par le joueur
+        }
+    }
+    
+    //Suppression de la tache lié à la catégorie
+    Task *taskCategory = [self getTaskInCategory:task.categories.name WithTaskName:task.name];
+    [self.dataBaseManager.managedObjectContext deleteObject:taskCategory];
+    
+    [self saveContext:nil];
 }
+
+
+#pragma mark - Trophy
 
 //On récupère le nombre de trophées réalisé pour un joueur donnée à une catégorie donnée
 - (int)getNumberOfTrophiesRealizedForPlayer:(Player *)player inCategory:(Categories *)category
@@ -183,7 +255,7 @@
 }
 
 //On récupère la réalisation de bronze pour la tache donnée du player donné
-- (Realisation *)getRealisationBronzeForTask:(Task *)task toPlayer:(Player *)player
+- (Realisation *)getRealisationBronzeForTask:(Task *)task inPlayer:(Player *)player
 {
     Realisation *realisation = nil;
     
@@ -208,7 +280,7 @@
 }
 
 //On récupère la réalisation d'argent pour la tache donnée du player donné
-- (Realisation *)getRealisationArgentForTask:(Task *)task toPlayer:(Player *)player
+- (Realisation *)getRealisationArgentForTask:(Task *)task inPlayer:(Player *)player
 {
     Realisation *realisation = nil;
     
@@ -233,7 +305,7 @@
 }
 
 //On récupère la réalisation d'or pour la tache donnée du player donné
-- (Realisation *)getRealisationOrForTask:(Task *)task toPlayer:(Player *)player
+- (Realisation *)getRealisationOrForTask:(Task *)task inPlayer:(Player *)player
 {
     Realisation *realisation = nil;
     
@@ -256,6 +328,84 @@
     
     return realisation;
 }
+
+//On récupère la réalisation de bronze pour la tache donnée de la catégorie donnée
+- (Realisation *)getRealisationBronzeForTask:(Task *)task inCategory:(Categories *)category
+{
+    Realisation *realisation = nil;
+    
+    //On boucle sur les taches du joueur
+    for (Task *taskCategory in [category.task allObjects])
+    {
+        //Si la tache est dans la catégorie donnée
+        if ([taskCategory.name isEqualToString:task.name])
+        {
+            //On boucle sur toute les réalisations et on regarde si on les a faites ou pas
+            for (Realisation *realisationTask in [taskCategory realisation])
+            {
+                if ([[realisationTask type] isEqualToString:@"Bronze"])
+                {
+                    realisation = realisationTask;
+                }
+            }
+        }
+    }
+    
+    return realisation;
+}
+
+//On récupère la réalisation d'argent pour la tache donnée de la catégorie donnée
+- (Realisation *)getRealisationArgentForTask:(Task *)task inCategory:(Categories *)category
+{
+    Realisation *realisation = nil;
+    
+    //On boucle sur les taches du joueur
+    for (Task *taskCategory in [category.task allObjects])
+    {
+        //Si la tache est dans la catégorie donnée
+        if ([taskCategory.name isEqualToString:task.name])
+        {
+            //On boucle sur toute les réalisations et on regarde si on les a faites ou pas
+            for (Realisation *realisationTask in [taskCategory realisation])
+            {
+                if ([[realisationTask type] isEqualToString:@"Argent"])
+                {
+                    realisation = realisationTask;
+                }
+            }
+        }
+    }
+    
+    return realisation;
+}
+
+//On récupère la réalisation d'or pour la tache donnée de la catégorie donnée
+- (Realisation *)getRealisationOrForTask:(Task *)task inCategory:(Categories *)category
+{
+    Realisation *realisation = nil;
+    
+    //On boucle sur les taches du joueur
+    for (Task *taskCategory in [category.task allObjects])
+    {
+        //Si la tache est dans la catégorie donnée
+        if ([taskCategory.name isEqualToString:task.name])
+        {
+            //On boucle sur toute les réalisations et on regarde si on les a faites ou pas
+            for (Realisation *realisationTask in [taskCategory realisation])
+            {
+                if ([[realisationTask type] isEqualToString:@"Or"])
+                {
+                    realisation = realisationTask;
+                }
+            }
+        }
+    }
+    
+    return realisation;
+}
+
+
+#pragma mark - Player
 
 //On récupère le premier joueur
 - (Player *)getFirstPlayer
@@ -375,6 +525,24 @@
         return YES;
     else
         return NO;
+}
+
+
+#pragma mark - Event
+
+//On récupère les event lié à la tache pour un joueur donnée
+- (NSMutableArray *)getEventsForPlayer:(Player *)player withTaskName:(NSString *)taskName
+{
+    NSMutableArray *arrayEvents = nil;
+    
+    //On boucle sur les events du joueur pour trouver les éventuels events
+    for (Event *event in [player.events allObjects])
+    {
+        if ([event.task.name isEqualToString:taskName])
+            [arrayEvents addObject:event];
+    }
+    
+    return arrayEvents;
 }
 
 @end

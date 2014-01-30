@@ -52,19 +52,21 @@
 //On présente le popOver avec son contenu et sa position
 - (void)presentPopOverWithContentView:(UIView *)contentView andSize:(CGSize)size andOffset:(CGPoint)offset
 {
+    [self.view setAlpha:0];
+    
     //On crée la frame de la vue conteneur en fonction des données récupéré
     CGPoint centerScreenPoint = self.view.center;
     CGRect frameView = CGRectMake((centerScreenPoint.x - size.width/2) + offset.x, (centerScreenPoint.y - size.height/2) + offset.y, size.width, size.height);
     
     [self.viewContainer setFrame:frameView];
-
+    
     //On set la frame à la nouvelle vue
     [contentView setFrame:frameView];
     
     //On set la nouvelle vue
     [self setViewContainer:contentView];
     [self.view addSubview:self.viewContainer];
-
+    
     //On affiche la popUp
     [self display];
 }
@@ -72,54 +74,46 @@
 //On lance l'animation d'apparition
 - (void)display
 {
-    //On récupère la frame finale
-    CGRect finalFrame = self.viewContainer.frame;
-   
-    //On crée un snapshot de la vue
-    UIImage *imageSnapshot = [DDHelperController snapshotFromView:self.viewContainer withRect:finalFrame];
-    UIImageView *imageViewSnapshot = [[UIImageView alloc] initWithImage:imageSnapshot];
+    //Récupère la couche de la vue en question
+    CALayer *viewLayer = self.viewContainer.layer;
     
-    //On set la frame de l'image pour quelle soit centré sans width ni height
-    [imageViewSnapshot setFrame:CGRectMake(self.viewContainer.center.x, self.viewContainer.center.y, 0, 0)];
+    //Prépare l'animation en précisant quel valeur ba être changé au cours du temps
+    CAKeyframeAnimation* popInAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
     
-    //On ajoute le snapshot
-    [self.view addSubview:imageViewSnapshot];
+    //On donne la durée de l'animation
+    popInAnimation.duration = 0.35;
     
-    //On cache la vue
-    [self.viewContainer setAlpha:0.0];
+    //On précise les valeur que va prendre la propriété transform.scale
+    popInAnimation.values = [NSArray arrayWithObjects:
+                             [NSNumber numberWithFloat:0],
+                             [NSNumber numberWithFloat:1.05],
+                             [NSNumber numberWithFloat:0.95],
+                             [NSNumber numberWithFloat:1],
+                             nil];
     
-    //On lance l'animation
-    [UIView animateKeyframesWithDuration:0.60 delay:0 options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
-        //Première animation
-        [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:0.15 animations:^{
-            [imageViewSnapshot setFrame:CGRectMake(finalFrame.origin.x - 15, finalFrame.origin.y - 15, finalFrame.size.width + 30, finalFrame.size.height + 30)];
-        }];
-        
-        //Seconde animation
-        [UIView addKeyframeWithRelativeStartTime:0.15 relativeDuration:0.20 animations:^{
-              [imageViewSnapshot setFrame:CGRectMake(finalFrame.origin.x + 10, finalFrame.origin.y + 15, finalFrame.size.width - 30, finalFrame.size.height - 30)];
-        }];
-        
-        //Troisième animation
-        [UIView addKeyframeWithRelativeStartTime:0.35 relativeDuration:0.25 animations:^{
-            [imageViewSnapshot setFrame:finalFrame];
-        }];
-    } completion:^(BOOL finished) {
-        //On remontre la vue
-        [self.viewContainer setAlpha:1.0];
-        //On enlève l'image du snapshot
-        [imageViewSnapshot removeFromSuperview];
-    }];
+    //On précise à quels moments les valeurs doivent être appliquées.
+    popInAnimation.keyTimes = [NSArray arrayWithObjects:
+                               [NSNumber numberWithFloat:0.0],
+                               [NSNumber numberWithFloat:0.5],
+                               [NSNumber numberWithFloat:0.7],
+                               [NSNumber numberWithFloat:1.0],
+                               nil];
+    
+    popInAnimation.delegate = self;
+    
+    [viewLayer addAnimation:popInAnimation forKey:@"AnimationDisplay"];
 }
 
 //On appuie sur la vue
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-    //On dismiss le popUp si on ne touche pas la vue contenu
-    if ([touch view] != self.viewContainer && [touch view] != self.view)
+    CGPoint touchLocation = [touch locationInView:self.view];
+    
+    if (CGRectContainsPoint(self.viewContainer.frame, touchLocation))
     {
         return NO;
     }
+    //On dismiss le popUp si on ne touche pas la vue contenu
     else
     {
         [self hide];
@@ -130,41 +124,32 @@
 //On lance l'animation de disparition
 - (void)hide
 {
-    //On récupère la frame finale et du début
-    CGRect originalFrame = self.viewContainer.frame;
-    CGRect finalFrame = CGRectMake(self.viewContainer.center.x, self.viewContainer.center.y, 0, 0);
+    //Récupère la couche de la vue en question
+    CALayer *viewLayer = self.viewContainer.layer;
     
-    //On crée un snapshot de la vue
-    UIImage *imageSnapshot = [DDHelperController snapshotFromView:self.viewContainer withRect:originalFrame];
-    UIImageView *imageViewSnapshot = [[UIImageView alloc] initWithImage:imageSnapshot];
-    [imageViewSnapshot setFrame:self.viewContainer.frame];
+    //Prépare l'animation en précisant quel valeur ba être changé au cours du temps
+    CAKeyframeAnimation* popOutAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
     
-    //On ajoute le snapshot
-    [self.view addSubview:imageViewSnapshot];
+    //On donne la durée de l'animation
+    popOutAnimation.duration = 0.35;
     
-    //On cache la vue
-    [self.viewContainer setAlpha:0.0];
+    //On précise les valeur que va prendre la propriété transform.scale
+    popOutAnimation.values = [NSArray arrayWithObjects:
+                              [NSNumber numberWithFloat:1.0],
+                              [NSNumber numberWithFloat:1.1],
+                              [NSNumber numberWithFloat:0.1],
+                              nil];
     
-    //On lance l'animation
-    [UIView animateKeyframesWithDuration:0.6 delay:0 options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
-        //Première animation -> on surgrossi l'image
-        [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:0.3 animations:^{
-            [imageViewSnapshot setFrame:CGRectMake(originalFrame.origin.x - 30, originalFrame.origin.y - 30, originalFrame.size.width + 60, originalFrame.size.height + 60)];
-        }];
-        
-        //Seconde animation -> on met l'image à la bonne taille
-        [UIView addKeyframeWithRelativeStartTime:0.3 relativeDuration:0.3 animations:^{
-            [self.view setAlpha:0.0];
-            [imageViewSnapshot setFrame:finalFrame];
-        }];
-    } completion:^(BOOL finished) {
-        //On enlève l'image du snapshot
-        [imageViewSnapshot removeFromSuperview];
-        [self.view setAlpha:1.0];
-        [self.viewContainer setAlpha:1.0];
-        //On enlève la popUp
-        [self.view removeFromSuperview];
-    }];
+    //On précise à quels moments les valeurs doivent être appliquées.
+    popOutAnimation.keyTimes = [NSArray arrayWithObjects:
+                                [NSNumber numberWithFloat:0.0],
+                                [NSNumber numberWithFloat:0.3],
+                                [NSNumber numberWithFloat:1.0],
+                                nil];
+    
+    popOutAnimation.delegate = self;
+    
+    [viewLayer addAnimation:popOutAnimation forKey:@"AnimationHide"];
 }
 
 //On monte le popUp ou on le descend
@@ -188,6 +173,29 @@
                 [self.viewContainer setFrame:frame];
             }];
         }
+    }
+}
+
+
+#pragma mark - CAAnimation delegate functions
+
+//L'animation démarre
+- (void)animationDidStart:(CAAnimation *)anim
+{
+    if ([self.view alpha] == 1.0)
+    {
+        [UIView animateWithDuration:0.35 animations:^{
+            [self.view setAlpha:0];
+        } completion:^(BOOL finished) {
+            [self.viewContainer removeFromSuperview];
+            [self.view removeFromSuperview];
+        }];
+    }
+    else
+    {
+        [UIView animateWithDuration:0.20 animations:^{
+            [self.view setAlpha:1.0];
+        }];
     }
 }
 

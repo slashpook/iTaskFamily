@@ -167,10 +167,15 @@
         //On set le nombre de trophées remporté
         [self.labelNbrTrophy setText:[NSString stringWithFormat:@"%i/%i", numberTotalTrophyRealised ,numberTotalTrophy]];
         
-        //On récupère les réalisations pour la tache donnée
-        Realisation *realisationBronze = [[DDDatabaseAccess instance] getRealisationBronzeForTask:self.currentTask toPlayer:self.currentPlayer];
-        Realisation *realisationArgent = [[DDDatabaseAccess instance] getRealisationArgentForTask:self.currentTask toPlayer:self.currentPlayer];
-        Realisation *realisationOr = [[DDDatabaseAccess instance] getRealisationOrForTask:self.currentTask toPlayer:self.currentPlayer];
+        //On récupère les réalisations pour la tache donnée du joueur sélectionné
+        Realisation *realisationBronzePlayer = [[DDDatabaseAccess instance] getRealisationBronzeForTask:self.currentTask inPlayer:self.currentPlayer];
+        Realisation *realisationArgentPlayer = [[DDDatabaseAccess instance] getRealisationArgentForTask:self.currentTask inPlayer:self.currentPlayer];
+        Realisation *realisationOrPlayer = [[DDDatabaseAccess instance] getRealisationOrForTask:self.currentTask inPlayer:self.currentPlayer];
+
+        //On récupère les réalisations pour la tache donnée de la catégorie
+        Realisation *realisationBronzeCategory = [[DDDatabaseAccess instance] getRealisationBronzeForTask:self.currentTask inCategory:self.currentCategorie];
+        Realisation *realisationArgentCategory = [[DDDatabaseAccess instance] getRealisationArgentForTask:self.currentTask inCategory:self.currentCategorie];
+        Realisation *realisationOrCategory = [[DDDatabaseAccess instance] getRealisationOrForTask:self.currentTask inCategory:self.currentCategorie];
         
         //On rempli les infos sur les points et le nom de la tache
         [self.labelTaskName setText:self.currentTask.name];
@@ -178,18 +183,18 @@
         [self.labelNoTask setHidden:YES];
         
         //On set les progressBar
-        [self.progressBarBronze setRealisation:realisationBronze];
+        [self.progressBarBronze setRealisation:realisationBronzePlayer];
         [self.progressBarBronze setColorRealisation:[dictColor objectForKey:self.currentCategorie.name]];
-        [self.labelRealizedBronze setText:[NSString stringWithFormat:@"%i", realisationBronze.realized.intValue]];
-        [self.labelTotalBronze setText:[NSString stringWithFormat:@"%i", realisationBronze.total.intValue]];
-        [self.progressBarArgent setRealisation:realisationArgent];
+        [self.labelRealizedBronze setText:[NSString stringWithFormat:@"%i", realisationBronzePlayer.realized.intValue]];
+        [self.labelTotalBronze setText:[NSString stringWithFormat:@"%i", realisationBronzeCategory.total.intValue]];
+        [self.progressBarArgent setRealisation:realisationArgentPlayer];
         [self.progressBarArgent setColorRealisation:[dictColor objectForKey:self.currentCategorie.name]];
-        [self.labelRealizedArgent setText:[NSString stringWithFormat:@"%i", realisationArgent.realized.intValue]];
-        [self.labelTotalArgent setText:[NSString stringWithFormat:@"%i", realisationArgent.total.intValue]];
-        [self.progressBarOr setRealisation:realisationOr];
+        [self.labelRealizedArgent setText:[NSString stringWithFormat:@"%i", realisationArgentPlayer.realized.intValue]];
+        [self.labelTotalArgent setText:[NSString stringWithFormat:@"%i", realisationArgentCategory.total.intValue]];
+        [self.progressBarOr setRealisation:realisationOrPlayer];
         [self.progressBarOr setColorRealisation:[dictColor objectForKey:self.currentCategorie.name]];
-        [self.labelRealizedOr setText:[NSString stringWithFormat:@"%i", realisationOr.realized.intValue]];
-        [self.labelTotalOr setText:[NSString stringWithFormat:@"%i", realisationOr.total.intValue]];
+        [self.labelRealizedOr setText:[NSString stringWithFormat:@"%i", realisationOrPlayer.realized.intValue]];
+        [self.labelTotalOr setText:[NSString stringWithFormat:@"%i", realisationOrCategory.total.intValue]];
     }
     else
     {
@@ -392,33 +397,34 @@
     }
 }
 
+//Suppression de la tache sélectionnée
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        if (editingStyle == UITableViewCellEditingStyleDelete)
-        {
-          //On récupère la tache sélectionnée
-            //On récupère le tableau de tache et on met à jour la tache courante
-            NSMutableArray *arrayTask = [[DDDatabaseAccess instance] getTasksForCategory:self.currentCategorie];
-            Task *task = [arrayTask objectAtIndex:indexPath.row];
-    
-            [self.playerController deleteEventForTask:task];
-            [self.playerController deleteTropheesInTask:task];
-            [self.taskController deleteTask:task];
-    
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    
-            //On rafraichi les données
-            [self refreshAllData];
-    
-            [taskArray release];
-        }
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        //On récupère la tache sélectionnée
+        NSMutableArray *arrayTask = [[DDDatabaseAccess instance] getTasksForCategory:self.currentCategorie];
+        Task *task = [arrayTask objectAtIndex:indexPath.row];
+        
+        //On supprime la tache
+        [[DDDatabaseAccess instance] deleteTask:task];
+        
+        //On recher la tableView
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+        //On rafraichi les données
+        [self updateComponent];
+    }
 }
 
 //Empêche la suppression en mode sélection
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView.editing) {
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView.editing)
+    {
         return UITableViewCellEditingStyleDelete;
     }
+    
     return UITableViewCellEditingStyleNone;
 }
 

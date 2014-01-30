@@ -2,7 +2,7 @@
 //  Task.m
 //  iTaskFamily
 //
-//  Created by Damien DELES on 03/12/2013.
+//  Created by Damien DELES on 09/12/2013.
 //  Copyright (c) 2013 Damien DELES. All rights reserved.
 //
 
@@ -18,9 +18,9 @@
 @dynamic historique;
 @dynamic name;
 @dynamic point;
-@dynamic realisation;
 @dynamic categories;
 @dynamic event;
 @dynamic player;
+@dynamic realisation;
 
 @end

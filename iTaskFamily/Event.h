@@ -2,7 +2,7 @@
 //  Event.h
 //  iTaskFamily
 //
-//  Created by Damien DELES on 03/12/2013.
+//  Created by Damien DELES on 09/12/2013.
 //  Copyright (c) 2013 Damien DELES. All rights reserved.
 //
 
@@ -17,7 +17,7 @@
 @property (nonatomic, retain) NSString * day;
 @property (nonatomic, retain) NSNumber * isFinished;
 @property (nonatomic, retain) NSNumber * recurrence;
-@property (nonatomic, retain) Task *task;
 @property (nonatomic, retain) Player *player;
+@property (nonatomic, retain) Task *task;
 
 @end

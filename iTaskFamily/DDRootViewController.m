@@ -29,6 +29,7 @@
     _homeViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
     _playerViewController = [storyboard instantiateViewControllerWithIdentifier:@"PlayerViewController"];
     _taskViewController = [storyboard instantiateViewControllerWithIdentifier:@"TaskViewController"];
+    _podiumViewController = [storyboard instantiateViewControllerWithIdentifier:@"PodiumViewController"];
     
     //On initialise le currentViewController et on lui set le homeViewController de base
     _currentViewController = [[UIViewController alloc] init];
@@ -101,7 +102,7 @@
 //On affiche la page des podiums
 - (void)openPodiumPageWithSens:(int)sens
 {
-    
+    [self displayController:self.podiumViewController andSens:sens];
 }
 
 //On affiche la page des settings

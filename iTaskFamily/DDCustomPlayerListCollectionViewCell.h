@@ -14,7 +14,7 @@
 #pragma mark - Variables
 
 //Image du perso
-@property(strong, nonatomic) UIButton *buttonPlayer;
+@property(strong, nonatomic) UIImageView *imagePlayer;
 
 //Label du perso
 @property(strong, nonatomic) UILabel *labelPseudo;

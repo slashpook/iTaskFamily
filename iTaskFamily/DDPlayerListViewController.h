@@ -40,7 +40,4 @@
 
 #pragma mark - Fonctions
 
-//on appuie sur un joueur
-- (IBAction)onPushPlayer:(id)sender;
-
 @end

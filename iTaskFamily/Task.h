@@ -2,7 +2,7 @@
 //  Task.h
 //  iTaskFamily
 //
-//  Created by Damien DELES on 03/12/2013.
+//  Created by Damien DELES on 09/12/2013.
 //  Copyright (c) 2013 Damien DELES. All rights reserved.
 //
 
@@ -16,10 +16,10 @@
 @property (nonatomic, retain) NSNumber * historique;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * point;
-@property (nonatomic, retain) NSSet *realisation;
 @property (nonatomic, retain) Categories *categories;
 @property (nonatomic, retain) Event *event;
 @property (nonatomic, retain) Player *player;
+@property (nonatomic, retain) NSSet *realisation;
 @end
 
 @interface Task (CoreDataGeneratedAccessors)

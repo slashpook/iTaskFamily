@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A3017" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B3116" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
@@ -104,11 +104,11 @@
                         <viewControllerLayoutGuide type="bottom" id="B1I-D0-Zb0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DSu-dw-gpC">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="860" height="625"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choisissez un joueur" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmd-Ue-NKv">
-                                <rect key="frame" x="0.0" y="50" width="1024" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="860" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -245,12 +245,12 @@
                                             <action selector="onPushSettingButton:" destination="gI3-uO-3Yu" eventType="touchUpInside" id="1lS-4E-VpA"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sj0-Bo-X57" userLabel="Button - Player">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sj0-Bo-X57" userLabel="Button - Player">
                                         <rect key="frame" x="11" y="3" width="94" height="94"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                         <state key="normal">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="onPushSelectPlayerButton:" destination="gI3-uO-3Yu" eventType="touchUpInside" id="vIl-pF-ckC"/>
@@ -1427,6 +1427,122 @@
             </objects>
             <point key="canvasLocation" x="1086" y="-200"/>
         </scene>
+        <!--Podium View Controller-->
+        <scene sceneID="Eg8-28-CAD">
+            <objects>
+                <viewController storyboardIdentifier="PodiumViewController" autoresizesArchivedViewToFullSize="NO" id="V0L-lA-yNL" customClass="DDPodiumViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="q9a-kk-7c0"/>
+                        <viewControllerLayoutGuide type="bottom" id="zEN-rx-y4m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="i6X-7X-ONL">
+                        <rect key="frame" x="0.0" y="0.0" width="914" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C3O-qQ-qDG">
+                                <rect key="frame" x="25" y="60" width="864" height="648"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O2p-Hx-rI9">
+                                        <rect key="frame" x="0.0" y="0.0" width="864" height="648"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="V0L-lA-yNL" id="bhJ-Bg-NdD"/>
+                                        </connections>
+                                    </scrollView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rfh-HY-28q" userLabel="View - TopBar Podium">
+                                        <rect key="frame" x="0.0" y="0.0" width="864" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SQT-Ka-909" userLabel="ImgSelection">
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.61960784310000006" green="0.27058823529999998" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCx-oR-U11" userLabel="ButtonScoreSemaineEnCours">
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                                <state key="normal" title="Score Semaine En Cours">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onPushButtonMenu:" destination="V0L-lA-yNL" eventType="touchUpInside" id="clE-40-1C3"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPJ-pN-OWV" userLabel="ButtonScoreSemainePrecedente">
+                                                <rect key="frame" x="288" y="0.0" width="288" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                                <state key="normal" title="Score Semaine précédente">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onPushButtonMenu:" destination="V0L-lA-yNL" eventType="touchUpInside" id="one-Pm-2Nf"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zBf-Kd-XhS" userLabel="ButtonNombreTotalTrophees">
+                                                <rect key="frame" x="576" y="0.0" width="288" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                                <state key="normal" title="Nombre Total De Trophees">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onPushButtonMenu:" destination="V0L-lA-yNL" eventType="touchUpInside" id="ahP-Ta-RJi"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="DPK-aK-ko6">
+                                <rect key="frame" x="0.0" y="715" width="864" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="pageIndicatorTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" red="0.5126060925" green="0.43671318850000002" blue="0.73671025820000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="onPushPageControl:" destination="V0L-lA-yNL" eventType="valueChanged" id="MoM-Zo-cko"/>
+                                </connections>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="buttonNombreTotalTrophees" destination="zBf-Kd-XhS" id="Nfe-tN-swQ"/>
+                        <outlet property="buttonScoreSemaineEnCours" destination="BCx-oR-U11" id="IjG-Me-ivz"/>
+                        <outlet property="buttonScoreSemainePrecedente" destination="tPJ-pN-OWV" id="B55-I0-ZvA"/>
+                        <outlet property="imageViewSelection" destination="SQT-Ka-909" id="qqY-It-747"/>
+                        <outlet property="pageControlPodium" destination="DPK-aK-ko6" id="bgZ-Nw-6lq"/>
+                        <outlet property="scrollViewPodium" destination="O2p-Hx-rI9" id="yfb-Of-Gee"/>
+                        <outlet property="viewBackgroundPodium" destination="C3O-qQ-qDG" id="y2e-TG-hoz"/>
+                        <outlet property="viewBackgroundTopBar" destination="Rfh-HY-28q" id="5fK-Ah-rsr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kc3-gl-dG4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1086" y="697"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="TpP-eM-aMU">
             <objects>
@@ -1501,6 +1617,7 @@
                                 <rect key="frame" x="10" y="103" width="360" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>

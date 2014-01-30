@@ -2,8 +2,8 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A3017" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Categories" representedClassName="Categories" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="task" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="categories" inverseEntity="Task" syncable="YES"/>
-        <relationship name="trophy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trophy" inverseName="categories" inverseEntity="Trophy" syncable="YES"/>
+        <relationship name="task" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="categories" inverseEntity="Task" syncable="YES"/>
+        <relationship name="trophy" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Trophy" inverseName="categories" inverseEntity="Trophy" syncable="YES"/>
     </entity>
     <entity name="Event" representedClassName="Event" syncable="YES">
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
@@ -11,7 +11,7 @@
         <attribute name="isFinished" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="recurrence" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="events" inverseEntity="Player" syncable="YES"/>
-        <relationship name="task" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="event" inverseEntity="Task" syncable="YES"/>
+        <relationship name="task" maxCount="1" deletionRule="Cascade" destinationEntity="Task" inverseName="event" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="Player" representedClassName="Player" syncable="YES">
         <attribute name="pathImage" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,9 +20,9 @@
         <attribute name="scoreSemainePrecedente" optional="YES" attributeType="Integer 32" defaultValueString="-1" syncable="YES"/>
         <attribute name="scoreTotal" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="tropheesRealised" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="player" inverseEntity="Event" syncable="YES"/>
-        <relationship name="task" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="player" inverseEntity="Task" syncable="YES"/>
-        <relationship name="trophy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trophy" inverseName="player" inverseEntity="Trophy" syncable="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Event" inverseName="player" inverseEntity="Event" syncable="YES"/>
+        <relationship name="task" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="player" inverseEntity="Task" syncable="YES"/>
+        <relationship name="trophy" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Trophy" inverseName="player" inverseEntity="Trophy" syncable="YES"/>
     </entity>
     <entity name="Realisation" representedClassName="Realisation" syncable="YES">
         <attribute name="realized" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -37,7 +37,7 @@
         <relationship name="categories" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Categories" inverseName="task" inverseEntity="Categories" syncable="YES"/>
         <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="task" inverseEntity="Event" syncable="YES"/>
         <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="task" inverseEntity="Player" syncable="YES"/>
-        <relationship name="realisation" toMany="YES" deletionRule="Nullify" destinationEntity="Realisation" inverseName="task" inverseEntity="Realisation" syncable="YES"/>
+        <relationship name="realisation" toMany="YES" deletionRule="Cascade" destinationEntity="Realisation" inverseName="task" inverseEntity="Realisation" syncable="YES"/>
     </entity>
     <entity name="Trophy" representedClassName="Trophy" syncable="YES">
         <attribute name="isRealized" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
@@ -47,11 +47,11 @@
         <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="trophy" inverseEntity="Player" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="-27" positionY="18" width="135" height="120"/>
-        <element name="Player" positionX="-218" positionY="243" width="128" height="165"/>
-        <element name="Realisation" positionX="502" positionY="126" width="128" height="135"/>
-        <element name="Task" positionX="252" positionY="126" width="128" height="120"/>
-        <element name="Trophy" positionX="-9" positionY="486" width="128" height="105"/>
-        <element name="Categories" positionX="322" positionY="567" width="128" height="88"/>
+        <element name="Categories" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Event" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Player" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Realisation" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Task" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Trophy" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

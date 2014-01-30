@@ -28,7 +28,9 @@
 {
     //On fait un snapshot de la vue
     UIGraphicsBeginImageContext(frameSnapshot.size);
-    [viewOriginal.layer renderInContext:UIGraphicsGetCurrentContext()];
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetInterpolationQuality(context, kCGInterpolationLow);
+    [viewOriginal.layer renderInContext:context];
     
     UIImage *imageSnapshot = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

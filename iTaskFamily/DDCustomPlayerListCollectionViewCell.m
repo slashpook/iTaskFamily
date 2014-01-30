@@ -18,11 +18,11 @@
         [self setBackgroundColor:[UIColor clearColor]];
         
         //On initialise le bouton
-        _buttonPlayer = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.buttonPlayer setFrame:CGRectMake(5, 5, 240, 240)];
-        [[self.buttonPlayer layer] setCornerRadius:10.0];
-        [[self.buttonPlayer layer] setMasksToBounds:true];
-        [self.buttonPlayer.imageView setContentMode:UIViewContentModeScaleAspectFill];
+        _imagePlayer = [[UIImageView alloc] init];
+        [self.imagePlayer setFrame:CGRectMake(5, 5, 240, 240)];
+        [[self.imagePlayer layer] setCornerRadius:10.0];
+        [[self.imagePlayer layer] setMasksToBounds:true];
+        [self.imagePlayer setContentMode:UIViewContentModeScaleAspectFill];
 
         _labelPseudo = [[UILabel alloc] initWithFrame:CGRectMake(0, 250, 250, 21)];
         [self.labelPseudo setTextAlignment:NSTextAlignmentCenter];
@@ -30,7 +30,7 @@
         [self.labelPseudo setFont:POLICE_TITLE];
         [self.labelPseudo setTextColor:COULEUR_WHITE];
         
-        [self.contentView addSubview:self.buttonPlayer];
+        [self.contentView addSubview:self.imagePlayer];
         [self.contentView addSubview:self.labelPseudo];
     }
     return self;

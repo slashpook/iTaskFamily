@@ -2,7 +2,7 @@
 //  Realisation.h
 //  iTaskFamily
 //
-//  Created by Damien DELES on 03/12/2013.
+//  Created by Damien DELES on 09/12/2013.
 //  Copyright (c) 2013 Damien DELES. All rights reserved.
 //
 
@@ -13,9 +13,9 @@
 
 @interface Realisation : NSManagedObject
 
-@property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSNumber * realized;
 @property (nonatomic, retain) NSNumber * total;
+@property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) Task *task;
 
 @end

@@ -124,7 +124,7 @@
         
         //On lance les animations
         [self setFrameImageSelection:sender.frame];
-        [self setColorSelection:COULEUR_TROPHY];
+        [self setColorSelection:COULEUR_PODIUM];
         [self.delegate openPodiumPageWithSens:sens];
     }
 }
