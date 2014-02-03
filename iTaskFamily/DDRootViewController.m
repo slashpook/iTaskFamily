@@ -10,6 +10,8 @@
 #import "DDHomeViewController.h"
 #import "DDPlayerViewController.h"
 #import "DDTaskViewController.h"
+#import "DDRootPodiumViewController.h"
+#import "DDSettingViewController.h"
 
 @interface DDRootViewController ()
 
@@ -29,7 +31,8 @@
     _homeViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
     _playerViewController = [storyboard instantiateViewControllerWithIdentifier:@"PlayerViewController"];
     _taskViewController = [storyboard instantiateViewControllerWithIdentifier:@"TaskViewController"];
-    _podiumViewController = [storyboard instantiateViewControllerWithIdentifier:@"PodiumViewController"];
+    _podiumViewController = [storyboard instantiateViewControllerWithIdentifier:@"RootPodiumViewController"];
+    _settingViewController = [storyboard instantiateViewControllerWithIdentifier:@"SettingViewController"];
     
     //On initialise le currentViewController et on lui set le homeViewController de base
     _currentViewController = [[UIViewController alloc] init];
@@ -58,7 +61,12 @@
 - (void)displayController:(UIViewController *)controller andSens:(int)sens
 {
     //On crée le snapshot de la vue et on l'ajoute à la vue container
-    UIView *viewSnapshot = [[self.currentViewController view] snapshotViewAfterScreenUpdates:YES];
+    UIView *viewSnapshot;
+    if (!SYSTEM_VERSION_LESS_THAN(@"7.0"))
+        viewSnapshot = [[self.currentViewController view] snapshotViewAfterScreenUpdates:YES];
+    else
+        viewSnapshot = (UIView *)[DDHelperController snapshotFromView:self.currentViewController.view withRect:self.currentViewController.view.frame];
+    
     [self.viewContainer addSubview:viewSnapshot];
     
     //On insère la vue à afficher en dessous et on lui set une position
@@ -108,7 +116,7 @@
 //On affiche la page des settings
 - (void)openSettingPage
 {
-    
+    [self displayController:self.settingViewController andSens:1];
 }
 
 //On affiche la page des joueurs avec la vue pour ajouter les joueurs

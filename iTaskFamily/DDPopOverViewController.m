@@ -32,12 +32,25 @@
     [self.view setBackgroundColor:COULEUR_TRANSPARENT_BLACK];
     
     _viewContainer = [[UIView alloc] init];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
     //On s'abonne à la notification
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(upPopOver:)
                                                  name:UP_POPOVER
                                                object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    //On se désabonne de toutes les notifications
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -155,25 +168,12 @@
 //On monte le popUp ou on le descend
 -(void)upPopOver:(NSNotification *) notification
 {
-    if ([notification object] != nil)
-    {
-        CGRect frame = self.viewContainer.frame;
-        
-        if ([(NSNumber *)notification.object boolValue] == true)
-        {
-            frame.origin.y = -130;
-            [UIView animateWithDuration:0.3 animations:^{
-                [self.viewContainer setFrame:frame];
-            }];
-        }
-        else
-        {
-            frame.origin.y = (728 - frame.size.height)/2;
-            [UIView animateWithDuration:0.3 animations:^{
-                [self.viewContainer setFrame:frame];
-            }];
-        }
-    }
+    NSNumber *offset = [notification object];
+    int originHeight = self.view.frame.size.height/2 - self.viewContainer.frame.size.height/2;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.viewContainer setFrame:CGRectMake(self.viewContainer.frame.origin.x, originHeight - offset.intValue, self.viewContainer.frame.size.width, self.viewContainer.frame.size.height)];
+    }];
 }
 
 

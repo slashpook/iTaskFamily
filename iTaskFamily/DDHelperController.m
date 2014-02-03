@@ -24,7 +24,7 @@
 }
 
 //Retourne un snapshot d'une vue
-+ (UIImage *)snapshotFromView:(UIView *)viewOriginal withRect:(CGRect)frameSnapshot
++ (UIImageView *)snapshotFromView:(UIView *)viewOriginal withRect:(CGRect)frameSnapshot
 {
     //On fait un snapshot de la vue
     UIGraphicsBeginImageContext(frameSnapshot.size);
@@ -33,9 +33,10 @@
     [viewOriginal.layer renderInContext:context];
     
     UIImage *imageSnapshot = UIGraphicsGetImageFromCurrentImageContext();
+    UIImageView *imageViewSnapshot = [[UIImageView alloc] initWithImage:imageSnapshot];
     UIGraphicsEndImageContext();
     
-    return imageSnapshot;
+    return imageViewSnapshot;
 }
 
 

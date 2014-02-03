@@ -306,7 +306,7 @@
 }
 
 
-#pragma mark - DDPlayerManagerViewProtocol
+#pragma mark - DDPlayerManagerViewProtocol fonctions
 
 - (void)closePlayerManagerView
 {

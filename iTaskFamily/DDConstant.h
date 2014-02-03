@@ -67,6 +67,8 @@
 #define POLICE_TASK_TITLE [UIFont fontWithName:@"HelveticaNeue-Light" size:22.0]
 #define POLICE_TASK_CELL [UIFont fontWithName:@"HelveticaNeue" size:17.0]
 #define POLICE_TASK_CONTENT [UIFont fontWithName:@"HelveticaNeue" size:17.0]
+#define POLICE_AWARD_TITLE [UIFont fontWithName:@"HelveticaNeue-Light" size:22.0]
+#define POLICE_AWARD_CONTENT [UIFont fontWithName:@"HelveticaNeue" size:17.0]
 
 
 #pragma mark - Notification
@@ -76,5 +78,16 @@
 #define UPDATE_PLAYER @"UPDATE_PLAYER"
 #define ADD_PLAYER @"ADD_PLAYER"
 #define UP_POPOVER @"UP_POPOVER"
+
+
+#pragma mark - Variables de la vue de podium
+
+#define ORIGIN_SEPARATOR 465
+#define HEIGHT_MAX_PODIUM 310
+
+
+#pragma mark - Variables pour détecter sur quelle version d'iOS on se trouve
+
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 @end

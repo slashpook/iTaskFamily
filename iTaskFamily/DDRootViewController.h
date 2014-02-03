@@ -12,7 +12,8 @@
 @class DDHomeViewController;
 @class DDPlayerViewController;
 @class DDTaskViewController;
-@class DDPodiumViewController;
+@class DDRootPodiumViewController;
+@class DDSettingViewController;
 
 @interface DDRootViewController : UIViewController <DDMenuViewProtocol>
 
@@ -38,7 +39,10 @@
 @property (strong, nonatomic) DDTaskViewController *taskViewController;
 
 //Podium controller
-@property (strong, nonatomic) DDPodiumViewController *podiumViewController;
+@property (strong, nonatomic) DDRootPodiumViewController *podiumViewController;
+
+//Setting controller
+@property (strong, nonatomic) DDSettingViewController *settingViewController;
 
 
 #pragma mark - Fonctions

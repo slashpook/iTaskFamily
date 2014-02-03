@@ -2,48 +2,109 @@
 //  DDPodiumViewController.h
 //  iTaskFamily
 //
-//  Created by Damien DELES on 09/12/2013.
-//  Copyright (c) 2013 Damien DELES. All rights reserved.
+//  Created by Damien DELES on 31/01/2014.
+//  Copyright (c) 2014 Damien DELES. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "DDAwardViewController.h"
 
-@interface DDPodiumViewController : UIViewController
+@class DDHistogramView;
+@class DDPopOverViewController;
+
+@interface DDPodiumViewController : UIViewController <DDAwardViewProtocol>
 
 
 #pragma mark - Variables
 
-//Vue de fond de la scrollview du podium
-@property (weak, nonatomic) IBOutlet UIView *viewBackgroundPodium;
+//Vue histogramme du premier joueur
+@property (weak, nonatomic) IBOutlet DDHistogramView *viewPremier;
 
-//ScrollView du podium
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollViewPodium;
+//Image du profil du premier joueur
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewPremier;
 
-//PageControl du podium
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControlPodium;
+//Label du score du premier joueur
+@property (weak, nonatomic) IBOutlet UILabel *labelScorePremier;
 
-//ImageView de sélection de la section de la scrollview
-@property (weak, nonatomic) IBOutlet UIImageView *imageViewSelection;
+//Label du nom du premier
+@property (weak, nonatomic) IBOutlet UILabel *labelNomPremier;
 
-//Bouton de la section score en cours
-@property (weak, nonatomic) IBOutlet UIButton *buttonScoreSemaineEnCours;
+//Vue de separation des points et du titre pour le premier
+@property (weak, nonatomic) IBOutlet UIView *viewSeparationPremier;
 
-//Bouton de la section score semaine precedente
-@property (weak, nonatomic) IBOutlet UIButton *buttonScoreSemainePrecedente;
+//Label du titre pour le premier
+@property (weak, nonatomic) IBOutlet UILabel *labelTitrePremier;
 
-//Bouton de la section des trophées totaux obtenus
-@property (weak, nonatomic) IBOutlet UIButton *buttonNombreTotalTrophees;
+//Label de l'exposant tu titre du premier
+@property (weak, nonatomic) IBOutlet UILabel *labelTitrePremierExposant;
 
-//Vue de fond du background
-@property (weak, nonatomic) IBOutlet UIView *viewBackgroundTopBar;
+//Vue histogramme du second joueur
+@property (weak, nonatomic) IBOutlet DDHistogramView *viewSecond;
+
+//Image du profil du second joueur
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewSecond;
+
+//Label du score du second joueur
+@property (weak, nonatomic) IBOutlet UILabel *labelScoreSecond;
+
+//Label du nom du second
+@property (weak, nonatomic) IBOutlet UILabel *labelNomSecond;
+
+//Vue de separation des points et du titre pour le second
+@property (weak, nonatomic) IBOutlet UIView *viewSeparationSecond;
+
+//Label du titre pour le second
+@property (weak, nonatomic) IBOutlet UILabel *labelTitreSecond;
+
+//Label de l'exposant tu titre du second
+@property (weak, nonatomic) IBOutlet UILabel *labelTitreSecondExposant;
+
+//Vue histogramme du troisième joueur
+@property (weak, nonatomic) IBOutlet DDHistogramView *viewTroisieme;
+
+//Image du profil du troisième joueur
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewTroisieme;
+
+//Label du score du troisième joueur
+@property (weak, nonatomic) IBOutlet UILabel *labelScoreTroisieme;
+
+//Label du nom du troisieme
+@property (weak, nonatomic) IBOutlet UILabel *labelNomTroisieme;
+
+//Vue de separation des points et du titre pour le troisième
+@property (weak, nonatomic) IBOutlet UIView *viewSeparationTroisieme;
+
+//Label du titre pour le troisième
+@property (weak, nonatomic) IBOutlet UILabel *labelTitreTroisieme;
+
+//Label de l'exposant tu titre du troisième
+@property (weak, nonatomic) IBOutlet UILabel *labelTitreTroisiemeExposant;
+
+//Tableau des composants du podium par place
+@property (strong, nonatomic) NSArray *arrayComponents;
+
+//Couleur du graphe
+@property (strong, nonatomic) UIColor *colorProgressView;
+
+//Bouton pour ajouter des récompenses
+@property (weak, nonatomic) IBOutlet UIButton *buttonAddReward;
+
+//PopOver de la vue
+@property (strong, nonatomic) DDPopOverViewController *popOverViewController;
+
+//AwardViewController pour rajouter des récompenses
+@property (strong, nonatomic) DDAwardViewController *awardViewController;
+
+//Navigation controller qui contient le awardViewController
+@property (strong, nonatomic) UINavigationController *navigationAwardController;
 
 
 #pragma mark - Fonctions
 
-//On appuie sur le menu
-- (IBAction)onPushButtonMenu:(id)sender;
+//Fonctions pour mettre à jour les composants
+- (void)updateComponentsAndDisplayProgressBar:(BOOL)display;
 
-//On appuie sur le pageControl
-- (IBAction)onPushPageControl:(id)sender;
+//Fonction pour ajouter une récompense
+- (IBAction)onPushAddAward:(id)sender;
 
 @end
