@@ -27,12 +27,11 @@
     [super viewDidLoad];
     
     //Initialise les views de l'application
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    _homeViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
-    _playerViewController = [storyboard instantiateViewControllerWithIdentifier:@"PlayerViewController"];
-    _taskViewController = [storyboard instantiateViewControllerWithIdentifier:@"TaskViewController"];
-    _podiumViewController = [storyboard instantiateViewControllerWithIdentifier:@"RootPodiumViewController"];
-    _settingViewController = [storyboard instantiateViewControllerWithIdentifier:@"SettingViewController"];
+    _homeViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"HomeViewController"];
+    _playerViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PlayerViewController"];
+    _taskViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"TaskViewController"];
+    _podiumViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"RootPodiumViewController"];
+    _settingViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"SettingViewController"];
     
     //On initialise le currentViewController et on lui set le homeViewController de base
     _currentViewController = [[UIViewController alloc] init];

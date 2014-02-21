@@ -37,23 +37,34 @@
     [self.viewTask.layer setMasksToBounds:YES];
     [self.viewMeteo.layer setCornerRadius:10.0];
     [self.viewMeteo.layer setMasksToBounds:YES];
+    [self.viewTutoriel.layer setCornerRadius:10.0];
+    [self.viewTutoriel.layer setMasksToBounds:YES];
     
     //On met la couleur de background des view header et background
     [self.imageViewHeaderProtection setBackgroundColor:COULEUR_BLACK];
     [self.imageViewHeaderTask setBackgroundColor:COULEUR_BLACK];
     [self.imageViewHeaderMeteo setBackgroundColor:COULEUR_BLACK];
+    [self.imageViewHeaderTutoriel setBackgroundColor:COULEUR_BLACK];
     
     //On set la police et la couleur des labels et boutons
     [self.labelTitreProtection setFont:POLICE_HEADER];
     [self.labelTitreProtection setTextColor:COULEUR_WHITE];
+    [self.labelInfoProtection setFont:POLICE_SETTING_CONTENT];
+    [self.labelInfoProtection setTextColor:COULEUR_BLACK];
     [self.labelTitreTask setFont:POLICE_HEADER];
     [self.labelTitreTask setTextColor:COULEUR_WHITE];
+    [self.labelInfoTask setFont:POLICE_SETTING_CONTENT];
+    [self.labelInfoTask setTextColor:COULEUR_BLACK];
     [[self.buttonResetTask titleLabel] setTextColor:COULEUR_WHITE];
     [self.labelTitreMeteo setFont:POLICE_HEADER];
     [self.labelTitreMeteo setTextColor:COULEUR_WHITE];
+    [self.labelInfoMeteo setFont:POLICE_SETTING_CONTENT];
+    [self.labelInfoMeteo setTextColor:COULEUR_BLACK];
     [[self.buttonChangeVille titleLabel] setTextColor:COULEUR_WHITE];
+    [self.labelTitreTutoriel setFont:POLICE_HEADER];
+    [self.labelTitreTutoriel setTextColor:COULEUR_WHITE];
     
-    //On configure la couleur de teinte des switch
+    //On configure la couleur de teinte des switchs
     [self.switchPassword setOnTintColor:COULEUR_SETTING];
     [self.switchMeteo setOnTintColor:COULEUR_SETTING];
 }

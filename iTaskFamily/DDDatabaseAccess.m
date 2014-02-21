@@ -200,6 +200,36 @@
     return nil;
 }
 
+//Récupère au maximum les 10 taches les plus utilisées
+- (NSMutableArray *)getHistoriqueTask
+{
+    //On récupère les taches
+    NSMutableArray *arrayTask = [self getTasks];
+    
+    NSMutableArray *arrayHistoriqueTask = [NSMutableArray array];
+    
+    //Si on a des taches
+    if ([arrayTask count] > 0)
+    {
+        NSSortDescriptor *sorter = [[NSSortDescriptor alloc] initWithKey:@"historique" ascending:NO];
+        NSArray *sortDescriptors = [NSArray arrayWithObject:sorter];
+        [arrayTask sortUsingDescriptors:sortDescriptors];
+        
+        int compteur;
+        
+        //On configure le compteur en fonction du nombre de taches présentes
+        if ([arrayTask count] < 10)
+            compteur = [arrayTask count];
+        else
+            compteur = 10;
+        
+        for (int i = 0; i < compteur; i++)
+            [arrayHistoriqueTask addObject:[arrayTask objectAtIndex:i]];
+    }
+    
+    return arrayHistoriqueTask;
+}
+
 //On supprime la tache données
 - (void)deleteTask:(Task *)task
 {

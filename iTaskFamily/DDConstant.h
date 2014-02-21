@@ -11,9 +11,9 @@
 @interface DDConstant : NSObject
 
 
-#pragma mark - Autres
+#pragma mark - Variables pour détecter sur quelle version d'iOS on se trouve
 
-#define SCALE_HEIGHT_BLUR 0.2083
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 
 #pragma mark - Couleur de l'application
@@ -22,6 +22,7 @@
 #define COULEUR_BLUR_BLACK [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4]
 #define COULEUR_TRANSPARENT_BLACK [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]
 #define COULEUR_TRANSPARENT_BLACK_FONCE [UIColor colorWithRed:0 green:0 blue:0 alpha:0.9]
+#define COULEUR_TRANSPARENT [UIColor colorWithRed:0 green:0 blue:0 alpha:0]
 #define COULEUR_BACKGROUND [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0]
 #define COULEUR_HOME [UIColor colorWithRed:56/255.0 green:143/255.0 blue:218/255.0 alpha:1.0]
 #define COULEUR_PLAYER [UIColor colorWithRed:36/255.0 green:199/255.0 blue:90/255.0 alpha:1.0]
@@ -67,8 +68,12 @@
 #define POLICE_TASK_TITLE [UIFont fontWithName:@"HelveticaNeue-Light" size:22.0]
 #define POLICE_TASK_CELL [UIFont fontWithName:@"HelveticaNeue" size:17.0]
 #define POLICE_TASK_CONTENT [UIFont fontWithName:@"HelveticaNeue" size:17.0]
-#define POLICE_AWARD_TITLE [UIFont fontWithName:@"HelveticaNeue-Light" size:22.0]
+#define POLICE_AWARD_TITLE [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0]
 #define POLICE_AWARD_CONTENT [UIFont fontWithName:@"HelveticaNeue" size:17.0]
+#define POLICE_SETTING_CONTENT [UIFont fontWithName:@"HelveticaNeue-Thin" size:18.0]
+#define POLICE_EVENT_TITLE [UIFont fontWithName:@"HelveticaNeue-Light" size:22.0]
+#define POLICE_EVENT_CELL [UIFont fontWithName:@"HelveticaNeue" size:17.0]
+#define POLICE_EVENT_CONTENT [UIFont fontWithName:@"HelveticaNeue" size:17.0]
 
 
 #pragma mark - Notification
@@ -80,14 +85,29 @@
 #define UP_POPOVER @"UP_POPOVER"
 
 
+#pragma mark - Jours de la semaine
+
+#define LUNDI @"Lundi"
+#define MARDI @"Mardi"
+#define MERCREDI @"Mercredi"
+#define JEUDI @"Jeudi"
+#define VENDREDI @"Vendredi"
+#define SAMEDI @"Samedi"
+#define DIMANCHE @"Dimanche"
+#define SEMAINE_ENTIERE @"Toute la semaine"
+#define JOUR_SEMAINE @"Jours de la semaine"
+#define WEEK_END @"Week end"
+
+
 #pragma mark - Variables de la vue de podium
 
 #define ORIGIN_SEPARATOR 465
 #define HEIGHT_MAX_PODIUM 310
 
 
-#pragma mark - Variables pour détecter sur quelle version d'iOS on se trouve
+#pragma mark - Autres
 
-#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define PLUS_UTILISE @"Taches les plus utilisées"
+#define SCALE_HEIGHT_BLUR 0.2083
 
 @end

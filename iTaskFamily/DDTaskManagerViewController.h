@@ -34,13 +34,11 @@
 //Booléen pour modifier la tache
 @property (assign, nonatomic) BOOL isModifyTask;
 
+//Tache que l'on modifie (si c'est le cas)
 @property (strong, nonatomic) Task *task;
 
 //Navigation bar
 @property (strong, nonatomic) DDCustomNavigationBarController *custoNavBar;
-
-//ViewController des categories
-@property (strong, nonatomic) DDCategorieListViewController *categorieListViewController;
 
 //Label titre information
 @property (weak, nonatomic) IBOutlet UILabel *labelInformations;

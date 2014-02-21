@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "ButtonAddAward.png"
+      "filename" : "AwardAddButton.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "ButtonAddAward@2x.png"
+      "filename" : "AwardAddButton@2x.png"
     }
   ],
   "info" : {

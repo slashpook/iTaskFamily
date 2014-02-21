@@ -1,26 +1,27 @@
 //
-//  DDCategorieListViewController.m
+//  DDTaskEventViewController.m
 //  iTaskFamily
 //
-//  Created by Damien DELES on 06/12/2013.
-//  Copyright (c) 2013 Damien DELES. All rights reserved.
+//  Created by Damien DELES on 21/02/2014.
+//  Copyright (c) 2014 Damien DELES. All rights reserved.
 //
 
-#import "DDCategorieListViewController.h"
-#import "DDCustomCategoryListCell.h"
+#import "DDTaskEventViewController.h"
 #import "Categories.h"
+#import "Task.h"
+#import "DDCustomCategoryListCell.h"
 
-@interface DDCategorieListViewController ()
+@interface DDTaskEventViewController ()
 
 @end
 
-@implementation DDCategorieListViewController
+@implementation DDTaskEventViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithCoder:aDecoder];
     if (self) {
-        // Custom initialization
+        _arrayTasks = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -29,9 +30,10 @@
 {
     [super viewDidLoad];
 	
+    
     //On set le background de la vue
     [[self view] setBackgroundColor:COULEUR_BACKGROUND];
-
+    
     //On met en place la barre de navigation
     _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:COULEUR_HOME andImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
     [[self.custoNavBar view] setFrame:CGRectMake(0, 0, 380, 50)];
@@ -39,18 +41,8 @@
     [[self.custoNavBar buttonLeft] setTitle:@"Retour" forState:UIControlStateNormal];
     [self.view addSubview:self.custoNavBar.view];
     
-    //On récupère le tableau des catégories
-    [self setArrayCategory:[[DDDatabaseAccess instance] getCategories]];
-    
     //On s'abonne a un type de cellule pour la table view
-    [self.tableViewCategory registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CategorieTaskCell"];
-    [[self tableViewCategory] setBackgroundColor:COULEUR_WHITE];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [self.tableViewCategory reloadData];
-    [[self.custoNavBar view] setBackgroundColor:self.couleurBackground];
+    [self.tableViewTask registerClass:[UITableViewCell class] forCellReuseIdentifier:@"TaskCell"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,38 +52,58 @@
 }
 
 
+#pragma mark - Controller fonctions
+
+//On rempli la database avec les taches de la catégorie correspondante
+- (void)setDatabaseForCategory:(NSString *)categoryName
+{
+    if ([categoryName isEqualToString:PLUS_UTILISE])
+        [self setArrayTasks:[[DDDatabaseAccess instance] getHistoriqueTask]];
+    //Si on est sur une catégorie, on la récupère pour récupérer les taches
+    else
+    {
+        Categories *category = [[DDDatabaseAccess instance] getCategoryWithName:categoryName];
+        [self setArrayTasks:[[DDDatabaseAccess instance] getTasksForCategory:category]];
+    }
+}
+
+
 #pragma mark Delegate Table View
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.arrayCategory count];
+    return [self.arrayTasks count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //On récupère la cellule
     DDCustomCategoryListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CustomCategoryListCell" forIndexPath:indexPath];
-    
+   
     //On récupère le dictionnaire des couleurs
     NSDictionary *dictColor = [[DDManagerSingleton instance] dictColor];
     
-    //On récupère la catégorie en cours
-    Categories *categorie = [self.arrayCategory objectAtIndex:indexPath.row];
-   
-    //On configure les infos de la cellule
-    [cell.imageViewCategoryColor setBackgroundColor:[dictColor objectForKey:categorie.name]];
-    [cell.labelNameCategory setTextColor:COULEUR_BLACK];
-    [cell.labelNameCategory setText:categorie.name];
-    [cell.labelNameCategory setFont:POLICE_TASK_CELL];
+    //On récupère la tache pour l'indexPath donné
+    Task *task = [self.arrayTasks objectAtIndex:indexPath.row];
     
+    //On configure les infos de la cellule
+    [cell.imageViewCategoryColor setBackgroundColor:[dictColor objectForKey:task.categories.name]];
+    [cell.labelNameCategory setTextColor:COULEUR_BLACK];
+    [cell.labelNameCategory setText:task.name];
+    [cell.labelNameCategory setFont:POLICE_TASK_CELL];
+
     return cell;
 }
 
-//On ouvre la cellule sélectionné
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Categories *categorie = [self.arrayCategory objectAtIndex:indexPath.row];
-    [self.delegate closeCategorieViewWithCategorie:categorie];
+    //On récupère la tache pour l'indexPath donné
+    Task *task = [self.arrayTasks objectAtIndex:indexPath.row];
+    
+    //On appelle le delegate pour renvoyer la donnée à la vue event
+    [self.delegate saveTaskWithTask:task];
+    
+    [self.navigationController popToRootViewControllerAnimated:true];
 }
 
 

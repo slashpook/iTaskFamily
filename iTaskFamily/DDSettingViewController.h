@@ -61,6 +61,18 @@
 //Bouton pour changer la ville par défaut de la météo
 @property (weak, nonatomic) IBOutlet UIButton *buttonChangeVille;
 
+//Vue d'affichage du tutoriel
+@property (weak, nonatomic) IBOutlet UIView *viewTutoriel;
+
+//Image du header de la vue de tutoriel
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewHeaderTutoriel;
+
+//Label titre de la vue du tutoriel
+@property (weak, nonatomic) IBOutlet UILabel *labelTitreTutoriel;
+
+//ScrollView du tutoriel
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollViewTutoriel;
+
 
 #pragma mark - Fonctions
 

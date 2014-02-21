@@ -55,6 +55,9 @@
 //On récupère la tache pour lié à la catégorie
 - (Task *)getTaskInCategory:(NSString *)categoryName WithTaskName:(NSString *)taskName;
 
+//Récupère au maximum les 10 taches les plus utilisées
+- (NSMutableArray *)getHistoriqueTask;
+
 //On teste si la tache existe déjà ou non
 - (BOOL)taskExistWithName:(NSString *)taskName;
 

@@ -81,14 +81,6 @@
     [self.textFieldOr setBackgroundColor:COULEUR_WHITE];
     [self.textFieldOr setFont:POLICE_TASK_CONTENT];
     
-    //On récupère le storyboard
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    //On initialise la liste des categories
-    _categorieListViewController = [storyboard instantiateViewControllerWithIdentifier:@"CategorieListViewController"];
-    [self.categorieListViewController setDelegate:self];
-    [self.categorieListViewController setCouleurBackground:COULEUR_TASK];
-    
     //On met à jour les composants
     [self updateComponent];
 }
@@ -298,11 +290,6 @@
     return 3;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 0.0;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
@@ -329,8 +316,12 @@
 {
     if (indexPath.row == 1)
     {
+        //On initialise la liste des categories
+        DDCategorieListViewController *categorieListViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"CategorieListViewController"];
+        [categorieListViewController setDelegate:self];
+        [categorieListViewController setCouleurBackground:COULEUR_TASK];
         //On push la vue dans le navigation controller
-        [self.navigationController pushViewController:self.categorieListViewController animated:YES];
+        [self.navigationController pushViewController:categorieListViewController animated:YES];
     }
 }
 

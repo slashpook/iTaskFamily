@@ -39,25 +39,19 @@
         //On récupère la liste des joueurs
         NSMutableArray *arrayPlayer = [[DDDatabaseAccess instance] getPlayers];
         
-//        //Dans un thread à part on rentre les images dans un dictionaire
-//        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-//        dispatch_async(queue, ^{
-            int compteur = 0;
-            for (Player *player in arrayPlayer)
-            {
-                //On rajoute l'image
-                [self.dictImagePlayer setObject:[UIImage imageWithContentsOfFile:player.pathImage] forKey:player.pseudo];
-                
-//                //Si on doit faire un update graphique
-//                dispatch_sync(dispatch_get_main_queue(), ^{
-//                   
-//                });
-                compteur ++;
-            }
-//        });
+        int compteur = 0;
+        for (Player *player in arrayPlayer)
+        {
+            //On rajoute l'image
+            [self.dictImagePlayer setObject:[UIImage imageWithContentsOfFile:player.pathImage] forKey:player.pseudo];
+            compteur ++;
+        }
         
         //On crée le dictionnaire des couleurs des catégories
         _dictColor = [[NSDictionary alloc] initWithObjectsAndKeys:COULEUR_CUISINE, @"Cuisine", COULEUR_CHAMBRE, @"Chambre", COULEUR_DOUCHE, @"Douche", COULEUR_EXTERIEUR, @"Exterieur", COULEUR_AUTRE, @"Autre", COULEUR_SALON, @"Salon", COULEUR_GARAGE, @"Garage", COULEUR_PLUS_UTILISE, @"Taches les plus utilisées", nil];
+        
+        //On instancie le storyboard
+        _storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     }
     return self;
 }

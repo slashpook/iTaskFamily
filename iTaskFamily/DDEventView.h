@@ -7,17 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DDEventManagerViewController.h"
 
-@interface DDEventView : UIView
+@class DDPopOverViewController;
+
+@interface DDEventView : UIView <DDEventManagerViewProtocol>
 
 
 #pragma mark - Variables
 
+//PopOver de la vue
+@property (strong, nonatomic) DDPopOverViewController *popOverViewController;
+
+//Navigation controller pour la gestion des évènements
+@property (strong, nonatomic) UINavigationController *navigationEventManagerViewController;
+
+//Vue pour manager les évènements (création et édition)
+@property (strong, nonatomic) DDEventManagerViewController *eventManagerViewController;
+
 //Header de la vue
-@property (weak, nonatomic)IBOutlet UIImageView *imageViewHeader;
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewHeader;
 
 //Image de sélection du jour
-@property (weak, nonatomic)IBOutlet UIImageView *imageViewSelection;
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewSelection;
 
 //Label d'indication pour savoir si il y a des joueurs ou non
 @property (retain, nonatomic) IBOutlet UILabel *labelNoPlayer;
@@ -49,5 +61,13 @@
 //On appuie sur un des boutons
 - (IBAction)onPushDayButton:(id)sender;
 
+//On appuie sur le bouton pour ajouter un évènement
+- (IBAction)onPushAddEventButton:(id)sender;
+
+//On appuie sur le bouton pour supprimer des évènements
+- (IBAction)onPushDeleteEventButon:(id)sender;
+
+//On appuie sur le bouton pour modifier un évènement
+- (IBAction)onPushModifyEventButton:(id)sender;
 
 @end

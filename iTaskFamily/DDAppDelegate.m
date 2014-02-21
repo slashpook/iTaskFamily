@@ -9,6 +9,8 @@
 #import "DDAppDelegate.h"
 #import "DDParserXML.h"
 
+#warning A implémenter un format générique pour gérer les dates
+
 @implementation DDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -25,10 +27,9 @@
     //Alloc the window and set the mainStoryboard
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor clearColor];
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     //Set the tabBar controller
-	_rootViewController = [mainStoryboard instantiateInitialViewController];
+	_rootViewController = [[[DDManagerSingleton instance] storyboard] instantiateInitialViewController];
     [self.window setRootViewController:self.rootViewController];
     [self.window makeKeyAndVisible];
     

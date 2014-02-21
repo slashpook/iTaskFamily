@@ -1,26 +1,26 @@
 //
-//  DDCategorieListViewController.m
+//  DDCategoriesListEventViewController.m
 //  iTaskFamily
 //
-//  Created by Damien DELES on 06/12/2013.
-//  Copyright (c) 2013 Damien DELES. All rights reserved.
+//  Created by Damien DELES on 21/02/2014.
+//  Copyright (c) 2014 Damien DELES. All rights reserved.
 //
 
-#import "DDCategorieListViewController.h"
+#import "DDCategoriesListEventViewController.h"
 #import "DDCustomCategoryListCell.h"
 #import "Categories.h"
 
-@interface DDCategorieListViewController ()
+@interface DDCategoriesListEventViewController ()
 
 @end
 
-@implementation DDCategorieListViewController
+@implementation DDCategoriesListEventViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithCoder:aDecoder];
     if (self) {
-        // Custom initialization
+        _arrayCategory = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -31,7 +31,7 @@
 	
     //On set le background de la vue
     [[self view] setBackgroundColor:COULEUR_BACKGROUND];
-
+    
     //On met en place la barre de navigation
     _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:COULEUR_HOME andImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
     [[self.custoNavBar view] setFrame:CGRectMake(0, 0, 380, 50)];
@@ -39,18 +39,20 @@
     [[self.custoNavBar buttonLeft] setTitle:@"Retour" forState:UIControlStateNormal];
     [self.view addSubview:self.custoNavBar.view];
     
-    //On récupère le tableau des catégories
-    [self setArrayCategory:[[DDDatabaseAccess instance] getCategories]];
+    //On rempli le tableau avec les catégories
+    [self.arrayCategory addObject:PLUS_UTILISE];
+    for (Categories *category in [[DDDatabaseAccess instance] getCategories])
+        [self.arrayCategory addObject:category.name];
     
     //On s'abonne a un type de cellule pour la table view
-    [self.tableViewCategory registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CategorieTaskCell"];
-    [[self tableViewCategory] setBackgroundColor:COULEUR_WHITE];
+    [self.tableViewCategorie registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CategorieTaskCell"];
+    
+    [[self tableViewCategorie] setBackgroundColor:COULEUR_WHITE];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.tableViewCategory reloadData];
-    [[self.custoNavBar view] setBackgroundColor:self.couleurBackground];
+    [self.tableViewCategorie reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,12 +78,12 @@
     NSDictionary *dictColor = [[DDManagerSingleton instance] dictColor];
     
     //On récupère la catégorie en cours
-    Categories *categorie = [self.arrayCategory objectAtIndex:indexPath.row];
-   
+    NSString *categorie = [self.arrayCategory objectAtIndex:indexPath.row];
+    
     //On configure les infos de la cellule
-    [cell.imageViewCategoryColor setBackgroundColor:[dictColor objectForKey:categorie.name]];
+    [cell.imageViewCategoryColor setBackgroundColor:[dictColor objectForKey:categorie]];
     [cell.labelNameCategory setTextColor:COULEUR_BLACK];
-    [cell.labelNameCategory setText:categorie.name];
+    [cell.labelNameCategory setText:categorie];
     [cell.labelNameCategory setFont:POLICE_TASK_CELL];
     
     return cell;
@@ -90,8 +92,11 @@
 //On ouvre la cellule sélectionné
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Categories *categorie = [self.arrayCategory objectAtIndex:indexPath.row];
-    [self.delegate closeCategorieViewWithCategorie:categorie];
+    //On crée la vue des taches et on la push
+    DDTaskEventViewController *taskEventViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"TaskEventViewController"];
+    [taskEventViewController setDelegate:self.delegate];
+    [taskEventViewController setDatabaseForCategory:[self.arrayCategory objectAtIndex:indexPath.row]];
+    [self.navigationController pushViewController:taskEventViewController animated:YES];
 }
 
 

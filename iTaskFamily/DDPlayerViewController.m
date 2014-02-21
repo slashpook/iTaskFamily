@@ -72,12 +72,9 @@
     [self.labelTotalScore setTextColor:COULEUR_BLACK];
     [self.labelTotalScore setFont:POLICE_PLAYER_CONTENT];
     
-    //On récupère le storyboard
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
     //On initialise le popOver, le navigation controller et le playerManagerViewController
-    _popOverViewController = [storyboard instantiateViewControllerWithIdentifier:@"PopOverViewController"];
-    _playerManagerViewController = [storyboard instantiateViewControllerWithIdentifier:@"PlayerManagerViewController"];
+    _popOverViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PopOverViewController"];
+    _playerManagerViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PlayerManagerViewController"];
     [self.playerManagerViewController setDelegate:self];
     _navigationPlayerManagerViewController = [[UINavigationController alloc] initWithRootViewController:self.playerManagerViewController];
     

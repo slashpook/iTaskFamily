@@ -37,15 +37,12 @@
     //On enlève le toucher multiple sur le menu
     [self.subviews makeObjectsPerformSelector:@selector(setExclusiveTouch:) withObject:[NSNumber numberWithBool:YES]];
     
-    //On récupère le storyboard
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
     //On initialise le popOver
-    _popOverViewController = [storyboard instantiateViewControllerWithIdentifier:@"PopOverViewController"];
+    _popOverViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PopOverViewController"];
     [self.popOverViewController.view setBackgroundColor:COULEUR_TRANSPARENT_BLACK_FONCE];
     
     //On initialise le controller qui affiche la liste des joueurs
-    _playerListViewController = [storyboard instantiateViewControllerWithIdentifier:@"PlayerListViewController"];
+    _playerListViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PlayerListViewController"];
     [self.playerListViewController setDelegate:self];
     
     //On met à jour le joueur principal

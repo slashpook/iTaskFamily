@@ -89,12 +89,9 @@
     [self.progressBarOr setBackgroundColor:[UIColor clearColor]];
     [self.progressBarOr setColorBackground:COULEUR_BLACK];
     
-    //On récupère le storyboard
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
     //On initialise le popOver, le navigation controller et le playerManagerViewController
-    _popOverViewController = [storyboard instantiateViewControllerWithIdentifier:@"PopOverViewController"];
-    _taskManagerViewController = [storyboard instantiateViewControllerWithIdentifier:@"TaskManagerViewController"];
+    _popOverViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PopOverViewController"];
+    _taskManagerViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"TaskManagerViewController"];
     [self.taskManagerViewController setDelegate:self];
     _navigationTaskManagerViewController = [[UINavigationController alloc] initWithRootViewController:self.taskManagerViewController];
     
@@ -429,7 +426,7 @@
 }
 
 
-#pragma mark - DDTaskManagerViewController
+#pragma mark - DDTaskManagerViewController Functions
 
 - (void)closeTaskManagerView
 {

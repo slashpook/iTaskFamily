@@ -63,14 +63,13 @@
     [self.pageControlPodium setCurrentPage:0];
     
     //Initialisation des podiums et configuration
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    _podiumSemaineEnCours = [storyboard instantiateViewControllerWithIdentifier:@"PodiumViewController"];
+    _podiumSemaineEnCours = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PodiumViewController"];
     [self.podiumSemaineEnCours setColorProgressView:COULEUR_CHAMBRE];
     
-    _podiumSemainePrecedente = [storyboard instantiateViewControllerWithIdentifier:@"PodiumViewController"];
+    _podiumSemainePrecedente = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PodiumViewController"];
     [self.podiumSemainePrecedente setColorProgressView:COULEUR_HOME];
     
-    _podiumTotalTrophees = [storyboard instantiateViewControllerWithIdentifier:@"PodiumViewController"];
+    _podiumTotalTrophees = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PodiumViewController"];
     [self.podiumTotalTrophees setColorProgressView:COULEUR_PLAYER];
     
     //Initialisation du tableau de controllers

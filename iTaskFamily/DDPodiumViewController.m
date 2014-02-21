@@ -40,7 +40,9 @@
     [self.imageViewTroisieme.layer setMasksToBounds:YES];
     
     //On configure le bouton pour ajouter des récompenses
-    [self.buttonAddReward.layer setCornerRadius:5.0];
+    [self.buttonAddReward.layer setCornerRadius:35.0];
+    [self.buttonAddReward.layer setBorderColor:COULEUR_TASK.CGColor];
+    [self.buttonAddReward.layer setBorderWidth:1.0];
     [self.buttonAddReward.layer setMasksToBounds:YES];
     
     //On initialise le tableau qui va contenir tous les éléments et on lui ajoutes des sous tableaux
@@ -49,12 +51,10 @@
     NSArray *arrayJoueur3 = [NSArray arrayWithObjects:self.labelTitreTroisieme, self.labelTitreTroisiemeExposant, self.viewSeparationTroisieme, self.labelScoreTroisieme, self.viewTroisieme, self.imageViewTroisieme, self.labelNomTroisieme, nil];
     _arrayComponents = [[NSArray alloc] initWithObjects:arrayJoueur1, arrayJoueur2, arrayJoueur3, nil];
     
-    //On récupère le storyboard
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
     //On initialise le popOver, le navigation controller et le AwardViewController
-    _popOverViewController = [storyboard instantiateViewControllerWithIdentifier:@"PopOverViewController"];
-    _awardViewController = [storyboard instantiateViewControllerWithIdentifier:@"AwardViewController"];
+    _popOverViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PopOverViewController"];
+    
+    _awardViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"AwardViewController"];
     [self.awardViewController setDelegate:self];
     _navigationAwardController = [[UINavigationController alloc] initWithRootViewController:self.awardViewController];
 }

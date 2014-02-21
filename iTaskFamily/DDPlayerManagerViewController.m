@@ -68,14 +68,11 @@
     [[self textFieldPseudo] setFont:POLICE_PLAYER_CONTENT];
     [[self textFieldPseudo] setTextColor:COULEUR_BLACK];
     
-    //On récupère le storyboard
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
     //On initialise l'imagePickerController
-    _imagePickerViewController = [storyboard instantiateViewControllerWithIdentifier:@"ImagePickerController"];
+    _imagePickerViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"ImagePickerController"];
     
     //On initialise le cropper controller
-    _cropperController = [storyboard instantiateViewControllerWithIdentifier:@"CropperController"];
+    _cropperController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"CropperController"];
     [self.cropperController setDelegate:self];
     
     [self updateComponent];

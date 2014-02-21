@@ -7,6 +7,7 @@
 //
 
 #import "DDEventView.h"
+#import "DDPopOverViewController.h"
 
 @implementation DDEventView
 
@@ -45,6 +46,15 @@
     
     //On met les images en couleurs
     [self.imageViewHeader setBackgroundColor:COULEUR_BLACK];
+    
+    //On récupère le storyboard
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    //On initialise le popOver, le navigation controller et le playerManagerViewController
+    _popOverViewController = [storyboard instantiateViewControllerWithIdentifier:@"PopOverViewController"];
+    _eventManagerViewController = [storyboard instantiateViewControllerWithIdentifier:@"EventManagerViewController"];
+    [self.eventManagerViewController setDelegate:self];
+    _navigationEventManagerViewController = [[UINavigationController alloc] initWithRootViewController:self.eventManagerViewController];
 }
 
 
@@ -56,6 +66,59 @@
     [UIView animateWithDuration:0.3 animations:^{
         [self.imageViewSelection setFrame:[(UIButton *)sender frame]];
     }];
+}
+
+//On appuie sur le bouton pour ajouter un évènement
+- (IBAction)onPushAddEventButton:(id)sender
+{
+    //On configure le controller
+    [self.eventManagerViewController setIsModifyEvent:NO];
+    [self.eventManagerViewController setEvent:nil];
+    [[self.eventManagerViewController arrayOccurence] removeAllObjects];
+    [[self.eventManagerViewController arrayOccurence] addObject:[[DDManagerSingleton instance] currentDate]];
+    [self.eventManagerViewController updateComponent];
+    
+    //On ouvre la popUp
+    [self openEventManagerViewController];
+}
+
+//On appuie sur le bouton pour supprimer des évènements
+- (IBAction)onPushDeleteEventButon:(id)sender
+{
+    
+}
+
+//On appuie sur le bouton pour modifier un évènement
+- (IBAction)onPushModifyEventButton:(id)sender
+{
+    //On configure le controller
+    [self.eventManagerViewController setIsModifyEvent:NO];
+    [self.eventManagerViewController setEvent:nil];
+    [self.eventManagerViewController updateComponent];
+    
+    //On ouvre la popUp
+    [self openEventManagerViewController];
+}
+
+//On ouvre la popUp
+- (void)openEventManagerViewController
+{
+    //On pop le navigation controller
+    [self.navigationEventManagerViewController popToRootViewControllerAnimated:NO];
+    
+    [[[[[[UIApplication sharedApplication] delegate] window] rootViewController] view] addSubview:self.popOverViewController.view];
+    
+    //On présente la popUp
+    CGRect frame = self.eventManagerViewController.view.frame;
+    [self.popOverViewController presentPopOverWithContentView:self.navigationEventManagerViewController.view andSize:frame.size andOffset:CGPointMake(0, 0)];
+}
+
+#pragma mark - DDEventManagerViewController Functions
+
+- (void)closeEventManagerView
+{
+    //On enlève la popUp
+    [self.popOverViewController hide];
 }
 
 @end

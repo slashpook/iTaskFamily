@@ -15,6 +15,9 @@
 
 #pragma mark - Variables
 
+//Storyboard de l'application
+@property (strong, nonatomic) UIStoryboard *storyboard;
+
 //Array des images de la bibliothèque
 @property (strong, nonatomic) NSMutableArray *arrayImagePicker;
 
@@ -29,6 +32,9 @@
 
 //Dictinonaire des couleurs des catégories
 @property (strong, nonatomic) NSDictionary *dictColor;
+
+//Variable contenant le jour actuel
+@property (strong, nonatomic) NSString *currentDate;
 
 
 #pragma mark - Fonctions

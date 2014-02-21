@@ -64,6 +64,9 @@
     [self.labelYear setText:[DDHelperController getYearInLetter]];
     [self.labelHour setText:[DDHelperController getHour]];
     [self.labelMin setText:[DDHelperController getMin]];
+    
+    //On met à jour le singleton pour connaître le jour actuel
+    [[DDManagerSingleton instance] setCurrentDate:[DDHelperController getDayInLetter]];
 }
 
 @end
