@@ -41,12 +41,14 @@
     [self.textViewComment.layer setCornerRadius:10.0];
     [self.textViewComment.layer setBorderWidth:1.0];
     [self.textViewComment.layer setBorderColor:COULEUR_BACKGROUND.CGColor];
-    [self.imageViewCategory.layer setCornerRadius:10.0];
-    [self.imageViewPoints.layer setCornerRadius:10.0];
-    [self.imageViewRepetition.layer setCornerRadius:10.0];
+    [self.imageViewCategory.layer setCornerRadius:50.0];
+    [self.imageViewPoints.layer setCornerRadius:50.0];
+    [self.imageViewRepetition.layer setCornerRadius:50.0];
     
     //On set la police et la couleur des label et textfield
-    
+    [self.labelCategory setTextColor:COULEUR_WHITE];
+    [self.labelPoint setTextColor:COULEUR_WHITE];
+
     //On configure la tableView
     [self.tableViewEvents registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CellTableView"];
 
@@ -69,6 +71,12 @@
 {
     [self.tableViewEvents reloadData];
     
+    //Si on a des données on sélectionne la première cellule
+    if ([self.arrayEvent count] > 0)
+    {
+        [self.tableViewEvents selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
+    }
+    
     //On récupère le dictionnaire des couleurs des catégories
     NSDictionary *dictColor = [[DDManagerSingleton instance] dictColor];
     [self.imageViewCategory setBackgroundColor:[dictColor objectForKey:self.currentEvent.task.categories.name]];
@@ -77,6 +85,7 @@
     [self.labelPoint setText:self.currentEvent.task.point.stringValue];
     [self.imageViewRepetition setBackgroundColor:[dictColor objectForKey:self.currentEvent.task.categories.name]];
     
+    [self.textViewComment.layer setBorderColor:[[dictColor objectForKey:self.currentEvent.task.categories.name] CGColor]];
     [self.textViewComment setText:self.currentEvent.comment];
 }
 

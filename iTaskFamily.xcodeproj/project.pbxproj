@@ -60,6 +60,7 @@
 		6D8970EC1848EF9900F815CD /* DDDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8970EB1848EF9900F815CD /* DDDatabaseManager.m */; };
 		6D8970EF1848F1AB00F815CD /* DDDatabaseAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8970EE1848F1AB00F815CD /* DDDatabaseAccess.m */; };
 		6D8970F31848F56B00F815CD /* DDCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8970F21848F56B00F815CD /* DDCustomAlertView.m */; };
+		6D94A6D018C601620047045C /* DDCustomCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D94A6CF18C601620047045C /* DDCustomCheckbox.m */; };
 		6D9B323E183F60A60038D7DB /* DDMeteoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B323D183F60A60038D7DB /* DDMeteoView.m */; };
 		6D9B3242183F99860038D7DB /* DDWeatherInfos.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3241183F99860038D7DB /* DDWeatherInfos.m */; };
 		6DC986F6185092A200A5A65F /* DDCustomProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC986F5185092A200A5A65F /* DDCustomProgressBar.m */; };
@@ -188,6 +189,8 @@
 		6D8970EE1848F1AB00F815CD /* DDDatabaseAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDatabaseAccess.m; sourceTree = "<group>"; };
 		6D8970F11848F56B00F815CD /* DDCustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomAlertView.h; sourceTree = "<group>"; };
 		6D8970F21848F56B00F815CD /* DDCustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomAlertView.m; sourceTree = "<group>"; };
+		6D94A6CE18C601620047045C /* DDCustomCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomCheckbox.h; sourceTree = "<group>"; };
+		6D94A6CF18C601620047045C /* DDCustomCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomCheckbox.m; sourceTree = "<group>"; };
 		6D9B323C183F60A60038D7DB /* DDMeteoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMeteoView.h; sourceTree = "<group>"; };
 		6D9B323D183F60A60038D7DB /* DDMeteoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMeteoView.m; sourceTree = "<group>"; };
 		6D9B3240183F99860038D7DB /* DDWeatherInfos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDWeatherInfos.h; sourceTree = "<group>"; };
@@ -570,6 +573,7 @@
 		6D6B3F07183CF9F9009542A8 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				6D94A6CD18C601360047045C /* CustomCheckbox */,
 				6D6A1BF6184DDA4600319C71 /* Parser */,
 				6D8970F01848F55300F815CD /* CustomAlertView */,
 				6D8970E21848DDB300F815CD /* ImageCropper */,
@@ -708,6 +712,15 @@
 				6D8970F21848F56B00F815CD /* DDCustomAlertView.m */,
 			);
 			name = CustomAlertView;
+			sourceTree = "<group>";
+		};
+		6D94A6CD18C601360047045C /* CustomCheckbox */ = {
+			isa = PBXGroup;
+			children = (
+				6D94A6CE18C601620047045C /* DDCustomCheckbox.h */,
+				6D94A6CF18C601620047045C /* DDCustomCheckbox.m */,
+			);
+			name = CustomCheckbox;
 			sourceTree = "<group>";
 		};
 		6D9B323B183F60870038D7DB /* MeteoView */ = {
@@ -1013,6 +1026,7 @@
 				6D33D7331855BBA3001E1B3A /* Player.m in Sources */,
 				6D6A1BF9184DDA6400319C71 /* DDParserXML.m in Sources */,
 				6D8970EC1848EF9900F815CD /* DDDatabaseManager.m in Sources */,
+				6D94A6D018C601620047045C /* DDCustomCheckbox.m in Sources */,
 				6D8970CF1848933500F815CD /* UIImage+CustomImage.m in Sources */,
 				6D8970E61848DDC600F815CD /* DDImageCropper.m in Sources */,
 				6D5E3D3B18C374AF003BA0F2 /* DDCustomEventCell.m in Sources */,
