@@ -29,9 +29,6 @@
 //Bool pour savoir si on modifie ou non
 @property (assign, nonatomic) BOOL isModifyEvent;
 
-//Tableau des occurences
-@property (strong, nonatomic) NSMutableArray *arrayOccurence;
-
 //Tableau des indexPaths sélectionnés
 @property (strong, nonatomic) NSMutableArray *arrayIndexPath;
 

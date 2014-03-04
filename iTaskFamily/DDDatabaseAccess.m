@@ -104,7 +104,7 @@
             return category;
         }
     }
-
+    
     return nil;
 }
 
@@ -180,7 +180,7 @@
         if ([task.name isEqualToString:taskName])
             return task;
     }
-
+    
     return nil;
 }
 
@@ -257,7 +257,7 @@
 }
 
 
-#pragma mark - Trophy
+#pragma mark - CRUD Trophy
 
 //On récupère le nombre de trophées réalisé pour un joueur donnée à une catégorie donnée
 - (int)getNumberOfTrophiesRealizedForPlayer:(Player *)player inCategory:(Categories *)category
@@ -435,7 +435,7 @@
 }
 
 
-#pragma mark - Player
+#pragma mark - CRUD Player
 
 //On récupère le premier joueur
 - (Player *)getFirstPlayer
@@ -558,12 +558,30 @@
 }
 
 
-#pragma mark - Event
+#pragma mark - CRUD Event
+
+//On récupère les évènements du joueur pour une date données
+- (NSMutableArray *)getEventsForPlayer:(Player *)player atDay:(NSString *)day
+{
+    NSMutableArray *arrayEvent = [NSMutableArray array];
+    
+    if (player != nil)
+    {
+        //On boucle sur les events du joueur pour trouver les éventuels events
+        for (Event *event in [player.events allObjects])
+        {
+            if ([event.day isEqualToString:day])
+                [arrayEvent addObject:event];
+        }
+    }
+    
+    return arrayEvent;
+}
 
 //On récupère les event lié à la tache pour un joueur donnée
 - (NSMutableArray *)getEventsForPlayer:(Player *)player withTaskName:(NSString *)taskName
 {
-    NSMutableArray *arrayEvents = nil;
+    NSMutableArray *arrayEvents = [NSMutableArray array];
     
     //On boucle sur les events du joueur pour trouver les éventuels events
     for (Event *event in [player.events allObjects])
@@ -573,6 +591,26 @@
     }
     
     return arrayEvents;
+}
+
+//On récupère l'event lié à la tache pour un joueur donnée à une date donnée
+- (Event *)getEventsForPlayer:(Player *)player withTaskName:(NSString *)taskName atDay:(NSString *)day
+{
+    //On boucle sur les events du joueur pour trouver les éventuels events
+    for (Event *event in [player.events allObjects])
+    {
+        if ([event.task.name isEqualToString:taskName] && [event.day isEqualToString:day])
+            return event;
+    }
+    
+    return nil;
+}
+
+//On supprime un évènement
+- (void)deleteEvent:(Event *)event
+{
+    [self.dataBaseManager.managedObjectContext deleteObject:event];
+    [self saveContext:nil];
 }
 
 @end

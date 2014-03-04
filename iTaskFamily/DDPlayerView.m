@@ -54,12 +54,6 @@
     //On initialise le controller qui affiche la liste des joueurs
     _playerListViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PlayerListViewController"];
     [self.playerListViewController setDelegate:self];
-    
-    //On met en place la notification pour modifier le joueur
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updatePlayer)
-                                                 name:UPDATE_PLAYER
-                                               object:nil];
 }
 
 
@@ -92,7 +86,7 @@
     [button addSubview:imageViewHeader];
     [button addSubview:imageViewBottom];
     
-    [self updatePlayer];
+    [self updateComponent];
 }
 
 //On appuie sur le boutton pour ajouter un joueur
@@ -114,8 +108,8 @@
     }
 }
 
-//On met à jour le joueur
-- (void)updatePlayer
+//On met à jour les composants
+- (void)updateComponent
 {
     Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
     int indexPlayer = [[[DDDatabaseAccess instance] getPlayers] indexOfObject:currentPlayer];

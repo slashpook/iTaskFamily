@@ -21,6 +21,9 @@
 //Array des images de la bibliothèque
 @property (strong, nonatomic) NSMutableArray *arrayImagePicker;
 
+//Array des jours de la semaine
+@property (strong, nonatomic) NSArray *arrayWeek;
+
 //Référence vers la bibliothèque
 @property (strong, nonatomic) ALAssetsLibrary *library;
 

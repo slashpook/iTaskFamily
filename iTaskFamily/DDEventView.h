@@ -10,6 +10,7 @@
 #import "DDEventManagerViewController.h"
 
 @class DDPopOverViewController;
+@class DDEventInfosViewController;
 
 @interface DDEventView : UIView <DDEventManagerViewProtocol>
 
@@ -32,31 +33,52 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewSelection;
 
 //Label d'indication pour savoir si il y a des joueurs ou non
-@property (retain, nonatomic) IBOutlet UILabel *labelNoPlayer;
+@property (weak, nonatomic) IBOutlet UILabel *labelInfos;
 
 //Boutton du Lundi
-@property (retain, nonatomic) IBOutlet UIButton *buttonLundi;
+@property (weak, nonatomic) IBOutlet UIButton *buttonLundi;
 
 //Boutton du Mardi
-@property (retain, nonatomic) IBOutlet UIButton *buttonMardi;
+@property (weak, nonatomic) IBOutlet UIButton *buttonMardi;
 
 //Boutton du Mercredi
-@property (retain, nonatomic) IBOutlet UIButton *buttonMercredi;
+@property (weak, nonatomic) IBOutlet UIButton *buttonMercredi;
 
 //Boutton du Jeudi
-@property (retain, nonatomic) IBOutlet UIButton *buttonJeudi;
+@property (weak, nonatomic) IBOutlet UIButton *buttonJeudi;
 
 //Boutton du Vendredi
-@property (retain, nonatomic) IBOutlet UIButton *buttonVendredi;
+@property (weak, nonatomic) IBOutlet UIButton *buttonVendredi;
 
 //Boutton du Samedi
-@property (retain, nonatomic) IBOutlet UIButton *buttonSamedi;
+@property (weak, nonatomic) IBOutlet UIButton *buttonSamedi;
 
 //Boutton du Dimanche
-@property (retain, nonatomic) IBOutlet UIButton *buttonDimanche;
+@property (weak, nonatomic) IBOutlet UIButton *buttonDimanche;
+
+//Boutton pour ajouter un évènement
+@property (weak, nonatomic) IBOutlet UIButton *buttonAddEvent;
+
+//Boutton pour supprimer des évènements
+@property (weak, nonatomic) IBOutlet UIButton *buttonDeleteEvent;
+
+//Boutton pour modifier un évènement
+@property (weak, nonatomic) IBOutlet UIButton *buttonModifyEvent;
+
+//Controller qui affiche les infos sur les évènements des joueurs
+@property (weak, nonatomic) DDEventInfosViewController *eventInfosViewController;
+
+//Récupère le jour sélectionné
+@property (strong, nonatomic) NSString *daySelected;
 
 
 #pragma mark - Fonctions
+
+//On met à jour les composants en fonctions des joueurs
+- (void)updateComponent;
+
+//On se positionne sur le bon jour
+- (void)updatePositionOfSelectedDay;
 
 //On appuie sur un des boutons
 - (IBAction)onPushDayButton:(id)sender;

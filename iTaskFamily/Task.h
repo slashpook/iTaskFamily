@@ -29,4 +29,7 @@
 - (void)addRealisation:(NSSet *)values;
 - (void)removeRealisation:(NSSet *)values;
 
+//On set une nouvelle tache
+- (void)setTaskWithTask:(Task *)task;
+
 @end

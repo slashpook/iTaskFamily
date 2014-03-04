@@ -11,6 +11,7 @@
 @class DDPlayerView;
 @class DDDateView;
 @class DDMeteoView;
+@class DDEventView;
 @class DDMenuView;
 
 @interface DDHomeViewController : UIViewController
@@ -26,6 +27,9 @@
 
 //View de la météo
 @property (weak, nonatomic) IBOutlet DDMeteoView *viewMeteo;
+
+//View de l'event
+@property (weak, nonatomic) IBOutlet DDEventView *viewEvent;
 
 //Page control de la vue de joueur
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControlPlayer;

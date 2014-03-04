@@ -13,6 +13,7 @@
 @class Categories;
 @class Realisation;
 @class Task;
+@class Event;
 
 @interface DDDatabaseAccess : NSObject
 
@@ -34,11 +35,17 @@
 //Annulation de l'action
 - (void)rollback;
 
+
+#pragma mark - CRUD Category
+
 //On récupère toutes les catégories
 - (NSMutableArray *)getCategories;
 
 //On récupère la catégorie avec le nom donnée
 - (Categories *)getCategoryWithName:(NSString *)categoryName;
+
+
+#pragma mark - CRUD Task
 
 //On récupère toutes les taches
 - (NSMutableArray *)getTasks;
@@ -61,23 +68,11 @@
 //On teste si la tache existe déjà ou non
 - (BOOL)taskExistWithName:(NSString *)taskName;
 
+
+#pragma mark - CRUD Trophy
+
 //On récupère le nombre de trophées réalisé pour un joueur donnée à une catégorie donnée
 - (int)getNumberOfTrophiesRealizedForPlayer:(Player *)player inCategory:(Categories *)category;
-
-//On récupère le premier joueur
-- (Player *)getFirstPlayer;
-
-//On récupère tous les joueurs triés par le pseudo
-- (NSMutableArray *)getPlayers;
-
-//On récupère un joueur à l'index donnée
-- (Player *)getPlayersAtIndex:(int)index;
-
-//On supprime le joueur donnée
-- (void)deletePlayer:(Player *)player;
-
-//On vérifie si un joueur portant ce pseudo existe déjà ou non
-- (BOOL)playerExistForPseudo:(NSString *)pseudo;
 
 //On récupère la réalisation de bronze pour la tache donnée du player donné
 - (Realisation *)getRealisationBronzeForTask:(Task *)task inPlayer:(Player *)player;
@@ -97,7 +92,37 @@
 //On récupère la réalisation d'or pour la tache donnée de la catégorie donnée
 - (Realisation *)getRealisationOrForTask:(Task *)task inCategory:(Categories *)category;
 
+
+#pragma mark - CRUD Player
+
+//On récupère le premier joueur
+- (Player *)getFirstPlayer;
+
+//On récupère tous les joueurs triés par le pseudo
+- (NSMutableArray *)getPlayers;
+
+//On récupère un joueur à l'index donnée
+- (Player *)getPlayersAtIndex:(int)index;
+
+//On supprime le joueur donnée
+- (void)deletePlayer:(Player *)player;
+
+//On vérifie si un joueur portant ce pseudo existe déjà ou non
+- (BOOL)playerExistForPseudo:(NSString *)pseudo;
+
+
+#pragma mark - CRUD Event
+
+//On récupère les évènements du joueur pour une date données
+- (NSMutableArray *)getEventsForPlayer:(Player *)player atDay:(NSString *)day;
+
 //On récupère les event lié à la tache pour un joueur donnée
 - (NSMutableArray *)getEventsForPlayer:(Player *)player withTaskName:(NSString *)taskName;
+
+//On récupère l'event lié à la tache pour un joueur donnée à une date donnée
+- (Event *)getEventsForPlayer:(Player *)player withTaskName:(NSString *)taskName atDay:(NSString *)day;
+
+//On supprime un évènement
+- (void)deleteEvent:(Event *)event;
 
 @end

@@ -8,6 +8,8 @@
 
 #import "DDEventView.h"
 #import "DDPopOverViewController.h"
+#import "DDEventInfosViewController.h"
+#import "Player.h"
 
 @implementation DDEventView
 
@@ -27,8 +29,8 @@
     [self.layer setMasksToBounds:YES];
     
     //On configure les polices et couleur des boutons et labels
-    [self.labelNoPlayer setTextColor:COULEUR_BLACK];
-    [self.labelNoPlayer setFont:POLICE_EVENT_NO_PLAYER];
+    [self.labelInfos setTextColor:COULEUR_BLACK];
+    [self.labelInfos setFont:POLICE_EVENT_NO_PLAYER];
     [[self.buttonLundi titleLabel] setTextColor:COULEUR_WHITE];
     [[self.buttonLundi titleLabel] setFont:POLICE_EVENT_DAY];
     [[self.buttonMardi titleLabel] setTextColor:COULEUR_WHITE];
@@ -55,16 +57,78 @@
     _eventManagerViewController = [storyboard instantiateViewControllerWithIdentifier:@"EventManagerViewController"];
     [self.eventManagerViewController setDelegate:self];
     _navigationEventManagerViewController = [[UINavigationController alloc] initWithRootViewController:self.eventManagerViewController];
+    
+    //On récupère le jour d'aujourd'hui et on positionne bien le bouton
+    NSString *currentDay = [[DDManagerSingleton instance] currentDate];
+    //On récupère l'index du jour dans le tableau de la semaine. On l'incrémente de 1 car Le premier tag des boutons est 1
+    [self setDaySelected:[NSString stringWithFormat:@"%i",[[[DDManagerSingleton instance] arrayWeek] indexOfObject:currentDay]]];
+    
+    //On rafraichis les composants
+    [self updateComponent];
 }
 
 
 #pragma mark - View fonctions
+
+//On met à jour les composants en fonctions des joueurs
+- (void)updateComponent
+{
+    //On récupère le joueur courant
+    Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
+    
+    [self.eventInfosViewController.view setHidden:YES];
+    
+    //si le joueur n'existe pas on désactive les boutons
+    if (currentPlayer == nil)
+    {
+        [self.labelInfos setHidden:NO];
+        [self.labelInfos setText:@"Aucun joueur"];
+        [self.buttonAddEvent setEnabled:NO];
+        [self.buttonDeleteEvent setEnabled:NO];
+        [self.buttonModifyEvent setEnabled:NO];
+    }
+    //Sinon on vérifie qu'il y a des évènements
+    else
+    {
+        [self.labelInfos setHidden:YES];
+        [self.buttonAddEvent setEnabled:YES];
+        [self.buttonDeleteEvent setEnabled:YES];
+        [self.buttonModifyEvent setEnabled:YES];
+        
+        //Si il n'y a pas d'évènement on désactive certains boutons.
+        if ([[[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer atDay:self.daySelected] count] > 0)
+        {
+            [self.eventInfosViewController.view setHidden:NO];
+            [self.eventInfosViewController getEventsForDay:self.daySelected];
+        }
+        else
+        {
+            [self.labelInfos setHidden:NO];
+            [self.labelInfos setText:@"Aucun évènement"];
+            [self.buttonDeleteEvent setEnabled:NO];
+            [self.buttonModifyEvent setEnabled:NO];
+        }
+    }
+}
+
+//On se positionne sur le bon jour
+- (void)updatePositionOfSelectedDay
+{
+    [self onPushDayButton:[self viewWithTag:(self.daySelected.intValue +1)]];
+}
 
 //On appuie sur un des boutons
 - (IBAction)onPushDayButton:(id)sender
 {
     [UIView animateWithDuration:0.3 animations:^{
         [self.imageViewSelection setFrame:[(UIButton *)sender frame]];
+    } completion:^(BOOL finished) {
+        //On récupère le tag du bouton et on lui enlève un car la première entrée d'un tableau est 0
+        int daySelectedInNumber = ([(UIButton *)sender tag] - 1);
+        [self setDaySelected:[NSString stringWithFormat:@"%i", daySelectedInNumber]];
+        [self.eventInfosViewController getEventsForDay:self.daySelected];
+        
+        [self updateComponent];
     }];
 }
 
@@ -73,7 +137,8 @@
 {
     //On configure le controller
     [self.eventManagerViewController setIsModifyEvent:NO];
-    [self.eventManagerViewController setEvent:nil];
+    [self.eventManagerViewController setEventToModify:nil];
+    [self.eventManagerViewController setTask:nil];
     [[self.eventManagerViewController arrayOccurence] removeAllObjects];
     [[self.eventManagerViewController arrayOccurence] addObject:[[DDManagerSingleton instance] currentDate]];
     [self.eventManagerViewController updateComponent];
@@ -93,7 +158,7 @@
 {
     //On configure le controller
     [self.eventManagerViewController setIsModifyEvent:NO];
-    [self.eventManagerViewController setEvent:nil];
+    [self.eventManagerViewController setEventToModify:nil];
     [self.eventManagerViewController updateComponent];
     
     //On ouvre la popUp

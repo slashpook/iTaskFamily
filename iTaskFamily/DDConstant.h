@@ -74,6 +74,8 @@
 #define POLICE_EVENT_TITLE [UIFont fontWithName:@"HelveticaNeue-Light" size:22.0]
 #define POLICE_EVENT_CELL [UIFont fontWithName:@"HelveticaNeue" size:17.0]
 #define POLICE_EVENT_CONTENT [UIFont fontWithName:@"HelveticaNeue" size:17.0]
+#define POLICE_EVENT_TASK_NAME [UIFont fontWithName:@"HelveticaNeue-Thin" size:18.0]
+#define POLICE_EVENT_TASK_INFO [UIFont fontWithName:@"HelveticaNeue" size:13.0]
 
 
 #pragma mark - Notification

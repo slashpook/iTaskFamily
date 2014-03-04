@@ -50,6 +50,9 @@
         //On crée le dictionnaire des couleurs des catégories
         _dictColor = [[NSDictionary alloc] initWithObjectsAndKeys:COULEUR_CUISINE, @"Cuisine", COULEUR_CHAMBRE, @"Chambre", COULEUR_DOUCHE, @"Douche", COULEUR_EXTERIEUR, @"Exterieur", COULEUR_AUTRE, @"Autre", COULEUR_SALON, @"Salon", COULEUR_GARAGE, @"Garage", COULEUR_PLUS_UTILISE, @"Taches les plus utilisées", nil];
         
+        //On crée le tableau des jours de la semaine
+        _arrayWeek = [[NSArray alloc] initWithObjects:LUNDI, MARDI, MERCREDI, JEUDI, VENDREDI, SAMEDI, DIMANCHE, nil];
+        
         //On instancie le storyboard
         _storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     }
@@ -83,7 +86,7 @@
         
     };
     
-    [self.library enumerateGroupsWithTypes:ALAssetsGroupAll
+    [self.library enumerateGroupsWithTypes:ALAssetsGroupAlbum
                                 usingBlock:assetGroupEnumerator
                               failureBlock: ^(NSError *error) {
                                   NSLog(@"Failure");

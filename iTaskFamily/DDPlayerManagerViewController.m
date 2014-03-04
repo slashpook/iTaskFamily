@@ -171,7 +171,7 @@
     if (self.isModifyPlayer == NO)
     {
         //On crée un nouveau joueur
-        self.player = [NSEntityDescription
+        _player = [NSEntityDescription
                       insertNewObjectForEntityForName:@"Player"
                       inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
         

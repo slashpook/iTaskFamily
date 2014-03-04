@@ -217,9 +217,7 @@
     [self.task setRealisation:[NSSet setWithObjects:realisationBronze, realisationArgent, realisationOr, nil]];
     
     //On ajoute notre objet au tableau et on le sauvegarde
-    NSMutableArray *arrayTaskCategory = [NSMutableArray arrayWithArray:[[self.currentCategory task] allObjects]];
-    [arrayTaskCategory addObject:self.task];
-    [self.currentCategory setTask:[NSSet setWithArray:arrayTaskCategory]];
+    [self.currentCategory addTaskObject:self.task];
     
     //On ajoute la tache aux joueus
     for (Player *player in [[DDDatabaseAccess instance] getPlayers])

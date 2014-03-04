@@ -28,10 +28,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-    //On crée le tableau d'occurence
-    _arrayOccurence = [[NSMutableArray alloc] initWithObjects:LUNDI, MARDI, MERCREDI, JEUDI, VENDREDI, SAMEDI, DIMANCHE, nil];
-    
     
     //On met en place la barre de navigation
     _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:COULEUR_HOME andImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
@@ -72,7 +68,7 @@
     [self.arrayIndexPath removeAllObjects];
     for (NSString *day in self.arrayOccurenceSaved)
     {
-        int row = [self.arrayOccurence indexOfObject:day];
+        int row = [[[DDManagerSingleton instance] arrayWeek] indexOfObject:day];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
         [self.arrayIndexPath addObject:indexPath];
     }
@@ -86,7 +82,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.arrayOccurence count];
+    return [[[DDManagerSingleton instance] arrayWeek] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -97,7 +93,7 @@
     //On configure la cellule
     [[cell textLabel] setFont:POLICE_EVENT_CELL];
     [[cell textLabel] setTextColor:COULEUR_BLACK];
-    [[cell textLabel] setText:[self.arrayOccurence objectAtIndex:indexPath.row]];
+    [[cell textLabel] setText:[[[DDManagerSingleton instance] arrayWeek] objectAtIndex:indexPath.row]];
     [[cell textLabel] setBackgroundColor:[UIColor clearColor]];
     
     //On met ou non le checkmark sur les cellules en fonctions de celle qui ont été sélectionné
@@ -113,7 +109,7 @@
     }
     
     //On cache la séparation pour la dernière cellule (pas nécessaire)
-    if (indexPath.row == [self.arrayOccurence count] - 1)
+    if (indexPath.row == [[[DDManagerSingleton instance] arrayWeek] count] - 1)
         [[cell viewSeparator] setHidden:YES];
     
     return cell;
@@ -189,7 +185,7 @@
 
     //On rempli le tableau avec les jours sélectionnés
     for (NSIndexPath *indexPath in self.arrayIndexPath)
-        [self.arrayOccurenceSaved addObject:[self.arrayOccurence objectAtIndex:indexPath.row]];
+        [self.arrayOccurenceSaved addObject:[[[DDManagerSingleton instance] arrayWeek] objectAtIndex:indexPath.row]];
     
     //On appelle le delegate pour mettre la vue d'event à jour
     [self.delegate saveOccurencewithArray:self.arrayOccurenceSaved];

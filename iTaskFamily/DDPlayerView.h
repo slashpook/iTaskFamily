@@ -49,14 +49,14 @@
 
 #pragma mark - Fonctions
 
+//On met à jour les composants
+- (void)updateComponent;
+
 //On appuie sur le bouton pour ajouter un joueur
 - (IBAction)onPushPlayer:(id)sender;
 
 //On change le joueur quand on appuie sur le page control
 - (IBAction)changePlayerInPageControl:(id)sender;
-
-//On met à jour le joueur
-- (void)updatePlayer;
 
 //On appelle la fonction pour rafraichir le page control et la scroll view
 - (void)refreshPageControlWithScrollView:(UIScrollView *)scrollView;

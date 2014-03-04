@@ -78,7 +78,7 @@
 @property (assign, nonatomic) BOOL isModifyEvent;
 
 //Evènement que l'on crée ou modifie
-@property (strong, nonatomic) Event *event;
+@property (strong, nonatomic) Event *eventToModify;
 
 //Tache que l'on va ajouter à l'évènement
 @property (strong, nonatomic) Task *task;

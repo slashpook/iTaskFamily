@@ -27,6 +27,8 @@
 		6D46EB9A1843486F00287ACC /* DDPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D46EB991843486F00287ACC /* DDPlayerViewController.m */; };
 		6D5549F01844ECC7009022C5 /* DDPopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5549EF1844ECC7009022C5 /* DDPopOverViewController.m */; };
 		6D5549F41844F823009022C5 /* DDPlayerManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5549F31844F823009022C5 /* DDPlayerManagerViewController.m */; };
+		6D5E3D3718C36F2E003BA0F2 /* DDEventInfosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5E3D3618C36F2E003BA0F2 /* DDEventInfosViewController.m */; };
+		6D5E3D3B18C374AF003BA0F2 /* DDCustomEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5E3D3A18C374AF003BA0F2 /* DDCustomEventCell.m */; };
 		6D61F6631851DBB600759AFC /* DDCategorieListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D61F6621851DBB600759AFC /* DDCategorieListViewController.m */; };
 		6D61F6671851DC1400759AFC /* DDCustomCategoryListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D61F6661851DC1400759AFC /* DDCustomCategoryListCell.m */; };
 		6D62E88518479AD500D376FA /* DDCustomNavigationBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D62E88418479AD500D376FA /* DDCustomNavigationBarController.m */; };
@@ -127,6 +129,10 @@
 		6D5549EF1844ECC7009022C5 /* DDPopOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPopOverViewController.m; sourceTree = "<group>"; };
 		6D5549F21844F823009022C5 /* DDPlayerManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPlayerManagerViewController.h; sourceTree = "<group>"; };
 		6D5549F31844F823009022C5 /* DDPlayerManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPlayerManagerViewController.m; sourceTree = "<group>"; };
+		6D5E3D3518C36F2E003BA0F2 /* DDEventInfosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDEventInfosViewController.h; sourceTree = "<group>"; };
+		6D5E3D3618C36F2E003BA0F2 /* DDEventInfosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDEventInfosViewController.m; sourceTree = "<group>"; };
+		6D5E3D3918C374AF003BA0F2 /* DDCustomEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomEventCell.h; sourceTree = "<group>"; };
+		6D5E3D3A18C374AF003BA0F2 /* DDCustomEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomEventCell.m; sourceTree = "<group>"; };
 		6D61F6611851DBB600759AFC /* DDCategorieListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCategorieListViewController.h; sourceTree = "<group>"; };
 		6D61F6621851DBB600759AFC /* DDCategorieListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCategorieListViewController.m; sourceTree = "<group>"; };
 		6D61F6651851DC1400759AFC /* DDCustomCategoryListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomCategoryListCell.h; sourceTree = "<group>"; };
@@ -346,6 +352,24 @@
 				6D5549F31844F823009022C5 /* DDPlayerManagerViewController.m */,
 			);
 			name = PlayerManagerViewController;
+			sourceTree = "<group>";
+		};
+		6D5E3D3418C36F10003BA0F2 /* EventInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6D5E3D3518C36F2E003BA0F2 /* DDEventInfosViewController.h */,
+				6D5E3D3618C36F2E003BA0F2 /* DDEventInfosViewController.m */,
+			);
+			name = EventInfoViewController;
+			sourceTree = "<group>";
+		};
+		6D5E3D3818C37498003BA0F2 /* CustomEventCell */ = {
+			isa = PBXGroup;
+			children = (
+				6D5E3D3918C374AF003BA0F2 /* DDCustomEventCell.h */,
+				6D5E3D3A18C374AF003BA0F2 /* DDCustomEventCell.m */,
+			);
+			name = CustomEventCell;
 			sourceTree = "<group>";
 		};
 		6D61F6601851DB9E00759AFC /* CategorieListViewController */ = {
@@ -581,6 +605,7 @@
 		6D6B3F13183D2609009542A8 /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6D5E3D3418C36F10003BA0F2 /* EventInfoViewController */,
 				6DCB2A8718B6175B000FDFCA /* EventManagerViewController */,
 				6D6B3F14183D28D8009542A8 /* DDHomeViewController.h */,
 				6D6B3F15183D28D8009542A8 /* DDHomeViewController.m */,
@@ -645,6 +670,7 @@
 		6D8970DA1848DCD700F815CD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				6D5E3D3818C37498003BA0F2 /* CustomEventCell */,
 				6D3A26B518B7954500545FF2 /* CustomOccurenceCell */,
 				6D61F6641851DBE100759AFC /* CustomCategoryListCell */,
 				6DF00ED9184F9E1E00F8F3C5 /* CustomCategoryCell */,
@@ -947,6 +973,7 @@
 				6D7E2812189F8FAB00BCBA9F /* DDAwardViewController.m in Sources */,
 				6D61F6671851DC1400759AFC /* DDCustomCategoryListCell.m in Sources */,
 				6D6B3ED9183CF75B009542A8 /* DDAppDelegate.m in Sources */,
+				6D5E3D3718C36F2E003BA0F2 /* DDEventInfosViewController.m in Sources */,
 				6DCB2A8A18B6177B000FDFCA /* DDEventManagerViewController.m in Sources */,
 				6D33D7421855BBA4001E1B3A /* Realisation.m in Sources */,
 				6DCE47B9183E066100D64363 /* DDPlayerView.m in Sources */,
@@ -988,6 +1015,7 @@
 				6D8970EC1848EF9900F815CD /* DDDatabaseManager.m in Sources */,
 				6D8970CF1848933500F815CD /* UIImage+CustomImage.m in Sources */,
 				6D8970E61848DDC600F815CD /* DDImageCropper.m in Sources */,
+				6D5E3D3B18C374AF003BA0F2 /* DDCustomEventCell.m in Sources */,
 				6DC986F6185092A200A5A65F /* DDCustomProgressBar.m in Sources */,
 				6DC986FA1850E89B00A5A65F /* DDTaskManagerViewController.m in Sources */,
 				6D8970CB1848928500F815CD /* DDCustomImagePickerViewController.m in Sources */,

@@ -336,11 +336,6 @@
 
 #pragma mark Delegate Table View
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [[[self.currentCategorie task] allObjects] count];
