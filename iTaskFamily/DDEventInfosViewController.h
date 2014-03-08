@@ -9,11 +9,27 @@
 #import <UIKit/UIKit.h>
 
 @class Event;
+@class DDCustomValidation;
 
-@interface DDEventInfosViewController : UIViewController
+@protocol DDEventInfosProtocol <NSObject>
+
+- (void)updateComponentWithEventSelected;
+
+@end
+
+@interface DDEventInfosViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 
 
 #pragma mark - Variables
+
+//Tableau des évènements
+@property (strong, nonatomic) NSMutableArray *arrayEvent;
+
+//Evènement sélectionné
+@property (strong, nonatomic) Event *currentEvent;
+
+//Delegate de la vue
+@property (weak, nonatomic) id<DDEventInfosProtocol> delegate;
 
 //TableView des évènements
 @property (weak, nonatomic) IBOutlet UITableView *tableViewEvents;
@@ -39,19 +55,22 @@
 //ImageView de la récurrence de la tache
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewRepetition;
 
+//ImageView qui affiche le contenu de la récursivité
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewContentRepetition;
+
 //TextView des commentaires de la tache
 @property (weak, nonatomic) IBOutlet UITextView *textViewComment;
 
-//Tableau des évènements
-@property (strong, nonatomic) NSMutableArray *arrayEvent;
-
-//Evènement sélectionné
-@property (strong, nonatomic) Event *currentEvent;
+//Vue qui indique si on a validé ou non l'évènement
+@property (weak, nonatomic) IBOutlet DDCustomValidation *viewCustomValidation;
 
 
 #pragma mark - Fonctions
 
 //On set le tableau d'event pour le jour sélectionné
 - (void)getEventsForDay:(NSString *)currentDay;
+
+//On appuie sur le checkbox
+- (IBAction)onPushCheckbox:(UITapGestureRecognizer *)gesture;
 
 @end

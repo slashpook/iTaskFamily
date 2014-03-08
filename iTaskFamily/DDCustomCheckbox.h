@@ -13,8 +13,11 @@
 
 #pragma mark - Variables
 
+//Booléen pour savoir si la checkbox est checkée
 @property (assign, nonatomic) BOOL isChecked;
 
+//Booléen pour savoir si la cellule de la checkbox est sélectionné
+@property (assign, nonatomic) BOOL isSelected;
 
 #pragma mark - Functions
 

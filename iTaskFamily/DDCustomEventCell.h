@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class DDCustomCheckbox;
+
 @interface DDCustomEventCell : UITableViewCell
 
 
@@ -24,5 +26,8 @@
 
 //Label d'infos de la tache
 @property (weak, nonatomic) IBOutlet UILabel *labelInfo;
+
+//Checkbox customisée
+@property (weak, nonatomic) IBOutlet DDCustomCheckbox *customCheckbox;
 
 @end

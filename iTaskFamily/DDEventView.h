@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "DDEventManagerViewController.h"
+#import "DDEventInfosViewController.h"
 
 @class DDPopOverViewController;
-@class DDEventInfosViewController;
 
-@interface DDEventView : UIView <DDEventManagerViewProtocol>
+@interface DDEventView : UIView <DDEventManagerViewProtocol, DDEventInfosProtocol>
 
 
 #pragma mark - Variables
@@ -25,6 +25,15 @@
 
 //Vue pour manager les évènements (création et édition)
 @property (strong, nonatomic) DDEventManagerViewController *eventManagerViewController;
+
+//Controller qui affiche les infos sur les évènements des joueurs
+@property (strong, nonatomic) DDEventInfosViewController *eventInfosViewController;
+
+//Récupère le jour sélectionné
+@property (strong, nonatomic) NSString *daySelected;
+
+//Booléen pour savoir si on doit animer ou pas
+@property (assign, nonatomic) BOOL mustAnimateSelectionDay;
 
 //Header de la vue
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewHeader;
@@ -64,12 +73,6 @@
 
 //Boutton pour modifier un évènement
 @property (weak, nonatomic) IBOutlet UIButton *buttonModifyEvent;
-
-//Controller qui affiche les infos sur les évènements des joueurs
-@property (weak, nonatomic) DDEventInfosViewController *eventInfosViewController;
-
-//Récupère le jour sélectionné
-@property (strong, nonatomic) NSString *daySelected;
 
 
 #pragma mark - Fonctions

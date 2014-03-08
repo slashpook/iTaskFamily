@@ -24,28 +24,36 @@
     [self setBackgroundColor:[UIColor clearColor]];
     
     //// Color Declarations
-    UIColor* vert = COULEUR_BORDER_CHECKBOX;
+    UIColor* fill = COULEUR_BORDER_CHECKBOX;
+    UIColor* border = COULEUR_WHITE;
     
-    //// Oval Drawing
-    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(7.5, 6.5, 30, 31)];
-    [[UIColor whiteColor] setFill];
-    [ovalPath fill];
-    [vert setStroke];
-    ovalPath.lineWidth = 1;
-    [ovalPath stroke];
+    if (self.isSelected)
+    {
+        fill = COULEUR_WHITE;
+        border = COULEUR_BORDER_CHECKBOX;
+    }
     
+    //// Rounded Rectangle Drawing
+    UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(6, 6, 30, 30) cornerRadius: 7];
+    [fill setFill];
+    [roundedRectanglePath fill];
+    [border setStroke];
+    roundedRectanglePath.lineWidth = 1;
+    [roundedRectanglePath stroke];
     
-    //// Bezier Drawing
-    UIBezierPath* bezierPath = [UIBezierPath bezierPath];
-    [bezierPath moveToPoint: CGPointMake(11.5, 20.75)];
-    [bezierPath addCurveToPoint: CGPointMake(21.03, 30.5) controlPoint1: CGPointMake(20.3, 29.75) controlPoint2: CGPointMake(21.03, 30.5)];
-    [bezierPath addLineToPoint: CGPointMake(33.5, 15.5)];
-    [[UIColor whiteColor] setFill];
-    [bezierPath fill];
-    [vert setStroke];
-    bezierPath.lineWidth = 2;
-    [bezierPath stroke];
-
+    if (self.isChecked == YES)
+    {
+        //// Bezier Drawing
+        UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+        [bezierPath moveToPoint: CGPointMake(10.5, 21.52)];
+        [bezierPath addCurveToPoint: CGPointMake(18.62, 29.53) controlPoint1: CGPointMake(19.25, 30.77) controlPoint2: CGPointMake(18.62, 29.53)];
+        [bezierPath addLineToPoint: CGPointMake(30.5, 13.5)];
+        [fill setFill];
+        [bezierPath fill];
+        [border setStroke];
+        bezierPath.lineWidth = 2;
+        [bezierPath stroke];
+    }
 }
 
 

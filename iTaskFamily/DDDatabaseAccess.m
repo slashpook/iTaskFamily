@@ -564,6 +564,7 @@
 - (NSMutableArray *)getEventsForPlayer:(Player *)player atDay:(NSString *)day
 {
     NSMutableArray *arrayEvent = [NSMutableArray array];
+    NSArray *arrayResult;
     
     if (player != nil)
     {
@@ -573,8 +574,15 @@
             if ([event.day isEqualToString:day])
                 [arrayEvent addObject:event];
         }
+        
+        NSSortDescriptor *sortDescriptorCategory = [[NSSortDescriptor alloc] initWithKey:@"task.categories.name" ascending:YES];
+        NSSortDescriptor *sortDescriptorTask = [[NSSortDescriptor alloc] initWithKey:@"task.name" ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptorCategory, sortDescriptorTask, nil];
+        
+        arrayResult = [[NSArray arrayWithArray:arrayEvent] sortedArrayUsingDescriptors:sortDescriptors];
     }
     
+    arrayEvent = [NSMutableArray arrayWithArray:arrayResult];
     return arrayEvent;
 }
 

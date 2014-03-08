@@ -22,4 +22,7 @@
 //On affiche un message de confirmation
 + (void)displayAnswerMessage:(NSString *)message withDelegate:(id<UIAlertViewDelegate>)delegate;
 
+//On affiche un message de confirmation et on modifie le tag
++ (void)displayAnswerMessage:(NSString *)message withDelegate:(id<UIAlertViewDelegate>)delegate andSetTag:(int)tagInfo;
+
 @end

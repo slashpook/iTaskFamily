@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D030BA318CB8BC900C3B95C /* DDCustomValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D030BA218CB8BC900C3B95C /* DDCustomValidation.m */; };
 		6D03B0AF184C976800399A7D /* DDPlayerMiniatureCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D03B0AE184C976800399A7D /* DDPlayerMiniatureCollectionViewCell.m */; };
 		6D03B0B7184CE77500399A7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D03B0B6184CE77500399A7D /* Main.storyboard */; };
 		6D1B756918B7AF4B000D0B12 /* DDTaskEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1B756818B7AF4B000D0B12 /* DDTaskEventViewController.m */; };
@@ -92,6 +93,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D030BA118CB8BC900C3B95C /* DDCustomValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomValidation.h; sourceTree = "<group>"; };
+		6D030BA218CB8BC900C3B95C /* DDCustomValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomValidation.m; sourceTree = "<group>"; };
 		6D03B0AD184C976800399A7D /* DDPlayerMiniatureCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPlayerMiniatureCollectionViewCell.h; sourceTree = "<group>"; };
 		6D03B0AE184C976800399A7D /* DDPlayerMiniatureCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPlayerMiniatureCollectionViewCell.m; sourceTree = "<group>"; };
 		6D03B0B6184CE77500399A7D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -253,6 +256,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D030BA018CB8BAB00C3B95C /* CustomValidation */ = {
+			isa = PBXGroup;
+			children = (
+				6D030BA118CB8BC900C3B95C /* DDCustomValidation.h */,
+				6D030BA218CB8BC900C3B95C /* DDCustomValidation.m */,
+			);
+			name = CustomValidation;
+			sourceTree = "<group>";
+		};
 		6D03B0AC184C972F00399A7D /* CustomPlayerMiniatureCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -573,6 +585,7 @@
 		6D6B3F07183CF9F9009542A8 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				6D030BA018CB8BAB00C3B95C /* CustomValidation */,
 				6D94A6CD18C601360047045C /* CustomCheckbox */,
 				6D6A1BF6184DDA4600319C71 /* Parser */,
 				6D8970F01848F55300F815CD /* CustomAlertView */,
@@ -1007,6 +1020,7 @@
 				6D1B756918B7AF4B000D0B12 /* DDTaskEventViewController.m in Sources */,
 				6DCE47BD183E08AA00D64363 /* UIImage+ImageEffects.m in Sources */,
 				6DCB2A8E18B66A0B000FDFCA /* DDOccurenceViewController.m in Sources */,
+				6D030BA318CB8BC900C3B95C /* DDCustomValidation.m in Sources */,
 				6DF00ED0184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.m in Sources */,
 				6D3A26BC18B7A1FB00545FF2 /* DDCategoriesListEventViewController.m in Sources */,
 				6D61F6631851DBB600759AFC /* DDCategorieListViewController.m in Sources */,
@@ -1095,6 +1109,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1135,6 +1150,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;

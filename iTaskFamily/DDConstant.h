@@ -40,8 +40,8 @@
 #define COULEUR_GARAGE [UIColor colorWithRed:241/255.0 green:196/255.0 blue:15/255.0 alpha:1.0]
 #define COULEUR_SALON [UIColor colorWithRed:142/255.0 green:68/255.0 blue:173/255.0 alpha:1.0]
 #define COULEUR_PLUS_UTILISE [UIColor colorWithRed:127/255.0 green:140/255.0 blue:141/255.0 alpha:1.0]
-#define COULEUR_CELL_SELECTED [UIColor colorWithRed:208/255.0 green:208/255.0 blue:208/255.0 alpha:1.0]
-#define COULEUR_BORDER_CHECKBOX [UIColor colorWithRed:36/255.0 green:199/255.0 blue:90/255.0 alpha:1.0]
+#define COULEUR_CELL_SELECTED [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1.0]
+#define COULEUR_BORDER_CHECKBOX [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1.0]
 
 
 #pragma mark - Police de l'application

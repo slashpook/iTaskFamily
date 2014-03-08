@@ -8,8 +8,8 @@
 
 #import "DDEventView.h"
 #import "DDPopOverViewController.h"
-#import "DDEventInfosViewController.h"
 #import "Player.h"
+#import "Event.h"
 
 @implementation DDEventView
 
@@ -100,6 +100,10 @@
         {
             [self.eventInfosViewController.view setHidden:NO];
             [self.eventInfosViewController getEventsForDay:self.daySelected];
+            
+            //Si on a fini la tache sélectionnée, on désactive le bouton pour modifier l'évènement
+            if ([self.eventInfosViewController.currentEvent.isFinished boolValue] == YES)
+                [[self buttonModifyEvent] setEnabled:NO];
         }
         else
         {
@@ -114,22 +118,34 @@
 //On se positionne sur le bon jour
 - (void)updatePositionOfSelectedDay
 {
+    //On met le booléen à NO pour empêcher de lancer l'animation
+    [self setMustAnimateSelectionDay:NO];
     [self onPushDayButton:[self viewWithTag:(self.daySelected.intValue +1)]];
 }
 
 //On appuie sur un des boutons
 - (IBAction)onPushDayButton:(id)sender
 {
-    [UIView animateWithDuration:0.3 animations:^{
+    //En fonction de l'état du booléen, on lance ou non une animation
+    if (self.mustAnimateSelectionDay == YES) {
+        [UIView animateWithDuration:0.3 animations:^{
+            [self.imageViewSelection setFrame:[(UIButton *)sender frame]];
+        }];
+    }
+    else
+    {
         [self.imageViewSelection setFrame:[(UIButton *)sender frame]];
-    } completion:^(BOOL finished) {
-        //On récupère le tag du bouton et on lui enlève un car la première entrée d'un tableau est 0
-        int daySelectedInNumber = ([(UIButton *)sender tag] - 1);
-        [self setDaySelected:[NSString stringWithFormat:@"%i", daySelectedInNumber]];
-        [self.eventInfosViewController getEventsForDay:self.daySelected];
-        
-        [self updateComponent];
-    }];
+        [self setMustAnimateSelectionDay:YES];
+    }
+    
+    //On met l'évènement courant à nil pour tout remettre à 0 dans la sélection
+    [self.eventInfosViewController setCurrentEvent:nil];
+    
+    //On récupère le tag du bouton et on lui enlève un car la première entrée d'un tableau est 0
+    int daySelectedInNumber = ([(UIButton *)sender tag] - 1);
+    [self setDaySelected:[NSString stringWithFormat:@"%i", daySelectedInNumber]];
+    
+    [self updateComponent];
 }
 
 //On appuie sur le bouton pour ajouter un évènement
@@ -140,7 +156,7 @@
     [self.eventManagerViewController setEventToModify:nil];
     [self.eventManagerViewController setTask:nil];
     [[self.eventManagerViewController arrayOccurence] removeAllObjects];
-    [[self.eventManagerViewController arrayOccurence] addObject:[[DDManagerSingleton instance] currentDate]];
+    [[self.eventManagerViewController arrayOccurence] addObject:[[[DDManagerSingleton instance] arrayWeek]  objectAtIndex:self.daySelected.intValue]];
     [self.eventManagerViewController updateComponent];
     
     //On ouvre la popUp
@@ -150,15 +166,21 @@
 //On appuie sur le bouton pour supprimer des évènements
 - (IBAction)onPushDeleteEventButon:(id)sender
 {
-    
+    //On met la table en mode suppression ou non en fonction de son ancien état
+    if ([self.eventInfosViewController.tableViewEvents isEditing] == false)
+        [self.eventInfosViewController.tableViewEvents setEditing:true animated:true];
+    else
+        [self.eventInfosViewController.tableViewEvents setEditing:false animated:true];
 }
 
 //On appuie sur le bouton pour modifier un évènement
 - (IBAction)onPushModifyEventButton:(id)sender
 {
     //On configure le controller
-    [self.eventManagerViewController setIsModifyEvent:NO];
-    [self.eventManagerViewController setEventToModify:nil];
+    [self.eventManagerViewController setIsModifyEvent:YES];
+    [self.eventManagerViewController setEventToModify:self.eventInfosViewController.currentEvent];
+    [[self.eventManagerViewController arrayOccurence] removeAllObjects];
+    [[self.eventManagerViewController arrayOccurence] addObject:[[[DDManagerSingleton instance] arrayWeek]  objectAtIndex:self.eventInfosViewController.currentEvent.day.intValue]];
     [self.eventManagerViewController updateComponent];
     
     //On ouvre la popUp
@@ -178,12 +200,28 @@
     [self.popOverViewController presentPopOverWithContentView:self.navigationEventManagerViewController.view andSize:frame.size andOffset:CGPointMake(0, 0)];
 }
 
+
+#pragma mark - DDEventInfosViewController Functions
+
+//On met à jour les composants en fonction de l'event choisi
+- (void)updateComponentWithEventSelected
+{
+    [self updateComponent];
+}
+
+
 #pragma mark - DDEventManagerViewController Functions
 
 - (void)closeEventManagerView
 {
     //On enlève la popUp
     [self.popOverViewController hide];
+    
+    //On met l'ancien évènement sélectionné à nil pour pouvoir rafraichir la sélection de la tableView
+    self.eventInfosViewController.currentEvent = nil;
+    
+    //On rafraichi la vue
+    [self updateComponent];
 }
 
 @end

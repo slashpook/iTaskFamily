@@ -80,6 +80,7 @@
 {
     //On récupère la référence du controller contenu dans eventView
     [self.viewEvent setEventInfosViewController:segue.destinationViewController];
+    [self.viewEvent.eventInfosViewController setDelegate:self.viewEvent];
 }
 
 

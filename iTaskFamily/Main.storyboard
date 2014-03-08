@@ -1784,11 +1784,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomEventCell" id="F01-fg-TgQ" customClass="DDCustomEventCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CustomEventCell" id="F01-fg-TgQ" customClass="DDCustomEventCell">
                                         <rect key="frame" x="0.0" y="22" width="427" height="55"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F01-fg-TgQ" id="1Rt-AS-ci6">
-                                            <rect key="frame" x="0.0" y="0.0" width="427" height="55"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f6Z-dW-MJI">
@@ -1796,50 +1796,44 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FjL-id-m6F" userLabel="ImageView - Couleur catégory">
-                                                    <rect key="frame" x="0.0" y="0.0" width="5" height="55"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Faire ses devoirs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kJV-3R-EQ3" userLabel="Label - Nom de la tache">
-                                                    <rect key="frame" x="15" y="5" width="345" height="21"/>
+                                                    <rect key="frame" x="47" y="5" width="345" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BoF-72-CPP" userLabel="ImageView - Separation">
-                                                    <rect key="frame" x="15" y="28" width="370" height="1"/>
+                                                    <rect key="frame" x="47" y="28" width="338" height="1"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Autre : 300 points" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTX-0R-4ff" userLabel="Label - Infos task">
-                                                    <rect key="frame" x="15" y="29" width="345" height="21"/>
+                                                    <rect key="frame" x="47" y="29" width="345" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="13"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xJX-IL-jvw" customClass="DDCustomCheckbox">
-                                                    <rect key="frame" x="384" y="6" width="44" height="44"/>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Xd-0j-GH0" customClass="DDCustomCheckbox">
+                                                    <rect key="frame" x="2" y="7" width="42" height="42"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <gestureRecognizers/>
                                                 </view>
                                             </subviews>
+                                            <gestureRecognizers/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="imageViewCategoryColor" destination="FjL-id-m6F" id="qZD-PI-t0M"/>
+                                            <outlet property="customCheckbox" destination="4Xd-0j-GH0" id="keU-oj-dbe"/>
                                             <outlet property="imageViewSeparation" destination="BoF-72-CPP" id="Qoi-Tq-zcW"/>
                                             <outlet property="labelInfo" destination="nTX-0R-4ff" id="mba-y9-ZNV"/>
                                             <outlet property="labelTask" destination="kJV-3R-EQ3" id="VkT-xT-D4H"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="cns-Qp-Dmo" id="kTq-hC-n4p"/>
-                                    <outlet property="delegate" destination="cns-Qp-Dmo" id="Qbn-ah-bVz"/>
-                                </connections>
                             </tableView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Faire à manger" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="407" translatesAutoresizingMaskIntoConstraints="NO" id="6Qd-rq-Aqv" userLabel="Label - Tache">
-                                <rect key="frame" x="437" y="0.0" width="407" height="54"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Faire à manger" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6Qd-rq-Aqv" userLabel="Label - Tache">
+                                <rect key="frame" x="464" y="8" width="350" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1849,37 +1843,46 @@
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hQL-9z-ayB" userLabel="ImageView - Catégorie">
-                                <rect key="frame" x="458" y="55" width="100" height="100"/>
+                                <rect key="frame" x="443" y="70" width="115" height="115"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oqB-NQ-BcN" userLabel="ImageView - Points">
-                                <rect key="frame" x="591" y="55" width="100" height="100"/>
+                                <rect key="frame" x="582" y="70" width="115" height="115"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c1r-ag-1si" userLabel="ImageView - Repetition">
-                                <rect key="frame" x="724" y="55" width="100" height="100"/>
+                                <rect key="frame" x="723" y="69" width="115" height="115"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLZ-lo-n2K" userLabel="TextView - Commentaire">
-                                <rect key="frame" x="458" y="182" width="366" height="101"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLZ-lo-n2K" userLabel="TextView - Commentaire">
+                                <rect key="frame" x="443" y="210" width="395" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Autre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Tjh-gC-WGw">
-                                <rect key="frame" x="458" y="55" width="100" height="100"/>
+                                <rect key="frame" x="451" y="69" width="99" height="115"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="28"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="300" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0Hu-eX-PDY">
-                                <rect key="frame" x="590" y="55" width="100" height="100"/>
+                                <rect key="frame" x="584" y="69" width="115" height="115"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="28"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Recursif2" translatesAutoresizingMaskIntoConstraints="NO" id="5BU-yz-RMf">
+                                <rect key="frame" x="748" y="95" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E8V-f1-YaY" customClass="DDCustomValidation">
+                                <rect key="frame" x="804" y="15" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -1888,6 +1891,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="imageViewCategory" destination="hQL-9z-ayB" id="oVe-Gd-WSS"/>
+                        <outlet property="imageViewContentRepetition" destination="5BU-yz-RMf" id="urv-eb-quo"/>
                         <outlet property="imageViewPoints" destination="oqB-NQ-BcN" id="yKf-86-SnU"/>
                         <outlet property="imageViewRepetition" destination="c1r-ag-1si" id="bhh-81-WFv"/>
                         <outlet property="imageViewSeparation" destination="KRw-cm-dCV" id="8Sj-se-MFd"/>
@@ -1896,6 +1900,7 @@
                         <outlet property="labelTask" destination="6Qd-rq-Aqv" id="vZx-uH-YwR"/>
                         <outlet property="tableViewEvents" destination="rY9-Yf-gt9" id="oSJ-bt-PJw"/>
                         <outlet property="textViewComment" destination="JLZ-lo-n2K" id="tyQ-57-q6D"/>
+                        <outlet property="viewCustomValidation" destination="E8V-f1-YaY" id="4fB-Ku-QMh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCC-fk-or9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3064,6 +3069,7 @@
         <image name="PlayerButtonRemove" width="105" height="125"/>
         <image name="PlayerManageProfil" width="267" height="267"/>
         <image name="PlayerProfil" width="350" height="350"/>
+        <image name="Recursif2" width="64" height="64"/>
         <image name="TaskButtonAdd" width="105" height="125"/>
         <image name="TaskButtonEdit" width="105" height="125"/>
         <image name="TaskButtonRemove" width="105" height="125"/>

@@ -33,4 +33,12 @@
     [alertView show];
 }
 
+//On affiche un message de confirmation et on modifie le tag
++ (void)displayAnswerMessage:(NSString *)message withDelegate:(id<UIAlertViewDelegate>)delegate andSetTag:(int)tagInfo
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:message delegate:delegate cancelButtonTitle:@"Ok" otherButtonTitles:@"Non", nil];
+    [alertView setTag:tagInfo];
+    [alertView show];
+}
+
 @end

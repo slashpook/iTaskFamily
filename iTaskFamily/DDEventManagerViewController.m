@@ -113,7 +113,7 @@
     {
         [self.custoNavBar.imageViewBackground setImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
         [self.labelTacheContent setText:self.eventToModify.task.name];
-        [self.labelDateContent setText:self.eventToModify.day];
+        [self.labelDateContent setText:[self formatOccurence]];
         [self.switchRecurrence setOn:[self.eventToModify.recurrence boolValue]];
         [self.textViewComment setText:self.eventToModify.comment];
     }
@@ -329,7 +329,7 @@
             else
             {
                 //Si l'évènement n'existe pas ou si un évènement existe déjà pour cette modification
-                if ([[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer withTaskName:self.task.name atDay:dayNumber] == nil ||([self.task.name isEqualToString:self.eventToModify.task.name] && [dayNumber isEqualToString:self.eventToModify.day]))
+                if (([[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer withTaskName:self.task.name atDay:dayNumber] == nil && ![self.task.name isEqualToString:self.eventToModify.task.name]) || ([self.task.name isEqualToString:self.eventToModify.task.name] && [dayNumber isEqualToString:self.eventToModify.day]))
                 {
                     //On supprime l'ancien évènement et on le recrée pour le mettre à jour
                     [[DDDatabaseAccess instance] deleteEvent:self.eventToModify];
@@ -346,6 +346,7 @@
     else
     {
         [DDCustomAlertView displayErrorMessage:@"Veuillez remplir les champs obligatoires pour valider l'évènement"];
+        return;
     }
 
     //On affiche un message d'info pour indiquer qu'on a crée ou modifié un évènement
