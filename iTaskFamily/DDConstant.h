@@ -42,6 +42,7 @@
 #define COULEUR_PLUS_UTILISE [UIColor colorWithRed:127/255.0 green:140/255.0 blue:141/255.0 alpha:1.0]
 #define COULEUR_CELL_SELECTED [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1.0]
 #define COULEUR_BORDER_CHECKBOX [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1.0]
+#define COULEUR_CHECKBOX [UIColor colorWithRed:44/255.0 green:62/255.0 blue:80/255.0 alpha:0.7]
 
 
 #pragma mark - Police de l'application
@@ -75,8 +76,11 @@
 #define POLICE_EVENT_TITLE [UIFont fontWithName:@"HelveticaNeue-Light" size:22.0]
 #define POLICE_EVENT_CELL [UIFont fontWithName:@"HelveticaNeue" size:17.0]
 #define POLICE_EVENT_CONTENT [UIFont fontWithName:@"HelveticaNeue" size:17.0]
-#define POLICE_EVENT_TASK_NAME [UIFont fontWithName:@"HelveticaNeue-Thin" size:18.0]
-#define POLICE_EVENT_TASK_INFO [UIFont fontWithName:@"HelveticaNeue" size:13.0]
+#define POLICE_EVENTINFOCELL_TASK [UIFont fontWithName:@"HelveticaNeue-Thin" size:18.0]
+#define POLICE_EVENTINFOCELL_POINT [UIFont fontWithName:@"HelveticaNeue" size:13.0]
+#define POLICE_EVENTINFO_TASK [UIFont fontWithName:@"HelveticaNeue-Light" size:24.0]
+#define POLICE_EVENTINFO_BULLE [UIFont fontWithName:@"HelveticaNeue-Light" size:28.0]
+#define POLICE_EVENTINFO_COMMENT [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0]
 
 
 #pragma mark - Notification

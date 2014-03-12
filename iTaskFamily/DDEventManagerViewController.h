@@ -11,6 +11,7 @@
 #import "DDCategoriesListEventViewController.h"
 #import "DDOccurenceViewController.h"
 #import "DDTaskEventViewController.h"
+#import "DDEventManagerTableViewController.h"
 
 @class Event;
 @class Task;
@@ -21,7 +22,7 @@
 
 @end
 
-@interface DDEventManagerViewController : UIViewController <DDCustomNavBarProtocol, UITextViewDelegate, DDOccurenceViewProtocol, DDTaskEventViewProtocol>
+@interface DDEventManagerViewController : UIViewController <DDCustomNavBarProtocol, UITextViewDelegate, DDOccurenceViewProtocol, DDTaskEventViewProtocol, DDEventManagerTableViewProtocol>
 
 
 #pragma mark - Variables
@@ -32,41 +33,17 @@
 //Navigation bar
 @property (strong, nonatomic) DDCustomNavigationBarController *custoNavBar;
 
-//TableView de l'évènement
-@property (weak, nonatomic) IBOutlet UITableView *tableViewElement;
+//Vue qui contient le tableViewController
+@property (weak, nonatomic) IBOutlet UIView *viewContainer;
+
+//TableView Controller de la vue de management
+@property (weak, nonatomic) DDEventManagerTableViewController *tableViewEvent;
 
 //Label titre information
 @property (weak, nonatomic) IBOutlet UILabel *labelInformation;
 
 //Label titre commentaire
 @property (weak, nonatomic) IBOutlet UILabel *labelCommentaire;
-
-//Cellule Tache
-@property (strong, nonatomic) IBOutlet UITableViewCell *cell1;
-
-//Label titre de la cellule tache
-@property (weak, nonatomic) IBOutlet UILabel *labelTacheTitre;
-
-//Label content de la cellule tache
-@property (weak, nonatomic) IBOutlet UILabel *labelTacheContent;
-
-//Cellule Date
-@property (strong, nonatomic) IBOutlet UITableViewCell *cell2;
-
-//Label titre de la cellule date
-@property (weak, nonatomic) IBOutlet UILabel *labelDateTitre;
-
-//Label content de la cellule date
-@property (weak, nonatomic) IBOutlet UILabel *labelDateContent;
-
-//Cellule Récurrence
-@property (strong, nonatomic) IBOutlet UITableViewCell *cell3;
-
-//Label titre de la cellule récurrence
-@property (weak, nonatomic) IBOutlet UILabel *labelRecurrence;
-
-//Switch de la cellule récurrence
-@property (weak, nonatomic) IBOutlet UISwitch *switchRecurrence;
 
 //TextView pour mettre des commentaires
 @property (weak, nonatomic) IBOutlet UITextView *textViewComment;

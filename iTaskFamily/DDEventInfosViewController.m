@@ -46,8 +46,13 @@
     [self.imageViewRepetition.layer setCornerRadius:10.0];
     
     //On set la police et la couleur des label et textfield
+    [self.labelTask setFont:POLICE_EVENTINFO_TASK];
+    [self.labelTask setTextColor:COULEUR_BLACK];
+    [self.labelCategory setFont:POLICE_EVENTINFO_BULLE];
     [self.labelCategory setTextColor:COULEUR_WHITE];
+    [self.labelPoint setFont:POLICE_EVENTINFO_BULLE];
     [self.labelPoint setTextColor:COULEUR_WHITE];
+    [self.textViewComment setFont:POLICE_EVENTINFO_COMMENT];
     [self.textViewComment setTextColor:COULEUR_BLACK];
     
     //On configure la tableView
@@ -177,10 +182,10 @@
     [[cell contentView] setBackgroundColor:COULEUR_TRANSPARENT];
     [cell.imageViewCategoryColor setBackgroundColor:[dictColor objectForKey:event.task.categories.name]];
     [cell.labelTask setTextColor:COULEUR_BLACK];
-    [cell.labelTask setFont:POLICE_EVENT_TASK_NAME];
+    [cell.labelTask setFont:POLICE_EVENTINFOCELL_TASK];
     [cell.labelTask setText:event.task.name];
     [cell.labelInfo setTextColor:COULEUR_BLACK];
-    [cell.labelInfo setFont:POLICE_EVENT_TASK_INFO];
+    [cell.labelInfo setFont:POLICE_EVENTINFOCELL_POINT];
     [cell.labelInfo setText:[NSString stringWithFormat:@"%@ : %i points", event.task.categories.name, [event.task.point intValue]]];
     [cell.imageViewSeparation setBackgroundColor:COULEUR_BACKGROUND];
     [cell.customCheckbox setTag:indexPath.row];

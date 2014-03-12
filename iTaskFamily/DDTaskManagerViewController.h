@@ -10,6 +10,7 @@
 
 #import "DDCustomNavigationBarController.h"
 #import "DDCategorieListViewController.h"
+#import "DDTaskManagerTableViewController.h"
 
 @class Categories;
 @class Task;
@@ -20,13 +21,16 @@
 
 @end
 
-@interface DDTaskManagerViewController : UIViewController <DDCustomNavBarProtocol, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, DDCategorieListViewProtocol>
+@interface DDTaskManagerViewController : UIViewController <DDCustomNavBarProtocol, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, DDCategorieListViewProtocol, DDTaskManagerTableViewProtocol>
 
 
 #pragma mark - Variables
 
 //Delegate de la vue
 @property (weak, nonatomic) id<DDTaskManagerViewProtocol> delegate;
+
+//TableView du controller
+@property (weak, nonatomic) DDTaskManagerTableViewController *tableViewTask;
 
 //On récupère la catégorie en cours
 @property (strong, nonatomic) Categories *currentCategory;
@@ -45,36 +49,6 @@
 
 //Label titre objectifs
 @property (weak, nonatomic) IBOutlet UILabel *labelObjectifs;
-
-//TableView des infos de la tache
-@property (weak, nonatomic) IBOutlet UITableView *tableViewTaskInfo;
-
-//First cell
-@property (strong, nonatomic) IBOutlet UITableViewCell *cell1;
-
-//Label du titre du nom de la tache
-@property (weak, nonatomic) IBOutlet UILabel *labelTitleNameTask;
-
-//TextField du nom de la tache
-@property (weak, nonatomic) IBOutlet UITextField *textFieldNameTask;
-
-//Second cell
-@property (strong, nonatomic) IBOutlet UITableViewCell *cell2;
-
-//Label du titre du nom de la catégorie
-@property (weak, nonatomic) IBOutlet UILabel *labelTitleNameCategory;
-
-//Label du nom de la catégorie
-@property (weak, nonatomic) IBOutlet UILabel *labelNameCategory;
-
-//Last cell
-@property (strong, nonatomic) IBOutlet UITableViewCell *cell3;
-
-//Label du titre du nombre de point
-@property (weak, nonatomic) IBOutlet UILabel *labelTitlePoint;
-
-//Label du nombre de point
-@property (weak, nonatomic) IBOutlet UITextField *textFieldPoint;
 
 //TextField des réalisations de bronze
 @property (weak, nonatomic) IBOutlet UITextField *textFieldBronze;

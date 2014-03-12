@@ -47,21 +47,21 @@
     [[self labelInformation] setTextColor:COULEUR_BLACK];
     [[self labelCommentaire] setFont:POLICE_EVENT_TITLE];
     [[self labelCommentaire] setTextColor:COULEUR_BLACK];
-    [[self labelTacheTitre] setFont:POLICE_EVENT_CELL];
-    [[self labelTacheTitre] setTextColor:COULEUR_BLACK];
-    [[self labelTacheContent] setFont:POLICE_EVENT_CELL];
-    [[self labelTacheContent] setTextColor:COULEUR_BLACK];
-    [[self labelDateTitre] setFont:POLICE_EVENT_CELL];
-    [[self labelDateTitre] setTextColor:COULEUR_BLACK];
-    [[self labelDateContent] setFont:POLICE_EVENT_CELL];
-    [[self labelDateContent] setTextColor:COULEUR_BLACK];
-    [[self labelRecurrence] setFont:POLICE_EVENT_CELL];
-    [[self labelRecurrence] setTextColor:COULEUR_BLACK];
+    [[self.tableViewEvent labelTacheTitre] setFont:POLICE_EVENT_CELL];
+    [[self.tableViewEvent labelTacheTitre] setTextColor:COULEUR_BLACK];
+    [[self.tableViewEvent labelTacheContent] setFont:POLICE_EVENT_CELL];
+    [[self.tableViewEvent labelTacheContent] setTextColor:COULEUR_BLACK];
+    [[self.tableViewEvent labelDateTitre] setFont:POLICE_EVENT_CELL];
+    [[self.tableViewEvent labelDateTitre] setTextColor:COULEUR_BLACK];
+    [[self.tableViewEvent labelDateContent] setFont:POLICE_EVENT_CELL];
+    [[self.tableViewEvent labelDateContent] setTextColor:COULEUR_BLACK];
+    [[self.tableViewEvent labelRecurrence] setFont:POLICE_EVENT_CELL];
+    [[self.tableViewEvent labelRecurrence] setTextColor:COULEUR_BLACK];
     [[self textViewComment] setFont:POLICE_EVENT_CELL];
     [[self textViewComment] setTextColor:COULEUR_BLACK];
     
     //On configure la couleur de teinte des switchs
-    [self.switchRecurrence setOnTintColor:COULEUR_HOME];
+    [self.tableViewEvent.switchRecurrence setOnTintColor:COULEUR_HOME];
     
     //On configure les delegate
     [self.textViewComment setDelegate:self];
@@ -83,15 +83,16 @@
     [self updateComponent];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [self.tableViewElement reloadData];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [self setTableViewEvent:segue.destinationViewController];
+    [self.tableViewEvent setDelegate:self];
 }
 
 
@@ -104,17 +105,17 @@
     if ([self isModifyEvent] == NO)
     {
         [self.custoNavBar.imageViewBackground setImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
-        [self.labelTacheContent setText:self.task.name];
-        [self.labelDateContent setText:[self formatOccurence]];
-        [self.switchRecurrence setOn:YES];
+        [self.tableViewEvent.labelTacheContent setText:self.task.name];
+        [self.tableViewEvent.labelDateContent setText:[self formatOccurence]];
+        [self.tableViewEvent.switchRecurrence setOn:YES];
         [self.textViewComment setText:@""];
     }
     else
     {
         [self.custoNavBar.imageViewBackground setImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
-        [self.labelTacheContent setText:self.eventToModify.task.name];
-        [self.labelDateContent setText:[self formatOccurence]];
-        [self.switchRecurrence setOn:[self.eventToModify.recurrence boolValue]];
+        [self.tableViewEvent.labelTacheContent setText:self.eventToModify.task.name];
+        [self.tableViewEvent.labelDateContent setText:[self formatOccurence]];
+        [self.tableViewEvent.switchRecurrence setOn:[self.eventToModify.recurrence boolValue]];
         [self.textViewComment setText:self.eventToModify.comment];
     }
 }
@@ -177,14 +178,14 @@
     
     //On crée une duplication de la tache et on le set à l'évènment
     Task *task = [NSEntityDescription
-                    insertNewObjectForEntityForName:@"Task"
-                    inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+                  insertNewObjectForEntityForName:@"Task"
+                  inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
     [task setTaskWithTask:self.task];
     
     //On met à jour les infos sur l'évènement
     [event setTask:task];
     [event setDay:dayNumber];
-    [event setRecurrence:[NSNumber numberWithBool:self.switchRecurrence.isOn]];
+    [event setRecurrence:[NSNumber numberWithBool:self.tableViewEvent.switchRecurrence.isOn]];
     [event setComment:self.textViewComment.text];
     
     //On récupère la tache stockée dans la catégorie et on met à jour son historique
@@ -213,36 +214,22 @@
 }
 
 
-#pragma mark Delegate Table View
+#pragma mark Fonctions de DDOccurenceViewProtocol
 
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+-(void)saveOccurencewithArray:(NSMutableArray *)arrayOccurence
 {
-    return 3;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell;
-    switch (indexPath.row)
-    {
-        case 0:
-            cell = self.cell1;
-            break;
-        case 1:
-        {
-            cell = self.cell2;
-            break;
-        }
-        case 2:
-            cell = self.cell3;
-    }
+    //On met à jour le tableau des jours sélectionnés
+    [self setArrayOccurence:arrayOccurence];
     
-    return cell;
+    //On met à jour les composants
+    [self updateComponent];
 }
+
+
+#pragma mark DDEventManagerTableView Protocol fonctions
 
 //On sélectionne la cellule
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)cellSelectedAtIndexPath:(NSIndexPath *)indexPath
 {
     //Si on a sélectionné la vue de sélection de tache
     if (indexPath.row == 0)
@@ -272,18 +259,6 @@
 }
 
 
-#pragma mark Fonctions de DDOccurenceViewProtocol
-
--(void)saveOccurencewithArray:(NSMutableArray *)arrayOccurence
-{
-    //On met à jour le tableau des jours sélectionnés
-    [self setArrayOccurence:arrayOccurence];
-    
-    //On met à jour les composants
-    [self updateComponent];
-}
-
-
 #pragma mark - NavigationBar fonctions
 
 //On appuie sur le bouton de gauche
@@ -297,7 +272,7 @@
 - (void)onPushRightBarButton
 {
     //On teste d'abord si tous les champs obligatoires sont remplis
-    if ([self.labelTacheContent.text length] > 0 && [self.arrayOccurence count] > 0)
+    if ([self.tableViewEvent.labelTacheContent.text length] > 0 && [self.arrayOccurence count] > 0)
     {
         Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
         NSMutableArray *arrayEvent;
@@ -348,7 +323,7 @@
         [DDCustomAlertView displayErrorMessage:@"Veuillez remplir les champs obligatoires pour valider l'évènement"];
         return;
     }
-
+    
     //On affiche un message d'info pour indiquer qu'on a crée ou modifié un évènement
     if (self.isModifyEvent == NO)
     {

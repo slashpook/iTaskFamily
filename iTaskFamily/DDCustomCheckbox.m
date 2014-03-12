@@ -24,8 +24,9 @@
     [self setBackgroundColor:[UIColor clearColor]];
     
     //// Color Declarations
-    UIColor* fill = COULEUR_BORDER_CHECKBOX;
-    UIColor* border = COULEUR_WHITE;
+    UIColor *fill = COULEUR_BORDER_CHECKBOX;
+    UIColor *border = COULEUR_WHITE;
+    UIColor *check = COULEUR_CHECKBOX;
     
     if (self.isSelected)
     {
@@ -50,7 +51,7 @@
         [bezierPath addLineToPoint: CGPointMake(30.5, 13.5)];
         [fill setFill];
         [bezierPath fill];
-        [border setStroke];
+        [check setStroke];
         bezierPath.lineWidth = 2;
         [bezierPath stroke];
     }

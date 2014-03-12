@@ -52,20 +52,20 @@
     [[self labelInformations] setTextColor:COULEUR_BLACK];
     [[self labelObjectifs] setFont:POLICE_TASK_TITLE];
     [[self labelObjectifs] setTextColor:COULEUR_BLACK];
-    [[self labelTitleNameTask] setFont:POLICE_TASK_CELL];
-    [[self labelTitleNameTask] setTextColor:COULEUR_BLACK];
-    [[self textFieldNameTask] setFont:POLICE_TASK_CELL];
-    [[self textFieldNameTask] setTextColor:COULEUR_BLACK];
-    [[self labelTitleNameCategory] setFont:POLICE_TASK_CELL];
-    [[self labelTitleNameCategory] setTextColor:COULEUR_BLACK];
-    [[self labelNameCategory] setFont:POLICE_TASK_CELL];
-    [[self labelNameCategory] setTextColor:COULEUR_BLACK];
-    [[self labelTitlePoint] setFont:POLICE_TASK_CELL];
-    [[self labelTitlePoint] setTextColor:COULEUR_BLACK];
-    [[self textFieldPoint].layer setCornerRadius:5.0];
-    [[self textFieldPoint].layer setMasksToBounds:YES];
-    [[self textFieldPoint] setFont:POLICE_TASK_CELL];
-    [[self textFieldPoint] setTextColor:COULEUR_BLACK];
+    [[self.tableViewTask labelTitleNameTask] setFont:POLICE_TASK_CELL];
+    [[self.tableViewTask labelTitleNameTask] setTextColor:COULEUR_BLACK];
+    [[self.tableViewTask textFieldNameTask] setFont:POLICE_TASK_CELL];
+    [[self.tableViewTask textFieldNameTask] setTextColor:COULEUR_BLACK];
+    [[self.tableViewTask labelTitleNameCategory] setFont:POLICE_TASK_CELL];
+    [[self.tableViewTask labelTitleNameCategory] setTextColor:COULEUR_BLACK];
+    [[self.tableViewTask labelNameCategory] setFont:POLICE_TASK_CELL];
+    [[self.tableViewTask labelNameCategory] setTextColor:COULEUR_BLACK];
+    [[self.tableViewTask labelTitlePoint] setFont:POLICE_TASK_CELL];
+    [[self.tableViewTask labelTitlePoint] setTextColor:COULEUR_BLACK];
+    [[self.tableViewTask textFieldPoint].layer setCornerRadius:5.0];
+    [[self.tableViewTask textFieldPoint].layer setMasksToBounds:YES];
+    [[self.tableViewTask textFieldPoint] setFont:POLICE_TASK_CELL];
+    [[self.tableViewTask textFieldPoint] setTextColor:COULEUR_BLACK];
     
     //On configure les imageView des réalisations
     [self.textFieldBronze.layer setCornerRadius:5.0];
@@ -87,7 +87,13 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.tableViewTaskInfo reloadData];
+    [self.tableViewTask.labelNameCategory setText:self.currentCategory.name];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [self setTableViewTask:segue.destinationViewController];
+    [self.tableViewTask setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -106,9 +112,9 @@
     if ([self isModifyTask] == NO)
     {
         [self.custoNavBar.imageViewBackground setImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
-        [self.textFieldNameTask setText:@""];
-        [self.labelNameCategory setText:self.currentCategory.name];
-        [self.textFieldPoint setText:@"0"];
+        [self.tableViewTask.textFieldNameTask setText:@""];
+        [self.tableViewTask.labelNameCategory setText:self.currentCategory.name];
+        [self.tableViewTask.textFieldPoint setText:@"0"];
         [self.textFieldBronze setText:@"0"];
         [self.textFieldArgent setText:@"0"];
         [self.textFieldOr setText:@"0"];
@@ -116,9 +122,9 @@
     else
     {
         [self.custoNavBar.imageViewBackground setImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
-        [self.textFieldNameTask setText:self.task.name];
-        [self.labelNameCategory setText:self.currentCategory.name];
-        [self.textFieldPoint setText:[NSString stringWithFormat:@"%i",self.task.point.intValue]];
+        [self.tableViewTask.textFieldNameTask setText:self.task.name];
+        [self.tableViewTask.labelNameCategory setText:self.currentCategory.name];
+        [self.tableViewTask.textFieldPoint setText:[NSString stringWithFormat:@"%i",self.task.point.intValue]];
         
         //On boucle sur les réalisations de la tache pour les mettres à jour
         for (Realisation *realisation in self.task.realisation)
@@ -136,7 +142,7 @@
 //Teste si tous les champs sont remplies
 - (Boolean)isFieldsEmpty
 {
-    if (self.currentCategory != nil && [[self.textFieldNameTask text] length] != 0 && [self.textFieldPoint.text length] != 0 && [self.textFieldBronze.text length] != 0 &&  [self.textFieldArgent.text length] != 0 && [self.textFieldOr.text length] != 0)
+    if (self.currentCategory != nil && [[self.tableViewTask.textFieldNameTask text] length] != 0 && [self.tableViewTask.textFieldPoint.text length] != 0 && [self.textFieldBronze.text length] != 0 &&  [self.textFieldArgent.text length] != 0 && [self.textFieldOr.text length] != 0)
         return NO;
     else
         return YES;
@@ -145,7 +151,7 @@
 //On teste si le texte rentré est un chiffre
 - (BOOL)textIsNumeric
 {
-    if ([[self.textFieldPoint text] rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location == NSNotFound && [[self.textFieldBronze text] rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location == NSNotFound && [[self.textFieldArgent text] rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location == NSNotFound && [[self.textFieldOr text] rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location == NSNotFound)
+    if ([[self.tableViewTask.textFieldPoint text] rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location == NSNotFound && [[self.textFieldBronze text] rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location == NSNotFound && [[self.textFieldArgent text] rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location == NSNotFound && [[self.textFieldOr text] rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location == NSNotFound)
         return YES;
     else
         return NO;
@@ -191,8 +197,8 @@
                  inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
     
     //On set le nom et le point des taches
-    [self.task setName:self.textFieldNameTask.text];
-    [self.task setPoint:[NSNumber numberWithInt:self.textFieldPoint.text.intValue]];
+    [self.task setName:self.tableViewTask.textFieldNameTask.text];
+    [self.task setPoint:[NSNumber numberWithInt:self.tableViewTask.textFieldPoint.text.intValue]];
     
     //On crée les trophées
     Realisation *realisationBronze = [NSEntityDescription
@@ -238,8 +244,8 @@
     NSString *oldTaskName = self.task.name;
     
     //On met à jour la tache
-    [self.task setName:self.textFieldNameTask.text];
-    [self.task setPoint:[NSNumber numberWithInt:[self.textFieldPoint.text intValue]]];
+    [self.task setName:self.tableViewTask.textFieldNameTask.text];
+    [self.task setPoint:[NSNumber numberWithInt:[self.tableViewTask.textFieldPoint.text intValue]]];
     
     //On boucle sur les réalisations de la tache pour les mettres à jour
     for (Realisation *realisation in self.task.realisation)
@@ -280,37 +286,11 @@
 }
 
 
-#pragma mark Delegate Table View
+#pragma mark DDTaskEventTableViewProtocol fonctions
 
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 3;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell;
-    switch (indexPath.row)
-    {
-        case 0:
-            cell = self.cell1;
-            break;
-        case 1:
-        {
-            cell = self.cell2;
-            [self.labelNameCategory setText:self.currentCategory.name];
-            break;
-        }
-        case 2:
-            cell = self.cell3;
-    }
-    
-    return cell;
-}
 
 //On sélectionne la cellule
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)cellSelectedAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 1)
     {
@@ -364,7 +344,7 @@
                 if (self.isModifyTask == false)
                 {
                     //On fait les tests sur la tache
-                    if ([[DDDatabaseAccess instance] taskExistWithName:self.textFieldNameTask.text] == YES)
+                    if ([[DDDatabaseAccess instance] taskExistWithName:self.tableViewTask.textFieldNameTask.text] == YES)
                     {
                         [DDCustomAlertView displayErrorMessage:@"Une autre tache porte déjà ce nom!"];
                         return;
@@ -377,7 +357,7 @@
                 else
                 {
                     //On fait les tests sur la tache
-                    if ([[DDDatabaseAccess instance] taskExistWithName:self.textFieldNameTask.text] == YES && [self.task.name isEqualToString:self.textFieldNameTask.text] == NO)
+                    if ([[DDDatabaseAccess instance] taskExistWithName:self.tableViewTask.textFieldNameTask.text] == YES && [self.task.name isEqualToString:self.tableViewTask.textFieldNameTask.text] == NO)
                     {
                         [DDCustomAlertView displayErrorMessage:@"Une autre tache porte déjà ce nom!"];
                         return;
@@ -405,7 +385,7 @@
 {
     //On met à jour la catégorie en cours et on change le texte
     [self setCurrentCategory:categorie];
-    [self.labelNameCategory setText:categorie.name];
+    [self.tableViewTask.labelNameCategory setText:categorie.name];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

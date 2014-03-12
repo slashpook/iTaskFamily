@@ -12,6 +12,7 @@
 		6D03B0B7184CE77500399A7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D03B0B6184CE77500399A7D /* Main.storyboard */; };
 		6D1B756918B7AF4B000D0B12 /* DDTaskEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1B756818B7AF4B000D0B12 /* DDTaskEventViewController.m */; };
 		6D29FC00184282C90059AA35 /* DDEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D29FBFF184282C90059AA35 /* DDEventView.m */; };
+		6D2E618318D0E976001A971B /* DDEventManagerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E618218D0E976001A971B /* DDEventManagerTableViewController.m */; };
 		6D32CAE7189B9FCC00FD2B3F /* DDPodiumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D32CAE6189B9FCC00FD2B3F /* DDPodiumViewController.m */; };
 		6D32CAEB189BDBEB00FD2B3F /* DDHistogramView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D32CAEA189BDBEB00FD2B3F /* DDHistogramView.m */; };
 		6D32CAF0189BFF1200FD2B3F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D32CAEF189BFF1200FD2B3F /* Images.xcassets */; };
@@ -64,6 +65,7 @@
 		6D94A6D018C601620047045C /* DDCustomCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D94A6CF18C601620047045C /* DDCustomCheckbox.m */; };
 		6D9B323E183F60A60038D7DB /* DDMeteoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B323D183F60A60038D7DB /* DDMeteoView.m */; };
 		6D9B3242183F99860038D7DB /* DDWeatherInfos.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3241183F99860038D7DB /* DDWeatherInfos.m */; };
+		6DAE048418D086E100F6765E /* DDCustomNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAE048318D086E100F6765E /* DDCustomNotification.m */; };
 		6DC986F6185092A200A5A65F /* DDCustomProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC986F5185092A200A5A65F /* DDCustomProgressBar.m */; };
 		6DC986FA1850E89B00A5A65F /* DDTaskManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC986F91850E89B00A5A65F /* DDTaskManagerViewController.m */; };
 		6DCB2A8A18B6177B000FDFCA /* DDEventManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB2A8918B6177B000FDFCA /* DDEventManagerViewController.m */; };
@@ -75,6 +77,7 @@
 		6DCE47C3183E12FF00D64363 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DCE47C2183E12FF00D64363 /* Accelerate.framework */; };
 		6DDAE5D6184CFBFF00B6DA70 /* DDTrophyRootCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDAE5D5184CFBFF00B6DA70 /* DDTrophyRootCell.m */; };
 		6DDAE5D8184CFE2200B6DA70 /* Data.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6DDAE5D7184CFE2200B6DA70 /* Data.xml */; };
+		6DED092A18D0EE50004F2F3D /* DDTaskManagerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DED092918D0EE50004F2F3D /* DDTaskManagerTableViewController.m */; };
 		6DF00ECC184F416800F8F3C5 /* DDPlayerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF00ECB184F416800F8F3C5 /* DDPlayerListViewController.m */; };
 		6DF00ED0184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF00ECF184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.m */; };
 		6DF00ED4184F8DE100F8F3C5 /* DDTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF00ED3184F8DE100F8F3C5 /* DDTaskViewController.m */; };
@@ -102,6 +105,8 @@
 		6D1B756818B7AF4B000D0B12 /* DDTaskEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTaskEventViewController.m; sourceTree = "<group>"; };
 		6D29FBFE184282C90059AA35 /* DDEventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDEventView.h; sourceTree = "<group>"; };
 		6D29FBFF184282C90059AA35 /* DDEventView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDEventView.m; sourceTree = "<group>"; };
+		6D2E618118D0E976001A971B /* DDEventManagerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDEventManagerTableViewController.h; sourceTree = "<group>"; };
+		6D2E618218D0E976001A971B /* DDEventManagerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDEventManagerTableViewController.m; sourceTree = "<group>"; };
 		6D32CAE5189B9FCC00FD2B3F /* DDPodiumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPodiumViewController.h; sourceTree = "<group>"; };
 		6D32CAE6189B9FCC00FD2B3F /* DDPodiumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPodiumViewController.m; sourceTree = "<group>"; };
 		6D32CAE9189BDBEB00FD2B3F /* DDHistogramView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHistogramView.h; sourceTree = "<group>"; };
@@ -198,6 +203,8 @@
 		6D9B323D183F60A60038D7DB /* DDMeteoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMeteoView.m; sourceTree = "<group>"; };
 		6D9B3240183F99860038D7DB /* DDWeatherInfos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDWeatherInfos.h; sourceTree = "<group>"; };
 		6D9B3241183F99860038D7DB /* DDWeatherInfos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDWeatherInfos.m; sourceTree = "<group>"; };
+		6DAE048218D086E100F6765E /* DDCustomNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomNotification.h; sourceTree = "<group>"; };
+		6DAE048318D086E100F6765E /* DDCustomNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomNotification.m; sourceTree = "<group>"; };
 		6DC986F4185092A200A5A65F /* DDCustomProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomProgressBar.h; sourceTree = "<group>"; };
 		6DC986F5185092A200A5A65F /* DDCustomProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomProgressBar.m; sourceTree = "<group>"; };
 		6DC986F81850E89B00A5A65F /* DDTaskManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTaskManagerViewController.h; sourceTree = "<group>"; };
@@ -218,6 +225,8 @@
 		6DDAE5D4184CFBFF00B6DA70 /* DDTrophyRootCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTrophyRootCell.h; sourceTree = "<group>"; };
 		6DDAE5D5184CFBFF00B6DA70 /* DDTrophyRootCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTrophyRootCell.m; sourceTree = "<group>"; };
 		6DDAE5D7184CFE2200B6DA70 /* Data.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Data.xml; sourceTree = "<group>"; };
+		6DED092818D0EE50004F2F3D /* DDTaskManagerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTaskManagerTableViewController.h; sourceTree = "<group>"; };
+		6DED092918D0EE50004F2F3D /* DDTaskManagerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTaskManagerTableViewController.m; sourceTree = "<group>"; };
 		6DF00ECA184F416800F8F3C5 /* DDPlayerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPlayerListViewController.h; sourceTree = "<group>"; };
 		6DF00ECB184F416800F8F3C5 /* DDPlayerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPlayerListViewController.m; sourceTree = "<group>"; };
 		6DF00ECE184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomPlayerListCollectionViewCell.h; sourceTree = "<group>"; };
@@ -290,6 +299,15 @@
 				6D29FBFF184282C90059AA35 /* DDEventView.m */,
 			);
 			name = EventView;
+			sourceTree = "<group>";
+		};
+		6D2E618018D0E95A001A971B /* EventManagerTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6D2E618118D0E976001A971B /* DDEventManagerTableViewController.h */,
+				6D2E618218D0E976001A971B /* DDEventManagerTableViewController.m */,
+			);
+			name = EventManagerTableViewController;
 			sourceTree = "<group>";
 		};
 		6D32CAE8189BDBC700FD2B3F /* HitogramView */ = {
@@ -585,6 +603,7 @@
 		6D6B3F07183CF9F9009542A8 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				6DAE048118D086CC00F6765E /* CustomNotification */,
 				6D030BA018CB8BAB00C3B95C /* CustomValidation */,
 				6D94A6CD18C601360047045C /* CustomCheckbox */,
 				6D6A1BF6184DDA4600319C71 /* Parser */,
@@ -754,6 +773,15 @@
 			name = Weather;
 			sourceTree = "<group>";
 		};
+		6DAE048118D086CC00F6765E /* CustomNotification */ = {
+			isa = PBXGroup;
+			children = (
+				6DAE048218D086E100F6765E /* DDCustomNotification.h */,
+				6DAE048318D086E100F6765E /* DDCustomNotification.m */,
+			);
+			name = CustomNotification;
+			sourceTree = "<group>";
+		};
 		6DBB44AD189B9CCD00A5AD66 /* PodiumViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -775,6 +803,7 @@
 		6DC986F71850E88800A5A65F /* TaskManagerViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6DED092718D0EE28004F2F3D /* TaskManagerViewController */,
 				6D61F6601851DB9E00759AFC /* CategorieListViewController */,
 				6DC986F81850E89B00A5A65F /* DDTaskManagerViewController.h */,
 				6DC986F91850E89B00A5A65F /* DDTaskManagerViewController.m */,
@@ -785,6 +814,7 @@
 		6DCB2A8718B6175B000FDFCA /* EventManagerViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6D2E618018D0E95A001A971B /* EventManagerTableViewController */,
 				6D3A26B918B7A1DF00545FF2 /* CategoryEventViewController */,
 				6DCB2A8B18B669F5000FDFCA /* OccurenceViewController */,
 				6DCB2A8818B6177B000FDFCA /* DDEventManagerViewController.h */,
@@ -845,6 +875,15 @@
 				6DDAE5D5184CFBFF00B6DA70 /* DDTrophyRootCell.m */,
 			);
 			name = CustomTrophyRootCell;
+			sourceTree = "<group>";
+		};
+		6DED092718D0EE28004F2F3D /* TaskManagerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6DED092818D0EE50004F2F3D /* DDTaskManagerTableViewController.h */,
+				6DED092918D0EE50004F2F3D /* DDTaskManagerTableViewController.m */,
+			);
+			name = TaskManagerViewController;
 			sourceTree = "<group>";
 		};
 		6DF00EC9184F413C00F8F3C5 /* PlayerListViewController */ = {
@@ -938,7 +977,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = DD;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Damien DELES";
 				TargetAttributes = {
 					6D6B3EE5183CF75C009542A8 = {
@@ -994,6 +1033,7 @@
 			files = (
 				6D9B3242183F99860038D7DB /* DDWeatherInfos.m in Sources */,
 				6D8970EF1848F1AB00F815CD /* DDDatabaseAccess.m in Sources */,
+				6DED092A18D0EE50004F2F3D /* DDTaskManagerTableViewController.m in Sources */,
 				6D03B0AF184C976800399A7D /* DDPlayerMiniatureCollectionViewCell.m in Sources */,
 				6D33D7391855BBA4001E1B3A /* Trophy.m in Sources */,
 				6D7E2812189F8FAB00BCBA9F /* DDAwardViewController.m in Sources */,
@@ -1007,6 +1047,7 @@
 				6D8970F31848F56B00F815CD /* DDCustomAlertView.m in Sources */,
 				6D33D7461855D27F001E1B3A /* DDRootPodiumViewController.m in Sources */,
 				6D6B3F16183D28D8009542A8 /* DDHomeViewController.m in Sources */,
+				6DAE048418D086E100F6765E /* DDCustomNotification.m in Sources */,
 				6D62E88518479AD500D376FA /* DDCustomNavigationBarController.m in Sources */,
 				6D6B3EDF183CF75B009542A8 /* DDRootViewController.m in Sources */,
 				6D33D73F1855BBA4001E1B3A /* Event.m in Sources */,
@@ -1020,6 +1061,7 @@
 				6D1B756918B7AF4B000D0B12 /* DDTaskEventViewController.m in Sources */,
 				6DCE47BD183E08AA00D64363 /* UIImage+ImageEffects.m in Sources */,
 				6DCB2A8E18B66A0B000FDFCA /* DDOccurenceViewController.m in Sources */,
+				6D2E618318D0E976001A971B /* DDEventManagerTableViewController.m in Sources */,
 				6D030BA318CB8BC900C3B95C /* DDCustomValidation.m in Sources */,
 				6DF00ED0184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.m in Sources */,
 				6D3A26BC18B7A1FB00545FF2 /* DDCategoriesListEventViewController.m in Sources */,
@@ -1096,7 +1138,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1137,7 +1178,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1199,7 +1239,6 @@
 		6D6B3EFB183CF75C009542A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iTaskFamily.app/iTaskFamily";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1222,7 +1261,6 @@
 		6D6B3EFC183CF75C009542A8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iTaskFamily.app/iTaskFamily";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
