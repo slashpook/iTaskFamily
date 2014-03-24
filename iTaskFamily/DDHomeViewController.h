@@ -13,6 +13,7 @@
 @class DDMeteoView;
 @class DDEventView;
 @class DDMenuView;
+@class DDCustomNotification;
 
 @interface DDHomeViewController : UIViewController
 
@@ -33,6 +34,30 @@
 
 //Page control de la vue de joueur
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControlPlayer;
+
+//View notification Lundi
+@property (weak, nonatomic) IBOutlet DDCustomNotification *viewNotificationLundi;
+
+//View notification Mardi
+@property (weak, nonatomic) IBOutlet DDCustomNotification *viewNotificationMardi;
+
+//View notification Mercredi
+@property (weak, nonatomic) IBOutlet DDCustomNotification *viewNotificationMercredi;
+
+//View notification Jeudi
+@property (weak, nonatomic) IBOutlet DDCustomNotification *viewNotificationJeudi;
+
+//View notification Vendredi
+@property (weak, nonatomic) IBOutlet DDCustomNotification *viewNotificationVendredi;
+
+//View notification Samedi
+@property (weak, nonatomic) IBOutlet DDCustomNotification *viewNotificationSamedi;
+
+//View notification Dimanche
+@property (weak, nonatomic) IBOutlet DDCustomNotification *viewNotificationDimanche;
+
+//Tableau pour stocker toutes les notification et le manipuler plus facilement
+@property (strong, nonatomic) NSArray *arrayWeekNotification;
 
 
 #pragma mark - Fonctions

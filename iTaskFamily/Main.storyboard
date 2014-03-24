@@ -841,38 +841,38 @@
                                 <color key="pageIndicatorTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="currentPageIndicatorTintColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWb-2M-jOq" customClass="DDCustomNotification">
-                                <rect key="frame" x="173" y="346" width="25" height="25"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RdW-FA-WQi" userLabel="Custom Notification - Lundi" customClass="DDCustomNotification">
+                                <rect key="frame" x="80" y="338" width="41" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RdW-FA-WQi" customClass="DDCustomNotification">
-                                <rect key="frame" x="88" y="346" width="25" height="25"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWb-2M-jOq" userLabel="Custom Notification - Mardi" customClass="DDCustomNotification">
+                                <rect key="frame" x="165" y="338" width="41" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QrX-a5-1Lz" customClass="DDCustomNotification">
-                                <rect key="frame" x="258" y="346" width="25" height="25"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QrX-a5-1Lz" userLabel="Custom Notification - Mercredi" customClass="DDCustomNotification">
+                                <rect key="frame" x="250" y="338" width="41" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2z6-vx-GuZ" customClass="DDCustomNotification">
-                                <rect key="frame" x="343" y="346" width="25" height="25"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2z6-vx-GuZ" userLabel="Custom Notification - Jeudi" customClass="DDCustomNotification">
+                                <rect key="frame" x="335" y="338" width="41" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mEq-Ga-8L5" customClass="DDCustomNotification">
-                                <rect key="frame" x="428" y="346" width="25" height="25"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mEq-Ga-8L5" userLabel="Custom Notification - Vendredi" customClass="DDCustomNotification">
+                                <rect key="frame" x="420" y="338" width="41" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uYj-IJ-FSB" customClass="DDCustomNotification">
-                                <rect key="frame" x="513" y="346" width="25" height="25"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uYj-IJ-FSB" userLabel="Custom Notification - Samedi" customClass="DDCustomNotification">
+                                <rect key="frame" x="505" y="338" width="41" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oXe-cq-geF" customClass="DDCustomNotification">
-                                <rect key="frame" x="598" y="346" width="25" height="25"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oXe-cq-geF" userLabel="Custom Notification - Dimanche" customClass="DDCustomNotification">
+                                <rect key="frame" x="590" y="338" width="41" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -903,6 +903,13 @@
                         <outlet property="viewDate" destination="QYW-iF-6pV" id="eUc-WA-PmQ"/>
                         <outlet property="viewEvent" destination="y4P-vS-qVT" id="QyO-d5-oW9"/>
                         <outlet property="viewMeteo" destination="qCn-oZ-CVr" id="awt-Mu-Kni"/>
+                        <outlet property="viewNotificationDimanche" destination="oXe-cq-geF" id="MaT-Ux-qHf"/>
+                        <outlet property="viewNotificationJeudi" destination="2z6-vx-GuZ" id="csU-JY-wzD"/>
+                        <outlet property="viewNotificationLundi" destination="RdW-FA-WQi" id="7a7-p0-yYE"/>
+                        <outlet property="viewNotificationMardi" destination="yWb-2M-jOq" id="sOS-mB-Vfj"/>
+                        <outlet property="viewNotificationMercredi" destination="QrX-a5-1Lz" id="FYa-pd-AUA"/>
+                        <outlet property="viewNotificationSamedi" destination="uYj-IJ-FSB" id="RCd-qb-Uhk"/>
+                        <outlet property="viewNotificationVendredi" destination="mEq-Ga-8L5" id="3WK-Be-lOH"/>
                         <outlet property="viewPlayer" destination="5kf-DG-coE" id="8AE-e3-qup"/>
                     </connections>
                 </viewController>

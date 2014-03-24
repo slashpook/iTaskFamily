@@ -586,6 +586,24 @@
     return arrayEvent;
 }
 
+//On récupère le nombre d'évènement non terminés du joueur pour une date donnée
+- (int)getCountOfEventsUnfinishedForPlayer:(Player *)player atDay:(NSString *)day
+{
+    int compteur = 0;
+    
+    if (player != nil)
+    {
+        //On boucle sur les events du joueur pour trouver les éventuels events non terminés
+        for (Event *event in [player.events allObjects])
+        {
+            if ([event.day isEqualToString:day] && [event.isFinished boolValue] == NO)
+                compteur ++;
+        }
+    }
+    
+    return compteur;
+}
+
 //On récupère les event lié à la tache pour un joueur donnée
 - (NSMutableArray *)getEventsForPlayer:(Player *)player withTaskName:(NSString *)taskName
 {

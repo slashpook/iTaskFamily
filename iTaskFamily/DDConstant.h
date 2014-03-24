@@ -24,6 +24,7 @@
 #define COULEUR_TRANSPARENT_BLACK_FONCE [UIColor colorWithRed:0 green:0 blue:0 alpha:0.9]
 #define COULEUR_TRANSPARENT [UIColor colorWithRed:0 green:0 blue:0 alpha:0]
 #define COULEUR_BACKGROUND [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0]
+#define COULEUR_NOTIFICATION [UIColor colorWithRed:254/255.0 green:12/255.0 blue:18/255.0 alpha: 1]
 #define COULEUR_HOME [UIColor colorWithRed:56/255.0 green:143/255.0 blue:218/255.0 alpha:1.0]
 #define COULEUR_PLAYER [UIColor colorWithRed:36/255.0 green:199/255.0 blue:90/255.0 alpha:1.0]
 #define COULEUR_TASK [UIColor colorWithRed:240/255.0 green:139/255.0 blue:0/255.0 alpha:1.0]
@@ -49,6 +50,7 @@
 
 #define POLICE_HEADER [UIFont fontWithName:@"HelveticaNeue" size:35.0]
 #define POLICE_TITLE [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0]
+#define POLICE_NOTIFICATION [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]
 #define POLICE_DATE_BIG [UIFont fontWithName:@"HelveticaNeue-Thin" size:85.0]
 #define POLICE_DATE_MEDIUM [UIFont fontWithName:@"HelveticaNeue-Thin" size:37.0]
 #define POLICE_DATE_PONCTUATION [UIFont fontWithName:@"HelveticaNeue-Thin" size:45.0]

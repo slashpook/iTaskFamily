@@ -116,6 +116,9 @@
 //On récupère les évènements du joueur pour une date données
 - (NSMutableArray *)getEventsForPlayer:(Player *)player atDay:(NSString *)day;
 
+//On récupère le nombre d'évènement non terminés du joueur pour une date donnée
+- (int)getCountOfEventsUnfinishedForPlayer:(Player *)player atDay:(NSString *)day;
+
 //On récupère les event lié à la tache pour un joueur donnée
 - (NSMutableArray *)getEventsForPlayer:(Player *)player withTaskName:(NSString *)taskName;
 

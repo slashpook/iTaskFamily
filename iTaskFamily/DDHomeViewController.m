@@ -10,6 +10,7 @@
 #import "DDPlayerView.h"
 #import "DDEventView.h"
 #import "Player.h"
+#import "DDCustomNotification.h"
 
 @interface DDHomeViewController ()
 
@@ -20,12 +21,10 @@
 
 #pragma mark - Fonctions de base
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithCoder:aDecoder];
     if (self) {
-        // Custom initialization
-        
     }
     return self;
 }
@@ -54,6 +53,13 @@
                                                  name:UPDATE_PLAYER
                                                object:nil];
     
+    //On initialise le tableau des notifications
+    _arrayWeekNotification = [[NSArray alloc] initWithObjects:self.viewNotificationLundi, self.viewNotificationMardi, self.viewNotificationMercredi, self.viewNotificationJeudi, self.viewNotificationVendredi, self.viewNotificationSamedi, self.viewNotificationDimanche, nil];
+    //On cache les notifications
+    for (DDCustomNotification *viewNotification in self.arrayWeekNotification)
+        [viewNotification setHidden:YES];
+    
+    
     //On met à jour les composants
     [self updateComponent];
 }
@@ -62,6 +68,7 @@
 {
     //On recharge la scrollView
     [self.viewPlayer refreshPageControlWithScrollView:self.viewPlayer.scrollViewPlayer];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -91,6 +98,45 @@
 {
     [self.viewPlayer updateComponent];
     [self.viewEvent updateComponent];
+    
+    //On cache les notifications
+    for (DDCustomNotification *viewNotification in self.arrayWeekNotification) {
+        if ([viewNotification isHidden] == NO)
+            [viewNotification popOut];
+    }
+    
+    //On met à jour les notification après qu'on les ai préalablement cachées
+    [self performSelector:@selector(updateNotifications) withObject:nil afterDelay:0.3];
+}
+
+//On met à jour les notifications
+- (void)updateNotifications
+{
+    //On boucle sur le tableau de notif, on les caches ou non en fonction
+    for (DDCustomNotification *viewNotification in self.arrayWeekNotification)
+    {
+        //On récupère l'index
+        NSString *dayOfNotification = [NSString stringWithFormat:@"%i", [self.arrayWeekNotification indexOfObject:viewNotification]];
+        
+        //On récupère le compteur
+        int compteur = [[DDDatabaseAccess instance] getCountOfEventsUnfinishedForPlayer:[[DDManagerSingleton instance] currentPlayer] atDay:dayOfNotification];
+        
+        //On met à jour le label du compteur d'évènement non terminé
+        [[viewNotification labelNumberNotification] setText:[NSString stringWithFormat:@"%i", compteur]];
+        
+        //Si on a plus d'évènement, si ce n'est déjà fait, on cache la notif
+        if (compteur == 0)
+        {
+            if ([viewNotification isHidden] == NO)
+                [viewNotification popOut];
+        }
+        //Sinon si elle est caché, on la fait apparaitre
+        else
+        {
+            if ([viewNotification isHidden] == YES)
+                [viewNotification popIn];
+        }
+    }
 }
 
 @end
