@@ -52,6 +52,11 @@
                                              selector:@selector(updateComponent)
                                                  name:UPDATE_PLAYER
                                                object:nil];
+    //On met en place la notification pour mettre à jour les pastilles de notification
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateNotifications)
+                                                 name:UPDATE_NOTIFICATION
+                                               object:nil];
     
     //On initialise le tableau des notifications
     _arrayWeekNotification = [[NSArray alloc] initWithObjects:self.viewNotificationLundi, self.viewNotificationMardi, self.viewNotificationMercredi, self.viewNotificationJeudi, self.viewNotificationVendredi, self.viewNotificationSamedi, self.viewNotificationDimanche, nil];
@@ -96,6 +101,7 @@
 //On met à jour les composants
 - (void)updateComponent
 {
+    //On met à jour la vue de joueur et des évènements
     [self.viewPlayer updateComponent];
     [self.viewEvent updateComponent];
     
@@ -105,7 +111,7 @@
             [viewNotification popOut];
     }
     
-    //On met à jour les notification après qu'on les ai préalablement cachées
+    //On met à jour les notifications après qu'on les ai préalablement cachées
     [self performSelector:@selector(updateNotifications) withObject:nil afterDelay:0.3];
 }
 

@@ -203,14 +203,14 @@
 //Fonction appelé lorsque l'on commence l'édition d'un champs
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"UP_POPOVER" object:[NSNumber numberWithInteger:220]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithInteger:220]];
 }
 
 //Fonction appelé lorsqu'on l'on termine l'édition d'un champs
 - (void)keyboardDidHide:(NSNotification *)notif
 {
     //On redescend la vue
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"UP_POPOVER" object:[NSNumber numberWithInteger:0]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithInteger:0]];
 }
 
 

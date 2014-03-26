@@ -308,13 +308,13 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"UP_POPOVER" object:[NSNumber numberWithBool:true]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithBool:true]];
     return true;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"UP_POPOVER" object:[NSNumber numberWithBool:false]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithBool:false]];
     return true;
 }
 

@@ -206,6 +206,10 @@
 //On met à jour les composants en fonction de l'event choisi
 - (void)updateComponentWithEventSelected
 {
+    //On met à jour les notifications
+    [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_NOTIFICATION object:nil];
+    
+    //On met à jour les composants
     [self updateComponent];
 }
 
@@ -214,6 +218,9 @@
 
 - (void)closeEventManagerView
 {
+    //On met à jour les notifications
+    [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_NOTIFICATION object:nil];
+    
     //On enlève la popUp
     [self.popOverViewController hide];
     

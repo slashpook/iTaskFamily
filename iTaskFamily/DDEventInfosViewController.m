@@ -259,8 +259,8 @@
         //On recharge la tableView
         [self.tableViewEvents deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:alertView.tag inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
         
-        //On rafraichi les données
-        [self updateComponent];
+        //On met à jour les composants
+        [self.delegate updateComponentWithEventSelected];
     }
 }
 

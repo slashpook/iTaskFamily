@@ -92,7 +92,7 @@
 #define UPDATE_PLAYER @"UPDATE_PLAYER"
 #define ADD_PLAYER @"ADD_PLAYER"
 #define UP_POPOVER @"UP_POPOVER"
-
+#define UPDATE_NOTIFICATION @"UPDATE_NOTIFICATION"
 
 #pragma mark - Jours de la semaine
 

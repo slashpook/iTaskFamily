@@ -102,15 +102,15 @@
     //On bouge la vue suivant si le textfield est caché ou non
     if (textField == self.textFieldPremier)
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"UP_POPOVER" object:[NSNumber numberWithInteger:0]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithInteger:0]];
     }
     else if (textField == self.textFieldSecond)
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"UP_POPOVER" object:[NSNumber numberWithInteger:20]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithInteger:20]];
     }
     else
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"UP_POPOVER" object:[NSNumber numberWithInteger:70]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithInteger:70]];
     }
 }
 
@@ -118,7 +118,7 @@
 - (void)keyboardDidHide:(NSNotification *)notif
 {
     //On redescend la vue
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"UP_POPOVER" object:[NSNumber numberWithInteger:0]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithInteger:0]];
 }
 
 
