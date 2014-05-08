@@ -345,6 +345,7 @@
         //Si la tache est dans la catégorie donnée
         if ([taskPlayer.name isEqualToString:task.name])
         {
+            
             //On boucle sur toute les réalisations et on regarde si on les a faites ou pas
             for (Realisation *realisationTask in [taskPlayer realisation])
             {
