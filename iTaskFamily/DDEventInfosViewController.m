@@ -8,10 +8,6 @@
 
 #import "DDEventInfosViewController.h"
 #import "DDCustomEventCell.h"
-#import "Player.h"
-#import "Event.h"
-#import "Categories.h"
-#import "Task.h"
 #import "DDCustomCheckbox.h"
 #import "DDCustomValidation.h"
 
@@ -78,17 +74,21 @@
 {
     [self.tableViewEvents reloadData];
     
+    //On récupère la tache et la catégory associées à l'event
+    Task *task = self.currentEvent.achievement.task;
+    CategoryTask *category = self.currentEvent.achievement.task.category;
+    
     //On récupère le dictionnaire des couleurs des catégories
     NSDictionary *dictColor = [[DDManagerSingleton instance] dictColor];
     
     //On met à jour le nom de la tache
-    [self.labelTask setText:self.currentEvent.task.name];
+    [self.labelTask setText:task.libelle];
     
     //On affiche ou non le marqueur de validation
-    if ([self.currentEvent.isFinished boolValue] == YES)
+    if ([self.currentEvent.checked boolValue] == YES)
     {
         [self.viewCustomValidation setHidden:NO];
-        [self.viewCustomValidation setColorValidation:[dictColor objectForKey:self.currentEvent.task.categories.name]];
+        [self.viewCustomValidation setColorValidation:[dictColor objectForKey:category.libelle]];
         [self.viewCustomValidation setNeedsDisplay];
     }
     else
@@ -97,12 +97,12 @@
     }
     
     //On met à jour les 3 carrés de la vue info
-    [self.imageViewCategory setBackgroundColor:[dictColor objectForKey:self.currentEvent.task.categories.name]];
-    [self.labelCategory setText:self.currentEvent.task.categories.name];
-    [self.imageViewPoints setBackgroundColor:[dictColor objectForKey:self.currentEvent.task.categories.name]];
-    [self.labelPoint setText:self.currentEvent.task.point.stringValue];
-    [self.imageViewRepetition setBackgroundColor:[dictColor objectForKey:self.currentEvent.task.categories.name]];
-    if ([self.currentEvent.recurrence boolValue] == YES)
+    [self.imageViewCategory setBackgroundColor:[dictColor objectForKey:category.libelle]];
+    [self.labelCategory setText:category.libelle];
+    [self.imageViewPoints setBackgroundColor:[dictColor objectForKey:category.libelle]];
+    [self.labelPoint setText:task.point.stringValue];
+    [self.imageViewRepetition setBackgroundColor:[dictColor objectForKey:category.libelle]];
+    if ([self.currentEvent.recurrent boolValue] == YES)
         [self.imageViewContentRepetition setAlpha:1.0];
     else
         [self.imageViewContentRepetition setAlpha:0.5];
@@ -130,7 +130,7 @@
 {
     //On récupère le tableau des évènements du joueur en cours
     Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
-    [self setArrayEvent:[[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer atDay:currentDay]];
+    [self setArrayEvent:[NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer atWeekAndYear:[DDHelperController getWeekAndYear] andDay:currentDay]]];
     
     //On sélectionne le premier row
     [self selectFirstRow];
@@ -150,8 +150,8 @@
     
     //On récupère l'évènement et on le met à jour
     Event *event = [self.arrayEvent objectAtIndex:customCheckBox.tag];
-    [event setIsFinished:[NSNumber numberWithBool:customCheckBox.isChecked]];
-    [[DDDatabaseAccess instance] saveContext:nil];
+    [event setChecked:[NSNumber numberWithBool:customCheckBox.isChecked]];
+    [[DDDatabaseAccess instance] updateEvent:event];
     
     //On update la checkbox
     [customCheckBox setNeedsDisplay];
@@ -178,18 +178,22 @@
     //On récupère l'event que l'on va afficher dans la cellule
     Event *event = [self.arrayEvent objectAtIndex:indexPath.row];
     
+    //On récupère la tache et la catégory associées à l'event
+    Task *task = event.achievement.task;
+    CategoryTask *category = event.achievement.task.category;
+    
     //On configure les infos de la cellule
     [[cell contentView] setBackgroundColor:COULEUR_TRANSPARENT];
-    [cell.imageViewCategoryColor setBackgroundColor:[dictColor objectForKey:event.task.categories.name]];
+    [cell.imageViewCategoryColor setBackgroundColor:[dictColor objectForKey:category.libelle]];
     [cell.labelTask setTextColor:COULEUR_BLACK];
     [cell.labelTask setFont:POLICE_EVENTINFOCELL_TASK];
-    [cell.labelTask setText:event.task.name];
+    [cell.labelTask setText:task.libelle];
     [cell.labelInfo setTextColor:COULEUR_BLACK];
     [cell.labelInfo setFont:POLICE_EVENTINFOCELL_POINT];
-    [cell.labelInfo setText:[NSString stringWithFormat:@"%@ : %i points", event.task.categories.name, [event.task.point intValue]]];
+    [cell.labelInfo setText:[NSString stringWithFormat:@"%@ : %i points", category.libelle, [task.point intValue]]];
     [cell.imageViewSeparation setBackgroundColor:COULEUR_BACKGROUND];
     [cell.customCheckbox setTag:indexPath.row];
-    [cell.customCheckbox setIsChecked:event.isFinished.boolValue];
+    [cell.customCheckbox setIsChecked:event.checked.boolValue];
     
     if ([[cell.customCheckbox gestureRecognizers] count] == 0)
     {
@@ -198,7 +202,7 @@
     }
     
     //On change la couleur de la cellule suivant si c'est la cellule sélecitonné ou non
-    if ([event.task.name isEqualToString:self.currentEvent.task.name])
+    if ([task.libelle isEqualToString:self.currentEvent.achievement.task.libelle])
     {
         [cell.customCheckbox setIsSelected:YES];
         [cell setBackgroundColor:COULEUR_CELL_SELECTED];
@@ -232,7 +236,7 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        [DDCustomAlertView displayAnswerMessage:@"Voulez vous vraiment supprimer cet évènement" withDelegate:self andSetTag:indexPath.row];
+        [DDCustomAlertView displayAnswerMessage:@"Voulez vous vraiment supprimer cet évènement" withDelegate:self andSetTag:(int)indexPath.row];
     }
 }
 

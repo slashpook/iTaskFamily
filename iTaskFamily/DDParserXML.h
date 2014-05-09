@@ -8,11 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class Trophy;
-@class Task;
-@class Categories;
-@class Realisation;
-
 @interface DDParserXML : NSObject <NSXMLParserDelegate>
 
 
@@ -24,14 +19,11 @@
 //Tableau des taches
 @property (strong, nonatomic) NSMutableArray *taskArray;
 
-//Tableau des trophées
-@property (strong, nonatomic) NSMutableArray *tropheesArray;
-
-//Tableau des réalisation
-@property (strong, nonatomic) NSMutableArray *realisationArray;
+//Tableau des trophées de tache
+@property (strong, nonatomic) NSMutableArray *trophyArray;
 
 //Variable pour récupérer une catégorie
-@property (strong, nonatomic) Categories *category;
+@property (strong, nonatomic) CategoryTask *category;
 
 //Variable pour récupérer une tache
 @property (strong, nonatomic) Task *task;

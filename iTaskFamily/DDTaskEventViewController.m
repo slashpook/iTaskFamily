@@ -7,8 +7,6 @@
 //
 
 #import "DDTaskEventViewController.h"
-#import "Categories.h"
-#import "Task.h"
 #import "DDCustomCategoryListCell.h"
 
 @interface DDTaskEventViewController ()
@@ -58,12 +56,12 @@
 - (void)setDatabaseForCategory:(NSString *)categoryName
 {
     if ([categoryName isEqualToString:PLUS_UTILISE])
-        [self setArrayTasks:[[DDDatabaseAccess instance] getHistoriqueTask]];
+        [self setArrayTasks:[NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getArrayHistoriqueTask]]];
     //Si on est sur une catégorie, on la récupère pour récupérer les taches
     else
     {
-        Categories *category = [[DDDatabaseAccess instance] getCategoryWithName:categoryName];
-        [self setArrayTasks:[[DDDatabaseAccess instance] getTasksForCategory:category]];
+        CategoryTask *category = [[DDDatabaseAccess instance] getCategoryTaskWithLibelle:categoryName];
+        [self setArrayTasks:[NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getTasksForCategory:category]]];
     }
 }
 
@@ -87,9 +85,9 @@
     Task *task = [self.arrayTasks objectAtIndex:indexPath.row];
     
     //On configure les infos de la cellule
-    [cell.imageViewCategoryColor setBackgroundColor:[dictColor objectForKey:task.categories.name]];
+    [cell.imageViewCategoryColor setBackgroundColor:[dictColor objectForKey:task.category.libelle]];
     [cell.labelNameCategory setTextColor:COULEUR_BLACK];
-    [cell.labelNameCategory setText:task.name];
+    [cell.labelNameCategory setText:task.libelle];
     [cell.labelNameCategory setFont:POLICE_TASK_CELL];
 
     return cell;

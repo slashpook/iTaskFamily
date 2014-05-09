@@ -68,7 +68,7 @@
     [self.arrayIndexPath removeAllObjects];
     for (NSString *day in self.arrayOccurenceSaved)
     {
-        int row = [[[DDManagerSingleton instance] arrayWeek] indexOfObject:day];
+        int row = (int)[[[DDManagerSingleton instance] arrayWeek] indexOfObject:day];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
         [self.arrayIndexPath addObject:indexPath];
     }

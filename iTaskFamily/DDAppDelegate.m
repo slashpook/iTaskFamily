@@ -87,7 +87,7 @@
 - (void)parseData
 {
     //Si on a aucune catégories donc aucune données, on parse le document xml
-    if ([[DDDatabaseAccess instance] getCategories] == nil)
+    if ([[[DDDatabaseAccess instance] getCategoryTasks] count] == 0)
     {
         //On parse
         [self.parser parseXMLFile];

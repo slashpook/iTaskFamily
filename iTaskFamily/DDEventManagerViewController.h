@@ -13,9 +13,6 @@
 #import "DDTaskEventViewController.h"
 #import "DDEventManagerTableViewController.h"
 
-@class Event;
-@class Task;
-
 @protocol DDEventManagerViewProtocol <NSObject>
 
 - (void)closeEventManagerView;

@@ -1,19 +1,19 @@
 //
-//  Trophy.m
+//  CategoryTrophy.m
 //  iTaskFamily
 //
 //  Created by Damien DELES on 08/05/2014.
 //  Copyright (c) 2014 Damien DELES. All rights reserved.
 //
 
-#import "Trophy.h"
-#import "Task.h"
+#import "CategoryTrophy.h"
+#import "CategoryTask.h"
 
 
-@implementation Trophy
+@implementation CategoryTrophy
 
-@dynamic iteration;
+@dynamic libelle;
 @dynamic type;
-@dynamic task;
+@dynamic category;
 
 @end

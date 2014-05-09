@@ -107,4 +107,17 @@
     
     return year;
 }
+
+//Récupère le weekAndYear actuel
++ (int)getWeekAndYear
+{
+    NSCalendar *calender = [NSCalendar currentCalendar];
+    
+    NSDateComponents *dateComponent = [calender components:(NSWeekOfYearCalendarUnit |           NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:[NSDate date]];
+    
+    NSString *weekAndYearString = [NSString stringWithFormat:@"%i%i", (int)dateComponent.weekOfYear, (int)dateComponent.year];
+    
+    return [weekAndYearString intValue];
+}
+
 @end

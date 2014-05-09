@@ -2,34 +2,35 @@
 //  Task.h
 //  iTaskFamily
 //
-//  Created by Damien DELES on 09/12/2013.
-//  Copyright (c) 2013 Damien DELES. All rights reserved.
+//  Created by Damien DELES on 08/05/2014.
+//  Copyright (c) 2014 Damien DELES. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Categories, Event, Player, Realisation;
+@class Achievement, CategoryTask, Trophy;
 
 @interface Task : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * historique;
-@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * history;
+@property (nonatomic, retain) NSString * libelle;
 @property (nonatomic, retain) NSNumber * point;
-@property (nonatomic, retain) Categories *categories;
-@property (nonatomic, retain) Event *event;
-@property (nonatomic, retain) Player *player;
-@property (nonatomic, retain) NSSet *realisation;
+@property (nonatomic, retain) NSSet *achievments;
+@property (nonatomic, retain) CategoryTask *category;
+@property (nonatomic, retain) NSSet *trophies;
 @end
 
 @interface Task (CoreDataGeneratedAccessors)
 
-- (void)addRealisationObject:(Realisation *)value;
-- (void)removeRealisationObject:(Realisation *)value;
-- (void)addRealisation:(NSSet *)values;
-- (void)removeRealisation:(NSSet *)values;
+- (void)addAchievmentsObject:(Achievement *)value;
+- (void)removeAchievmentsObject:(Achievement *)value;
+- (void)addAchievments:(NSSet *)values;
+- (void)removeAchievments:(NSSet *)values;
 
-//On set une nouvelle tache
-- (void)setTaskWithTask:(Task *)task;
+- (void)addTrophiesObject:(Trophy *)value;
+- (void)removeTrophiesObject:(Trophy *)value;
+- (void)addTrophies:(NSSet *)values;
+- (void)removeTrophies:(NSSet *)values;
 
 @end

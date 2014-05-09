@@ -12,8 +12,6 @@
 #import "DDCustomImagePickerViewController.h"
 #import "DDCropperController.h"
 
-@class Player;
-
 @protocol DDPlayerManagerViewProtocol <NSObject>
 
 - (void)closePlayerManagerView;

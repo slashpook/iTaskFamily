@@ -9,10 +9,6 @@
 #import "DDTaskViewController.h"
 #import "DDCategoryMiniatureCollectionViewCell.h"
 #import "DDCustomCategoryCell.h"
-#import "Categories.h"
-#import "Task.h"
-#import "Player.h"
-#import "Realisation.h"
 #import "DDCustomProgressBar.h"
 #import "DDPopOverViewController.h"
 
@@ -49,7 +45,7 @@
     [self.tableViewCategorie registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CellTableView"];
     
     //On récupère les catégories
-    _arrayCategories = [NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getCategories]];
+    _arrayCategories = [NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getCategoryTasks]];
     [self setCurrentCategorie:[self.arrayCategories objectAtIndex:0]];
     
     //On configure le header et le texte de la tableView
@@ -122,10 +118,10 @@
     [self setCurrentPlayer:[[DDManagerSingleton instance] currentPlayer]];
     
     //On récupère le dictionnaire des couleurs des catégories
-    [self.labelCategory setText:self.currentCategorie.name];
+    [self.labelCategory setText:self.currentCategorie.libelle];
     
     //On récupère le tableau de tache
-    NSMutableArray *arrayTask = [[DDDatabaseAccess instance] getTasksForCategory:self.currentCategorie];
+    NSMutableArray *arrayTask = [NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getTasksForCategory:self.currentCategorie]];
     
     //On rafraichis les données si on est sur une catégorie valide
     if ([arrayTask count] > 0)
@@ -152,46 +148,49 @@
     if (self.currentTask != nil)
     {
         //On récupère le nombre total de trophées pour la catégorie donnée
-        int numberTotalTrophy = [self.currentCategorie.task count] * 3;
+        int numberTotalTrophy = (int)[[[DDDatabaseAccess instance] getTasksForCategory:self.currentCategorie] count] * 3;
         int numberTotalTrophyRealised = 0;
         
         //Si le joueur existe on récupère le nombre de trophées qu'il a réalisé
         if (self.currentPlayer != nil)
         {
-            numberTotalTrophyRealised = [[DDDatabaseAccess instance] getNumberOfTrophiesRealizedForPlayer:self.currentPlayer inCategory:self.currentCategorie];
+            numberTotalTrophyRealised = [[DDDatabaseAccess instance] getNumberOfTrophyAchievedForPlayer:self.currentPlayer inCategory:self.currentCategorie];
         }
         
         //On set le nombre de trophées remporté
         [self.labelNbrTrophy setText:[NSString stringWithFormat:@"%i/%i", numberTotalTrophyRealised ,numberTotalTrophy]];
         
-        //On récupère les réalisations pour la tache donnée du joueur sélectionné
-        Realisation *realisationBronzePlayer = [[DDDatabaseAccess instance] getRealisationBronzeForTask:self.currentTask inPlayer:self.currentPlayer];
-        Realisation *realisationArgentPlayer = [[DDDatabaseAccess instance] getRealisationArgentForTask:self.currentTask inPlayer:self.currentPlayer];
-        Realisation *realisationOrPlayer = [[DDDatabaseAccess instance] getRealisationOrForTask:self.currentTask inPlayer:self.currentPlayer];
-
-        //On récupère les réalisations pour la tache donnée de la catégorie
-        Realisation *realisationBronzeCategory = [[DDDatabaseAccess instance] getRealisationBronzeForTask:self.currentTask inCategory:self.currentCategorie];
-        Realisation *realisationArgentCategory = [[DDDatabaseAccess instance] getRealisationArgentForTask:self.currentTask inCategory:self.currentCategorie];
-        Realisation *realisationOrCategory = [[DDDatabaseAccess instance] getRealisationOrForTask:self.currentTask inCategory:self.currentCategorie];
+        NSArray *arrayTrophy = [[DDDatabaseAccess instance] getTrophiesSortedInArray:[self.currentTask.trophies allObjects]];
+        
+        //On récupère le nombre de fois que le player a réalisé la task
+        int numberOfEventChecked = [[DDDatabaseAccess instance] getNumberOfEventCheckedForPlayer:self.currentPlayer forTask:self.currentTask];
+        
+        //On récupère les trophies de la task
+        Trophy *trophyBronze = [arrayTrophy objectAtIndex:0];
+        Trophy *trophyArgent = [arrayTrophy objectAtIndex:1];
+        Trophy *trophyOr = [arrayTrophy objectAtIndex:2];
         
         //On rempli les infos sur les points et le nom de la tache
-        [self.labelTaskName setText:self.currentTask.name];
+        [self.labelTaskName setText:self.currentTask.libelle];
         [self.labelTaskPoint setText:[NSString stringWithFormat:@"%@\npoints", [self.currentTask.point stringValue]]];
         [self.labelNoTask setHidden:YES];
         
         //On set les progressBar
-        [self.progressBarBronze setRealisation:realisationBronzePlayer];
-        [self.progressBarBronze setColorRealisation:[dictColor objectForKey:self.currentCategorie.name]];
-        [self.labelRealizedBronze setText:[NSString stringWithFormat:@"%i", realisationBronzePlayer.realized.intValue]];
-        [self.labelTotalBronze setText:[NSString stringWithFormat:@"%i", realisationBronzeCategory.total.intValue]];
-        [self.progressBarArgent setRealisation:realisationArgentPlayer];
-        [self.progressBarArgent setColorRealisation:[dictColor objectForKey:self.currentCategorie.name]];
-        [self.labelRealizedArgent setText:[NSString stringWithFormat:@"%i", realisationArgentPlayer.realized.intValue]];
-        [self.labelTotalArgent setText:[NSString stringWithFormat:@"%i", realisationArgentCategory.total.intValue]];
-        [self.progressBarOr setRealisation:realisationOrPlayer];
-        [self.progressBarOr setColorRealisation:[dictColor objectForKey:self.currentCategorie.name]];
-        [self.labelRealizedOr setText:[NSString stringWithFormat:@"%i", realisationOrPlayer.realized.intValue]];
-        [self.labelTotalOr setText:[NSString stringWithFormat:@"%i", realisationOrCategory.total.intValue]];
+        [self.progressBarBronze setTrophy:trophyBronze];
+        [self.progressBarBronze setPlayer:self.currentPlayer];
+        [self.progressBarBronze setColorRealisation:[dictColor objectForKey:self.currentCategorie.libelle]];
+        [self.labelRealizedBronze setText:[NSString stringWithFormat:@"%i", (numberOfEventChecked > trophyBronze.iteration.intValue) ? trophyBronze.iteration.intValue : numberOfEventChecked]];
+        [self.labelTotalBronze setText:[NSString stringWithFormat:@"%i", trophyBronze.iteration.intValue]];
+        [self.progressBarArgent setTrophy:trophyArgent];
+        [self.progressBarArgent setPlayer:self.currentPlayer];
+        [self.progressBarArgent setColorRealisation:[dictColor objectForKey:self.currentCategorie.libelle]];
+        [self.labelRealizedArgent setText:[NSString stringWithFormat:@"%i", (numberOfEventChecked > trophyArgent.iteration.intValue) ? trophyArgent.iteration.intValue : numberOfEventChecked]];
+        [self.labelTotalArgent setText:[NSString stringWithFormat:@"%i", trophyArgent.iteration.intValue]];
+        [self.progressBarOr setTrophy:trophyOr];
+        [self.progressBarOr setPlayer:self.currentPlayer];
+        [self.progressBarOr setColorRealisation:[dictColor objectForKey:self.currentCategorie.libelle]];
+        [self.labelRealizedOr setText:[NSString stringWithFormat:@"%i", (numberOfEventChecked > trophyOr.iteration.intValue) ? trophyOr.iteration.intValue : numberOfEventChecked]];
+        [self.labelTotalOr setText:[NSString stringWithFormat:@"%i", trophyOr.iteration.intValue]];
     }
     else
     {
@@ -200,20 +199,23 @@
         [self.labelNoTask setHidden:NO];
         
         //On set les progress bar
-        [self.progressBarBronze setRealisation:nil];
+        [self.progressBarBronze setTrophy:nil];
+        [self.progressBarBronze setPlayer:nil];
         [self.labelRealizedBronze setText:@"0"];
         [self.labelTotalBronze setText:@"0"];
-        [self.progressBarArgent setRealisation:nil];
+        [self.progressBarArgent setTrophy:nil];
+        [self.progressBarArgent setPlayer:nil];
         [self.labelRealizedArgent setText:@"0"];
         [self.labelTotalArgent setText:@"0"];
-        [self.progressBarOr setRealisation:nil];
+        [self.progressBarOr setTrophy:nil];
+        [self.progressBarOr setPlayer:nil];
         [self.labelRealizedOr setText:@"0"];
         [self.labelTotalOr setText:@"0"];
         [self.labelNbrTrophy setText:@"0/0"];
     }
     
     //On met à jour le fond des points
-    [self.imageViewBackgroundPoint setBackgroundColor:[dictColor objectForKey:self.currentCategorie.name]];
+    [self.imageViewBackgroundPoint setBackgroundColor:[dictColor objectForKey:self.currentCategorie.libelle]];
     
     //On met à jour l'imageView du joueur
     if (self.currentPlayer != nil)
@@ -302,17 +304,17 @@
     //On récupère la cellule
     DDCategoryMiniatureCollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"CategoryMiniatureCell" forIndexPath:indexPath];
     
-    //On récupère la categorie
-    Categories *categorie = [self.arrayCategories objectAtIndex:indexPath.row];
+    //On récupère la category
+    CategoryTask *category = [self.arrayCategories objectAtIndex:indexPath.row];
     
     //On configure l'image du joueur
     [cell.imageViewCategory.layer setCornerRadius:10.0];
-    [cell.imageViewCategory setBackgroundColor:[dictColor objectForKey:categorie.name]];
+    [cell.imageViewCategory setBackgroundColor:[dictColor objectForKey:category.libelle]];
     
     //On configure le label du nom de la catégorie
     [cell.labelName setTextColor:COULEUR_WHITE];
     [cell.labelName setFont:POLICE_CATEGORY_MINIATURE];
-    [cell.labelName setText:categorie.name];
+    [cell.labelName setText:category.libelle];
     
     return cell;
 }
@@ -320,8 +322,8 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     //On récupère la categorie
-    Categories *categorie = [self.arrayCategories objectAtIndex:indexPath.row];
-    [self setCurrentCategorie:categorie];
+    CategoryTask *category = [self.arrayCategories objectAtIndex:indexPath.row];
+    [self setCurrentCategorie:category];
     [self setCurrentTask:nil];
     
     //On met à jour les composants
@@ -338,7 +340,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[[self.currentCategorie task] allObjects] count];
+    return [[[self.currentCategorie tasks] allObjects] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -347,7 +349,7 @@
     DDCustomCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CustomCategoryCell" forIndexPath:indexPath];
     
     //On récupère un tableau des taches de la catégorie sélectionnée
-    NSMutableArray *taskArray = [[DDDatabaseAccess instance] getTasksForCategory:self.currentCategorie];
+    NSMutableArray *taskArray = [NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getTasksForCategory:self.currentCategorie]];
     
     //On récupère le dictionnaire des couleurs des catégories
     NSDictionary *dictColor = [[DDManagerSingleton instance] dictColor];
@@ -360,14 +362,14 @@
         task = [taskArray objectAtIndex:indexPath.row];
     
     //On configure les infos de la cellule
-    [cell.imageViewBackground setBackgroundColor:[dictColor objectForKey:self.currentCategorie.name]];
+    [cell.imageViewBackground setBackgroundColor:[dictColor objectForKey:self.currentCategorie.libelle]];
     [cell.labelNomTask setTextColor:COULEUR_BLACK];
-    [cell.labelNomTask setText:task.name];
+    [cell.labelNomTask setText:task.libelle];
     [cell.labelPoint setTextColor:COULEUR_BLACK];
-    [cell.labelPoint setText:[NSString stringWithFormat:@"%i points", [task.point integerValue]]];
+    [cell.labelPoint setText:[NSString stringWithFormat:@"%i points", [task.point intValue]]];
     
     //On change la couleur de la cellule suivant si c'est la cellule sélecitonné ou non
-    if ([task.name isEqualToString:self.currentTask.name])
+    if ([task.libelle isEqualToString:self.currentTask.libelle])
         [[cell contentView] setBackgroundColor:COULEUR_CELL_SELECTED];
     else
         [[cell contentView] setBackgroundColor:COULEUR_WHITE];
@@ -381,7 +383,7 @@
     if ([self.tableViewCategorie isEditing] == false)
     {
         //On récupère le tableau de tache et on met à jour la tache courante
-        NSMutableArray *arrayTask = [[DDDatabaseAccess instance] getTasksForCategory:self.currentCategorie];
+        NSArray *arrayTask = [[DDDatabaseAccess instance] getTasksForCategory:self.currentCategorie];
         [self setCurrentTask:[arrayTask objectAtIndex:indexPath.row]];
         
         //On met à jour les composants
@@ -395,7 +397,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
         //On récupère la tache sélectionnée
-        NSMutableArray *arrayTask = [[DDDatabaseAccess instance] getTasksForCategory:self.currentCategorie];
+        NSArray *arrayTask = [[DDDatabaseAccess instance] getTasksForCategory:self.currentCategorie];
         Task *task = [arrayTask objectAtIndex:indexPath.row];
         
         //On supprime la tache

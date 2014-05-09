@@ -1,9 +1,9 @@
 //
 //  DDDatabaseManager.h
-//  iTaskFamily
+//  DALiTaskFamily
 //
-//  Created by Damien DELES on 29/11/2013.
-//  Copyright (c) 2013 Damien DELES. All rights reserved.
+//  Created by Damien DELES on 26/04/2014.
+//  Copyright (c) 2014 Damien DELES. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -7,7 +7,6 @@
 //
 
 #import "DDPodiumViewController.h"
-#import "Player.h"
 #import "DDHistogramView.h"
 #import "DDPopOverViewController.h"
 
@@ -77,7 +76,7 @@
 - (void)updateComponentsAndDisplayProgressBar:(BOOL)display
 {
     //On récupère le tableau des joueurs
-    NSMutableArray *arrayPlayer = [[DDDatabaseAccess instance] getPlayers];
+    NSArray *arrayPlayer = [[DDDatabaseAccess instance] getPlayers];
     
     //On crée une variable pour récupérer le plus haut score
     int highScore;
@@ -107,24 +106,25 @@
             player = [arrayPlayer objectAtIndex:i];
             
 #warning - A enlever quand on aura des vraies données
+            int scoreSemaine = 0;
             if (i == 0)
-                [player setScoreSemaine:[NSNumber numberWithInt:4800]];
+                scoreSemaine = 4800;
             else if (i == 1)
-                [player setScoreSemaine:[NSNumber numberWithInt:3000]];
+                scoreSemaine = 3000;
             else
-                [player setScoreSemaine:[NSNumber numberWithInt:1200]];
+                scoreSemaine = 1200;
             
             int height = HEIGHT_MAX_PODIUM;
 
             //Si on est sur le premier, on récupère son score
             if (i == 0)
-                highScore = player.scoreSemaine.intValue;
+                highScore = scoreSemaine;
             //On calcule quel est le pourcentage du score vis à vis du premier
             else
-                pourcentOfHighNumber = player.scoreSemaine.floatValue / highScore;
+                pourcentOfHighNumber = scoreSemaine / highScore;
             
             //Mise à jour du titre et du score
-            [labelScore setText:[NSString stringWithFormat:@"%@ points", player.scoreSemaine]];
+            [labelScore setText:[NSString stringWithFormat:@"%i points", scoreSemaine]];
             
             //Mise à jour de la Progression
             [progressView setColorView:self.colorProgressView];

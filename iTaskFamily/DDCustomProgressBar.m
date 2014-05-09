@@ -7,7 +7,6 @@
 //
 
 #import "DDCustomProgressBar.h"
-#import "Realisation.h"
 
 @implementation DDCustomProgressBar
 
@@ -37,10 +36,17 @@
     [self.colorBackground setFill];
     [rectanglePath fill];
     
-    //Progression
-    if ( [self.realisation.realized floatValue] != 0)
+    //On récupère le nombre de fois qu'on a réalisé la tache
+    int countOfTaskRealized = [[DDDatabaseAccess instance] getNumberOfEventCheckedForPlayer:self.player forTask:self.trophy.task];
+    
+    //Si on a un début de progression
+    if (countOfTaskRealized != 0)
     {
-        float progression = [self.realisation.realized floatValue] / [self.realisation.total floatValue];
+        //Si on a réalisé plus que ne le demande le trophy, on met le count au total
+        if (countOfTaskRealized > [self.trophy.iteration intValue])
+            countOfTaskRealized = [self.trophy.iteration intValue];
+        
+        float progression = countOfTaskRealized / [self.trophy.iteration floatValue];
         UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(0, 0, self.frame.size.width * progression, self.frame.size.height) cornerRadius:5.0];
         [self.colorRealisation setFill];
         [roundedRectanglePath fill];

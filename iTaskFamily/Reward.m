@@ -1,19 +1,17 @@
 //
-//  Trophy.m
+//  Reward.m
 //  iTaskFamily
 //
 //  Created by Damien DELES on 08/05/2014.
 //  Copyright (c) 2014 Damien DELES. All rights reserved.
 //
 
-#import "Trophy.h"
-#import "Task.h"
+#import "Reward.h"
 
 
-@implementation Trophy
+@implementation Reward
 
-@dynamic iteration;
+@dynamic libelle;
 @dynamic type;
-@dynamic task;
 
 @end

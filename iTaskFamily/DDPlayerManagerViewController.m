@@ -7,7 +7,6 @@
 //
 
 #import "DDPlayerManagerViewController.h"
-#import "Player.h"
 
 @interface DDPlayerManagerViewController ()
 
@@ -162,39 +161,49 @@
 //On sauvegarde le joueur
 - (void)savePlayer
 {
+    //On met en place le message d'erreur
+    NSString *errorMessage = nil;
+    
+    //Si c'est un nouveau player
+    if (self.isModifyPlayer == NO)
+    {
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Player" inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+        _player = [[Player alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    }
+    
     //On crée le chemin de l'image
     NSArray *defaultPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *imgProfilPath = [defaultPaths objectAtIndex:0];
     imgProfilPath = [imgProfilPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg", self.textFieldPseudo.text]];
-
+    
+    //On set le pseudo
+    [self.player setPseudo:self.textFieldPseudo.text];
+    //On configure le path de l'image
+    [self.player setPathImage:imgProfilPath];
+    
     //Si on ajoute un joueur
     if (self.isModifyPlayer == NO)
     {
-        //On crée un nouveau joueur
-        _player = [NSEntityDescription
-                      insertNewObjectForEntityForName:@"Player"
-                      inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
-        
-        [self.player setPseudo:self.textFieldPseudo.text];
-        [self.player setTask:[NSSet setWithArray:[[DDDatabaseAccess instance] getTasks]]];
+        errorMessage = [[DDDatabaseAccess instance] createPlayer:self.player];
         [[DDManagerSingleton instance] saveImgProfilForPlayer:self.player withImage:self.imageViewProfil.image];
-        //On affiche une alertView pour indiquer que le joueur a bien été ajouté
-        [DDCustomAlertView displayInfoMessage:@"Joueur enregistré"];
     }
     //Si on modifie le joueur
     else
     {
-        [self.player setPseudo:self.textFieldPseudo.text];
+        errorMessage = [[DDDatabaseAccess instance] updatePlayer:self.player];
         [[DDManagerSingleton instance] updateImgProfilForPlayer:self.player WithPath:self.player.pseudo withImage:self.imageViewProfil.image];
-        //On affiche une alertView pour indiquer que le joueur a bien été modifié
-        [DDCustomAlertView displayInfoMessage:@"Joueur modifié"];
     }
 
-    //On configure le path de l'image
-    [self.player setPathImage:imgProfilPath];
-    
-    //On sauvegarde le joueur
-    [[DDDatabaseAccess instance] saveContext:nil];
+    //On gère le résultat
+    if (self.isModifyPlayer == NO && errorMessage == nil)
+        [DDCustomAlertView displayInfoMessage:@"Joueur enregistré"];
+    else if (self.isModifyPlayer == YES && errorMessage == nil)
+        [DDCustomAlertView displayInfoMessage:@"Joueur modifié"];
+    else
+    {
+        [DDCustomAlertView displayInfoMessage:errorMessage];
+        return;
+    }
     
     //On ferme la vue
     [self.delegate closePlayerManagerView];
@@ -213,44 +222,8 @@
 //On appuie sue le bouton de droite
 - (void)onPushRightBarButton
 {
-    //On vérifie que un pseudo soit rentré
-    if ([self.textFieldPseudo.text length] != 0)
-    {
-        //Si on ajoute le joueur
-        if (self.isModifyPlayer == false)
-        {
-            //Si le pseudo n'existe pas déjà
-            if ([[DDDatabaseAccess instance] playerExistForPseudo:self.textFieldPseudo.text] == false)
-            {
-                //On sauvegarde le joueur
-                [self savePlayer];
-            }
-            else
-            {
-                //On affiche un message d'erreur
-                [DDCustomAlertView displayErrorMessage:@"Un autre joueur porte déjà ce nom !"];
-            }
-        }
-        //Si on modifie le joueur
-        else
-        {
-            if (([[DDDatabaseAccess instance] playerExistForPseudo:self.textFieldPseudo.text]) || ([[DDDatabaseAccess instance] playerExistForPseudo:self.textFieldPseudo.text] == true && [self.player.pseudo isEqualToString:self.textFieldPseudo.text] == true))
-            {
-                //On sauvegarde le joueur
-                [self savePlayer];
-            }
-            else
-            {
-                //On affiche un message d'erreur
-                [DDCustomAlertView displayErrorMessage:@"Un autre joueur porte déjà ce nom!"];
-            }
-        }
-    }
-    else
-    {
-        //On affiche un message d'erreur
-        [DDCustomAlertView displayErrorMessage:@"Veuillez rentrer un pseudo svp !"];
-    }
+    //On sauvegarde le joueur
+    [self savePlayer];
 }
 
 

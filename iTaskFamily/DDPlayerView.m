@@ -9,7 +9,6 @@
 #import "DDPlayerView.h"
 #import "UIImage+ImageEffects.h"
 #import "DDPopOverViewController.h"
-#import "Player.h"
 
 @implementation DDPlayerView
 
@@ -112,7 +111,7 @@
 - (void)updateComponent
 {
     Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
-    int indexPlayer = [[[DDDatabaseAccess instance] getPlayers] indexOfObject:currentPlayer];
+    int indexPlayer = (int)[[[DDDatabaseAccess instance] getPlayers] indexOfObject:currentPlayer];
     [self.pageControl setCurrentPage:indexPlayer];
     
     //On reload la scrollView
@@ -142,7 +141,7 @@
 //On appelle la fonction pour rafraichir le page control et la scroll view
 - (void)refreshPageControlWithScrollView:(UIScrollView *)scrollView
 {
-    [self setArrayPlayer:[[DDDatabaseAccess instance] getPlayers]];
+    [self setArrayPlayer:[NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getPlayers]]];
     
     //On enlève toutes les données présentes dans le scroll view
     [scrollView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
@@ -160,13 +159,13 @@
     if ([self.arrayPlayer count] > 0)
     {
         Player *player = [self.arrayPlayer objectAtIndex:self.pageControl.currentPage];
-        
+        int scoreWeek = [[DDDatabaseAccess instance] getScoreWeekForPlayer:player forWeekAndYear:[DDHelperController getWeekAndYear]];
         //On change le joueur courant et on met à jour le menu
         [[DDManagerSingleton instance] setCurrentPlayer:player];
         
         //On met à jour les infos du joueur sur la page
         [self.labelNamePlayer setText:player.pseudo];
-        [self.labelPointPlayer setText:[NSString stringWithFormat:@"%@ points", player.scoreSemaine]];
+        [self.labelPointPlayer setText:[NSString stringWithFormat:@"%i points", scoreWeek]];
         
         //On charge la première page et la seconde pour éviter des problèmes d'affichage
         for (int i = 0; i < [self.arrayPlayer count]; i++)
@@ -242,14 +241,16 @@
         {
             if ((currentPage + 1) < [self.arrayPlayer count])
             {
+                int scoreWeek = [[DDDatabaseAccess instance] getScoreWeekForPlayer:[self.arrayPlayer objectAtIndex:currentPage + 1] forWeekAndYear:[DDHelperController getWeekAndYear]];
                 [self.labelNamePlayer setText:[[self.arrayPlayer objectAtIndex:currentPage + 1] pseudo]];
-                [self.labelPointPlayer setText:[NSString stringWithFormat:@"%@ points", [[self.arrayPlayer objectAtIndex:currentPage + 1] scoreSemaine]]];
+                [self.labelPointPlayer setText:[NSString stringWithFormat:@"%i points", scoreWeek]];
             }
         }
         else
         {
+            int scoreWeek = [[DDDatabaseAccess instance] getScoreWeekForPlayer:[self.arrayPlayer objectAtIndex:currentPage] forWeekAndYear:[DDHelperController getWeekAndYear]];
             [self.labelNamePlayer setText:[[self.arrayPlayer objectAtIndex:currentPage] pseudo]];
-            [self.labelPointPlayer setText:[NSString stringWithFormat:@"%@ points", [[self.arrayPlayer objectAtIndex:currentPage] scoreSemaine]]];
+            [self.labelPointPlayer setText:[NSString stringWithFormat:@"%i points", scoreWeek]];
         }
         
         self.pageControl.currentPage = currentPage;

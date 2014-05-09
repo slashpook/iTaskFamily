@@ -2,22 +2,20 @@
 //  Event.m
 //  iTaskFamily
 //
-//  Created by Damien DELES on 09/12/2013.
-//  Copyright (c) 2013 Damien DELES. All rights reserved.
+//  Created by Damien DELES on 08/05/2014.
+//  Copyright (c) 2014 Damien DELES. All rights reserved.
 //
 
 #import "Event.h"
-#import "Player.h"
-#import "Task.h"
+#import "Achievement.h"
 
 
 @implementation Event
 
+@dynamic checked;
 @dynamic comment;
 @dynamic day;
-@dynamic isFinished;
-@dynamic recurrence;
-@dynamic player;
-@dynamic task;
+@dynamic recurrent;
+@dynamic achievement;
 
 @end

@@ -8,8 +8,6 @@
 
 #import "DDRootTrophyViewController.h"
 #import "DDTrophyRootCell.h"
-#import "Categories.h"
-#import "Player.h"
 
 @interface DDRootTrophyViewController ()
 
@@ -37,7 +35,7 @@
     [self.tableViewTrophy registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     
     //On récupère le tableau des catégories
-    _arrayCategory = [NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getCategories]];
+    _arrayCategory = [NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getCategoryTasks]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,10 +55,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //On récupère la catégorie à l'index donnée
-    Categories *categories = [self.arrayCategory objectAtIndex:indexPath.row];
+    CategoryTask *category = [self.arrayCategory objectAtIndex:indexPath.row];
  
     //On récupère le nombre total de trophées pour la catégorie donnée
-    int numberTotalTrophy = [categories.task count] * 3;
+    int numberTotalTrophy = (int)[[[DDDatabaseAccess instance] getTasksForCategory:category] count] * 3;
+    int numberBronzeTrophyRealised = 0;
+    int numberArgentTrophyRealised = 0;
+    int numberOrTrophyRealised = 0;
     int numberTotalTrophyRealised = 0;
     
     //On récupère le joueur sélectionné
@@ -68,17 +69,19 @@
     //Si le joueur existe on récupère le nombre de trophées qu'il a réalisé
     if (player != nil)
     {
-        numberTotalTrophyRealised = [[DDDatabaseAccess instance] getNumberOfTrophiesRealizedForPlayer:player inCategory:categories];
+        numberBronzeTrophyRealised = [[DDDatabaseAccess instance] getNumberOfTrophyAchievedForPlayer:player inCategory:category andType:@"Bronze"];
+        numberArgentTrophyRealised = [[DDDatabaseAccess instance] getNumberOfTrophyAchievedForPlayer:player inCategory:category andType:@"Argent"];
+        numberOrTrophyRealised = [[DDDatabaseAccess instance] getNumberOfTrophyAchievedForPlayer:player inCategory:category andType:@"Or"];
+        numberTotalTrophyRealised = numberBronzeTrophyRealised + numberArgentTrophyRealised + numberOrTrophyRealised;
     }
     
     //On récupère la cellule
     DDTrophyRootCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TrophyRootCell" forIndexPath:indexPath];
     
     //On configure la cellule
-    [cell.viewCouleurCategory setBackgroundColor:[[[DDManagerSingleton instance] dictColor] objectForKey:categories.name]];
-    [cell.labelName setText:categories.name];
+    [cell.viewCouleurCategory setBackgroundColor:[[[DDManagerSingleton instance] dictColor] objectForKey:category.libelle]];
+    [cell.labelName setText:category.libelle];
     [cell.labelNumberTrophyCategory setText:[NSString stringWithFormat:@"%i/%i", numberTotalTrophyRealised ,numberTotalTrophy]];
-    
     
     return cell;
 }

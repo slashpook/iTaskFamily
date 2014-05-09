@@ -8,7 +8,6 @@
 
 #import "DDCategorieListViewController.h"
 #import "DDCustomCategoryListCell.h"
-#import "Categories.h"
 
 @interface DDCategorieListViewController ()
 
@@ -40,7 +39,7 @@
     [self.view addSubview:self.custoNavBar.view];
     
     //On récupère le tableau des catégories
-    [self setArrayCategory:[[DDDatabaseAccess instance] getCategories]];
+    [self setArrayCategory:[NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getCategoryTasks]]];
     
     //On s'abonne a un type de cellule pour la table view
     [self.tableViewCategory registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CategorieTaskCell"];
@@ -76,12 +75,12 @@
     NSDictionary *dictColor = [[DDManagerSingleton instance] dictColor];
     
     //On récupère la catégorie en cours
-    Categories *categorie = [self.arrayCategory objectAtIndex:indexPath.row];
+    CategoryTask *category = [self.arrayCategory objectAtIndex:indexPath.row];
    
     //On configure les infos de la cellule
-    [cell.imageViewCategoryColor setBackgroundColor:[dictColor objectForKey:categorie.name]];
+    [cell.imageViewCategoryColor setBackgroundColor:[dictColor objectForKey:category.libelle]];
     [cell.labelNameCategory setTextColor:COULEUR_BLACK];
-    [cell.labelNameCategory setText:categorie.name];
+    [cell.labelNameCategory setText:category.libelle];
     [cell.labelNameCategory setFont:POLICE_TASK_CELL];
     
     return cell;
@@ -90,8 +89,8 @@
 //On ouvre la cellule sélectionné
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Categories *categorie = [self.arrayCategory objectAtIndex:indexPath.row];
-    [self.delegate closeCategorieViewWithCategorie:categorie];
+    CategoryTask *category = [self.arrayCategory objectAtIndex:indexPath.row];
+    [self.delegate closeCategorieViewWithCategorie:category];
 }
 
 

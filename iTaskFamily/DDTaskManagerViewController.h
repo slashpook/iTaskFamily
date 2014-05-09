@@ -12,16 +12,13 @@
 #import "DDCategorieListViewController.h"
 #import "DDTaskManagerTableViewController.h"
 
-@class Categories;
-@class Task;
-
 @protocol DDTaskManagerViewProtocol <NSObject>
 
 - (void)closeTaskManagerView;
 
 @end
 
-@interface DDTaskManagerViewController : UIViewController <DDCustomNavBarProtocol, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, DDCategorieListViewProtocol, DDTaskManagerTableViewProtocol>
+@interface DDTaskManagerViewController : UIViewController <DDCustomNavBarProtocol, UITextFieldDelegate, DDCategorieListViewProtocol, DDTaskManagerTableViewProtocol>
 
 
 #pragma mark - Variables
@@ -33,7 +30,7 @@
 @property (weak, nonatomic) DDTaskManagerTableViewController *tableViewTask;
 
 //On récupère la catégorie en cours
-@property (strong, nonatomic) Categories *currentCategory;
+@property (strong, nonatomic) CategoryTask *currentCategory;
 
 //Booléen pour modifier la tache
 @property (assign, nonatomic) BOOL isModifyTask;

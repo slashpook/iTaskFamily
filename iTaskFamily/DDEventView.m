@@ -8,8 +8,6 @@
 
 #import "DDEventView.h"
 #import "DDPopOverViewController.h"
-#import "Player.h"
-#import "Event.h"
 
 @implementation DDEventView
 
@@ -61,7 +59,7 @@
     //On récupère le jour d'aujourd'hui et on positionne bien le bouton
     NSString *currentDay = [[DDManagerSingleton instance] currentDate];
     //On récupère l'index du jour dans le tableau de la semaine. On l'incrémente de 1 car Le premier tag des boutons est 1
-    [self setDaySelected:[NSString stringWithFormat:@"%i",[[[DDManagerSingleton instance] arrayWeek] indexOfObject:currentDay]]];
+    [self setDaySelected:[NSString stringWithFormat:@"%i",(int)[[[DDManagerSingleton instance] arrayWeek] indexOfObject:currentDay]]];
     
     //On rafraichis les composants
     [self updateComponent];
@@ -96,13 +94,13 @@
         [self.buttonModifyEvent setEnabled:YES];
         
         //Si il n'y a pas d'évènement on désactive certains boutons.
-        if ([[[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer atDay:self.daySelected] count] > 0)
+        if ([[[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer atWeekAndYear:[DDHelperController getWeekAndYear] andDay:self.daySelected] count] > 0)
         {
             [self.eventInfosViewController.view setHidden:NO];
             [self.eventInfosViewController getEventsForDay:self.daySelected];
             
             //Si on a fini la tache sélectionnée, on désactive le bouton pour modifier l'évènement
-            if ([self.eventInfosViewController.currentEvent.isFinished boolValue] == YES)
+            if ([self.eventInfosViewController.currentEvent.checked boolValue] == YES)
                 [[self buttonModifyEvent] setEnabled:NO];
         }
         else
@@ -142,7 +140,7 @@
     [self.eventInfosViewController setCurrentEvent:nil];
     
     //On récupère le tag du bouton et on lui enlève un car la première entrée d'un tableau est 0
-    int daySelectedInNumber = ([(UIButton *)sender tag] - 1);
+    int daySelectedInNumber = (int)([(UIButton *)sender tag] - 1);
     [self setDaySelected:[NSString stringWithFormat:@"%i", daySelectedInNumber]];
     
     [self updateComponent];

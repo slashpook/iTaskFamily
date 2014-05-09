@@ -17,9 +17,17 @@
     #import <QuartzCore/QuartzCore.h>
     #import <CoreData/CoreData.h>
     #import "DDConstant.h"
+    #import "Achievement.h"
+    #import "CategoryTrophy.h"
+    #import "CategoryTask.h"
+    #import "Event.h"
+    #import "Player.h"
+    #import "Task.h"
+    #import "Trophy.h"
+    #import "Reward.h"
+    #import "DDDatabaseAccess.h"
     #import "DDHelperController.h"
     #import "DDRootViewController.h"
     #import "DDManagerSingleton.h"
-    #import "DDDatabaseAccess.h"
     #import "DDCustomAlertView.h"
 #endif

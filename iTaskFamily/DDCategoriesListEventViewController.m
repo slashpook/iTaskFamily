@@ -8,7 +8,6 @@
 
 #import "DDCategoriesListEventViewController.h"
 #import "DDCustomCategoryListCell.h"
-#import "Categories.h"
 
 @interface DDCategoriesListEventViewController ()
 
@@ -41,8 +40,8 @@
     
     //On rempli le tableau avec les catégories
     [self.arrayCategory addObject:PLUS_UTILISE];
-    for (Categories *category in [[DDDatabaseAccess instance] getCategories])
-        [self.arrayCategory addObject:category.name];
+    for (CategoryTask *category in [[DDDatabaseAccess instance] getCategoryTasks])
+        [self.arrayCategory addObject:category.libelle];
     
     //On s'abonne a un type de cellule pour la table view
     [self.tableViewCategorie registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CategorieTaskCell"];

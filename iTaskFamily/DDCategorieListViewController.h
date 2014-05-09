@@ -11,7 +11,7 @@
 
 @protocol DDCategorieListViewProtocol <NSObject>
 
-- (void)closeCategorieViewWithCategorie:(Categories *)categorie;
+- (void)closeCategorieViewWithCategorie:(CategoryTask *)categorie;
 
 @end
 

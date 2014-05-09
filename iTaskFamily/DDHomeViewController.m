@@ -9,7 +9,6 @@
 #import "DDHomeViewController.h"
 #import "DDPlayerView.h"
 #import "DDEventView.h"
-#import "Player.h"
 #import "DDCustomNotification.h"
 
 @interface DDHomeViewController ()
@@ -122,11 +121,11 @@
     for (DDCustomNotification *viewNotification in self.arrayWeekNotification)
     {
         //On récupère l'index
-        NSString *dayOfNotification = [NSString stringWithFormat:@"%i", [self.arrayWeekNotification indexOfObject:viewNotification]];
+        NSString *dayOfNotification = [NSString stringWithFormat:@"%i", (int)[self.arrayWeekNotification indexOfObject:viewNotification]];
         
         //On récupère le compteur
-        int compteur = [[DDDatabaseAccess instance] getCountOfEventsUnfinishedForPlayer:[[DDManagerSingleton instance] currentPlayer] atDay:dayOfNotification];
-        
+        int compteur = [[DDDatabaseAccess instance] getNumberOfEventCheckedForPlayer:[[DDManagerSingleton instance] currentPlayer] forWeekAndYear:[DDHelperController getWeekAndYear] andDay:dayOfNotification];
+                                
         //On met à jour le label du compteur d'évènement non terminé
         [[viewNotification labelNumberNotification] setText:[NSString stringWithFormat:@"%i", compteur]];
         

@@ -42,4 +42,7 @@
 //Récupère les minutes en cours
 + (NSString *)getMin;
 
+//Récupère le weekAndYear actuel
++ (int)getWeekAndYear;
+
 @end

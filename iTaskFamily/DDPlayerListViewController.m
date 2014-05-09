@@ -8,7 +8,6 @@
 
 #import "DDPlayerListViewController.h"
 #import "DDCustomPlayerListCollectionViewCell.h"
-#import "Player.h"
 
 @interface DDPlayerListViewController ()
 
@@ -128,7 +127,7 @@
 //On sélectionne la cellule
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.delegate closePopOverPlayerListWithIndex:indexPath.row];
+    [self.delegate closePopOverPlayerListWithIndex:(int)indexPath.row];
 }
 
 

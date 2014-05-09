@@ -10,7 +10,6 @@
 #import "DDPopOverViewController.h"
 #import "DDPlayerMiniatureCollectionViewCell.h"
 #import "DDRootTrophyViewController.h"
-#import "Player.h"
 
 @interface DDPlayerViewController ()
 
@@ -156,7 +155,7 @@
 - (void)updateComponent
 {
     //On met à jour le tableau des joueurs
-    [self setArrayPlayer:[[DDDatabaseAccess instance] getPlayers]];
+    [self setArrayPlayer:[NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getPlayers]]];
    
     //On récupère une référence vers le trophyRootViewController
     DDRootTrophyViewController *rootTrophyViewController = [[self.rootTrophyNavigationViewController viewControllers] objectAtIndex:0];
@@ -185,9 +184,9 @@
         //On met à jour les informations du joueur en cours
         [self.imageViewProfil setImage:[[[DDManagerSingleton instance] dictImagePlayer] objectForKey:self.currentPlayer.pseudo]];
         [self.labelNameProfil setText:self.currentPlayer.pseudo];
-        [self.labelNbrTrophy setText:[self.currentPlayer.tropheesRealised stringValue]];
-        [self.labelWeekScore setText:[self.currentPlayer.scoreSemaine stringValue]];
-        [self.labelTotalScore setText:[self.currentPlayer.scoreTotal stringValue]];
+        [self.labelNbrTrophy setText:[NSString stringWithFormat:@"%i",[[DDDatabaseAccess instance] getNumberOfTrophyAchievedForPlayer:self.currentPlayer]]];
+        [self.labelWeekScore setText:[NSString stringWithFormat:@"%i",[[DDDatabaseAccess instance] getScoreWeekForPlayer:self.currentPlayer forWeekAndYear:[DDHelperController getWeekAndYear]]]];
+        [self.labelTotalScore setText:[NSString stringWithFormat:@"%i",[[DDDatabaseAccess instance] getScoreTotalForPlayer:self.currentPlayer]]];
         
         //On rend la tableView accessible
         [[self.rootTrophyNavigationViewController view] setUserInteractionEnabled:YES];
@@ -290,7 +289,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     //On récupère le joueur et on le met à jour
-    Player *player = [[DDDatabaseAccess instance] getPlayersAtIndex:indexPath.row];
+    Player *player = [[DDDatabaseAccess instance] getPlayerAtIndex:(int)indexPath.row];
     [[DDManagerSingleton instance] setCurrentPlayer:player];
     [self setCurrentPlayer:player];
     
@@ -326,7 +325,7 @@
         [[DDDatabaseAccess instance] deletePlayer:self.currentPlayer];
         
         //On recharge le tableau des joueurs
-        [self setArrayPlayer:[[DDDatabaseAccess instance] getPlayers]];
+        [self setArrayPlayer:[NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getPlayers]]];
         
         //Si on a plus d'un joueur, on set le nouveau joueur
         if ([self.arrayPlayer count] > 0)

@@ -7,7 +7,6 @@
 //
 
 #import "DDManagerSingleton.h"
-#import "Player.h"
 
 @implementation DDManagerSingleton
 
@@ -37,7 +36,7 @@
         _dictImagePlayer = [[NSMutableDictionary alloc] init];
         
         //On récupère la liste des joueurs
-        NSMutableArray *arrayPlayer = [[DDDatabaseAccess instance] getPlayers];
+        NSMutableArray *arrayPlayer = [NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getPlayers]];
         
         int compteur = 0;
         for (Player *player in arrayPlayer)

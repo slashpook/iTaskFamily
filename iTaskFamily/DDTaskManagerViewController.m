@@ -7,10 +7,6 @@
 //
 
 #import "DDTaskManagerViewController.h"
-#import "Categories.h"
-#import "Task.h"
-#import "Player.h"
-#import "Realisation.h"
 
 @interface DDTaskManagerViewController ()
 
@@ -87,7 +83,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.tableViewTask.labelNameCategory setText:self.currentCategory.name];
+    [self.tableViewTask.labelNameCategory setText:self.currentCategory.libelle];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -113,7 +109,7 @@
     {
         [self.custoNavBar.imageViewBackground setImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
         [self.tableViewTask.textFieldNameTask setText:@""];
-        [self.tableViewTask.labelNameCategory setText:self.currentCategory.name];
+        [self.tableViewTask.labelNameCategory setText:self.currentCategory.libelle];
         [self.tableViewTask.textFieldPoint setText:@"0"];
         [self.textFieldBronze setText:@"0"];
         [self.textFieldArgent setText:@"0"];
@@ -122,30 +118,21 @@
     else
     {
         [self.custoNavBar.imageViewBackground setImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
-        [self.tableViewTask.textFieldNameTask setText:self.task.name];
-        [self.tableViewTask.labelNameCategory setText:self.currentCategory.name];
+        [self.tableViewTask.textFieldNameTask setText:self.task.libelle];
+        [self.tableViewTask.labelNameCategory setText:self.currentCategory.libelle];
         [self.tableViewTask.textFieldPoint setText:[NSString stringWithFormat:@"%i",self.task.point.intValue]];
         
         //On boucle sur les réalisations de la tache pour les mettres à jour
-        for (Realisation *realisation in self.task.realisation)
+        for (Trophy *trophy in [self.task.trophies allObjects])
         {
-            if ([realisation.type isEqualToString:@"Bronze"])
-                [self.textFieldBronze setText:[NSString stringWithFormat:@"%i", realisation.total.intValue]];
-            else if ([realisation.type isEqualToString:@"Argent"])
-                [self.textFieldArgent setText:[NSString stringWithFormat:@"%i", realisation.total.intValue]];
+            if ([trophy.type isEqualToString:@"Bronze"])
+                [self.textFieldBronze setText:[NSString stringWithFormat:@"%i", trophy.iteration.intValue]];
+            else if ([trophy.type isEqualToString:@"Argent"])
+                [self.textFieldArgent setText:[NSString stringWithFormat:@"%i", trophy.iteration.intValue]];
             else
-                [self.textFieldOr setText:[NSString stringWithFormat:@"%i", realisation.total.intValue]];
+                [self.textFieldOr setText:[NSString stringWithFormat:@"%i", trophy.iteration.intValue]];
         }
     }
-}
-
-//Teste si tous les champs sont remplies
-- (Boolean)isFieldsEmpty
-{
-    if (self.currentCategory != nil && [[self.tableViewTask.textFieldNameTask text] length] != 0 && [self.tableViewTask.textFieldPoint.text length] != 0 && [self.textFieldBronze.text length] != 0 &&  [self.textFieldArgent.text length] != 0 && [self.textFieldOr.text length] != 0)
-        return NO;
-    else
-        return YES;
 }
 
 //On teste si le texte rentré est un chiffre
@@ -169,120 +156,92 @@
 //Sauvegarder la tache
 - (void)saveTask
 {
-    //Si c'est une nouvelle tache
+    //On crée ou modifie la task suivant le cas
     if (self.isModifyTask == false)
-    {
-        //On crée une nouvelle tache
         [self createTask];
-    }
     else
-    {
-        //On met à jour la tache donnée
         [self updateTask];
-    }
-    
-    //On sauvegarde le joueur
-    [[DDDatabaseAccess instance] saveContext:nil];
-   
-    //On ferme la popUp
-    [self.delegate closeTaskManagerView];
 }
 
 //On ajoute la tache
 - (void)createTask
 {
+    //On crée le message d'erreur
+    NSString *errorMessage = nil;
+    
     //On crée une nouvelle tache
-    self.task = [NSEntityDescription
-                 insertNewObjectForEntityForName:@"Task"
-                 inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+    NSEntityDescription *entityTask = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+    _task = [[Task alloc] initWithEntity:entityTask insertIntoManagedObjectContext:nil];
     
     //On set le nom et le point des taches
-    [self.task setName:self.tableViewTask.textFieldNameTask.text];
+    [self.task setLibelle:self.tableViewTask.textFieldNameTask.text];
     [self.task setPoint:[NSNumber numberWithInt:self.tableViewTask.textFieldPoint.text.intValue]];
     
-    //On crée les trophées
-    Realisation *realisationBronze = [NSEntityDescription
-                                      insertNewObjectForEntityForName:@"Realisation"
-                                      inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
-    [realisationBronze setType:@"Bronze"];
-    [realisationBronze setTotal:[NSNumber numberWithInt:self.textFieldBronze.text.intValue]];
+    //On crée les trophies
+    NSEntityDescription *entityTrophyBronze = [NSEntityDescription entityForName:@"Trophy" inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+    Trophy *trophyBronze = [[Trophy alloc] initWithEntity:entityTrophyBronze insertIntoManagedObjectContext:nil];
+    [trophyBronze setType:@"Bronze"];
+    [trophyBronze setIteration:[NSNumber numberWithInt:self.textFieldBronze.text.intValue]];
     
-    Realisation *realisationArgent = [NSEntityDescription
-                                      insertNewObjectForEntityForName:@"Realisation"
-                                      inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
-    [realisationArgent setType:@"Argent"];
-    [realisationArgent setTotal:[NSNumber numberWithInt:self.textFieldArgent.text.intValue]];
+    NSEntityDescription *entityTrophyArgent = [NSEntityDescription entityForName:@"Trophy" inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+    Trophy *trophyArgent = [[Trophy alloc] initWithEntity:entityTrophyArgent insertIntoManagedObjectContext:nil];
+    [trophyArgent setType:@"Argent"];
+    [trophyArgent setIteration:[NSNumber numberWithInt:self.textFieldArgent.text.intValue]];
     
-    Realisation *realisationOr = [NSEntityDescription
-                                  insertNewObjectForEntityForName:@"Realisation"
-                                  inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
-    [realisationOr setType:@"Or"];
-    [realisationOr setTotal:[NSNumber numberWithInt:self.textFieldOr.text.intValue]];
+    NSEntityDescription *entityTrophyOr = [NSEntityDescription entityForName:@"Trophy" inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+    Trophy *trophyOr = [[Trophy alloc] initWithEntity:entityTrophyOr insertIntoManagedObjectContext:nil];
+    [trophyOr setType:@"Or"];
+    [trophyOr setIteration:[NSNumber numberWithInt:self.textFieldOr.text.intValue]];
     
-    //On set les réalisation
-    [self.task setRealisation:[NSSet setWithObjects:realisationBronze, realisationArgent, realisationOr, nil]];
+    //On sauvegarde la task
+    errorMessage = [[DDDatabaseAccess instance] createTask:self.task forCategory:self.currentCategory withTrophies:[NSArray arrayWithObjects:trophyBronze, trophyArgent, trophyOr, nil]];
     
-    //On ajoute notre objet au tableau et on le sauvegarde
-    [self.currentCategory addTaskObject:self.task];
-    
-    //On ajoute la tache aux joueus
-    for (Player *player in [[DDDatabaseAccess instance] getPlayers])
+    //Si on a pas de message d'erreur on ferme la popUp
+    if (errorMessage == nil)
+        [DDCustomAlertView displayInfoMessage:@"Tache enregistrée"];
+    else
     {
-        //On ajoute notre objet au tableau et on le sauvegarde
-        NSMutableArray *arrayTaskCategory = [NSMutableArray arrayWithArray:[[player task] allObjects]];
-        [arrayTaskCategory addObject:self.task];
-        [player setTask:[NSSet setWithArray:arrayTaskCategory]];
+        [DDCustomAlertView displayInfoMessage:errorMessage];
+        return;
     }
     
-    [DDCustomAlertView displayInfoMessage:@"Tache enregistrée"];
+    [self.delegate closeTaskManagerView];
 }
 
 //On met la tache à jour
 - (void)updateTask
 {
-    //On garde une référence de l'ancien nom de la tache
-    NSString *oldTaskName = self.task.name;
+    //On crée le message d'erreur
+    NSString *errorMessage = nil;
     
     //On met à jour la tache
-    [self.task setName:self.tableViewTask.textFieldNameTask.text];
+    [self.task setLibelle:self.tableViewTask.textFieldNameTask.text];
     [self.task setPoint:[NSNumber numberWithInt:[self.tableViewTask.textFieldPoint.text intValue]]];
+    [self.task setCategory:self.currentCategory];
     
     //On boucle sur les réalisations de la tache pour les mettres à jour
-    for (Realisation *realisation in self.task.realisation)
+    for (Trophy *trophy in [self.task.trophies allObjects])
     {
-        if ([realisation.type isEqualToString:@"Bronze"])
-            [realisation setTotal:[NSNumber numberWithInt:self.textFieldBronze.text.intValue]];
-        else if ([realisation.type isEqualToString:@"Argent"])
-            [realisation setTotal:[NSNumber numberWithInt:self.textFieldArgent.text.intValue]];
+        if ([trophy.type isEqualToString:@"Bronze"])
+            [trophy setIteration:[NSNumber numberWithInt:self.textFieldBronze.text.intValue]];
+        else if ([trophy.type isEqualToString:@"Argent"])
+            [trophy setIteration:[NSNumber numberWithInt:self.textFieldArgent.text.intValue]];
         else
-            [realisation setTotal:[NSNumber numberWithInt:self.textFieldOr.text.intValue]];
+            [trophy setIteration:[NSNumber numberWithInt:self.textFieldOr.text.intValue]];
     }
     
-    //On boucle sur les joueurs pour mettre leur tache à jour
-    for (Player *player in [[DDDatabaseAccess instance] getPlayers])
+    [[DDDatabaseAccess instance] updateTask:self.task];
+    
+    //Si on a pas de message d'erreur on ferme la popUp
+    if (errorMessage == nil)
+        [DDCustomAlertView displayInfoMessage:@"Tache modifiée"];
+    else
     {
-        //On récupère la tache du joueur
-        Task *taskPlayer = [[DDDatabaseAccess instance] getTasksForPlayer:player withTaskName:oldTaskName];
-        
-        //On boucle sur les réalisations de la tache pour les mettres à jour
-        for (Realisation *realisation in taskPlayer.realisation)
-        {
-            if ([realisation.type isEqualToString:@"Bronze"])
-                [realisation setTotal:[NSNumber numberWithInt:self.textFieldBronze.text.intValue]];
-            else if ([realisation.type isEqualToString:@"Argent"])
-                [realisation setTotal:[NSNumber numberWithInt:self.textFieldArgent.text.intValue]];
-            else
-                [realisation setTotal:[NSNumber numberWithInt:self.textFieldOr.text.intValue]];
-            
-            if ([realisation.realized intValue] >= [realisation.total intValue])
-                [realisation setRealized:realisation.total];
-        }
-        
-#warning On met à jour les points des joueurs
-        
+        [DDCustomAlertView displayInfoMessage:errorMessage];
+        return;
     }
     
-    [DDCustomAlertView displayInfoMessage:@"Tache modifiée. Les points attribués par les évènements de cette tache non validée seront mis à jour et modifiront le score de la semaine en cours et la semaine passée"];
+    [self.delegate closeTaskManagerView];
 }
 
 
@@ -331,61 +290,30 @@
 //On appuie sue le bouton de droite
 - (void)onPushRightBarButton
 {
-    //Si tout les champs sont remplis
-    if ([self isFieldsEmpty] == false)
+    //Si les textes numériques le sont
+    if ([self textIsNumeric] == true)
     {
-        //Si les textes numériques le sont
-        if ([self textIsNumeric] == true)
+        //On vérifie que l'on a des occurences supérieures à 0
+        if ([self occurenceDifferentFromZero] == true)
         {
-            //On vérifie que l'on a des occurences supérieures à 0
-            if ([self occurenceDifferentFromZero] == true)
-            {
-                //Si on crée une nouvelle tache
-                if (self.isModifyTask == false)
-                {
-                    //On fait les tests sur la tache
-                    if ([[DDDatabaseAccess instance] taskExistWithName:self.tableViewTask.textFieldNameTask.text] == YES)
-                    {
-                        [DDCustomAlertView displayErrorMessage:@"Une autre tache porte déjà ce nom!"];
-                        return;
-                    }
-                    
-                    //On fait toutes les sauvegardes nécessaires
-                    [self saveTask];
-                }
-                //Sinon on modifie la tache
-                else
-                {
-                    //On fait les tests sur la tache
-                    if ([[DDDatabaseAccess instance] taskExistWithName:self.tableViewTask.textFieldNameTask.text] == YES && [self.task.name isEqualToString:self.tableViewTask.textFieldNameTask.text] == NO)
-                    {
-                        [DDCustomAlertView displayErrorMessage:@"Une autre tache porte déjà ce nom!"];
-                        return;
-                    }
-                    
-                    //On fait toutes les sauvegardes nécessaires
-                    [self saveTask];
-                }
-                [self.delegate closeTaskManagerView];
-            }
-            else
-                [DDCustomAlertView displayErrorMessage:@"Veuillez rentrer des objectifs supérieurs à 0"];
+            //On fait toutes les sauvegardes nécessaires
+            [self saveTask];
         }
         else
-            [DDCustomAlertView displayErrorMessage:@"Veuillez ne rentrer que des chiffres pour les points et les objectifs"];
+            [DDCustomAlertView displayErrorMessage:@"Veuillez rentrer des objectifs supérieurs à 0"];
     }
     else
-        [DDCustomAlertView displayErrorMessage:@"Veuillez remplir tous les champs svp !"];
+        [DDCustomAlertView displayErrorMessage:@"Veuillez ne rentrer que des chiffres pour les points et les objectifs"];
 }
 
 
 #pragma mark - DDCategorieViewProtocol fonction
 
-- (void)closeCategorieViewWithCategorie:(Categories *)categorie
+- (void)closeCategorieViewWithCategorie:(CategoryTask *)category
 {
     //On met à jour la catégorie en cours et on change le texte
-    [self setCurrentCategory:categorie];
-    [self.tableViewTask.labelNameCategory setText:categorie.name];
+    [self setCurrentCategory:category];
+    [self.tableViewTask.labelNameCategory setText:category.libelle];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

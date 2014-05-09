@@ -7,10 +7,6 @@
 //
 
 #import "DDParserXML.h"
-#import "Trophy.h"
-#import "Task.h"
-#import "Categories.h"
-#import "Realisation.h"
 
 @implementation DDParserXML
 
@@ -21,8 +17,7 @@
     self = [super init];
     if (self) {
         _taskArray = [[NSMutableArray alloc] init];
-        _tropheesArray = [[NSMutableArray alloc] init];
-        _realisationArray = [[NSMutableArray alloc] init];
+        _trophyArray = [[NSMutableArray alloc] init];
         _currentElement = [[NSMutableString alloc] init];
          [self setFirstOpen:true];
     }
@@ -50,8 +45,7 @@
 - (void)parserDidStartDocument:(NSXMLParser *)parser
 {
     [self.taskArray removeAllObjects];
-    [self.tropheesArray removeAllObjects];
-    [self.realisationArray removeAllObjects];
+    [self.trophyArray removeAllObjects];
 }
 
 //BALISE OUVRANTE
@@ -63,55 +57,52 @@
     if ([self.currentElement isEqualToString:@"category"])
     {
         //On crée une nouvelle category
-        _category = [NSEntityDescription
-                       insertNewObjectForEntityForName:@"Categories"
-                       inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
-        self.category.name = [attributeDict objectForKey:@"name"];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"CategoryTask" inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+        _category = [[CategoryTask alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+
+        self.category.libelle = [attributeDict objectForKey:@"libelle"];
+        
+        //On crée la category
+        [[DDDatabaseAccess instance] createCategoryTask:self.category];
     }
     
     //Si on est sur un trophées
     if ([self.currentElement isEqualToString:@"trophy"])
     {
-        //On crée un nouveau trophée
-        Trophy *trophees = [NSEntityDescription
-                 insertNewObjectForEntityForName:@"Trophy"
-                 inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
-        trophees.name = [attributeDict objectForKey:@"name"];
-        trophees.type = [attributeDict objectForKey:@"type"];
-        trophees.categories = self.category;
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"CategoryTrophy" inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+        CategoryTrophy *categoryTrophy = [[CategoryTrophy alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
         
-        //On ajoute le trophées au tableau
-        [[self tropheesArray] addObject:trophees];
+        [categoryTrophy setLibelle:[attributeDict objectForKey:@"libelle"]];
+        [categoryTrophy setType:[attributeDict objectForKey:@"type"]];
+        
+        //On crée le categoryTrophy
+        [[DDDatabaseAccess instance] createCategoryTrophy:categoryTrophy withCategory:self.category];
     }
     
     //Si on est sur une tache
     if ([self.currentElement isEqualToString:@"task"])
     {
-        //On crée une nouvelle tache
-        _task = [NSEntityDescription
-                 insertNewObjectForEntityForName:@"Task"
-                 inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+        _task = [[Task alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
         
-        self.task.name = [attributeDict objectForKey:@"name"];
-        self.task.point = [NSNumber numberWithInt:[[attributeDict objectForKey:@"point"] intValue]];
-        self.task.categories = self.category;
+        [self.task setLibelle:[attributeDict objectForKey:@"libelle"]];
+        [self.task setPoint:[NSNumber numberWithInt:[[attributeDict objectForKey:@"point"] intValue]]];
         
         //On ajoute la tache au tableau
         [self.taskArray addObject:self.task];
     }
     
-    //Si on est sur une realisation
+    //Si on est sur un trophée de tache
     if ([self.currentElement isEqualToString:@"realisation"])
     {
-        //On crée une nouvelle réalisation
-        Realisation *realisation = [NSEntityDescription
-                     insertNewObjectForEntityForName:@"Realisation"
-                     inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
-        realisation.total = [NSNumber numberWithInt:[[attributeDict objectForKey:@"total"] intValue]];
-        realisation.type = [attributeDict objectForKey:@"type"];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Trophy" inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+        Trophy *trophy = [[Trophy alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
         
-        //On ajoute la réalisation au tableau
-        [self.realisationArray addObject:realisation];
+        [trophy setIteration:[NSNumber numberWithInt:[[attributeDict objectForKey:@"total"] intValue]]];
+        [trophy setType:[attributeDict objectForKey:@"type"]];
+        
+        //On ajoute le trophy au tableau
+        [self.trophyArray addObject:trophy];
     }
 }
 
@@ -130,26 +121,13 @@
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{
     
     [self.currentElement setString:elementName];
-
-    //On rajoute toutes les taches aux trophées
-    if ([self.currentElement isEqualToString:@"category"])
-    {
-        //On set les trophées
-        [self.category setTask:[NSSet setWithArray:self.taskArray]];
-        [self.category setTrophy:[NSSet setWithArray:self.tropheesArray]];
-
-        //On sauvegarde les données
-        [[DDDatabaseAccess instance] saveContext:nil];
-        
-        [[self tropheesArray] removeAllObjects];
-        [[self taskArray] removeAllObjects];
-    }
     
     //On rajoute toutes les réalisations à la tache
     if ([self.currentElement isEqualToString:@"task"])
     {
-        [self.task setRealisation:[NSSet setWithArray:self.realisationArray]];
-        [[self realisationArray] removeAllObjects];
+        [[DDDatabaseAccess instance] createTask:self.task forCategory:self.category withTrophies:self.trophyArray];
+
+        [[self trophyArray] removeAllObjects];
     }
 }
 

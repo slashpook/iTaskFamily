@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class Event;
 @class DDCustomValidation;
 
 @protocol DDEventInfosProtocol <NSObject>

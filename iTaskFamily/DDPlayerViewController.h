@@ -11,7 +11,6 @@
 
 @class DDPopOverViewController;
 @class DDRootTrophyViewController;
-@class Player;
 
 @interface DDPlayerViewController : UIViewController <DDPlayerManagerViewProtocol, UIAlertViewDelegate>
 

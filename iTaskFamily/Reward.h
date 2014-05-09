@@ -1,5 +1,5 @@
 //
-//  Trophy.h
+//  Reward.h
 //  iTaskFamily
 //
 //  Created by Damien DELES on 08/05/2014.
@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@interface Trophy : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * iteration;
+@interface Reward : NSManagedObject
+
+@property (nonatomic, retain) NSString * libelle;
 @property (nonatomic, retain) NSString * type;
-@property (nonatomic, retain) Task *task;
 
 @end

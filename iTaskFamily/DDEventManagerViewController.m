@@ -7,10 +7,7 @@
 //
 
 #import "DDEventManagerViewController.h"
-#import "Event.h"
-#import "Categories.h"
-#import "Task.h"
-#import "Player.h"
+
 
 @interface DDEventManagerViewController ()
 
@@ -105,7 +102,7 @@
     if ([self isModifyEvent] == NO)
     {
         [self.custoNavBar.imageViewBackground setImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
-        [self.tableViewEvent.labelTacheContent setText:self.task.name];
+        [self.tableViewEvent.labelTacheContent setText:self.task.libelle];
         [self.tableViewEvent.labelDateContent setText:[self formatOccurence]];
         [self.tableViewEvent.switchRecurrence setOn:YES];
         [self.textViewComment setText:@""];
@@ -113,9 +110,9 @@
     else
     {
         [self.custoNavBar.imageViewBackground setImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
-        [self.tableViewEvent.labelTacheContent setText:self.eventToModify.task.name];
+        [self.tableViewEvent.labelTacheContent setText:self.eventToModify.achievement.task.libelle];
         [self.tableViewEvent.labelDateContent setText:[self formatOccurence]];
-        [self.tableViewEvent.switchRecurrence setOn:[self.eventToModify.recurrence boolValue]];
+        [self.tableViewEvent.switchRecurrence setOn:[self.eventToModify.recurrent boolValue]];
         [self.textViewComment setText:self.eventToModify.comment];
     }
 }
@@ -163,38 +160,37 @@
 }
 
 //On sauvegarde l'event
-- (void)saveEventForDay:(NSString *)day
+- (NSString *)saveEventForDay:(NSString *)day
 {
-    //On récupère le joueur en courant
-    Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
-    
     //On récupère le numéro du jour de la semaine
     NSString *dayNumber = [[NSNumber numberWithInteger:[[[DDManagerSingleton instance] arrayWeek] indexOfObject:day]] stringValue];
     
-    //On crée le nouvel évènement
-    Event *event = [NSEntityDescription
-                    insertNewObjectForEntityForName:@"Event"
-                    inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+    //On récupère le joueur en courant
+    Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
     
-    //On crée une duplication de la tache et on le set à l'évènment
-    Task *task = [NSEntityDescription
-                  insertNewObjectForEntityForName:@"Task"
-                  inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
-    [task setTaskWithTask:self.task];
+    //On crée le nouvel évènement ou récupère l'event à modifier
+    Event *event;
+    if (self.isModifyEvent == NO)
+    {
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+        event = [[Event alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    }
+    else
+        event = self.eventToModify;
     
     //On met à jour les infos sur l'évènement
-    [event setTask:task];
     [event setDay:dayNumber];
-    [event setRecurrence:[NSNumber numberWithBool:self.tableViewEvent.switchRecurrence.isOn]];
+    [event setRecurrent:[NSNumber numberWithBool:self.tableViewEvent.switchRecurrence.isOn]];
     [event setComment:self.textViewComment.text];
     
-    //On récupère la tache stockée dans la catégorie et on met à jour son historique
-    Task *currentTaskInCategory = [[DDDatabaseAccess instance] getTaskInCategory:self.task.categories.name WithTaskName:self.task.name];
-    NSNumber *historique = [[NSNumber alloc] initWithInt:([currentTaskInCategory.historique intValue] + 1)];
-    [currentTaskInCategory setHistorique:historique];
-    
-    //On affiche un nouvel évènement
-    [currentPlayer addEventsObject:event];
+    if (self.isModifyEvent == NO)
+    {
+        return [[DDDatabaseAccess instance] createEvent:event forPlayer:currentPlayer forTask:self.task atWeekAndYear:[DDHelperController getWeekAndYear]];
+    }
+    else
+    {
+        return [[DDDatabaseAccess instance] updateEvent:event forPlayer:currentPlayer forTask:self.task atWeekAndYear:[DDHelperController getWeekAndYear]];
+    }
 }
 
 
@@ -271,56 +267,33 @@
 //On appuie sue le bouton de droite
 - (void)onPushRightBarButton
 {
+    //String qui contiendra un éventuel message d'erreur
+    NSString *errorMessage = nil;
+    
     //On teste d'abord si tous les champs obligatoires sont remplis
-    if ([self.tableViewEvent.labelTacheContent.text length] > 0 && [self.arrayOccurence count] > 0)
+    if ([self.arrayOccurence count] > 0)
     {
-        Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
-        NSMutableArray *arrayEvent;
-        
         //On boucle sur le nombre d'occurence de l'évènement
         for (NSString *day in self.arrayOccurence)
         {
-            //On récupère le numéro du jour de la semaine
-            NSString *dayNumber = [[NSNumber numberWithInteger:[[[DDManagerSingleton instance] arrayWeek] indexOfObject:day]] stringValue];
-            
-            //Si on est en ajout d'évènement
-            if (self.isModifyEvent == NO)
+            //On sauvegarde l'event
+            errorMessage = [self saveEventForDay:day];
+            if (errorMessage != nil)
             {
-                arrayEvent = [NSMutableArray arrayWithArray:[currentPlayer.events allObjects]];
-                
-                //On vérifie que la tache n'existe pas déjà
-                if ([[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer withTaskName:self.task.name atDay:dayNumber] == nil)
-                {
-                    //On crée le nouvel évènement
-                    [self saveEventForDay:day];
-                }
-                //Sinon on affiche une popUp d'erreur
-                else
-                {
-                    [DDCustomAlertView displayErrorMessage:[NSString stringWithFormat:@"%@ a déjà été enregistré pour le %@", self.task.name, day]];
-                    return;
-                }
+                [DDCustomAlertView displayErrorMessage:errorMessage];
+                return;
             }
+            //Si on a pas de message d'erreur, on met à jour l'historique de la tache
             else
             {
-                //Si l'évènement n'existe pas ou si un évènement existe déjà pour cette modification
-                if (([[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer withTaskName:self.task.name atDay:dayNumber] == nil && ![self.task.name isEqualToString:self.eventToModify.task.name]) || ([self.task.name isEqualToString:self.eventToModify.task.name] && [dayNumber isEqualToString:self.eventToModify.day]))
-                {
-                    //On supprime l'ancien évènement et on le recrée pour le mettre à jour
-                    [[DDDatabaseAccess instance] deleteEvent:self.eventToModify];
-                    [self saveEventForDay:day];
-                }
-                else
-                {
-                    [DDCustomAlertView displayErrorMessage:[NSString stringWithFormat:@"%@ a déjà été enregistré pour le %@", self.task.name, day]];
-                    return;
-                }
+                NSNumber *history = [[NSNumber alloc] initWithInt:([self.task.history intValue] + 1)];
+                [self.task setHistory:history];
             }
         }
     }
     else
     {
-        [DDCustomAlertView displayErrorMessage:@"Veuillez remplir les champs obligatoires pour valider l'évènement"];
+        [DDCustomAlertView displayErrorMessage:@"Veuillez choisir un ou plusieurs jours pour la tache à accomplir"];
         return;
     }
     
@@ -334,9 +307,6 @@
     }
     else
         [DDCustomAlertView displayInfoMessage:@"Evènement modifié"];
-    
-    //On sauvegarde le joueur
-    [[DDDatabaseAccess instance] saveContext:nil];
     
     //On ferme la vue
     [self.delegate closeEventManagerView];

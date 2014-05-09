@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <categories>
-    <category name="Autre">
-        <trophy name="Roi Tout Terrain" type="Bronze">
+    <category libelle="Autre">
+        <trophy libelle="Roi Tout Terrain" type="Bronze">
         </trophy>
-        <trophy name="Chuck Norris" type="Argent">
+        <trophy libelle="Chuck Norris" type="Argent">
         </trophy>
-        <trophy name="Machine en tout" type="Or">
+        <trophy libelle="Machine en tout" type="Or">
         </trophy>
-        <task name="Faire la lessive" point="400">
+        <task libelle="Faire la lessive" point="400">
             <realisation total="10" type="Bronze">
             </realisation>
             <realisation total="15" type="Argent">
@@ -15,7 +15,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Faire les courses" point="500">
+        <task libelle="Faire les courses" point="500">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -23,7 +23,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Faire ses devoirs" point="300">
+        <task libelle="Faire ses devoirs" point="300">
             <realisation total="10" type="Bronze">
             </realisation>
             <realisation total="15" type="Argent">
@@ -31,7 +31,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Lister les courses" point="200">
+        <task libelle="Lister les courses" point="200">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -39,7 +39,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Nettoyer le grenier" point="600">
+        <task libelle="Nettoyer le grenier" point="600">
             <realisation total="1" type="Bronze">
             </realisation>
             <realisation total="3" type="Argent">
@@ -47,7 +47,7 @@
             <realisation total="7" type="Or">
             </realisation>
         </task>
-        <task name="Ranger le grenier" point="600">
+        <task libelle="Ranger le grenier" point="600">
             <realisation total="1" type="Bronze">
             </realisation>
             <realisation total="3" type="Argent">
@@ -55,7 +55,7 @@
             <realisation total="7" type="Or">
             </realisation>
         </task>
-        <task name="Ranger les courses" point="250">
+        <task libelle="Ranger les courses" point="250">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -63,7 +63,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Repasser" point="400">
+        <task libelle="Repasser" point="400">
             <realisation total="10" type="Bronze">
             </realisation>
             <realisation total="15" type="Argent">
@@ -72,14 +72,14 @@
             </realisation>
         </task>
     </category>
-    <category name="Cuisine">
-        <trophy name="Roi de la Cuisine" type="Bronze">
+    <category libelle="Cuisine">
+        <trophy libelle="Roi de la Cuisine" type="Bronze">
         </trophy>
-        <trophy name="Empereur de la Cuisine" type="Argent">
+        <trophy libelle="Empereur de la Cuisine" type="Argent">
         </trophy>
-        <trophy name="Master Chef de la Cuisine" type="Or">
+        <trophy libelle="Master Chef de la Cuisine" type="Or">
         </trophy>
-        <task name="Changer les torchons et serviettes de table" point="150">
+        <task libelle="Changer les torchons et serviettes de table" point="150">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -87,7 +87,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Laver le frigo" point="600">
+        <task libelle="Laver le frigo" point="600">
             <realisation total="3" type="Bronze">
             </realisation>
             <realisation total="7" type="Argent">
@@ -95,7 +95,7 @@
             <realisation total="10" type="Or">
             </realisation>
         </task>
-        <task name="Laver la vaisselle" point="400">
+        <task libelle="Laver la vaisselle" point="400">
             <realisation total="10" type="Bronze">
             </realisation>
             <realisation total="15" type="Argent">
@@ -103,7 +103,7 @@
             <realisation total="25" type="Or">
             </realisation>
         </task>
-        <task name="Lever la table" point="300">
+        <task libelle="Lever la table" point="300">
             <realisation total="10" type="Bronze">
             </realisation>
             <realisation total="15" type="Argent">
@@ -111,7 +111,7 @@
             <realisation total="25" type="Or">
             </realisation>
         </task>
-        <task name="Faire à manger" point="500">
+        <task libelle="Faire à manger" point="500">
             <realisation total="10" type="Bronze">
             </realisation>
             <realisation total="15" type="Argent">
@@ -119,7 +119,7 @@
             <realisation total="25" type="Or">
             </realisation>
         </task>
-        <task name="Mettre la table" point="300">
+        <task libelle="Mettre la table" point="300">
             <realisation total="10" type="Bronze">
             </realisation>
             <realisation total="15" type="Argent">
@@ -127,7 +127,7 @@
             <realisation total="25" type="Or">
             </realisation>
         </task>
-        <task name="Nettoyer la cuisine" point="800">
+        <task libelle="Nettoyer la cuisine" point="800">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -135,7 +135,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Nourrir les animaux" point="300">
+        <task libelle="Nourrir les animaux" point="300">
             <realisation total="10" type="Bronze">
             </realisation>
             <realisation total="15" type="Argent">
@@ -143,7 +143,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Passer la serpillère dans la cuisine" point="450">
+        <task libelle="Passer la serpillère dans la cuisine" point="450">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -151,7 +151,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Passer le balais dans la cuisine" point="300">
+        <task libelle="Passer le balais dans la cuisine" point="300">
             <realisation total="10" type="Bronze">
             </realisation>
             <realisation total="15" type="Argent">
@@ -159,7 +159,7 @@
             <realisation total="25" type="Or">
             </realisation>
         </task>
-        <task name="Ranger la cuisine" point="800">
+        <task libelle="Ranger la cuisine" point="800">
             <realisation total="3" type="Bronze">
             </realisation>
             <realisation total="7" type="Argent">
@@ -167,7 +167,7 @@
             <realisation total="10" type="Or">
             </realisation>
         </task>
-        <task name="Remplir le lave vaisselle" point="300">
+        <task libelle="Remplir le lave vaisselle" point="300">
             <realisation total="10" type="Bronze">
             </realisation>
             <realisation total="15" type="Argent">
@@ -175,7 +175,7 @@
             <realisation total="25" type="Or">
             </realisation>
         </task>
-        <task name="Vider la poubelle de la cuisine" point="200">
+        <task libelle="Vider la poubelle de la cuisine" point="200">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -183,7 +183,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Vider le lave vaisselle" point="300">
+        <task libelle="Vider le lave vaisselle" point="300">
             <realisation total="10" type="Bronze">
             </realisation>
             <realisation total="15" type="Argent">
@@ -192,14 +192,14 @@
             </realisation>
         </task>
     </category>
-    <category name="Chambre">
-        <trophy name="La chambre est mon ami" type="Bronze">
+    <category libelle="Chambre">
+        <trophy libelle="La chambre est mon ami" type="Bronze">
         </trophy>
-        <trophy name="Marry Poppin" type="Argent">
+        <trophy libelle="Marry Poppin" type="Argent">
         </trophy>
-        <trophy name="Mr Propre" type="Or">
+        <trophy libelle="Mr Propre" type="Or">
         </trophy>
-        <task name="Aérer la chambre" point="100">
+        <task libelle="Aérer la chambre" point="100">
             <realisation total="15" type="Bronze">
             </realisation>
             <realisation total="25" type="Argent">
@@ -207,7 +207,7 @@
             <realisation total="35" type="Or">
             </realisation>
         </task>
-        <task name="Changer les draps" point="500">
+        <task libelle="Changer les draps" point="500">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -215,7 +215,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Faire la poussière dans la chambre" point="600">
+        <task libelle="Faire la poussière dans la chambre" point="600">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -223,7 +223,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Faire le lit" point="100">
+        <task libelle="Faire le lit" point="100">
             <realisation total="25" type="Bronze">
             </realisation>
             <realisation total="40" type="Argent">
@@ -231,7 +231,7 @@
             <realisation total="55" type="Or">
             </realisation>
         </task>
-        <task name="Mettre les habits au linge sale" point="100">
+        <task libelle="Mettre les habits au linge sale" point="100">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -239,7 +239,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Nettoyer la chambre" point="800">
+        <task libelle="Nettoyer la chambre" point="800">
             <realisation total="3" type="Bronze">
             </realisation>
             <realisation total="7" type="Argent">
@@ -247,7 +247,7 @@
             <realisation total="10" type="Or">
             </realisation>
         </task>
-        <task name="Passer l’aspirateur dans la chambre" point="300">
+        <task libelle="Passer l’aspirateur dans la chambre" point="300">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -255,7 +255,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Passer la serpillère dans la chambre" point="400">
+        <task libelle="Passer la serpillère dans la chambre" point="400">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -263,7 +263,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Passer le balais dans la chambre" point="400">
+        <task libelle="Passer le balais dans la chambre" point="400">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -271,7 +271,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Ranger la chambre" point="800">
+        <task libelle="Ranger la chambre" point="800">
             <realisation total="3" type="Bronze">
             </realisation>
             <realisation total="7" type="Argent">
@@ -279,7 +279,7 @@
             <realisation total="10" type="Or">
             </realisation>
         </task>
-        <task name="Ranger le bureau" point="350">
+        <task libelle="Ranger le bureau" point="350">
             <realisation total="3" type="Bronze">
             </realisation>
             <realisation total="7" type="Argent">
@@ -287,7 +287,7 @@
             <realisation total="10" type="Or">
             </realisation>
         </task>
-        <task name="Ranger le linge" point="300">
+        <task libelle="Ranger le linge" point="300">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -295,7 +295,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Vider la poubelle de la chambre" point="200">
+        <task libelle="Vider la poubelle de la chambre" point="200">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -304,14 +304,14 @@
             </realisation>
         </task>
     </category>
-    <category name="Douche">
-        <trophy name="Bob L'éponge" type="Bronze">
+    <category libelle="Douche">
+        <trophy libelle="Bob L'éponge" type="Bronze">
         </trophy>
-        <trophy name="Je lave les chiottes et je l'assume" type="Argent">
+        <trophy libelle="Je lave les chiottes et je l'assume" type="Argent">
         </trophy>
-        <trophy name="Ma baignore scintille" type="Or">
+        <trophy libelle="Ma baignore scintille" type="Or">
         </trophy>
-        <task name="Changer les serviettes" point="150">
+        <task libelle="Changer les serviettes" point="150">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -319,7 +319,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Nettoyer la salle de bain" point="500">
+        <task libelle="Nettoyer la salle de bain" point="500">
             <realisation total="4" type="Bronze">
             </realisation>
             <realisation total="8" type="Argent">
@@ -327,7 +327,7 @@
             <realisation total="12" type="Or">
             </realisation>
         </task>
-        <task name="Nettoyer les toilettes" point="450">
+        <task libelle="Nettoyer les toilettes" point="450">
             <realisation total="4" type="Bronze">
             </realisation>
             <realisation total="8" type="Argent">
@@ -335,7 +335,7 @@
             <realisation total="12" type="Or">
             </realisation>
         </task>
-        <task name="Passer la serpillère dans les salles d’eau" point="350">
+        <task libelle="Passer la serpillère dans les salles d’eau" point="350">
             <realisation total="5" type="Bronze">
             </realisation>
             <realisation total="10" type="Argent">
@@ -343,7 +343,7 @@
             <realisation total="15" type="Or">
             </realisation>
         </task>
-        <task name="Passer le balais dans les salles d’eau" point="350">
+        <task libelle="Passer le balais dans les salles d’eau" point="350">
             <realisation total="5" type="Bronze">
             </realisation>
             <realisation total="10" type="Argent">
@@ -351,7 +351,7 @@
             <realisation total="15" type="Or">
             </realisation>
         </task>
-        <task name="Ranger la salle de bain" point="500">
+        <task libelle="Ranger la salle de bain" point="500">
             <realisation total="4" type="Bronze">
             </realisation>
             <realisation total="8" type="Argent">
@@ -359,7 +359,7 @@
             <realisation total="12" type="Or">
             </realisation>
         </task>
-        <task name="Se brosser les dents" point="100">
+        <task libelle="Se brosser les dents" point="100">
             <realisation total="15" type="Bronze">
             </realisation>
             <realisation total="25" type="Argent">
@@ -367,7 +367,7 @@
             <realisation total="40" type="Or">
             </realisation>
         </task>
-        <task name="Se doucher" point="100">
+        <task libelle="Se doucher" point="100">
             <realisation total="15" type="Bronze">
             </realisation>
             <realisation total="25" type="Argent">
@@ -375,7 +375,7 @@
             <realisation total="40" type="Or">
             </realisation>
         </task>
-        <task name="Vider la poubelle de la salle de bain" point="150">
+        <task libelle="Vider la poubelle de la salle de bain" point="150">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -383,7 +383,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Vider la poubelle des toilettes" point="150">
+        <task libelle="Vider la poubelle des toilettes" point="150">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -392,14 +392,14 @@
             </realisation>
         </task>
     </category>
-    <category name="Exterieur">
-        <trophy name="Conducteur de tracteur" type="Bronze">
+    <category libelle="Exterieur">
+        <trophy libelle="Conducteur de tracteur" type="Bronze">
         </trophy>
-        <trophy name="Roi du jardinage" type="Argent">
+        <trophy libelle="Roi du jardinage" type="Argent">
         </trophy>
-        <trophy name="Maitre Jardinier" type="Or">
+        <trophy libelle="Maitre Jardinier" type="Or">
         </trophy>
-        <task name="Arroser les plantes" point="350">
+        <task libelle="Arroser les plantes" point="350">
             <realisation total="15" type="Bronze">
             </realisation>
             <realisation total="25" type="Argent">
@@ -407,7 +407,7 @@
             <realisation total="40" type="Or">
             </realisation>
         </task>
-        <task name="Etendre le linge" point="300">
+        <task libelle="Etendre le linge" point="300">
             <realisation total="10" type="Bronze">
             </realisation>
             <realisation total="15" type="Argent">
@@ -415,7 +415,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Faire le jardin" point="400">
+        <task libelle="Faire le jardin" point="400">
             <realisation total="15" type="Bronze">
             </realisation>
             <realisation total="25" type="Argent">
@@ -423,7 +423,7 @@
             <realisation total="40" type="Or">
             </realisation>
         </task>
-        <task name="Nettoyer la terrasse" point="600">
+        <task libelle="Nettoyer la terrasse" point="600">
             <realisation total="3" type="Bronze">
             </realisation>
             <realisation total="7" type="Argent">
@@ -431,7 +431,7 @@
             <realisation total="10" type="Or">
             </realisation>
         </task>
-        <task name="Nettoyer la voiture" point="550">
+        <task libelle="Nettoyer la voiture" point="550">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -439,7 +439,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Nettoyer les vitres" point="350">
+        <task libelle="Nettoyer les vitres" point="350">
             <realisation total="7" type="Bronze">
             </realisation>
             <realisation total="13" type="Argent">
@@ -447,7 +447,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Promener le chien" point="450">
+        <task libelle="Promener le chien" point="450">
             <realisation total="10" type="Bronze">
             </realisation>
             <realisation total="15" type="Argent">
@@ -455,7 +455,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Ramasser le linge" point="300">
+        <task libelle="Ramasser le linge" point="300">
             <realisation total="10" type="Bronze">
             </realisation>
             <realisation total="15" type="Argent">
@@ -463,7 +463,7 @@
             <realisation total="20" type="Or">
             </realisation>
         </task>
-        <task name="Ramasser les feuilles" point="600">
+        <task libelle="Ramasser les feuilles" point="600">
             <realisation total="3" type="Bronze">
             </realisation>
             <realisation total="7" type="Argent">
@@ -471,7 +471,7 @@
             <realisation total="10" type="Or">
             </realisation>
         </task>
-        <task name="Récupérer le courrier" point="100">
+        <task libelle="Récupérer le courrier" point="100">
             <realisation total="15" type="Bronze">
             </realisation>
             <realisation total="25" type="Argent">
@@ -479,7 +479,7 @@
             <realisation total="40" type="Or">
             </realisation>
         </task>
-        <task name="Sortir les poubelles" point="200">
+        <task libelle="Sortir les poubelles" point="200">
             <realisation total="15" type="Bronze">
             </realisation>
             <realisation total="25" type="Argent">
@@ -487,7 +487,7 @@
             <realisation total="40" type="Or">
             </realisation>
         </task>
-        <task name="Tailler les arbustes" point="800">
+        <task libelle="Tailler les arbustes" point="800">
             <realisation total="1" type="Bronze">
             </realisation>
             <realisation total="3" type="Argent">
@@ -495,7 +495,7 @@
             <realisation total="7" type="Or">
             </realisation>
         </task>
-        <task name="Tondre la pelouse" point="450">
+        <task libelle="Tondre la pelouse" point="450">
             <realisation total="3" type="Bronze">
             </realisation>
             <realisation total="7" type="Argent">
@@ -504,14 +504,14 @@
             </realisation>
         </task>
     </category>
-    <category name="Salon">
-        <trophy name="On peut accueilir des amis" type="Bronze">
+    <category libelle="Salon">
+        <trophy libelle="On peut accueilir des amis" type="Bronze">
         </trophy>
-        <trophy name="Le sol brille" type="Argent">
+        <trophy libelle="Le sol brille" type="Argent">
         </trophy>
-        <trophy name="Mon salon passe chez Leroy Merlin" type="Or">
+        <trophy libelle="Mon salon passe chez Leroy Merlin" type="Or">
         </trophy>
-        <task name="Ranger le salon" point="500">
+        <task libelle="Ranger le salon" point="500">
             <realisation total="5" type="Bronze">
             </realisation>
             <realisation total="10" type="Argent">
@@ -520,14 +520,14 @@
             </realisation>
         </task>
     </category>
-    <category name="Garage">
-        <trophy name="Elle est ou la voiture" type="Bronze">
+    <category libelle="Garage">
+        <trophy libelle="Elle est ou la voiture" type="Bronze">
         </trophy>
-        <trophy name="Je préfère mon garage à ma maison" type="Argent">
+        <trophy libelle="Je préfère mon garage à ma maison" type="Argent">
         </trophy>
-        <trophy name="Je vis dans mon garage" type="Or">
+        <trophy libelle="Je vis dans mon garage" type="Or">
         </trophy>
-        <task name="Nettoyer le garage" point="650">
+        <task libelle="Nettoyer le garage" point="650">
             <realisation total="3" type="Bronze">
             </realisation>
             <realisation total="7" type="Argent">
@@ -535,7 +535,7 @@
             <realisation total="10" type="Or">
             </realisation>
         </task>
-        <task name="Ranger le garage" point="650">
+        <task libelle="Ranger le garage" point="650">
             <realisation total="3" type="Bronze">
             </realisation>
             <realisation total="7" type="Argent">
@@ -543,7 +543,7 @@
             <realisation total="10" type="Or">
             </realisation>
         </task>
-        <task name="Rentrer la voiture" point="100">
+        <task libelle="Rentrer la voiture" point="100">
             <realisation total="15" type="Bronze">
             </realisation>
             <realisation total="25" type="Argent">

@@ -1,19 +1,22 @@
 //
-//  Trophy.m
+//  Achievement.m
 //  iTaskFamily
 //
 //  Created by Damien DELES on 08/05/2014.
 //  Copyright (c) 2014 Damien DELES. All rights reserved.
 //
 
-#import "Trophy.h"
+#import "Achievement.h"
+#import "Event.h"
+#import "Player.h"
 #import "Task.h"
 
 
-@implementation Trophy
+@implementation Achievement
 
-@dynamic iteration;
-@dynamic type;
+@dynamic weekAndYear;
+@dynamic events;
+@dynamic player;
 @dynamic task;
 
 @end

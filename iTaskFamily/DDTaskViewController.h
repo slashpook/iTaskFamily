@@ -11,9 +11,6 @@
 #import "DDTaskManagerViewController.h"
 
 @class DDPopOverViewController;
-@class Categories;
-@class Task;
-@class Player;
 @class DDCustomProgressBar;
 
 @interface DDTaskViewController : UIViewController <DDTaskManagerViewProtocol>
@@ -28,7 +25,7 @@
 @property (strong, nonatomic) NSMutableArray *arrayCategories;
 
 //Categorie courante
-@property (strong, nonatomic) Categories *currentCategorie;
+@property (strong, nonatomic) CategoryTask *currentCategorie;
 
 //Task sélectionnée
 @property (strong, nonatomic) Task *currentTask;

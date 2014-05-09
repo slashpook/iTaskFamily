@@ -10,7 +10,6 @@
 #import "DDPlayerListViewController.h"
 
 @class DDPopOverViewController;
-@class Player;
 
 @protocol DDMenuViewProtocol <NSObject>
 

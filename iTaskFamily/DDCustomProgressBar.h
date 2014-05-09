@@ -8,16 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@class Categories;
-@class Realisation;
-
 @interface DDCustomProgressBar : UIView
 
 
 #pragma mark - Variables
 
-//Realisation en cours
-@property (strong, nonatomic) Realisation *realisation;
+//Trophy en cours
+@property (strong, nonatomic) Trophy *trophy;
+
+//Player courant
+@property (strong, nonatomic) Player *player;
 
 //Couleur de fond
 @property (strong, nonatomic) UIColor *colorBackground;
