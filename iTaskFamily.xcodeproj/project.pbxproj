@@ -56,6 +56,8 @@
 		6D8970EC1848EF9900F815CD /* DDDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8970EB1848EF9900F815CD /* DDDatabaseManager.m */; };
 		6D8970EF1848F1AB00F815CD /* DDDatabaseAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8970EE1848F1AB00F815CD /* DDDatabaseAccess.m */; };
 		6D8970F31848F56B00F815CD /* DDCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8970F21848F56B00F815CD /* DDCustomAlertView.m */; };
+		6D8B3ED6192409FD009626DA /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8B3ED5192409FD009626DA /* Event.m */; };
+		6D8B3ED9192409FD009626DA /* RecurrenceEnd.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8B3ED8192409FD009626DA /* RecurrenceEnd.m */; };
 		6D94A6D018C601620047045C /* DDCustomCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D94A6CF18C601620047045C /* DDCustomCheckbox.m */; };
 		6D9B323E183F60A60038D7DB /* DDMeteoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B323D183F60A60038D7DB /* DDMeteoView.m */; };
 		6D9B3242183F99860038D7DB /* DDWeatherInfos.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3241183F99860038D7DB /* DDWeatherInfos.m */; };
@@ -63,7 +65,6 @@
 		6D9B3C1C191BF45C0001C672 /* Trophy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3C1B191BF45C0001C672 /* Trophy.m */; };
 		6D9B3C1F191BF45C0001C672 /* Achievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3C1E191BF45C0001C672 /* Achievement.m */; };
 		6D9B3C22191BF45C0001C672 /* CategoryTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3C21191BF45C0001C672 /* CategoryTask.m */; };
-		6D9B3C25191BF45C0001C672 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3C24191BF45C0001C672 /* Event.m */; };
 		6D9B3C28191BF45C0001C672 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3C27191BF45C0001C672 /* Player.m */; };
 		6D9B3C2B191BF45C0001C672 /* Reward.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3C2A191BF45C0001C672 /* Reward.m */; };
 		6D9B3C2E191BF45D0001C672 /* CategoryTrophy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3C2D191BF45D0001C672 /* CategoryTrophy.m */; };
@@ -187,6 +188,10 @@
 		6D8970EE1848F1AB00F815CD /* DDDatabaseAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDatabaseAccess.m; sourceTree = "<group>"; };
 		6D8970F11848F56B00F815CD /* DDCustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomAlertView.h; sourceTree = "<group>"; };
 		6D8970F21848F56B00F815CD /* DDCustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomAlertView.m; sourceTree = "<group>"; };
+		6D8B3ED4192409FD009626DA /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		6D8B3ED5192409FD009626DA /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		6D8B3ED7192409FD009626DA /* RecurrenceEnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecurrenceEnd.h; sourceTree = "<group>"; };
+		6D8B3ED8192409FD009626DA /* RecurrenceEnd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecurrenceEnd.m; sourceTree = "<group>"; };
 		6D94A6CE18C601620047045C /* DDCustomCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomCheckbox.h; sourceTree = "<group>"; };
 		6D94A6CF18C601620047045C /* DDCustomCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomCheckbox.m; sourceTree = "<group>"; };
 		6D9B323C183F60A60038D7DB /* DDMeteoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMeteoView.h; sourceTree = "<group>"; };
@@ -201,8 +206,6 @@
 		6D9B3C1E191BF45C0001C672 /* Achievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Achievement.m; sourceTree = "<group>"; };
 		6D9B3C20191BF45C0001C672 /* CategoryTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTask.h; sourceTree = "<group>"; };
 		6D9B3C21191BF45C0001C672 /* CategoryTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTask.m; sourceTree = "<group>"; };
-		6D9B3C23191BF45C0001C672 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		6D9B3C24191BF45C0001C672 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		6D9B3C26191BF45C0001C672 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		6D9B3C27191BF45C0001C672 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		6D9B3C29191BF45C0001C672 /* Reward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reward.h; sourceTree = "<group>"; };
@@ -573,8 +576,6 @@
 				6D9B3C2A191BF45C0001C672 /* Reward.m */,
 				6D9B3C26191BF45C0001C672 /* Player.h */,
 				6D9B3C27191BF45C0001C672 /* Player.m */,
-				6D9B3C23191BF45C0001C672 /* Event.h */,
-				6D9B3C24191BF45C0001C672 /* Event.m */,
 				6D9B3C20191BF45C0001C672 /* CategoryTask.h */,
 				6D9B3C21191BF45C0001C672 /* CategoryTask.m */,
 				6D9B3C1D191BF45C0001C672 /* Achievement.h */,
@@ -587,6 +588,10 @@
 				6D8970EB1848EF9900F815CD /* DDDatabaseManager.m */,
 				6D8970ED1848F1AB00F815CD /* DDDatabaseAccess.h */,
 				6D8970EE1848F1AB00F815CD /* DDDatabaseAccess.m */,
+				6D8B3ED4192409FD009626DA /* Event.h */,
+				6D8B3ED5192409FD009626DA /* Event.m */,
+				6D8B3ED7192409FD009626DA /* RecurrenceEnd.h */,
+				6D8B3ED8192409FD009626DA /* RecurrenceEnd.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1045,7 +1050,6 @@
 				6D9B3C1F191BF45C0001C672 /* Achievement.m in Sources */,
 				6D9B3C19191BF45C0001C672 /* Task.m in Sources */,
 				6D8970EF1848F1AB00F815CD /* DDDatabaseAccess.m in Sources */,
-				6D9B3C25191BF45C0001C672 /* Event.m in Sources */,
 				6DED092A18D0EE50004F2F3D /* DDTaskManagerTableViewController.m in Sources */,
 				6D03B0AF184C976800399A7D /* DDPlayerMiniatureCollectionViewCell.m in Sources */,
 				6D9B3C22191BF45C0001C672 /* CategoryTask.m in Sources */,
@@ -1078,6 +1082,7 @@
 				6DF00ED0184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.m in Sources */,
 				6D3A26BC18B7A1FB00545FF2 /* DDCategoriesListEventViewController.m in Sources */,
 				6D61F6631851DBB600759AFC /* DDCategorieListViewController.m in Sources */,
+				6D8B3ED6192409FD009626DA /* Event.m in Sources */,
 				6D46EB9A1843486F00287ACC /* DDPlayerViewController.m in Sources */,
 				6D852D431843664800CA43EC /* DDRootTrophyViewController.m in Sources */,
 				6D29FC00184282C90059AA35 /* DDEventView.m in Sources */,
@@ -1100,6 +1105,7 @@
 				6DC986F6185092A200A5A65F /* DDCustomProgressBar.m in Sources */,
 				6DC986FA1850E89B00A5A65F /* DDTaskManagerViewController.m in Sources */,
 				6D8970CB1848928500F815CD /* DDCustomImagePickerViewController.m in Sources */,
+				6D8B3ED9192409FD009626DA /* RecurrenceEnd.m in Sources */,
 				6D8970E11848DD2D00F815CD /* DDCropperController.m in Sources */,
 				6D9B3C28191BF45C0001C672 /* Player.m in Sources */,
 				6DF00ECC184F416800F8F3C5 /* DDPlayerListViewController.m in Sources */,

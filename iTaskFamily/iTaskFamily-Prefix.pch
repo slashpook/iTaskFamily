@@ -22,6 +22,7 @@
     #import "CategoryTask.h"
     #import "Event.h"
     #import "Player.h"
+    #import "RecurrenceEnd.h"
     #import "Task.h"
     #import "Trophy.h"
     #import "Reward.h"

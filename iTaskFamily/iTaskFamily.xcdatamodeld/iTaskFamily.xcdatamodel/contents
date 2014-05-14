@@ -22,11 +22,16 @@
         <attribute name="day" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="recurrent" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="achievement" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Achievement" inverseName="events" inverseEntity="Achievement" syncable="YES"/>
+        <relationship name="recurrenceEnd" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecurrenceEnd" inverseName="events" inverseEntity="RecurrenceEnd" syncable="YES"/>
     </entity>
     <entity name="Player" representedClassName="Player" syncable="YES">
         <attribute name="pathImage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pseudo" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="achievments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Achievement" inverseName="player" inverseEntity="Achievement" syncable="YES"/>
+    </entity>
+    <entity name="RecurrenceEnd" representedClassName="RecurrenceEnd" syncable="YES">
+        <attribute name="weekAndYear" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="recurrenceEnd" inverseEntity="Event" syncable="YES"/>
     </entity>
     <entity name="Reward" representedClassName="Reward" syncable="YES">
         <attribute name="libelle" optional="YES" attributeType="String" syncable="YES"/>
@@ -49,10 +54,11 @@
         <element name="Achievement" positionX="241" positionY="-132" width="128" height="105"/>
         <element name="CategoryTask" positionX="-317" positionY="-18" width="128" height="88"/>
         <element name="CategoryTrophy" positionX="-90" positionY="-25" width="128" height="88"/>
-        <element name="Event" positionX="502" positionY="-162" width="128" height="118"/>
+        <element name="Event" positionX="502" positionY="-162" width="128" height="133"/>
         <element name="Player" positionX="-81" positionY="-189" width="128" height="88"/>
         <element name="Reward" positionX="-324" positionY="-165" width="128" height="75"/>
         <element name="Task" positionX="-155" positionY="146" width="128" height="133"/>
         <element name="Trophy" positionX="322" positionY="198" width="128" height="88"/>
+        <element name="RecurrenceEnd" positionX="-117" positionY="-36" width="128" height="73"/>
     </elements>
 </model>

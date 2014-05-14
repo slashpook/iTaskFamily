@@ -311,6 +311,16 @@
         [self.dataBaseManager.managedObjectContext insertObject:event];
         [achievement addEventsObject:event];
         
+        //On crée la date de fin de récurrence
+        RecurrenceEnd *recurrenceEnd = [NSEntityDescription insertNewObjectForEntityForName:@"RecurrenceEnd"
+                                                                 inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+        //On set si on doit gérer une date de fin ou pas
+        if ([event.recurrent boolValue] == YES)
+            [recurrenceEnd setWeekAndYear:[NSNumber numberWithInt:0]];
+        else
+            [recurrenceEnd setWeekAndYear:[NSNumber numberWithInt:-1]];
+        [event setRecurrenceEnd:recurrenceEnd];
+        
         [self saveContext];
         return nil;
     }
