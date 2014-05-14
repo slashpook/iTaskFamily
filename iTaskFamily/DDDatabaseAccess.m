@@ -418,7 +418,7 @@
     [fetchRequest setEntity:entityDescription];
     
     //On rajoute un filtre
-    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && achievement.task.libelle == %@", player.pseudo, task.libelle];
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && achievement.task.libelle == %@ && checked == YES", player.pseudo, task.libelle];
     [fetchRequest setPredicate:newPredicate];
     
     NSError *error;
@@ -439,7 +439,7 @@
     [fetchRequest setEntity:entityDescription];
     
     //On rajoute un filtre
-    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && achievement.weekAndYear == %i && day == %@", player.pseudo, weekAndYear, day];
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && achievement.weekAndYear == %i && day == %@ && checked == YES", player.pseudo, weekAndYear, day];
     [fetchRequest setPredicate:newPredicate];
     
     NSError *error;
@@ -449,6 +449,28 @@
     //On renvoie le tableau de la requète
     return (int)[fetchedObjects count];
 }
+
+//On récupère tous les events non réalisé par le player pour le jour et la semaine donnée
+- (int)getNumberOfEventUncheckedForPlayer:(Player *)player forWeekAndYear:(int)weekAndYear andDay:(NSString *)day
+{
+    //On défini la classe pour la requète
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Event" inManagedObjectContext:self.dataBaseManager.managedObjectContext];
+    [fetchRequest setEntity:entityDescription];
+    
+    //On rajoute un filtre
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && achievement.weekAndYear == %i && day == %@ && checked == NO", player.pseudo, weekAndYear, day];
+    [fetchRequest setPredicate:newPredicate];
+    
+    NSError *error;
+    NSArray *fetchedObjects = [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    
+    //On renvoie le tableau de la requète
+    return (int)[fetchedObjects count];
+}
+
 
 //On supprime l'event donné
 - (void)deleteEvent:(Event *)event

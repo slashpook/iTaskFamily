@@ -113,6 +113,8 @@
 //On récupère tous les events non réalisé par le player pour le jour et la semaine donnée
 - (int)getNumberOfEventCheckedForPlayer:(Player *)player forWeekAndYear:(int)weekAndYear andDay:(NSString *)day;
 
+- (int)getNumberOfEventUncheckedForPlayer:(Player *)player forWeekAndYear:(int)weekAndYear andDay:(NSString *)day;
+
 //On supprime l'event donné
 - (void)deleteEvent:(Event *)event;
 

@@ -124,7 +124,7 @@
         NSString *dayOfNotification = [NSString stringWithFormat:@"%i", (int)[self.arrayWeekNotification indexOfObject:viewNotification]];
         
         //On récupère le compteur
-        int compteur = [[DDDatabaseAccess instance] getNumberOfEventCheckedForPlayer:[[DDManagerSingleton instance] currentPlayer] forWeekAndYear:[DDHelperController getWeekAndYear] andDay:dayOfNotification];
+        int compteur = [[DDDatabaseAccess instance] getNumberOfEventUncheckedForPlayer:[[DDManagerSingleton instance] currentPlayer] forWeekAndYear:[DDHelperController getWeekAndYear] andDay:dayOfNotification];
                                 
         //On met à jour le label du compteur d'évènement non terminé
         [[viewNotification labelNumberNotification] setText:[NSString stringWithFormat:@"%i", compteur]];
