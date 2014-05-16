@@ -53,6 +53,7 @@
     
     //On configure la tableView
     [self.tableViewEvents registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CellTableView"];
+    [self.tableViewEvents registerClass:[UITableViewCell class] forCellReuseIdentifier:@"AddCellTableView"];
     [self.tableViewEvents setDelegate:self];
     [self.tableViewEvents setDataSource:self];
     
@@ -139,6 +140,18 @@
     [self updateComponent];
 }
 
+//On appuie sur le bouton pour supprimer des évènements
+- (IBAction)onPushDeleteEventButon:(id)sender
+{
+    [DDCustomAlertView displayAnswerMessage:@"Voulez vous vraiment supprimer cet évènement" withDelegate:self andSetTag:(int)[self.arrayEvent indexOfObject:self.currentEvent]];
+}
+
+//On appuie sur le bouton pour modifier un évènement
+- (IBAction)onPushModifyEventButton:(id)sender
+{
+    [[self delegate] updateEvent];
+}
+
 //On appuie sur la checkbox
 - (IBAction)onPushCheckbox:(UITapGestureRecognizer *)gesture
 {
@@ -164,11 +177,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.arrayEvent count];
+    return [self.arrayEvent count] + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //Si on est sur la dernière cellule
+    if ([self.arrayEvent count] == 0 || indexPath.row == [self.arrayEvent count])
+    {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddEventCell" forIndexPath:indexPath];
+        return cell;
+    }
+    
     //On récupère la cellule
     DDCustomEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CustomEventCell" forIndexPath:indexPath];
     
@@ -222,6 +242,13 @@
 //On ouvre la cellule sélectionné
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //Si on est sur la cellule pour ajouter un event
+    if ([self.arrayEvent count] == 0 || indexPath.row == [self.arrayEvent count])
+    {
+        [[self delegate] addEvent];
+        return;
+    }
+    
     if ([self.tableViewEvents isEditing] == false)
     {
         [self setCurrentEvent:[self.arrayEvent objectAtIndex:indexPath.row]];
@@ -243,7 +270,11 @@
 //Pour pouvoir swiper pour supprimer
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return YES;
+    //Si on est sur la dernière cellule
+    if ([self.arrayEvent count] == 0 || indexPath.row == [self.arrayEvent count])
+        return NO;
+    else
+        return YES;
 }
 
 
@@ -265,6 +296,13 @@
         
         //On met à jour les composants
         [self.delegate updateComponentWithEventSelected];
+        
+        //S'il reste au moins un event
+        if ([self.arrayEvent count] > 0)
+        {
+            [self setCurrentEvent:[self.arrayEvent objectAtIndex:0]];
+            [self updateComponent];
+        }
     }
 }
 

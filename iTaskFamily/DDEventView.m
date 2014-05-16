@@ -81,34 +81,28 @@
     {
         [self.labelInfos setHidden:NO];
         [self.labelInfos setText:@"Aucun joueur"];
-        [self.buttonAddEvent setEnabled:NO];
-        [self.buttonDeleteEvent setEnabled:NO];
-        [self.buttonModifyEvent setEnabled:NO];
+        [self.buttonBigAddEvent setHidden:YES];
     }
     //Sinon on vérifie qu'il y a des évènements
     else
     {
         [self.labelInfos setHidden:YES];
-        [self.buttonAddEvent setEnabled:YES];
-        [self.buttonDeleteEvent setEnabled:YES];
-        [self.buttonModifyEvent setEnabled:YES];
-        
+        [self.buttonBigAddEvent setHidden:YES];
+        [self.eventInfosViewController.buttonDeleteEvent setEnabled:YES];
+        [self.eventInfosViewController.buttonModifyEvent setEnabled:YES];
+
         //Si il n'y a pas d'évènement on désactive certains boutons.
         if ([[[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer atWeekAndYear:[DDHelperController getWeekAndYear] andDay:self.daySelected] count] > 0)
         {
             [self.eventInfosViewController.view setHidden:NO];
             [self.eventInfosViewController getEventsForDay:self.daySelected];
-            
             //Si on a fini la tache sélectionnée, on désactive le bouton pour modifier l'évènement
             if ([self.eventInfosViewController.currentEvent.checked boolValue] == YES)
-                [[self buttonModifyEvent] setEnabled:NO];
+                [[self.eventInfosViewController buttonModifyEvent] setEnabled:NO];
         }
         else
         {
-            [self.labelInfos setHidden:NO];
-            [self.labelInfos setText:@"Aucun évènement"];
-            [self.buttonDeleteEvent setEnabled:NO];
-            [self.buttonModifyEvent setEnabled:NO];
+            [self.buttonBigAddEvent setHidden:NO];
         }
     }
 }
@@ -161,30 +155,6 @@
     [self openEventManagerViewController];
 }
 
-//On appuie sur le bouton pour supprimer des évènements
-- (IBAction)onPushDeleteEventButon:(id)sender
-{
-    //On met la table en mode suppression ou non en fonction de son ancien état
-    if ([self.eventInfosViewController.tableViewEvents isEditing] == false)
-        [self.eventInfosViewController.tableViewEvents setEditing:true animated:true];
-    else
-        [self.eventInfosViewController.tableViewEvents setEditing:false animated:true];
-}
-
-//On appuie sur le bouton pour modifier un évènement
-- (IBAction)onPushModifyEventButton:(id)sender
-{
-    //On configure le controller
-    [self.eventManagerViewController setIsModifyEvent:YES];
-    [self.eventManagerViewController setEventToModify:self.eventInfosViewController.currentEvent];
-    [[self.eventManagerViewController arrayOccurence] removeAllObjects];
-    [[self.eventManagerViewController arrayOccurence] addObject:[[[DDManagerSingleton instance] arrayWeek]  objectAtIndex:self.eventInfosViewController.currentEvent.day.intValue]];
-    [self.eventManagerViewController updateComponent];
-    
-    //On ouvre la popUp
-    [self openEventManagerViewController];
-}
-
 //On ouvre la popUp
 - (void)openEventManagerViewController
 {
@@ -209,6 +179,26 @@
     
     //On met à jour les composants
     [self updateComponent];
+}
+
+//On ajoute un event
+- (void)addEvent
+{
+    [self onPushAddEventButton:nil];
+}
+
+//On appuie sur le bouton pour modifier un évènement
+- (void)updateEvent
+{
+    //On configure le controller
+    [self.eventManagerViewController setIsModifyEvent:YES];
+    [self.eventManagerViewController setEventToModify:self.eventInfosViewController.currentEvent];
+    [[self.eventManagerViewController arrayOccurence] removeAllObjects];
+    [[self.eventManagerViewController arrayOccurence] addObject:[[[DDManagerSingleton instance] arrayWeek]  objectAtIndex:self.eventInfosViewController.currentEvent.day.intValue]];
+    [self.eventManagerViewController updateComponent];
+    
+    //On ouvre la popUp
+    [self openEventManagerViewController];
 }
 
 

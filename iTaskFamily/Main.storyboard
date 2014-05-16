@@ -672,7 +672,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkc-HA-Idk" userLabel="Button - Add">
-                                        <rect key="frame" x="0.0" y="2" width="40" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" image="HomeButtonPreviousWeek">
@@ -680,7 +680,7 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNf-5E-H4g" userLabel="Button - Add">
-                                        <rect key="frame" x="162" y="2" width="40" height="50"/>
+                                        <rect key="frame" x="194" y="0.0" width="40" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" image="HomeButtonNextWeek">
@@ -688,44 +688,20 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omQ-hf-EtB" userLabel="Button - Date">
-                                        <rect key="frame" x="32" y="0.0" width="40" height="50"/>
+                                        <rect key="frame" x="39" y="0.0" width="154" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="Button" image="HomeButtonDate">
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Aujourd'hui">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLN-Sq-V6b">
-                                        <rect key="frame" x="65" y="9" width="24" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="15/04/2014" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYz-yY-yvt">
-                                        <rect key="frame" x="77" y="11" width="97" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mNb-st-lEg" userLabel="Image View - Separation droite">
-                                        <rect key="frame" x="200" y="15" width="1" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zsa-sL-Eif" userLabel="Image View - Selection">
-                                        <rect key="frame" x="205" y="0.0" width="75" height="50"/>
+                                        <rect key="frame" x="328" y="0.0" width="75" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wjm-cn-jd8" userLabel="Image View - Separation Gauche">
-                                        <rect key="frame" x="735" y="14" width="1" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </imageView>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDm-fs-xmB">
-                                        <rect key="frame" x="205" y="0.0" width="75" height="50"/>
+                                        <rect key="frame" x="328" y="0.0" width="75" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="LUN">
@@ -737,7 +713,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tfg-vh-wYf">
-                                        <rect key="frame" x="280" y="0.0" width="75" height="50"/>
+                                        <rect key="frame" x="403" y="0.0" width="75" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="MAR">
@@ -749,7 +725,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEs-jn-GKw">
-                                        <rect key="frame" x="355" y="0.0" width="75" height="50"/>
+                                        <rect key="frame" x="478" y="0.0" width="75" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="MER">
@@ -761,7 +737,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r74-ZH-kCJ">
-                                        <rect key="frame" x="430" y="0.0" width="75" height="50"/>
+                                        <rect key="frame" x="553" y="0.0" width="75" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="JEU">
@@ -773,7 +749,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4d-d5-P4F">
-                                        <rect key="frame" x="505" y="0.0" width="75" height="50"/>
+                                        <rect key="frame" x="628" y="0.0" width="75" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="VEN">
@@ -785,7 +761,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7yn-sv-xAW">
-                                        <rect key="frame" x="580" y="0.0" width="75" height="50"/>
+                                        <rect key="frame" x="703" y="0.0" width="75" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="SAM">
@@ -797,7 +773,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0Z-Wr-D0F">
-                                        <rect key="frame" x="655" y="0.0" width="75" height="50"/>
+                                        <rect key="frame" x="778" y="0.0" width="75" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="DIM">
@@ -806,39 +782,6 @@
                                         </state>
                                         <connections>
                                             <action selector="onPushDayButton:" destination="y4P-vS-qVT" eventType="touchUpInside" id="oXO-wL-ppp"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXn-Qi-JsL" userLabel="Button - Add">
-                                        <rect key="frame" x="735" y="0.0" width="40" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="Button" image="HomeButtonAdd">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onPushAddEventButton:" destination="y4P-vS-qVT" eventType="touchUpInside" id="3Oa-8o-ZFF"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dW-07-D1U" userLabel="Button - Remove">
-                                        <rect key="frame" x="775" y="0.0" width="40" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="Button" image="HomeButtonRemove">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onPushDeleteEventButon:" destination="y4P-vS-qVT" eventType="touchUpInside" id="MlM-5d-VKa"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRD-Z0-5nJ" userLabel="Button - Edit">
-                                        <rect key="frame" x="815" y="0.0" width="40" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="Button" image="HomeButtonEdit">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onPushModifyEventButton:" destination="y4P-vS-qVT" eventType="touchUpInside" id="XVB-fY-vYy"/>
                                         </connections>
                                     </button>
                                     <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="snE-sA-DSW">
@@ -856,23 +799,37 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rp2-h1-6l0">
+                                        <rect key="frame" x="0.0" y="50" width="853" height="300"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
+                                        <state key="normal" title="Ajouter un évènment">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onPushAddEventButton:" destination="y4P-vS-qVT" eventType="touchUpInside" id="G8f-xG-itI"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="66g-oa-eJ1" firstAttribute="leading" secondItem="y4P-vS-qVT" secondAttribute="leading" id="0EV-en-4nk"/>
+                                    <constraint firstAttribute="bottom" secondItem="rp2-h1-6l0" secondAttribute="bottom" id="0db-d8-aOY"/>
                                     <constraint firstAttribute="trailing" secondItem="66g-oa-eJ1" secondAttribute="trailing" id="DiW-Xh-glf"/>
+                                    <constraint firstItem="rp2-h1-6l0" firstAttribute="leading" secondItem="y4P-vS-qVT" secondAttribute="leading" id="Hz2-r1-OUL"/>
                                     <constraint firstAttribute="bottom" secondItem="66g-oa-eJ1" secondAttribute="bottom" constant="300" id="K0o-Tk-bJM"/>
                                     <constraint firstItem="66g-oa-eJ1" firstAttribute="top" secondItem="y4P-vS-qVT" secondAttribute="top" id="fCN-24-dbg"/>
+                                    <constraint firstItem="rp2-h1-6l0" firstAttribute="top" secondItem="y4P-vS-qVT" secondAttribute="top" constant="50" id="r2W-8F-eD1"/>
+                                    <constraint firstAttribute="trailing" secondItem="rp2-h1-6l0" secondAttribute="trailing" constant="1" id="zuI-iy-pOv"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="buttonAddEvent" destination="UXn-Qi-JsL" id="oJ5-gY-Xca"/>
-                                    <outlet property="buttonDeleteEvent" destination="6dW-07-D1U" id="vsm-OS-IW0"/>
+                                    <outlet property="buttonBigAddEvent" destination="rp2-h1-6l0" id="ccm-ZL-u6G"/>
                                     <outlet property="buttonDimanche" destination="p0Z-Wr-D0F" id="knn-L1-Uyc"/>
                                     <outlet property="buttonJeudi" destination="r74-ZH-kCJ" id="Jxu-zs-m9d"/>
                                     <outlet property="buttonLundi" destination="wDm-fs-xmB" id="SfS-47-1VL"/>
                                     <outlet property="buttonMardi" destination="Tfg-vh-wYf" id="JFw-Tf-AQ0"/>
                                     <outlet property="buttonMercredi" destination="ZEs-jn-GKw" id="ypI-fJ-8bv"/>
-                                    <outlet property="buttonModifyEvent" destination="IRD-Z0-5nJ" id="qAZ-1y-R7L"/>
                                     <outlet property="buttonSamedi" destination="7yn-sv-xAW" id="He0-JH-hM8"/>
                                     <outlet property="buttonVendredi" destination="H4d-d5-P4F" id="EkI-aV-R3j"/>
                                     <outlet property="imageViewHeader" destination="66g-oa-eJ1" id="Z95-Xy-Wun"/>
@@ -890,37 +847,37 @@
                                 <color key="currentPageIndicatorTintColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RdW-FA-WQi" userLabel="Custom Notification - Lundi" customClass="DDCustomNotification">
-                                <rect key="frame" x="275" y="338" width="41" height="41"/>
+                                <rect key="frame" x="399" y="338" width="41" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWb-2M-jOq" userLabel="Custom Notification - Mardi" customClass="DDCustomNotification">
-                                <rect key="frame" x="350" y="338" width="41" height="41"/>
+                                <rect key="frame" x="474" y="338" width="41" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QrX-a5-1Lz" userLabel="Custom Notification - Mercredi" customClass="DDCustomNotification">
-                                <rect key="frame" x="425" y="338" width="41" height="41"/>
+                                <rect key="frame" x="549" y="338" width="41" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2z6-vx-GuZ" userLabel="Custom Notification - Jeudi" customClass="DDCustomNotification">
-                                <rect key="frame" x="500" y="338" width="41" height="41"/>
+                                <rect key="frame" x="624" y="338" width="41" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mEq-Ga-8L5" userLabel="Custom Notification - Vendredi" customClass="DDCustomNotification">
-                                <rect key="frame" x="575" y="338" width="41" height="41"/>
+                                <rect key="frame" x="699" y="338" width="41" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uYj-IJ-FSB" userLabel="Custom Notification - Samedi" customClass="DDCustomNotification">
-                                <rect key="frame" x="650" y="338" width="41" height="41"/>
+                                <rect key="frame" x="774" y="338" width="41" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oXe-cq-geF" userLabel="Custom Notification - Dimanche" customClass="DDCustomNotification">
-                                <rect key="frame" x="725" y="338" width="41" height="41"/>
+                                <rect key="frame" x="849" y="338" width="41" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -1874,19 +1831,19 @@
                         <viewControllerLayoutGuide type="bottom" id="XRx-F4-27L"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="br7-sA-A0Y">
-                        <rect key="frame" x="0.0" y="0.0" width="854" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="853" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rY9-Yf-gt9" userLabel="TableView - Events">
-                                <rect key="frame" x="0.0" y="0.0" width="427" height="300"/>
+                                <rect key="frame" x="0.0" y="50" width="426" height="275"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CustomEventCell" id="F01-fg-TgQ" customClass="DDCustomEventCell">
-                                        <rect key="frame" x="0.0" y="22" width="427" height="55"/>
+                                        <rect key="frame" x="0.0" y="22" width="426" height="55"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F01-fg-TgQ" id="1Rt-AS-ci6">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="55"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f6Z-dW-MJI">
@@ -1926,10 +1883,37 @@
                                             <outlet property="labelTask" destination="kJV-3R-EQ3" id="VkT-xT-D4H"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddEventCell" id="MzM-Oj-rIN" customClass="DDCustomEventCell">
+                                        <rect key="frame" x="0.0" y="77" width="426" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MzM-Oj-rIN" id="7Ze-aO-yF8">
+                                            <rect key="frame" x="0.0" y="0.0" width="426" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yAF-Rd-NIb">
+                                                    <rect key="frame" x="0.0" y="54" width="427" height="1"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                </view>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AJOUTER UN EVENEMENT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T98-o5-1H7">
+                                                    <rect key="frame" x="20" y="0.0" width="407" height="55"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.2196078431372549" green="0.5607843137254902" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HomeButtonAdd" translatesAutoresizingMaskIntoConstraints="NO" id="gLb-Y7-kaK">
+                                                    <rect key="frame" x="77" y="6" width="40" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <gestureRecognizers/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Faire à manger" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6Qd-rq-Aqv" userLabel="Label - Tache">
-                                <rect key="frame" x="464" y="8" width="350" height="54"/>
+                                <rect key="frame" x="464" y="0.0" width="350" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1940,54 +1924,89 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cX3-u7-dh9" userLabel="ImageView - Separation Date/TableView">
+                                <rect key="frame" x="0.0" y="48" width="426" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hQL-9z-ayB" userLabel="ImageView - Catégorie">
-                                <rect key="frame" x="443" y="70" width="115" height="115"/>
+                                <rect key="frame" x="443" y="64" width="115" height="115"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oqB-NQ-BcN" userLabel="ImageView - Points">
-                                <rect key="frame" x="582" y="70" width="115" height="115"/>
+                                <rect key="frame" x="582" y="63" width="115" height="115"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c1r-ag-1si" userLabel="ImageView - Repetition">
-                                <rect key="frame" x="723" y="69" width="115" height="115"/>
+                                <rect key="frame" x="723" y="63" width="115" height="115"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLZ-lo-n2K" userLabel="TextView - Commentaire">
-                                <rect key="frame" x="443" y="210" width="395" height="77"/>
+                                <rect key="frame" x="443" y="203" width="395" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Autre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Tjh-gC-WGw">
-                                <rect key="frame" x="451" y="69" width="99" height="115"/>
+                                <rect key="frame" x="451" y="63" width="99" height="115"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="28"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="300" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0Hu-eX-PDY">
-                                <rect key="frame" x="584" y="69" width="115" height="115"/>
+                                <rect key="frame" x="584" y="64" width="115" height="115"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="28"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Recursif2" translatesAutoresizingMaskIntoConstraints="NO" id="5BU-yz-RMf">
-                                <rect key="frame" x="748" y="95" width="64" height="64"/>
+                                <rect key="frame" x="748" y="89" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E8V-f1-YaY" customClass="DDCustomValidation">
-                                <rect key="frame" x="804" y="15" width="30" height="30"/>
+                                <rect key="frame" x="804" y="22" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qry-MR-fZO" userLabel="Button - Remove">
+                                <rect key="frame" x="429" y="32" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Button" image="HomeButtonRemove">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onPushDeleteEventButon:" destination="cns-Qp-Dmo" eventType="touchUpInside" id="ocO-Ek-YCB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCz-Ge-N83" userLabel="Button - Edit">
+                                <rect key="frame" x="429" y="0.0" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Button" image="HomeButtonEdit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onPushModifyEventButton:" destination="cns-Qp-Dmo" eventType="touchUpInside" id="Cik-WL-nkc"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Semaine 48 :  Lundi 26 Mars" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vPS-Lu-9WO" userLabel="Label - Tache">
+                                <rect key="frame" x="0.0" y="0.0" width="426" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="854" height="300"/>
                     <connections>
+                        <outlet property="buttonDeleteEvent" destination="qry-MR-fZO" id="pwA-A9-MzY"/>
+                        <outlet property="buttonModifyEvent" destination="lCz-Ge-N83" id="gUc-ao-PVo"/>
                         <outlet property="imageViewCategory" destination="hQL-9z-ayB" id="oVe-Gd-WSS"/>
                         <outlet property="imageViewContentRepetition" destination="5BU-yz-RMf" id="urv-eb-quo"/>
                         <outlet property="imageViewPoints" destination="oqB-NQ-BcN" id="yKf-86-SnU"/>
@@ -3212,12 +3231,11 @@
         <image name="ButtonTropheeArgent" width="65" height="60"/>
         <image name="ButtonTropheeBronze" width="65" height="60"/>
         <image name="ButtonTropheeOr" width="65" height="60"/>
-        <image name="HomeButtonAdd" width="40" height="50"/>
-        <image name="HomeButtonDate" width="40" height="50"/>
-        <image name="HomeButtonEdit" width="40" height="50"/>
+        <image name="HomeButtonAdd" width="50" height="50"/>
+        <image name="HomeButtonEdit" width="50" height="50"/>
         <image name="HomeButtonNextWeek" width="40" height="50"/>
         <image name="HomeButtonPreviousWeek" width="40" height="50"/>
-        <image name="HomeButtonRemove" width="40" height="50"/>
+        <image name="HomeButtonRemove" width="50" height="50"/>
         <image name="MenuHome" width="61" height="54"/>
         <image name="MenuPlayer" width="64" height="61"/>
         <image name="MenuPodium" width="53" height="61"/>

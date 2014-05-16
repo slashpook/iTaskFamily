@@ -13,6 +13,9 @@
 @protocol DDEventInfosProtocol <NSObject>
 
 - (void)updateComponentWithEventSelected;
+- (void)addEvent;
+- (void)updateEvent;
+- (void)removeEvent;
 
 @end
 
@@ -63,11 +66,23 @@
 //Vue qui indique si on a validé ou non l'évènement
 @property (weak, nonatomic) IBOutlet DDCustomValidation *viewCustomValidation;
 
+//Boutton pour supprimer des évènements
+@property (weak, nonatomic) IBOutlet UIButton *buttonDeleteEvent;
+
+//Boutton pour modifier un évènement
+@property (weak, nonatomic) IBOutlet UIButton *buttonModifyEvent;
+
 
 #pragma mark - Fonctions
 
 //On set le tableau d'event pour le jour sélectionné
 - (void)getEventsForDay:(NSString *)currentDay;
+
+//On appuie sur le bouton pour supprimer des évènements
+- (IBAction)onPushDeleteEventButon:(id)sender;
+
+//On appuie sur le bouton pour modifier un évènement
+- (IBAction)onPushModifyEventButton:(id)sender;
 
 //On appuie sur le checkbox
 - (IBAction)onPushCheckbox:(UITapGestureRecognizer *)gesture;

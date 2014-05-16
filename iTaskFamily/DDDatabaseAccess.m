@@ -314,6 +314,9 @@
         //On crée la date de fin de récurrence
         RecurrenceEnd *recurrenceEnd = [NSEntityDescription insertNewObjectForEntityForName:@"RecurrenceEnd"
                                                                  inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+        
+        //On met le booléen à non réalisé
+        [event setChecked:[NSNumber numberWithBool:NO]];
         //On set si on doit gérer une date de fin ou pas
         if ([event.recurrent boolValue] == YES)
             [recurrenceEnd setWeekAndYear:[NSNumber numberWithInt:0]];

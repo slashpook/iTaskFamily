@@ -44,6 +44,9 @@
 //Label d'indication pour savoir si il y a des joueurs ou non
 @property (weak, nonatomic) IBOutlet UILabel *labelInfos;
 
+//Boutton pour ajouter un évent quand il y en a aucun
+@property (weak, nonatomic) IBOutlet UIButton *buttonBigAddEvent;
+
 //Boutton du Lundi
 @property (weak, nonatomic) IBOutlet UIButton *buttonLundi;
 
@@ -65,15 +68,6 @@
 //Boutton du Dimanche
 @property (weak, nonatomic) IBOutlet UIButton *buttonDimanche;
 
-//Boutton pour ajouter un évènement
-@property (weak, nonatomic) IBOutlet UIButton *buttonAddEvent;
-
-//Boutton pour supprimer des évènements
-@property (weak, nonatomic) IBOutlet UIButton *buttonDeleteEvent;
-
-//Boutton pour modifier un évènement
-@property (weak, nonatomic) IBOutlet UIButton *buttonModifyEvent;
-
 
 #pragma mark - Fonctions
 
@@ -89,10 +83,5 @@
 //On appuie sur le bouton pour ajouter un évènement
 - (IBAction)onPushAddEventButton:(id)sender;
 
-//On appuie sur le bouton pour supprimer des évènements
-- (IBAction)onPushDeleteEventButon:(id)sender;
-
-//On appuie sur le bouton pour modifier un évènement
-- (IBAction)onPushModifyEventButton:(id)sender;
 
 @end
