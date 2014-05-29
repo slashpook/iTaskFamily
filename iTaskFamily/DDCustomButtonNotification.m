@@ -38,6 +38,7 @@
 //On met à jour le composant
 - (void)updateComponent
 {
+    //On met à jour la police et la couleur du bouton suivant son état
     if ([self isSelected] == YES)
     {
         [[self labelDay] setFont:POLICE_EVENT_DAY_SELECTED];

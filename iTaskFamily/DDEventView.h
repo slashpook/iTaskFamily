@@ -76,9 +76,15 @@
 //Tableau pour stocker toutes les notifications et les manipuler plus facilement
 @property (strong, nonatomic) NSArray *arrayWeekNotification;
 
+//ImageVIew utilisé sur les boutons d'ajout de joueur ou évènement
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPlus;
 
+//Contrainte sur l'image plus
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintPostionXImagePlus;
+
+//Label pour afficher la date correspondant au jour sélectionné
+@property (weak, nonatomic) IBOutlet UILabel *labelDateSelected;
+
 
 #pragma mark - Fonctions
 
@@ -94,11 +100,15 @@
 //On appuie sur un des boutons
 - (IBAction)onPushDayButton:(id)sender;
 
+//On appuie sur le bouton aujourd'hui
+- (IBAction)onPushTodayButton:(id)sender;
+
 //On appuie sur le bouton pour ajouter un évènement
 - (IBAction)onPushAddEventButton:(id)sender;
 
 //On appuie sur le bouton pour ajouter un joueur
 - (IBAction)onPushAddPlayerButton:(id)sender;
+
 
 
 @end

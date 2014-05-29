@@ -2,7 +2,7 @@
 //  RecurrenceEnd.h
 //  iTaskFamily
 //
-//  Created by Damien DELES on 14/05/2014.
+//  Created by Damien DELES on 29/05/2014.
 //  Copyright (c) 2014 Damien DELES. All rights reserved.
 //
 
@@ -13,7 +13,7 @@
 
 @interface RecurrenceEnd : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * weekAndYear;
+@property (nonatomic, retain) NSString * weekAndYear;
 @property (nonatomic, retain) NSSet *events;
 @end
 

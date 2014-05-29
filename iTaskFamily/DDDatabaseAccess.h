@@ -35,7 +35,7 @@
 #pragma mark - CRUD Achievement
 
 //On crée l'achievement pour le player donné, la task donnée et la date donnée
-- (Achievement *)createAchievementForPlayer:(Player *)player andTask:(Task *)task atWeekAndYear:(int)weekAndYear;
+- (Achievement *)createAchievementForPlayer:(Player *)player andTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear;
 
 //On récupère tous les achievements
 - (NSArray *)getAchievements;
@@ -44,10 +44,10 @@
 - (NSArray *)getAchievementsForPlayer:(Player *)player;
 
 //On récupère tous les achievements d'une semaine donnée (utile pour récupérer les points gagnés dans la semaine)
-- (NSArray *)getAchievementsForPlayer:(Player *)player atWeekAndYear:(int)weekAndYear;
+- (NSArray *)getAchievementsForPlayer:(Player *)player atWeekAndYear:(NSString *)weekAndYear;
 
 //On récupère l'achievement d'une semaine donnée pour un player donné et une task donnée
-- (Achievement *)getAchievementsForPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(int)weekAndYear;
+- (Achievement *)getAchievementsForPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear;
 
 //On supprime l'achievement donné
 - (void)deleteAchievement:(Achievement *)achievement;
@@ -86,19 +86,19 @@
 #pragma mark - CRUD Event
 
 //On crée l'event après avoir fait quelques tests préalable
-- (NSString *)createEvent:(Event *)event forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(int)weekAndYear;
+- (NSString *)createEvent:(Event *)event forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear;
 
 //On update l'event donné
 - (void)updateEvent:(Event *)event;
 
 //On update l'event donné après avoir fait quelques test
-- (NSString *)updateEvent:(Event *)event forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(int)weekAndYear;
+- (NSString *)updateEvent:(Event *)event forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear;
 
 //On récupère tous les events
 - (NSArray *)getEvents;
 
 //On récupère tous les events d'un joueur données, pour une semaine donnée et un jour donné
-- (NSArray *)getEventsForPlayer:(Player *)player atWeekAndYear:(int)weekAndYear andDay:(NSString *)day;
+- (NSArray *)getEventsForPlayer:(Player *)player atWeekAndYear:(NSString *)weekAndYear andDay:(NSString *)day;
 
 //On récupère l'event de l'achievement donnée, au jour donné
 - (Event *)getEventForAchievement:(Achievement *)achievement andDay:(NSString *)day;
@@ -111,9 +111,9 @@
 - (int)getNumberOfEventCheckedForPlayer:(Player *)player forTask:(Task *)task;
 
 //On récupère tous les events non réalisé par le player pour le jour et la semaine donnée
-- (int)getNumberOfEventCheckedForPlayer:(Player *)player forWeekAndYear:(int)weekAndYear andDay:(NSString *)day;
+- (int)getNumberOfEventCheckedForPlayer:(Player *)player forWeekAndYear:(NSString *)weekAndYear andDay:(NSString *)day;
 
-- (int)getNumberOfEventUncheckedForPlayer:(Player *)player forWeekAndYear:(int)weekAndYear andDay:(NSString *)day;
+- (int)getNumberOfEventUncheckedForPlayer:(Player *)player forWeekAndYear:(NSString *)weekAndYear andDay:(NSString *)day;
 
 //On supprime l'event donné
 - (void)deleteEvent:(Event *)event;
@@ -143,7 +143,7 @@
 - (Player *)getPlayerAtIndex:(int)index;
 
 //On récupère le score de la semaine courante pour le player
-- (int)getScoreWeekForPlayer:(Player *)player forWeekAndYear:(int)weakAndYear;
+- (int)getScoreWeekForPlayer:(Player *)player forWeekAndYear:(NSString *)weakAndYear;
 
 //On récupère le score total pour le player
 - (int)getScoreTotalForPlayer:(Player *)player;

@@ -60,7 +60,7 @@
 {
     [self.labelDay setText:[DDHelperController getDayInLetter]];
     [self.labelNumberOfDay setText:[DDHelperController getDayInNumber]];
-    [self.labelMonth setText:[DDHelperController getMonthInLetter]];
+    [self.labelMonth setText:[DDHelperController getShortMonthInLetter]];
     [self.labelYear setText:[DDHelperController getYearInLetter]];
     [self.labelHour setText:[DDHelperController getHour]];
     [self.labelMin setText:[DDHelperController getMin]];

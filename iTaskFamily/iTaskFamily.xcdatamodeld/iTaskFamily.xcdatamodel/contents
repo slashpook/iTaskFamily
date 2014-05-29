@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C1021" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Achievement" representedClassName="Achievement" syncable="YES">
-        <attribute name="weekAndYear" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="weekAndYear" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Event" inverseName="achievement" inverseEntity="Event" syncable="YES"/>
         <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="achievments" inverseEntity="Player" syncable="YES"/>
         <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="achievments" inverseEntity="Task" syncable="YES"/>
@@ -30,7 +30,7 @@
         <relationship name="achievments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Achievement" inverseName="player" inverseEntity="Achievement" syncable="YES"/>
     </entity>
     <entity name="RecurrenceEnd" representedClassName="RecurrenceEnd" syncable="YES">
-        <attribute name="weekAndYear" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="weekAndYear" attributeType="String" syncable="YES"/>
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="recurrenceEnd" inverseEntity="Event" syncable="YES"/>
     </entity>
     <entity name="Reward" representedClassName="Reward" syncable="YES">
@@ -56,9 +56,9 @@
         <element name="CategoryTrophy" positionX="-90" positionY="-25" width="128" height="88"/>
         <element name="Event" positionX="502" positionY="-162" width="128" height="133"/>
         <element name="Player" positionX="-81" positionY="-189" width="128" height="88"/>
+        <element name="RecurrenceEnd" positionX="-117" positionY="-36" width="128" height="75"/>
         <element name="Reward" positionX="-324" positionY="-165" width="128" height="75"/>
         <element name="Task" positionX="-155" positionY="146" width="128" height="133"/>
         <element name="Trophy" positionX="322" positionY="198" width="128" height="88"/>
-        <element name="RecurrenceEnd" positionX="-117" positionY="-36" width="128" height="73"/>
     </elements>
 </model>

@@ -30,8 +30,11 @@
 //Récupère le numéro du jour
 + (NSString *)getDayInNumber;
 
-//Récupère le mois en cours
-+ (NSString *)getMonthInLetter;
+//Récupère le mois en cours en abrégé
++ (NSString *)getShortMonthInLetter;
+
+//Récupère la date à l'évènement donné
++ (NSString *)getDateInLetterForYear:(int)year week:(int)week andDay:(int)day;
 
 //Récupère l'année en cours
 + (NSString *)getYearInLetter;
@@ -42,7 +45,13 @@
 //Récupère les minutes en cours
 + (NSString *)getMin;
 
+//Récupère le numéro de la semaine
++ (NSString *)getWeek;
+
 //Récupère le weekAndYear actuel
-+ (int)getWeekAndYear;
++ (NSString *)getWeekAndYear;
+
+//Récupère la semaine précédente
++ (NSString *)getPreviousWeek;
 
 @end

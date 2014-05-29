@@ -12,6 +12,10 @@
 #import "DDCustomButtonNotification.h"
 
 @implementation DDEventView
+{
+    int currentNumberOfWeek;
+    int currentYear;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -46,7 +50,6 @@
     for (DDCustomButtonNotification *buttonNotification in self.arrayWeekNotification)
         [[buttonNotification labelNumberNotification] setText:@""];
     
-
     //On initialise le popOver, le navigation controller et le playerManagerViewController
     UIStoryboard *storyboard = [[DDManagerSingleton instance] storyboard];
     _popOverViewController = [storyboard instantiateViewControllerWithIdentifier:@"PopOverViewController"];
@@ -54,10 +57,8 @@
     [self.eventManagerViewController setDelegate:self];
     _navigationEventManagerViewController = [[UINavigationController alloc] initWithRootViewController:self.eventManagerViewController];
     
-    //On récupère le jour d'aujourd'hui et on positionne bien le bouton
-    NSString *currentDay = [[DDManagerSingleton instance] currentDate];
-    //On récupère l'index du jour dans le tableau de la semaine. On l'incrémente de 1 car Le premier tag des boutons est 1
-    [self setDaySelected:[NSString stringWithFormat:@"%i",(int)[[[DDManagerSingleton instance] arrayWeek] indexOfObject:currentDay]]];
+    //On met à jour les données pour que l'on soit sur aujourd'hui
+    [self setDataToSelectToday];
     
     //On rafraichis les composants
     [self updateComponent];
@@ -106,6 +107,8 @@
             [self.buttonBigAddEvent setHidden:NO];
         }
     }
+    
+    [self.labelDateSelected setText:[DDHelperController getDateInLetterForYear:currentYear week:currentNumberOfWeek andDay:([self.daySelected intValue] +1)]];
     
     //On met à jour les notifications
     [self updateNotifications];
@@ -180,6 +183,14 @@
     [self updateComponent];
 }
 
+//On appuie sur le bouton aujourd'hui
+- (IBAction)onPushTodayButton:(id)sender
+{
+    //On met à jour les données
+    [self setDataToSelectToday];
+    [self onPushDayButton:[self viewWithTag:(self.daySelected.intValue +1)]];
+}
+
 //On appuie sur le bouton pour ajouter un évènement
 - (IBAction)onPushAddEventButton:(id)sender
 {
@@ -212,6 +223,18 @@
     //On présente la popUp
     CGRect frame = self.eventManagerViewController.view.frame;
     [self.popOverViewController presentPopOverWithContentView:self.navigationEventManagerViewController.view andSize:frame.size andOffset:CGPointMake(0, 0)];
+}
+
+//Fonction pour mettre à jour les données pour que l'on ai aujourd'hui de sélectionné
+- (void)setDataToSelectToday
+{
+    //On récupère le jour d'aujourd'hui et on positionne bien le bouton
+    NSString *currentDay = [[DDManagerSingleton instance] currentDate];
+    //On récupère l'index du jour dans le tableau de la semaine. On l'incrémente de 1 car Le premier tag des boutons est 1
+    [self setDaySelected:[NSString stringWithFormat:@"%i",(int)[[[DDManagerSingleton instance] arrayWeek] indexOfObject:currentDay]]];
+    //On met à jour le numéro de semaine et l'année
+    currentNumberOfWeek = [[DDHelperController getWeek] intValue];
+    currentYear = [[DDHelperController getYearInLetter] intValue];
 }
 
 

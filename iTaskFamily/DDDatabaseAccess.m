@@ -74,11 +74,11 @@
 
 
 //On crée l'achievement pour le player donné, la task donnée et la date donnée
-- (Achievement *)createAchievementForPlayer:(Player *)player andTask:(Task *)task atWeekAndYear:(int)weekAndYear
+- (Achievement *)createAchievementForPlayer:(Player *)player andTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear
 {
     Achievement *achievement = [NSEntityDescription insertNewObjectForEntityForName:@"Achievement"
                                                              inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
-    [achievement setWeekAndYear:[NSNumber numberWithInt:weekAndYear]];
+    [achievement setWeekAndYear:weekAndYear];
     [achievement setPlayer:player];
     [achievement setTask:task];
     
@@ -122,7 +122,7 @@
 }
 
 //On récupère tous les achievements d'une semaine donnée pour un player donné (utile pour récupérer les points gagnés dans la semaine)
-- (NSArray *)getAchievementsForPlayer:(Player *)player atWeekAndYear:(int)weekAndYear
+- (NSArray *)getAchievementsForPlayer:(Player *)player atWeekAndYear:(NSString *)weekAndYear
 {
     //On défini la classe pour la requète
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -131,7 +131,7 @@
     [fetchRequest setEntity:entityDescription];
     
     //On rajoute un filtre
-    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"player.pseudo == %@ && weekAndYear == %i", player.pseudo, weekAndYear];
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"player.pseudo == %@ && weekAndYear == %@", player.pseudo, weekAndYear];
     [fetchRequest setPredicate:newPredicate];
     
     NSError *error;
@@ -142,7 +142,7 @@
 }
 
 //On récupère l'achievement d'une semaine donnée pour un player donné et une task donnée
-- (Achievement *)getAchievementsForPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(int)weekAndYear
+- (Achievement *)getAchievementsForPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear
 {
     //On défini la classe pour la requète
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -151,7 +151,7 @@
     [fetchRequest setEntity:entityDescription];
     
     //On rajoute un filtre
-    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"player.pseudo == %@ && task.libelle = %@ && weekAndYear == %i", player.pseudo, task.libelle, weekAndYear];
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"player.pseudo == %@ && task.libelle = %@ && weekAndYear == %@", player.pseudo, task.libelle, weekAndYear];
     [fetchRequest setPredicate:newPredicate];
     
     NSError *error;
@@ -288,7 +288,7 @@
 
 
 //On crée l'event après avoir fait quelques tests préalable
-- (NSString *)createEvent:(Event *)event forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(int)weekAndYear
+- (NSString *)createEvent:(Event *)event forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear
 {
     if (task != nil)
     {
@@ -319,9 +319,9 @@
         [event setChecked:[NSNumber numberWithBool:NO]];
         //On set si on doit gérer une date de fin ou pas
         if ([event.recurrent boolValue] == YES)
-            [recurrenceEnd setWeekAndYear:[NSNumber numberWithInt:0]];
+            [recurrenceEnd setWeekAndYear:@"0"];
         else
-            [recurrenceEnd setWeekAndYear:[NSNumber numberWithInt:-1]];
+            [recurrenceEnd setWeekAndYear:@"-1"];
         [event setRecurrenceEnd:recurrenceEnd];
         
         [self saveContext];
@@ -339,7 +339,7 @@
 }
 
 //On update l'event donné après avoir fait quelques test
-- (NSString *)updateEvent:(Event *)event forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(int)weekAndYear
+- (NSString *)updateEvent:(Event *)event forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear
 {
     //On récupère l'achievement du player s'il existe
     Achievement *achievement = [self getAchievementsForPlayer:player forTask:task atWeekAndYear:weekAndYear];
@@ -367,7 +367,7 @@
 }
 
 //On récupère tous les events d'un joueur données, pour une semaine donnée et un jour donné
-- (NSArray *)getEventsForPlayer:(Player *)player atWeekAndYear:(int)weekAndYear andDay:(NSString *)day
+- (NSArray *)getEventsForPlayer:(Player *)player atWeekAndYear:(NSString *)weekAndYear andDay:(NSString *)day
 {
     //On défini la classe pour la requète
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -376,7 +376,7 @@
     [fetchRequest setEntity:entityDescription];
     
     //On rajoute un filtre
-    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && achievement.weekAndYear == %i && day == %@", player.pseudo, weekAndYear, day];
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && achievement.weekAndYear == %@ && day == %@", player.pseudo, weekAndYear, day];
     [fetchRequest setPredicate:newPredicate];
     
     NSError *error;
@@ -433,7 +433,7 @@
 }
 
 //On récupère tous les events non réalisé par le player pour le jour et la semaine donnée
-- (int)getNumberOfEventCheckedForPlayer:(Player *)player forWeekAndYear:(int)weekAndYear andDay:(NSString *)day
+- (int)getNumberOfEventCheckedForPlayer:(Player *)player forWeekAndYear:(NSString *)weekAndYear andDay:(NSString *)day
 {
     //On défini la classe pour la requète
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -442,7 +442,7 @@
     [fetchRequest setEntity:entityDescription];
     
     //On rajoute un filtre
-    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && achievement.weekAndYear == %i && day == %@ && checked == YES", player.pseudo, weekAndYear, day];
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && achievement.weekAndYear == %@ && day == %@ && checked == YES", player.pseudo, weekAndYear, day];
     [fetchRequest setPredicate:newPredicate];
     
     NSError *error;
@@ -454,7 +454,7 @@
 }
 
 //On récupère tous les events non réalisé par le player pour le jour et la semaine donnée
-- (int)getNumberOfEventUncheckedForPlayer:(Player *)player forWeekAndYear:(int)weekAndYear andDay:(NSString *)day
+- (int)getNumberOfEventUncheckedForPlayer:(Player *)player forWeekAndYear:(NSString *)weekAndYear andDay:(NSString *)day
 {
     //On défini la classe pour la requète
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -463,7 +463,7 @@
     [fetchRequest setEntity:entityDescription];
     
     //On rajoute un filtre
-    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && achievement.weekAndYear == %i && day == %@ && checked == NO", player.pseudo, weekAndYear, day];
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && achievement.weekAndYear == %@ && day == %@ && checked == NO", player.pseudo, weekAndYear, day];
     [fetchRequest setPredicate:newPredicate];
     
     NSError *error;
@@ -574,7 +574,7 @@
     
     //On rajoute un tri sur l'history
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"pseudo"
-                                                                   ascending:NO];
+                                                                   ascending:YES];
     NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
     [fetchRequest setSortDescriptors:sortDescriptors];
     
@@ -645,7 +645,7 @@
 }
 
 //On récupère le score de la semaine courante pour le player
-- (int)getScoreWeekForPlayer:(Player *)player forWeekAndYear:(int)weakAndYear
+- (int)getScoreWeekForPlayer:(Player *)player forWeekAndYear:(NSString *)weakAndYear
 {
     NSArray *arrayAchievement = [self getAchievementsForPlayer:player atWeekAndYear:weakAndYear];
     int scoreWeek = 0;

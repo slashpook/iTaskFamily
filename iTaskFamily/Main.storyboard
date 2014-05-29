@@ -671,7 +671,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="854" height="50"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Semaine 48 :  Vendrei 26 Décembre 2014" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Cwv-2e-K30" userLabel="Label - Tache">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Semaine 48 :  Vendrei 26 Décembre 2014" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Cwv-2e-K30" userLabel="Label - Date">
                                         <rect key="frame" x="0.0" y="0.0" width="854" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
@@ -701,6 +701,9 @@
                                         <state key="normal" title="Aujourd'hui">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onPushTodayButton:" destination="y4P-vS-qVT" eventType="touchUpInside" id="U6l-uf-jOJ"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zsa-sL-Eif" userLabel="Image View - Selection">
                                         <rect key="frame" x="0.0" y="50" width="122" height="50"/>
@@ -879,6 +882,7 @@
                                     <outlet property="imageViewHeader" destination="66g-oa-eJ1" id="Z95-Xy-Wun"/>
                                     <outlet property="imageViewPlus" destination="2sW-r1-b6q" id="ohC-aT-Dyt"/>
                                     <outlet property="imageViewSelection" destination="Zsa-sL-Eif" id="qqi-KP-nKg"/>
+                                    <outlet property="labelDateSelected" destination="Cwv-2e-K30" id="uLs-O2-fcy"/>
                                 </connections>
                             </view>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="iUr-Bs-cW9">

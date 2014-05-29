@@ -64,8 +64,8 @@
     return weekday;
 }
 
-//Récupère le mois en cours
-+ (NSString *)getMonthInLetter
+//Récupère le mois en cours en abrégé
++ (NSString *)getShortMonthInLetter
 {
     NSDate *today = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -73,6 +73,34 @@
     NSString *month = [formatter stringFromDate:today];
     
     return [[month substringToIndex:3] uppercaseString];
+}
+
+//Récupère la date à l'évènement donné
++ (NSString *)getDateInLetterForYear:(int)year week:(int)week andDay:(int)day
+{
+    //On met à jour le jour (le premier jour n'est pas lundi mais dimanche)
+    if (day == 7)
+        day = 1;
+    else
+        day ++;
+        
+    //On récupère la date que l'on veut
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    [calendar setLocale:[NSLocale currentLocale]];
+    [calendar setFirstWeekday:2];
+    
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setWeekOfYear:week];
+    [components setYearForWeekOfYear:year];
+    [components setWeekday:day];
+    NSDate *date = [calendar dateFromComponents:components];
+
+    //On configure un formatteur
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat: @"EEEE dd MMMM YYYY"];
+    
+    //On renvoie la date
+    return [NSString stringWithFormat:@"Semaine %i : %@", week, [formatter stringFromDate:date]];
 }
 
 //Récupère l'année en cours
@@ -108,16 +136,71 @@
     return year;
 }
 
-//Récupère le weekAndYear actuel
-+ (int)getWeekAndYear
+//Récupère le numéro de la semaine
++ (NSString *)getWeek
 {
     NSCalendar *calender = [NSCalendar currentCalendar];
     
     NSDateComponents *dateComponent = [calender components:(NSWeekOfYearCalendarUnit |           NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:[NSDate date]];
     
-    NSString *weekAndYearString = [NSString stringWithFormat:@"%i%i", (int)dateComponent.weekOfYear, (int)dateComponent.year];
+    //On gère le fait que la semaine doit toujours avoir 2 digit
+    NSString *weakOfYear = nil;
+    if (dateComponent.weekOfYear < 10)
+        weakOfYear = [NSString stringWithFormat:@"0%i", (int)dateComponent.weekOfYear];
+    else
+        weakOfYear = [NSString stringWithFormat:@"%i", (int)dateComponent.weekOfYear];
     
-    return [weekAndYearString intValue];
+    return weakOfYear;
 }
 
+//Récupère le weekAndYear actuel
++ (NSString *)getWeekAndYear
+{
+    NSCalendar *calender = [NSCalendar currentCalendar];
+    
+    NSDateComponents *dateComponent = [calender components:(NSWeekOfYearCalendarUnit |           NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:[NSDate date]];
+
+    //On gère le fait que la semaine doit toujours avoir 2 digit
+    NSString *weakOfYear = nil;
+    if (dateComponent.weekOfYear < 10)
+        weakOfYear = [NSString stringWithFormat:@"0%i", (int)dateComponent.weekOfYear];
+    else
+        weakOfYear = [NSString stringWithFormat:@"%i", (int)dateComponent.weekOfYear];
+    
+    NSString *weekAndYearString = [NSString stringWithFormat:@"%i%@", (int)dateComponent.year, weakOfYear];
+    
+    return weekAndYearString;
+}
+
+//Récupère la semaine précédente
++ (NSString *)getPreviousWeek
+{
+//    // Start with some date, e.g. now:
+//    NSDate *now = [NSDate date];
+//    NSCalendar *cal = [NSCalendar currentCalendar];
+//    
+//    // Compute beginning of current week:
+//    NSDate *date;
+//    [cal rangeOfUnit:NSWeekCalendarUnit startDate:&date interval:NULL forDate:now];
+//    
+//    // Go back one week to get start of previous week:
+//    NSDateComponents *comp1 = [[NSDateComponents alloc] init];
+//    [comp1 setWeek:-1];
+//    date = [cal dateByAddingComponents:comp1 toDate:date options:0];
+//    
+//    // Some output format (adjust to your needs):
+//    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+//    [fmt setDateFormat:@"EEEE dd/MM/yyyy"];
+//    
+//    // Repeatedly add one day:
+//    NSDateComponents *comp2 = [[NSDateComponents alloc] init];
+//    [comp2 setDay:1];
+//    for (int i = 1; i <= 7; i++) {
+//        NSString *text = [fmt stringFromDate:date];
+//        NSLog(@"%@", text);
+//        date = [cal dateByAddingComponents:comp2 toDate:date options:0];
+//        
+//    }
+    return nil;
+}
 @end
