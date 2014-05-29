@@ -21,6 +21,7 @@
 		6D3A26B818B7956600545FF2 /* DDCustomOccurenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A26B718B7956600545FF2 /* DDCustomOccurenceCell.m */; };
 		6D3A26BC18B7A1FB00545FF2 /* DDCategoriesListEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A26BB18B7A1FB00545FF2 /* DDCategoriesListEventViewController.m */; };
 		6D46EB9A1843486F00287ACC /* DDPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D46EB991843486F00287ACC /* DDPlayerViewController.m */; };
+		6D4D429E19266C0D008A7B75 /* DDCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4D429D19266C0D008A7B75 /* DDCustomButton.m */; };
 		6D5549F01844ECC7009022C5 /* DDPopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5549EF1844ECC7009022C5 /* DDPopOverViewController.m */; };
 		6D5549F41844F823009022C5 /* DDPlayerManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5549F31844F823009022C5 /* DDPlayerManagerViewController.m */; };
 		6D5E3D3718C36F2E003BA0F2 /* DDEventInfosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5E3D3618C36F2E003BA0F2 /* DDEventInfosViewController.m */; };
@@ -68,7 +69,7 @@
 		6D9B3C28191BF45C0001C672 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3C27191BF45C0001C672 /* Player.m */; };
 		6D9B3C2B191BF45C0001C672 /* Reward.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3C2A191BF45C0001C672 /* Reward.m */; };
 		6D9B3C2E191BF45D0001C672 /* CategoryTrophy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3C2D191BF45D0001C672 /* CategoryTrophy.m */; };
-		6DAE048418D086E100F6765E /* DDCustomNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAE048318D086E100F6765E /* DDCustomNotification.m */; };
+		6DAE048418D086E100F6765E /* DDCustomButtonNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAE048318D086E100F6765E /* DDCustomButtonNotification.m */; };
 		6DC986F6185092A200A5A65F /* DDCustomProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC986F5185092A200A5A65F /* DDCustomProgressBar.m */; };
 		6DC986FA1850E89B00A5A65F /* DDTaskManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC986F91850E89B00A5A65F /* DDTaskManagerViewController.m */; };
 		6DCB2A8A18B6177B000FDFCA /* DDEventManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB2A8918B6177B000FDFCA /* DDEventManagerViewController.m */; };
@@ -125,6 +126,8 @@
 		6D3A26BB18B7A1FB00545FF2 /* DDCategoriesListEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCategoriesListEventViewController.m; sourceTree = "<group>"; };
 		6D46EB981843486F00287ACC /* DDPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPlayerViewController.h; sourceTree = "<group>"; };
 		6D46EB991843486F00287ACC /* DDPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPlayerViewController.m; sourceTree = "<group>"; };
+		6D4D429C19266C0D008A7B75 /* DDCustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomButton.h; sourceTree = "<group>"; };
+		6D4D429D19266C0D008A7B75 /* DDCustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomButton.m; sourceTree = "<group>"; };
 		6D5549EE1844ECC7009022C5 /* DDPopOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPopOverViewController.h; sourceTree = "<group>"; };
 		6D5549EF1844ECC7009022C5 /* DDPopOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPopOverViewController.m; sourceTree = "<group>"; };
 		6D5549F21844F823009022C5 /* DDPlayerManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPlayerManagerViewController.h; sourceTree = "<group>"; };
@@ -212,8 +215,8 @@
 		6D9B3C2A191BF45C0001C672 /* Reward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reward.m; sourceTree = "<group>"; };
 		6D9B3C2C191BF45D0001C672 /* CategoryTrophy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTrophy.h; sourceTree = "<group>"; };
 		6D9B3C2D191BF45D0001C672 /* CategoryTrophy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTrophy.m; sourceTree = "<group>"; };
-		6DAE048218D086E100F6765E /* DDCustomNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomNotification.h; sourceTree = "<group>"; };
-		6DAE048318D086E100F6765E /* DDCustomNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomNotification.m; sourceTree = "<group>"; };
+		6DAE048218D086E100F6765E /* DDCustomButtonNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomButtonNotification.h; sourceTree = "<group>"; };
+		6DAE048318D086E100F6765E /* DDCustomButtonNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomButtonNotification.m; sourceTree = "<group>"; };
 		6DC986F4185092A200A5A65F /* DDCustomProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomProgressBar.h; sourceTree = "<group>"; };
 		6DC986F5185092A200A5A65F /* DDCustomProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomProgressBar.m; sourceTree = "<group>"; };
 		6DC986F81850E89B00A5A65F /* DDTaskManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTaskManagerViewController.h; sourceTree = "<group>"; };
@@ -376,6 +379,15 @@
 				6D5549F11844F7E8009022C5 /* PlayerManagerViewController */,
 			);
 			name = PlayerViewController;
+			sourceTree = "<group>";
+		};
+		6D4D429B19266BF2008A7B75 /* CustomButton */ = {
+			isa = PBXGroup;
+			children = (
+				6D4D429C19266C0D008A7B75 /* DDCustomButton.h */,
+				6D4D429D19266C0D008A7B75 /* DDCustomButton.m */,
+			);
+			name = CustomButton;
 			sourceTree = "<group>";
 		};
 		6D5549ED1844ECAE009022C5 /* PopOverViewController */ = {
@@ -618,6 +630,7 @@
 		6D6B3F07183CF9F9009542A8 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				6D4D429B19266BF2008A7B75 /* CustomButton */,
 				6DAE048118D086CC00F6765E /* CustomNotification */,
 				6D030BA018CB8BAB00C3B95C /* CustomValidation */,
 				6D94A6CD18C601360047045C /* CustomCheckbox */,
@@ -791,8 +804,8 @@
 		6DAE048118D086CC00F6765E /* CustomNotification */ = {
 			isa = PBXGroup;
 			children = (
-				6DAE048218D086E100F6765E /* DDCustomNotification.h */,
-				6DAE048318D086E100F6765E /* DDCustomNotification.m */,
+				6DAE048218D086E100F6765E /* DDCustomButtonNotification.h */,
+				6DAE048318D086E100F6765E /* DDCustomButtonNotification.m */,
 			);
 			name = CustomNotification;
 			sourceTree = "<group>";
@@ -1064,7 +1077,7 @@
 				6D8970F31848F56B00F815CD /* DDCustomAlertView.m in Sources */,
 				6D33D7461855D27F001E1B3A /* DDRootPodiumViewController.m in Sources */,
 				6D6B3F16183D28D8009542A8 /* DDHomeViewController.m in Sources */,
-				6DAE048418D086E100F6765E /* DDCustomNotification.m in Sources */,
+				6DAE048418D086E100F6765E /* DDCustomButtonNotification.m in Sources */,
 				6D62E88518479AD500D376FA /* DDCustomNavigationBarController.m in Sources */,
 				6D6B3EDF183CF75B009542A8 /* DDRootViewController.m in Sources */,
 				6D6B3F12183D116F009542A8 /* DDMenuView.m in Sources */,
@@ -1096,6 +1109,7 @@
 				6D9B3C2E191BF45D0001C672 /* CategoryTrophy.m in Sources */,
 				6DCE47B5183E029200D64363 /* DDDateView.m in Sources */,
 				6D5549F41844F823009022C5 /* DDPlayerManagerViewController.m in Sources */,
+				6D4D429E19266C0D008A7B75 /* DDCustomButton.m in Sources */,
 				6D6A1BF9184DDA6400319C71 /* DDParserXML.m in Sources */,
 				6D8970EC1848EF9900F815CD /* DDDatabaseManager.m in Sources */,
 				6D94A6D018C601620047045C /* DDCustomCheckbox.m in Sources */,

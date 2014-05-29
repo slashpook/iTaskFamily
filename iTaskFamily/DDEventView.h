@@ -11,6 +11,8 @@
 #import "DDEventInfosViewController.h"
 
 @class DDPopOverViewController;
+@class DDCustomButton;
+@class DDCustomButtonNotification;
 
 @interface DDEventView : UIView <DDEventManagerViewProtocol, DDEventInfosProtocol>
 
@@ -42,32 +44,41 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewSelection;
 
 //Label d'indication pour savoir si il y a des joueurs ou non
-@property (weak, nonatomic) IBOutlet UILabel *labelInfos;
+@property (weak, nonatomic) IBOutlet DDCustomButton *buttonAddPlayer;
 
 //Boutton pour ajouter un évent quand il y en a aucun
-@property (weak, nonatomic) IBOutlet UIButton *buttonBigAddEvent;
+@property (weak, nonatomic) IBOutlet DDCustomButton *buttonBigAddEvent;
+
+//Boutton pour revenir sur la semaine en cours
+@property (weak, nonatomic) IBOutlet DDCustomButton *buttonToday;
 
 //Boutton du Lundi
-@property (weak, nonatomic) IBOutlet UIButton *buttonLundi;
+@property (weak, nonatomic) IBOutlet DDCustomButtonNotification *buttonLundi;
 
 //Boutton du Mardi
-@property (weak, nonatomic) IBOutlet UIButton *buttonMardi;
+@property (weak, nonatomic) IBOutlet DDCustomButtonNotification *buttonMardi;
 
 //Boutton du Mercredi
-@property (weak, nonatomic) IBOutlet UIButton *buttonMercredi;
+@property (weak, nonatomic) IBOutlet DDCustomButtonNotification *buttonMercredi;
 
 //Boutton du Jeudi
-@property (weak, nonatomic) IBOutlet UIButton *buttonJeudi;
+@property (weak, nonatomic) IBOutlet DDCustomButtonNotification *buttonJeudi;
 
 //Boutton du Vendredi
-@property (weak, nonatomic) IBOutlet UIButton *buttonVendredi;
+@property (weak, nonatomic) IBOutlet DDCustomButtonNotification *buttonVendredi;
 
 //Boutton du Samedi
-@property (weak, nonatomic) IBOutlet UIButton *buttonSamedi;
+@property (weak, nonatomic) IBOutlet DDCustomButtonNotification *buttonSamedi;
 
 //Boutton du Dimanche
-@property (weak, nonatomic) IBOutlet UIButton *buttonDimanche;
+@property (weak, nonatomic) IBOutlet DDCustomButtonNotification *buttonDimanche;
 
+//Tableau pour stocker toutes les notifications et les manipuler plus facilement
+@property (strong, nonatomic) NSArray *arrayWeekNotification;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewPlus;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintPostionXImagePlus;
 
 #pragma mark - Fonctions
 
@@ -77,11 +88,17 @@
 //On se positionne sur le bon jour
 - (void)updatePositionOfSelectedDay;
 
+//On met à jour les notifications
+- (void)updateNotifications;
+
 //On appuie sur un des boutons
 - (IBAction)onPushDayButton:(id)sender;
 
 //On appuie sur le bouton pour ajouter un évènement
 - (IBAction)onPushAddEventButton:(id)sender;
+
+//On appuie sur le bouton pour ajouter un joueur
+- (IBAction)onPushAddPlayerButton:(id)sender;
 
 
 @end

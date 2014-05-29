@@ -8,6 +8,8 @@
 
 #import "DDEventView.h"
 #import "DDPopOverViewController.h"
+#import "DDCustomButton.h"
+#import "DDCustomButtonNotification.h"
 
 @implementation DDEventView
 
@@ -27,30 +29,26 @@
     [self.layer setMasksToBounds:YES];
     
     //On configure les polices et couleur des boutons et labels
-    [self.labelInfos setTextColor:COULEUR_BLACK];
-    [self.labelInfos setFont:POLICE_EVENT_NO_PLAYER];
-    [[self.buttonLundi titleLabel] setTextColor:COULEUR_WHITE];
-    [[self.buttonLundi titleLabel] setFont:POLICE_EVENT_DAY];
-    [[self.buttonMardi titleLabel] setTextColor:COULEUR_WHITE];
-    [[self.buttonMardi titleLabel] setFont:POLICE_EVENT_DAY];
-    [[self.buttonMercredi titleLabel] setTextColor:COULEUR_WHITE];
-    [[self.buttonMercredi titleLabel] setFont:POLICE_EVENT_DAY];
-    [[self.buttonJeudi titleLabel] setTextColor:COULEUR_WHITE];
-    [[self.buttonJeudi titleLabel] setFont:POLICE_EVENT_DAY];
-    [[self.buttonVendredi titleLabel] setTextColor:COULEUR_WHITE];
-    [[self.buttonVendredi titleLabel] setFont:POLICE_EVENT_DAY];
-    [[self.buttonSamedi titleLabel] setTextColor:COULEUR_WHITE];
-    [[self.buttonSamedi titleLabel] setFont:POLICE_EVENT_DAY];
-    [[self.buttonDimanche titleLabel] setTextColor:COULEUR_WHITE];
-    [[self.buttonDimanche titleLabel] setFont:POLICE_EVENT_DAY];
-    
-    //On met les images en couleurs
+    [[self.buttonAddPlayer titleLabel] setFont:POLICE_EVENT_NO_PLAYER];
+    [[self.buttonBigAddEvent titleLabel] setFont:POLICE_EVENT_NO_EVENT];
     [self.imageViewHeader setBackgroundColor:COULEUR_BLACK];
+    [self.buttonToday setColorTitleEnable:COULEUR_WHITE];
     
-    //On récupère le storyboard
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    //On initialise le tableau des notifications et les boutons
+    [[self.buttonLundi labelDay] setText:@"LUN"];
+    [[self.buttonMardi labelDay] setText:@"MAR"];
+    [[self.buttonMercredi labelDay] setText:@"MER"];
+    [[self.buttonJeudi labelDay] setText:@"JEU"];
+    [[self.buttonVendredi labelDay] setText:@"VEN"];
+    [[self.buttonSamedi labelDay] setText:@"SAM"];
+    [[self.buttonDimanche labelDay] setText:@"DIM"];
+    _arrayWeekNotification = [[NSArray alloc] initWithObjects:self.buttonLundi, self.buttonMardi, self.buttonMercredi, self.buttonJeudi, self.buttonVendredi, self.buttonSamedi, self.buttonDimanche, nil];
+    for (DDCustomButtonNotification *buttonNotification in self.arrayWeekNotification)
+        [[buttonNotification labelNumberNotification] setText:@""];
     
+
     //On initialise le popOver, le navigation controller et le playerManagerViewController
+    UIStoryboard *storyboard = [[DDManagerSingleton instance] storyboard];
     _popOverViewController = [storyboard instantiateViewControllerWithIdentifier:@"PopOverViewController"];
     _eventManagerViewController = [storyboard instantiateViewControllerWithIdentifier:@"EventManagerViewController"];
     [self.eventManagerViewController setDelegate:self];
@@ -75,18 +73,19 @@
     Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
     
     [self.eventInfosViewController.view setHidden:YES];
+    [self.imageViewPlus setHidden:NO];
     
     //si le joueur n'existe pas on désactive les boutons
     if (currentPlayer == nil)
     {
-        [self.labelInfos setHidden:NO];
-        [self.labelInfos setText:@"Aucun joueur"];
+        [self.buttonAddPlayer setHidden:NO];
         [self.buttonBigAddEvent setHidden:YES];
+        [[self constraintPostionXImagePlus] setConstant:310];
     }
     //Sinon on vérifie qu'il y a des évènements
     else
     {
-        [self.labelInfos setHidden:YES];
+        [self.buttonAddPlayer setHidden:YES];
         [self.buttonBigAddEvent setHidden:YES];
         [self.eventInfosViewController.buttonDeleteEvent setEnabled:YES];
         [self.eventInfosViewController.buttonModifyEvent setEnabled:YES];
@@ -94,6 +93,7 @@
         //Si il n'y a pas d'évènement on désactive certains boutons.
         if ([[[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer atWeekAndYear:[DDHelperController getWeekAndYear] andDay:self.daySelected] count] > 0)
         {
+            [self.imageViewPlus setHidden:YES];
             [self.eventInfosViewController.view setHidden:NO];
             [self.eventInfosViewController getEventsForDay:self.daySelected];
             //Si on a fini la tache sélectionnée, on désactive le bouton pour modifier l'évènement
@@ -102,8 +102,21 @@
         }
         else
         {
+            [[self constraintPostionXImagePlus] setConstant:260];
             [self.buttonBigAddEvent setHidden:NO];
         }
+    }
+    
+    //On met à jour les notifications
+    [self updateNotifications];
+}
+
+//On met à jour la couleur des boutons
+- (void)updateColorButtonDays
+{
+    for (DDCustomButtonNotification *buttonNotification in self.arrayWeekNotification) {
+        [buttonNotification setIsSelected:NO];
+        [buttonNotification updateComponent];
     }
 }
 
@@ -115,18 +128,45 @@
     [self onPushDayButton:[self viewWithTag:(self.daySelected.intValue +1)]];
 }
 
+//On met à jour les notifications
+- (void)updateNotifications
+{
+    //On boucle sur le tableau de notif, on les caches ou non en fonction
+    for (DDCustomButtonNotification *buttonNotification in self.arrayWeekNotification)
+    {
+        //On récupère l'index
+        NSString *dayOfNotification = [NSString stringWithFormat:@"%i", (int)[self.arrayWeekNotification indexOfObject:buttonNotification]];
+        
+        //On récupère le compteur
+        int compteur = [[DDDatabaseAccess instance] getNumberOfEventUncheckedForPlayer:[[DDManagerSingleton instance] currentPlayer] forWeekAndYear:[DDHelperController getWeekAndYear] andDay:dayOfNotification];
+        
+        //On met à jour le label du compteur d'évènement non terminé
+        [[buttonNotification labelNumberNotification] setText:[NSString stringWithFormat:@"%i", compteur]];
+        
+        [buttonNotification updateComponent];
+    }
+}
+
 //On appuie sur un des boutons
 - (IBAction)onPushDayButton:(id)sender
 {
+    //On remet la couleur des boutons en noir
+    [self updateColorButtonDays];
+    
     //En fonction de l'état du booléen, on lance ou non une animation
     if (self.mustAnimateSelectionDay == YES) {
         [UIView animateWithDuration:0.3 animations:^{
-            [self.imageViewSelection setFrame:[(UIButton *)sender frame]];
+            [self.imageViewSelection setFrame:[(DDCustomButtonNotification *)sender frame]];
+        } completion:^(BOOL finished) {
+            [(DDCustomButtonNotification *)sender setIsSelected:YES];
+            [sender updateComponent];
         }];
     }
     else
     {
-        [self.imageViewSelection setFrame:[(UIButton *)sender frame]];
+        [self.imageViewSelection setFrame:[(DDCustomButtonNotification *)sender frame]];
+        [(DDCustomButtonNotification *)sender setIsSelected:YES];
+        [sender updateComponent];
         [self setMustAnimateSelectionDay:YES];
     }
     
@@ -155,6 +195,12 @@
     [self openEventManagerViewController];
 }
 
+- (IBAction)onPushAddPlayerButton:(id)sender
+{
+    //On affiche la page d'ajout de joueur
+    [[NSNotificationCenter defaultCenter] postNotificationName:ADD_PLAYER object:nil];
+}
+
 //On ouvre la popUp
 - (void)openEventManagerViewController
 {
@@ -175,7 +221,7 @@
 - (void)updateComponentWithEventSelected
 {
     //On met à jour les notifications
-    [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_NOTIFICATION object:nil];
+    [self updateNotifications];
     
     //On met à jour les composants
     [self updateComponent];
@@ -207,7 +253,7 @@
 - (void)closeEventManagerView
 {
     //On met à jour les notifications
-    [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_NOTIFICATION object:nil];
+    [self updateNotifications];
     
     //On enlève la popUp
     [self.popOverViewController hide];

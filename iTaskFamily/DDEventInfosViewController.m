@@ -85,18 +85,6 @@
     //On met à jour le nom de la tache
     [self.labelTask setText:task.libelle];
     
-    //On affiche ou non le marqueur de validation
-    if ([self.currentEvent.checked boolValue] == YES)
-    {
-        [self.viewCustomValidation setHidden:NO];
-        [self.viewCustomValidation setColorValidation:[dictColor objectForKey:category.libelle]];
-        [self.viewCustomValidation setNeedsDisplay];
-    }
-    else
-    {
-        [self.viewCustomValidation setHidden:YES];
-    }
-    
     //On met à jour les 3 carrés de la vue info
     [self.imageViewCategory setBackgroundColor:[dictColor objectForKey:category.libelle]];
     [self.labelCategory setText:category.libelle];

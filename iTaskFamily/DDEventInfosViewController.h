@@ -15,7 +15,6 @@
 - (void)updateComponentWithEventSelected;
 - (void)addEvent;
 - (void)updateEvent;
-- (void)removeEvent;
 
 @end
 
@@ -62,9 +61,6 @@
 
 //TextView des commentaires de la tache
 @property (weak, nonatomic) IBOutlet UITextView *textViewComment;
-
-//Vue qui indique si on a validé ou non l'évènement
-@property (weak, nonatomic) IBOutlet DDCustomValidation *viewCustomValidation;
 
 //Boutton pour supprimer des évènements
 @property (weak, nonatomic) IBOutlet UIButton *buttonDeleteEvent;
