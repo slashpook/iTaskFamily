@@ -376,7 +376,7 @@
     [fetchRequest setEntity:entityDescription];
     
     //On rajoute un filtre
-    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && achievement.weekAndYear == %@ && day == %@", player.pseudo, weekAndYear, day];
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && (achievement.weekAndYear == %@ || (achievement.weekAndYear <= %@ && recurrenceEnd.weekAndYear == 0)) && day == %@", player.pseudo, weekAndYear, weekAndYear, day];
     [fetchRequest setPredicate:newPredicate];
     
     NSError *error;
@@ -463,7 +463,7 @@
     [fetchRequest setEntity:entityDescription];
     
     //On rajoute un filtre
-    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && achievement.weekAndYear == %@ && day == %@ && checked == NO", player.pseudo, weekAndYear, day];
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && (achievement.weekAndYear == %@ || (achievement.weekAndYear <= %@ && recurrenceEnd.weekAndYear == 0)) && day == %@ && checked == NO", player.pseudo, weekAndYear, weekAndYear, day];
     [fetchRequest setPredicate:newPredicate];
     
     NSError *error;
