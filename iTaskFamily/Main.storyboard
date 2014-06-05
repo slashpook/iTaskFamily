@@ -685,6 +685,9 @@
                                         <state key="normal" image="HomeButtonPreviousWeek">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onPushPreviousWeekButton:" destination="y4P-vS-qVT" eventType="touchUpInside" id="laF-0j-hwn"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNf-5E-H4g" userLabel="Button - Add">
                                         <rect key="frame" x="813" y="0.0" width="40" height="50"/>
@@ -693,6 +696,9 @@
                                         <state key="normal" image="HomeButtonNextWeek">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onPushNextWeekButton:" destination="y4P-vS-qVT" eventType="touchUpInside" id="Js1-xi-6Ru"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omQ-hf-EtB" userLabel="Button - Date" customClass="DDCustomButton">
                                         <rect key="frame" x="40" y="8" width="140" height="34"/>

@@ -37,6 +37,9 @@
 //Variable contenant le jour actuel
 @property (strong, nonatomic) NSString *currentDate;
 
+//Variable contenant la date sélectionnée pour visionner l'event
+@property (strong, nonatomic) NSDate *currentDateSelected;
+
 
 #pragma mark - Fonctions
 

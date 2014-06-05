@@ -119,7 +119,8 @@
 {
     //On récupère le tableau des évènements du joueur en cours
     Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
-    [self setArrayEvent:[NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer atWeekAndYear:[DDHelperController getWeekAndYear] andDay:currentDay]]];
+    NSDate *dateEvent = [[DDManagerSingleton instance] currentDateSelected];
+    [self setArrayEvent:[NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer atWeekAndYear:[DDHelperController getWeekAndYearForDate:dateEvent] andDay:currentDay]]];
     
     //On sélectionne le premier row
     [self selectFirstRow];

@@ -185,7 +185,7 @@
         [self.imageViewProfil setImage:[[[DDManagerSingleton instance] dictImagePlayer] objectForKey:self.currentPlayer.pseudo]];
         [self.labelNameProfil setText:self.currentPlayer.pseudo];
         [self.labelNbrTrophy setText:[NSString stringWithFormat:@"%i",[[DDDatabaseAccess instance] getNumberOfTrophyAchievedForPlayer:self.currentPlayer]]];
-        [self.labelWeekScore setText:[NSString stringWithFormat:@"%i",[[DDDatabaseAccess instance] getScoreWeekForPlayer:self.currentPlayer forWeekAndYear:[DDHelperController getWeekAndYear]]]];
+        [self.labelWeekScore setText:[NSString stringWithFormat:@"%i",[[DDDatabaseAccess instance] getScoreWeekForPlayer:self.currentPlayer forWeekAndYear:[DDHelperController getWeekAndYearForDate:[NSDate date]]]]];
         [self.labelTotalScore setText:[NSString stringWithFormat:@"%i",[[DDDatabaseAccess instance] getScoreTotalForPlayer:self.currentPlayer]]];
         
         //On rend la tableView accessible

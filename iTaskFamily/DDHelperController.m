@@ -75,34 +75,6 @@
     return [[month substringToIndex:3] uppercaseString];
 }
 
-//Récupère la date à l'évènement donné
-+ (NSString *)getDateInLetterForYear:(int)year week:(int)week andDay:(int)day
-{
-    //On met à jour le jour (le premier jour n'est pas lundi mais dimanche)
-    if (day == 7)
-        day = 1;
-    else
-        day ++;
-        
-    //On récupère la date que l'on veut
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    [calendar setLocale:[NSLocale currentLocale]];
-    [calendar setFirstWeekday:2];
-    
-    NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setWeekOfYear:week];
-    [components setYearForWeekOfYear:year];
-    [components setWeekday:day];
-    NSDate *date = [calendar dateFromComponents:components];
-
-    //On configure un formatteur
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat: @"EEEE dd MMMM YYYY"];
-    
-    //On renvoie la date
-    return [NSString stringWithFormat:@"Semaine %i : %@", week, [formatter stringFromDate:date]];
-}
-
 //Récupère l'année en cours
 + (NSString *)getYearInLetter
 {
@@ -136,12 +108,50 @@
     return year;
 }
 
-//Récupère le numéro de la semaine
-+ (NSString *)getWeek
+//Récupère la date à l'évènement donné en lettre
++ (NSString *)getDateInLetterForDate:(NSDate *)date
+{
+    //On configure un formatteur
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat: @"EEEE dd MMMM YYYY"];
+    
+    //On récupère le numéro de semaine
+    NSString *stringWeek = [self getWeekForDate:date];
+    
+    //On renvoie la date
+    return [NSString stringWithFormat:@"Semaine %@ : %@", stringWeek, [formatter stringFromDate:date]];
+}
+
+//Récupère la date à l'évènement donné en date
++ (NSDate *)getDateForYear:(int)year week:(int)week andDay:(int)day
+{
+    //On met à jour le jour (le premier jour n'est pas lundi mais dimanche)
+    if (day == 7)
+        day = 1;
+    else
+        day ++;
+    
+    //On récupère la date que l'on veut
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    [calendar setLocale:[NSLocale currentLocale]];
+    [calendar setFirstWeekday:2];
+    
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setWeekOfYear:week];
+    [components setYearForWeekOfYear:year];
+    [components setWeekday:day];
+    NSDate *date = [calendar dateFromComponents:components];
+    
+    //On renvoie la date
+    return date;
+}
+
+//Récupère le numéro de la semaine de la date donnée
++ (NSString *)getWeekForDate:(NSDate *)date
 {
     NSCalendar *calender = [NSCalendar currentCalendar];
     
-    NSDateComponents *dateComponent = [calender components:(NSWeekOfYearCalendarUnit |           NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:[NSDate date]];
+    NSDateComponents *dateComponent = [calender components:(NSWeekOfYearCalendarUnit |           NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:date];
     
     //On gère le fait que la semaine doit toujours avoir 2 digit
     NSString *weakOfYear = nil;
@@ -153,12 +163,12 @@
     return weakOfYear;
 }
 
-//Récupère le weekAndYear actuel
-+ (NSString *)getWeekAndYear
+//Récupère le weekAndYear de la date donnée
++ (NSString *)getWeekAndYearForDate:(NSDate *)date
 {
-    NSCalendar *calender = [NSCalendar currentCalendar];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
     
-    NSDateComponents *dateComponent = [calender components:(NSWeekOfYearCalendarUnit |           NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:[NSDate date]];
+    NSDateComponents *dateComponent = [calendar components:(NSWeekOfYearCalendarUnit |           NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:date];
 
     //On gère le fait que la semaine doit toujours avoir 2 digit
     NSString *weakOfYear = nil;
@@ -172,35 +182,35 @@
     return weekAndYearString;
 }
 
-//Récupère la semaine précédente
-+ (NSString *)getPreviousWeek
+//Récupère la date donnée avec l'écart
++ (NSDate *)getDateWithNumberOfDifferenceDay:(int)numberOfDifferenceDay forDate:(NSDate *)date
 {
-//    // Start with some date, e.g. now:
-//    NSDate *now = [NSDate date];
-//    NSCalendar *cal = [NSCalendar currentCalendar];
-//    
-//    // Compute beginning of current week:
-//    NSDate *date;
-//    [cal rangeOfUnit:NSWeekCalendarUnit startDate:&date interval:NULL forDate:now];
-//    
-//    // Go back one week to get start of previous week:
-//    NSDateComponents *comp1 = [[NSDateComponents alloc] init];
-//    [comp1 setWeek:-1];
-//    date = [cal dateByAddingComponents:comp1 toDate:date options:0];
-//    
-//    // Some output format (adjust to your needs):
-//    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
-//    [fmt setDateFormat:@"EEEE dd/MM/yyyy"];
-//    
-//    // Repeatedly add one day:
-//    NSDateComponents *comp2 = [[NSDateComponents alloc] init];
-//    [comp2 setDay:1];
-//    for (int i = 1; i <= 7; i++) {
-//        NSString *text = [fmt stringFromDate:date];
-//        NSLog(@"%@", text);
-//        date = [cal dateByAddingComponents:comp2 toDate:date options:0];
-//        
-//    }
-    return nil;
+    //On crée le calendrier
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    //On se met sur le premier jour de la semaine
+    NSDate *newDate;
+    
+    //On reviens une semaine en arrière
+    NSDateComponents *dateComponent = [[NSDateComponents alloc] init];
+    [dateComponent setDay:numberOfDifferenceDay];
+    newDate = [calendar dateByAddingComponents:dateComponent toDate:date options:0];
+    
+    return newDate;
 }
+
+//Récupère la semaine précédente de la date donnée
++ (NSDate *)getPreviousWeekForDate:(NSDate *)date
+{
+    NSDate *datePreviousWeek = [self getDateWithNumberOfDifferenceDay:-7 forDate:date];
+    return datePreviousWeek;
+}
+
+//Récupère la semaine suivante de la date donnée
++ (NSDate *)getNextWeekForDate:(NSDate *)date
+{
+    NSDate *dateNextWeek = [self getDateWithNumberOfDifferenceDay:7 forDate:date];
+    return dateNextWeek;
+}
+
 @end

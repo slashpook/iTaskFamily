@@ -12,10 +12,6 @@
 #import "DDCustomButtonNotification.h"
 
 @implementation DDEventView
-{
-    int currentNumberOfWeek;
-    int currentYear;
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -70,8 +66,9 @@
 //On met à jour les composants en fonctions des joueurs
 - (void)updateComponent
 {
-    //On récupère le joueur courant
+    //On récupère le joueur courant et la date du jour sélectionné
     Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
+    NSDate *dateEvent = [[DDManagerSingleton instance] currentDateSelected];
     
     [self.eventInfosViewController.view setHidden:YES];
     [self.imageViewPlus setHidden:NO];
@@ -92,7 +89,7 @@
         [self.eventInfosViewController.buttonModifyEvent setEnabled:YES];
 
         //Si il n'y a pas d'évènement on désactive certains boutons.
-        if ([[[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer atWeekAndYear:[DDHelperController getWeekAndYear] andDay:self.daySelected] count] > 0)
+        if ([[[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer atWeekAndYear:[DDHelperController getWeekAndYearForDate:dateEvent] andDay:self.daySelected] count] > 0)
         {
             [self.imageViewPlus setHidden:YES];
             [self.eventInfosViewController.view setHidden:NO];
@@ -108,7 +105,7 @@
         }
     }
     
-    [self.labelDateSelected setText:[DDHelperController getDateInLetterForYear:currentYear week:currentNumberOfWeek andDay:([self.daySelected intValue] +1)]];
+    [self.labelDateSelected setText:[DDHelperController getDateInLetterForDate:dateEvent]];
     
     //On met à jour les notifications
     [self updateNotifications];
@@ -139,9 +136,10 @@
     {
         //On récupère l'index
         NSString *dayOfNotification = [NSString stringWithFormat:@"%i", (int)[self.arrayWeekNotification indexOfObject:buttonNotification]];
+        NSDate *dateEvent = [[DDManagerSingleton instance] currentDateSelected];
         
         //On récupère le compteur
-        int compteur = [[DDDatabaseAccess instance] getNumberOfEventUncheckedForPlayer:[[DDManagerSingleton instance] currentPlayer] forWeekAndYear:[DDHelperController getWeekAndYear] andDay:dayOfNotification];
+        int compteur = [[DDDatabaseAccess instance] getNumberOfEventUncheckedForPlayer:[[DDManagerSingleton instance] currentPlayer] forWeekAndYear:[DDHelperController getWeekAndYearForDate:dateEvent] andDay:dayOfNotification];
         
         //On met à jour le label du compteur d'évènement non terminé
         [[buttonNotification labelNumberNotification] setText:[NSString stringWithFormat:@"%i", compteur]];
@@ -178,6 +176,12 @@
     
     //On récupère le tag du bouton et on lui enlève un car la première entrée d'un tableau est 0
     int daySelectedInNumber = (int)([(UIButton *)sender tag] - 1);
+    //On récupère la différence de jour et l'ancienne date sélectionnée
+    int differenceDay = daySelectedInNumber - [[self daySelected] intValue];
+    NSDate *dateEvent = [[DDManagerSingleton instance] currentDateSelected];
+    
+    //On met à jour la date sélectionnée ainsi que le jour sélectionné
+    [[DDManagerSingleton instance] setCurrentDateSelected:[DDHelperController getDateWithNumberOfDifferenceDay:differenceDay forDate:dateEvent]];
     [self setDaySelected:[NSString stringWithFormat:@"%i", daySelectedInNumber]];
     
     [self updateComponent];
@@ -189,6 +193,32 @@
     //On met à jour les données
     [self setDataToSelectToday];
     [self onPushDayButton:[self viewWithTag:(self.daySelected.intValue +1)]];
+}
+
+//On appuie sur le bouton pour aller sur la semaine précédente
+- (IBAction)onPushPreviousWeekButton:(id)sender
+{
+    NSDate *dateEvent = [[DDManagerSingleton instance] currentDateSelected];
+    NSDate *previousWeekDate = [DDHelperController getPreviousWeekForDate:dateEvent];
+    
+    //On met à jour la date de l'évènement sélectionné
+    [[DDManagerSingleton instance] setCurrentDateSelected:previousWeekDate];
+    
+    //On update la vue
+    [self updateComponent];
+}
+
+//On appuie sur le bouton pour aller sur la semaine suivante
+- (IBAction)onPushNextWeekButton:(id)sender
+{
+    NSDate *dateEvent = [[DDManagerSingleton instance] currentDateSelected];
+    NSDate *nextWeekDate = [DDHelperController getNextWeekForDate:dateEvent];
+    
+    //On met à jour la date de l'évènement sélectionné
+    [[DDManagerSingleton instance] setCurrentDateSelected:nextWeekDate];
+    
+    //On update la vue
+    [self updateComponent];
 }
 
 //On appuie sur le bouton pour ajouter un évènement
@@ -230,11 +260,12 @@
 {
     //On récupère le jour d'aujourd'hui et on positionne bien le bouton
     NSString *currentDay = [[DDManagerSingleton instance] currentDate];
+    
+    //On met à jour le singleton pour la date sélectionnée
+    [[DDManagerSingleton instance] setCurrentDateSelected:[NSDate date]];
+    
     //On récupère l'index du jour dans le tableau de la semaine. On l'incrémente de 1 car Le premier tag des boutons est 1
     [self setDaySelected:[NSString stringWithFormat:@"%i",(int)[[[DDManagerSingleton instance] arrayWeek] indexOfObject:currentDay]]];
-    //On met à jour le numéro de semaine et l'année
-    currentNumberOfWeek = [[DDHelperController getWeek] intValue];
-    currentYear = [[DDHelperController getYearInLetter] intValue];
 }
 
 

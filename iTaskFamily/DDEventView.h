@@ -103,6 +103,12 @@
 //On appuie sur le bouton aujourd'hui
 - (IBAction)onPushTodayButton:(id)sender;
 
+//On appuie sur le bouton pour aller sur la semaine précédente
+- (IBAction)onPushPreviousWeekButton:(id)sender;
+
+//On appuie sur le bouton pour aller sur la semaine suivante
+- (IBAction)onPushNextWeekButton:(id)sender;
+
 //On appuie sur le bouton pour ajouter un évènement
 - (IBAction)onPushAddEventButton:(id)sender;
 

@@ -167,6 +167,7 @@
     
     //On récupère le joueur en courant
     Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
+    NSDate *dateEvent = [[DDManagerSingleton instance] currentDateSelected];
     
     //On crée le nouvel évènement ou récupère l'event à modifier
     Event *event;
@@ -185,11 +186,11 @@
     
     if (self.isModifyEvent == NO)
     {
-        return [[DDDatabaseAccess instance] createEvent:event forPlayer:currentPlayer forTask:self.task atWeekAndYear:[DDHelperController getWeekAndYear]];
+        return [[DDDatabaseAccess instance] createEvent:event forPlayer:currentPlayer forTask:self.task atWeekAndYear:[DDHelperController getWeekAndYearForDate:dateEvent]];
     }
     else
     {
-        return [[DDDatabaseAccess instance] updateEvent:event forPlayer:currentPlayer forTask:self.task atWeekAndYear:[DDHelperController getWeekAndYear]];
+        return [[DDDatabaseAccess instance] updateEvent:event forPlayer:currentPlayer forTask:self.task atWeekAndYear:[DDHelperController getWeekAndYearForDate:dateEvent]];
     }
 }
 

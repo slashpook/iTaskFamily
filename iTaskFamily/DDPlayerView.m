@@ -159,7 +159,7 @@
     if ([self.arrayPlayer count] > 0)
     {
         Player *player = [self.arrayPlayer objectAtIndex:self.pageControl.currentPage];
-        int scoreWeek = [[DDDatabaseAccess instance] getScoreWeekForPlayer:player forWeekAndYear:[DDHelperController getWeekAndYear]];
+        int scoreWeek = [[DDDatabaseAccess instance] getScoreWeekForPlayer:player forWeekAndYear:[DDHelperController getWeekAndYearForDate:[NSDate date]]];
         //On change le joueur courant et on met à jour le menu
         [[DDManagerSingleton instance] setCurrentPlayer:player];
         
@@ -241,14 +241,14 @@
         {
             if ((currentPage + 1) < [self.arrayPlayer count])
             {
-                int scoreWeek = [[DDDatabaseAccess instance] getScoreWeekForPlayer:[self.arrayPlayer objectAtIndex:currentPage + 1] forWeekAndYear:[DDHelperController getWeekAndYear]];
+                int scoreWeek = [[DDDatabaseAccess instance] getScoreWeekForPlayer:[self.arrayPlayer objectAtIndex:currentPage + 1] forWeekAndYear:[DDHelperController getWeekAndYearForDate:[NSDate date]]];
                 [self.labelNamePlayer setText:[[self.arrayPlayer objectAtIndex:currentPage + 1] pseudo]];
                 [self.labelPointPlayer setText:[NSString stringWithFormat:@"%i points", scoreWeek]];
             }
         }
         else
         {
-            int scoreWeek = [[DDDatabaseAccess instance] getScoreWeekForPlayer:[self.arrayPlayer objectAtIndex:currentPage] forWeekAndYear:[DDHelperController getWeekAndYear]];
+            int scoreWeek = [[DDDatabaseAccess instance] getScoreWeekForPlayer:[self.arrayPlayer objectAtIndex:currentPage] forWeekAndYear:[DDHelperController getWeekAndYearForDate:[NSDate date]]];
             [self.labelNamePlayer setText:[[self.arrayPlayer objectAtIndex:currentPage] pseudo]];
             [self.labelPointPlayer setText:[NSString stringWithFormat:@"%i points", scoreWeek]];
         }
