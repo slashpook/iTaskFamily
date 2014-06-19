@@ -91,14 +91,14 @@
                                              selector:@selector(updateComponent)
                                                  name:UPDATE_PLAYER
                                                object:nil];
+
+    //On update les infos du joueurs si on en a un
+    [self updateComponent];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    //On update les infos du joueurs si on en a un
-    [self updateComponent];
 }
 
 - (void)viewDidAppear:(BOOL)animated

@@ -998,96 +998,64 @@
 //On récupère le nombre de trophies réalisés pour un joueur donné
 - (int)getNumberOfTrophyAchievedForPlayer:(Player *)player
 {
-    int numberOfTrophyAchieved = 0;
+    //On défini la classe pour la requète
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Trophy" inManagedObjectContext:self.dataBaseManager.managedObjectContext];
+    [fetchRequest setEntity:entityDescription];
     
-    if (player != nil)
-    {
-        //On récupère les tasks de la categoryTask donnée triés par ordre alphabétique
-        NSArray *arrayTasks = [self getTasks];
-        
-        //Si on a des résultats, on les parses
-        if ([arrayTasks count] > 0)
-        {
-            for (Task *task in arrayTasks)
-            {
-                //On parse les trophies de chaque task
-                for (Trophy *trophy in [task.trophies allObjects])
-                {
-                    int numberOfEventChecked = [self getNumberOfEventCheckedForPlayer:player forTask:task];
-                    
-                    if ([trophy.iteration intValue] >= numberOfEventChecked)
-                        numberOfTrophyAchieved ++;
-                }
-            }
-        }
-    }
+    //On rajoute un filtre : Récupère les trophées des joueurs qui ont un nombre de réalisation de la tache supérieur à l'itération du trophés
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"ANY task.achievments.player.pseudo == %@ && SUBQUERY(task.achievments, $achievment, ANY $achievment.events.checked == YES).@count >= iteration", player.pseudo];
+    [fetchRequest setPredicate:newPredicate];
     
-    return numberOfTrophyAchieved;
+    NSError *error;
+    NSArray *fetchedObjects = [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    
+    //On renvoie le tableau de la requète
+    return (int)[fetchedObjects count];
 }
 
 //On récupère le nombre de trophies réalisés pour un joueur donné, une catégorie donnée
 - (int)getNumberOfTrophyAchievedForPlayer:(Player *)player inCategory:(CategoryTask *)category
 {
-    int numberOfTrophyAchieved = 0;
+    //On défini la classe pour la requète
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Trophy" inManagedObjectContext:self.dataBaseManager.managedObjectContext];
+    [fetchRequest setEntity:entityDescription];
     
-    if (player != nil)
-    {
-        //On récupère les tasks de la categoryTask donnée triés par ordre alphabétique
-        NSArray *arrayTasks = [self getTasksForCategory:category];
-        
-        //Si on a des résultats, on les parses
-        if ([arrayTasks count] > 0)
-        {
-            for (Task *task in arrayTasks)
-            {
-                //On parse les trophies de chaque task
-                for (Trophy *trophy in [task.trophies allObjects])
-                {
-                    int numberOfEventChecked = [self getNumberOfEventCheckedForPlayer:player forTask:task];
-                    
-                    //Si on a réalisé le trophy on incrémente le compteur
-                    if ([trophy.iteration intValue] >= numberOfEventChecked)
-                        numberOfTrophyAchieved ++;
-                }
-            }
-        }
-    }
+    //On rajoute un filtre : Récupère les trophées des joueurs qui ont un nombre de réalisation de la tache supérieur à l'itération du trophés
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"task.category.libelle == %@ AND ANY task.achievments.player.pseudo == %@ && SUBQUERY(task.achievments, $achievment, ANY $achievment.events.checked == YES).@count >= iteration", category.libelle, player.pseudo];
+    [fetchRequest setPredicate:newPredicate];
     
-    return numberOfTrophyAchieved;
+    NSError *error;
+    NSArray *fetchedObjects = [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    
+    //On renvoie le tableau de la requète
+    return (int)[fetchedObjects count];
 }
 
 //On récupère le nombre de trophies réalisés pour un joueur donné, une catégorie donnée et un type de trophé donné
 - (int)getNumberOfTrophyAchievedForPlayer:(Player *)player inCategory:(CategoryTask *)category andType:(NSString *)type
 {
-    int numberOfTrophyAchieved = 0;
+    //On défini la classe pour la requète
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Trophy" inManagedObjectContext:self.dataBaseManager.managedObjectContext];
+    [fetchRequest setEntity:entityDescription];
     
-    if (player != nil)
-    {
-        //On récupère les tasks de la categoryTask donnée triés par ordre alphabétique
-        NSArray *arrayTasks = [self getTasksForCategory:category];
-        
-        //Si on a des résultats, on les parses
-        if ([arrayTasks count] > 0)
-        {
-            for (Task *task in arrayTasks)
-            {
-                //On parse les trophies de chaque task
-                for (Trophy *trophy in [task.trophies allObjects])
-                {
-                    //Si on trouve le bon, on le rajoute dans le tableau
-                    if ([trophy.type isEqualToString:type])
-                    {
-                        int numberOfEventChecked = [self getNumberOfEventCheckedForPlayer:player forTask:task];
-                        
-                        if ([trophy.iteration intValue] >= numberOfEventChecked)
-                            numberOfTrophyAchieved ++;
-                    }
-                }
-            }
-        }
-    }
+    //On rajoute un filtre : Récupère les trophées des joueurs qui ont un nombre de réalisation de la tache supérieur à l'itération du trophés
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"type == %@ AND task.category.libelle == %@ AND ANY task.achievments.player.pseudo == %@ && SUBQUERY(task.achievments, $achievment, ANY $achievment.events.checked == YES).@count >= iteration", type, category.libelle, player.pseudo];
+    [fetchRequest setPredicate:newPredicate];
     
-    return numberOfTrophyAchieved;
+    NSError *error;
+    NSArray *fetchedObjects = [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    
+    //On renvoie le tableau de la requète
+    return (int)[fetchedObjects count];
 }
 
 //On supprime le trophy donné
