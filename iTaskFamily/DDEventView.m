@@ -69,6 +69,8 @@
     //On récupère le joueur courant et la date du jour sélectionné
     Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
     NSDate *dateEvent = [[DDManagerSingleton instance] currentDateSelected];
+    NSString *currentWeekAndYear = [DDHelperController getWeekAndYearForDate:[NSDate date]];
+    NSString *weekAndYearSelected = [DDHelperController getWeekAndYearForDate:dateEvent];
     
     [self.eventInfosViewController.view setHidden:YES];
     [self.imageViewPlus setHidden:NO];
@@ -80,7 +82,7 @@
         [self.buttonBigAddEvent setHidden:YES];
         [[self constraintPostionXImagePlus] setConstant:310];
     }
-    //Sinon on vérifie qu'il y a des évènements
+    //Sinon on vérifie qu'il y ai des évènements
     else
     {
         [self.buttonAddPlayer setHidden:YES];
@@ -89,7 +91,7 @@
         [self.eventInfosViewController.buttonModifyEvent setEnabled:YES];
 
         //Si il n'y a pas d'évènement on désactive certains boutons.
-        if ([[[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer atWeekAndYear:[DDHelperController getWeekAndYearForDate:dateEvent] andDay:self.daySelected] count] > 0)
+        if ([[[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer atWeekAndYear:weekAndYearSelected andDay:self.daySelected] count] > 0)
         {
             [self.imageViewPlus setHidden:YES];
             [self.eventInfosViewController.view setHidden:NO];
@@ -101,9 +103,20 @@
         else
         {
             [[self constraintPostionXImagePlus] setConstant:260];
-            [self.buttonBigAddEvent setHidden:NO];
+            
+            //On affiche le bouton pour afficher des events que si on est dans le présent ou le futur
+            if ([currentWeekAndYear intValue] <= [weekAndYearSelected intValue])
+                [self.buttonBigAddEvent setHidden:NO];
+            else
+                [self.buttonBigAddEvent setHidden:YES];
         }
     }
+    
+    //On change la couleur du header pour indiquer si on est sur la semaine courante ou non
+    if ([currentWeekAndYear intValue] == [weekAndYearSelected intValue])
+        [self.imageViewHeader setBackgroundColor:COULEUR_BLACK];
+    else
+        [self.imageViewHeader setBackgroundColor:COULEUR_GREY];
     
     [self.labelDateSelected setText:[DDHelperController getDateInLetterForDate:dateEvent]];
     

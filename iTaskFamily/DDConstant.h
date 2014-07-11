@@ -31,6 +31,7 @@
 #define COULEUR_PODIUM [UIColor colorWithRed:137/255.0 green:60/255.0 blue:169/255.0 alpha:1.0]
 #define COULEUR_SETTING [UIColor colorWithRed:225/255.0 green:51/255.0 blue:41/255.0 alpha:1.0]
 #define COULEUR_BLACK [UIColor colorWithRed:0 green:0 blue:0 alpha:1.0]
+#define COULEUR_GREY [UIColor colorWithRed:60/255.0 green:60/255.0 blue:60/255.0 alpha:1.0]
 #define COULEUR_WHITE [UIColor colorWithRed:1 green:1 blue:1 alpha:1.0]
 #define COULEUR_DISABLED [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]
 #define COULEUR_AUTRE [UIColor colorWithRed:44/255.0 green:62/255.0 blue:80/255.0 alpha:1.0]

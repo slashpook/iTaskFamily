@@ -376,8 +376,14 @@
     [fetchRequest setEntity:entityDescription];
     
     //On rajoute un filtre
-    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && (achievement.weekAndYear == %@ || (achievement.weekAndYear <= %@ && recurrenceEnd.weekAndYear == 0)) && day == %@", player.pseudo, weekAndYear, weekAndYear, day];
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && (achievement.weekAndYear == %@ || (achievement.weekAndYear < %@ && (recurrenceEnd.weekAndYear == 0 || recurrenceEnd.weekAndYear >= %@))) && day == %@", player.pseudo, weekAndYear, weekAndYear, weekAndYear, day];
     [fetchRequest setPredicate:newPredicate];
+    
+    //On rajoute un tri sur l'history
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"achievement.task.libelle"
+                                                                   ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
     
     NSError *error;
     NSArray *fetchedObjects = [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
@@ -389,13 +395,30 @@
 //On récupère l'event de l'achievement donnée, au jour donné
 - (Event *)getEventForAchievement:(Achievement *)achievement andDay:(NSString *)day
 {
-    for (Event *event in [[achievement events] allObjects])
-    {
-        if ([event.day isEqualToString:day])
-            return event;
-    }
+    //On défini la classe pour la requète
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Event" inManagedObjectContext:self.dataBaseManager.managedObjectContext];
+    [fetchRequest setEntity:entityDescription];
     
-    return nil;
+    //On rajoute un filtre
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && (achievement.weekAndYear == %@ || (achievement.weekAndYear < %@ && recurrenceEnd.weekAndYear >= 0)) && day == %@", achievement.player.pseudo, achievement.weekAndYear, achievement.weekAndYear, day];
+    [fetchRequest setPredicate:newPredicate];
+    
+    //On rajoute un tri sur l'history
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"achievement.task.libelle"
+                                                                   ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSError *error;
+    NSArray *fetchedObjects = [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    //On renvoie le tableau de la requète
+    if ([fetchedObjects count] > 0)
+        return [fetchedObjects objectAtIndex:0];
+    else
+        return nil;
 }
 
 //On récupère le nombre d'event de l'achievement donnée, au jour donné
@@ -463,7 +486,7 @@
     [fetchRequest setEntity:entityDescription];
     
     //On rajoute un filtre
-    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && (achievement.weekAndYear == %@ || (achievement.weekAndYear <= %@ && recurrenceEnd.weekAndYear == 0)) && day == %@ && checked == NO", player.pseudo, weekAndYear, weekAndYear, day];
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && ((achievement.weekAndYear == %@ && checked == NO ) || (achievement.weekAndYear < %@ && (recurrenceEnd.weekAndYear == 0 || recurrenceEnd.weekAndYear >= %@))) && day == %@", player.pseudo, weekAndYear, weekAndYear, weekAndYear, day];
     [fetchRequest setPredicate:newPredicate];
     
     NSError *error;

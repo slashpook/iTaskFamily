@@ -25,4 +25,7 @@
 //On affiche un message de confirmation et on modifie le tag
 + (void)displayAnswerMessage:(NSString *)message withDelegate:(id<UIAlertViewDelegate>)delegate andSetTag:(int)tagInfo;
 
+//On affiche une alertView à 3 choix
++ (void)displayCustomMessage:(NSString *)message withDelegate:(id<UIAlertViewDelegate>)delegate andSetTag:(int)tagInfo withFirstChoice:(NSString *)firstChoice secondChoice:(NSString *)secondChoice andThirdChoice:(NSString *)thirdChoice;
+
 @end

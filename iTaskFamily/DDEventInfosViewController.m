@@ -16,6 +16,10 @@
 @end
 
 @implementation DDEventInfosViewController
+{
+    NSString *weekAndYearSelected;
+    NSString *currentWeekAndYear;
+}
 
 
 #pragma mark - Fonctions de base
@@ -25,6 +29,8 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         _arrayEvent = [[NSMutableArray alloc] init];
+        weekAndYearSelected = [[NSString alloc] init];
+        currentWeekAndYear = [[NSString alloc] init];
     }
     return self;
 }
@@ -74,6 +80,10 @@
 - (void)updateComponent
 {
     [self.tableViewEvents reloadData];
+    
+    //On met à jour la date actuelle et la semaine sélectionnée
+    weekAndYearSelected = [DDHelperController getWeekAndYearForDate:[[DDManagerSingleton instance] currentDateSelected]];
+    currentWeekAndYear = [DDHelperController getWeekAndYearForDate:[NSDate date]];
     
     //On récupère la tache et la catégory associées à l'event
     Task *task = self.currentEvent.achievement.task;
@@ -144,21 +154,57 @@
 //On appuie sur la checkbox
 - (IBAction)onPushCheckbox:(UITapGestureRecognizer *)gesture
 {
-    //On récupère la checkbox
-    DDCustomCheckbox *customCheckBox = (DDCustomCheckbox *)gesture.view;
-    
-    //On met à jour le booléen
-    [customCheckBox setIsChecked:(!customCheckBox.isChecked)];
-    
-    //On récupère l'évènement et on le met à jour
-    Event *event = [self.arrayEvent objectAtIndex:customCheckBox.tag];
-    [event setChecked:[NSNumber numberWithBool:customCheckBox.isChecked]];
-    [[DDDatabaseAccess instance] updateEvent:event];
-    
-    //On update la checkbox
-    [customCheckBox setNeedsDisplay];
-    
-    [self.delegate updateComponentWithEventSelected];
+    //On peut checker que si on est sur une semaine passé ou actuelle
+    if ([weekAndYearSelected intValue] <= [currentWeekAndYear intValue])
+    {
+        //On récupère le joueur en courant
+        Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
+        
+        //On récupère la checkbox
+        DDCustomCheckbox *customCheckBox = (DDCustomCheckbox *)gesture.view;
+        
+        //On met à jour le booléen
+        [customCheckBox setIsChecked:(!customCheckBox.isChecked)];
+        
+        //On récupère l'évènement et on le met à jour
+        Event *event = [self.arrayEvent objectAtIndex:customCheckBox.tag];
+        
+        //On vérifie si on est sur un event récurrent (qui n'existe pas) auquel cas, on le crée et on le met à jour
+        if ([event.achievement.weekAndYear isEqualToString:weekAndYearSelected])
+        {
+            [event setChecked:[NSNumber numberWithBool:customCheckBox.isChecked]];
+            [[DDDatabaseAccess instance] updateEvent:event];
+        }
+        else
+        {
+            //On bouge la récurrence
+            [(RecurrenceEnd *)event.recurrenceEnd setWeekAndYear:@"-1"];
+            [[DDDatabaseAccess instance] updateEvent:event];
+            
+            //On crée le nouvel évènement
+            Event *newEvent;
+            NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+            newEvent = [[Event alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+            
+            //On met à jour les infos sur l'évènement
+            [newEvent setDay:event.day];
+            [newEvent setRecurrent:[NSNumber numberWithBool:YES]];
+            [newEvent setComment:event.comment];
+            [[DDDatabaseAccess instance] createEvent:newEvent forPlayer:currentPlayer forTask:event.achievement.task atWeekAndYear:weekAndYearSelected];
+            
+            [newEvent setChecked:[NSNumber numberWithBool:YES]];
+            [[DDDatabaseAccess instance] updateEvent:newEvent];
+        }
+        
+        //On update la checkbox
+        [customCheckBox setNeedsDisplay];
+        
+        [self.delegate updateComponentWithEventSelected];
+    }
+    else
+    {
+        [DDCustomAlertView displayInfoMessage:@"Vous ne pouvez pas cocher un évènement d'une semaine qui n'est pas passé ou en cours"];
+    }
 }
 
 
@@ -166,7 +212,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.arrayEvent count] + 1;
+    //Si on est sur une semaine présente ou future, on ajoute le bouton pour créer des taches
+    if ([currentWeekAndYear intValue] <= [weekAndYearSelected intValue])
+        return [self.arrayEvent count] + 1;
+    else
+        return [self.arrayEvent count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -190,6 +240,7 @@
     //On récupère la tache et la catégory associées à l'event
     Task *task = event.achievement.task;
     CategoryTask *category = event.achievement.task.category;
+    NSString *currentWeakAndYear = [DDHelperController getWeekAndYearForDate:[[DDManagerSingleton instance] currentDateSelected]];
     
     //On configure les infos de la cellule
     [[cell contentView] setBackgroundColor:COULEUR_TRANSPARENT];
@@ -202,7 +253,12 @@
     [cell.labelInfo setText:[NSString stringWithFormat:@"%@ : %i points", category.libelle, [task.point intValue]]];
     [cell.imageViewSeparation setBackgroundColor:COULEUR_BACKGROUND];
     [cell.customCheckbox setTag:indexPath.row];
-    [cell.customCheckbox setIsChecked:event.checked.boolValue];
+    
+    //On vérifie si on est sur une récurrence ou un vrai jour
+    if ([event.achievement.weekAndYear isEqualToString:currentWeakAndYear])
+        [cell.customCheckbox setIsChecked:event.checked.boolValue];
+    else
+        [cell.customCheckbox setIsChecked:NO];
     
     if ([[cell.customCheckbox gestureRecognizers] count] == 0)
     {
@@ -210,7 +266,7 @@
         [cell.customCheckbox addGestureRecognizer:gesture];
     }
     
-    //On change la couleur de la cellule suivant si c'est la cellule sélecitonné ou non
+    //On change la couleur de la cellule suivant si c'est la cellule sélecitonnée ou non
     if ([task.libelle isEqualToString:self.currentEvent.achievement.task.libelle])
     {
         [cell.customCheckbox setIsSelected:YES];
@@ -252,7 +308,14 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        [DDCustomAlertView displayAnswerMessage:@"Voulez vous vraiment supprimer cet évènement" withDelegate:self andSetTag:(int)indexPath.row];
+        //On récupère l'event à supprimer pour adapter la réponse
+        Event *eventToDelete= [self.arrayEvent objectAtIndex:indexPath.row];
+        
+        if (![[(RecurrenceEnd *)[eventToDelete recurrenceEnd] weekAndYear] isEqualToString:@"-1"])
+            [DDCustomAlertView displayCustomMessage:@"Vous allez supprimer un évènement récurrent. Que souhaitez vous faire ?" withDelegate:self andSetTag:(int)indexPath.row withFirstChoice:@"Supprimer cet évènement et ses récurrences" secondChoice:@"Annuler" andThirdChoice:@"Supprimer uniquement cet évènement"];
+        
+        else
+            [DDCustomAlertView displayAnswerMessage:@"Voulez vous vraiment supprimer cet évènement ?" withDelegate:self andSetTag:(int)indexPath.row];
     }
 }
 
@@ -271,13 +334,45 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    //si on a répondu oui, on supprime le joueur
-    if (buttonIndex == 0)
+    //Si on annule pas l'évènement
+    if (buttonIndex != 1)
     {
+        //On récupère l'event
         Event *event = [self.arrayEvent objectAtIndex:alertView.tag];
         
-        //On supprime l'évènement
-        [[DDDatabaseAccess instance] deleteEvent:event];
+        //On récupère la date sélectionné ainsi que la date à semaine -1 et semaine +1
+        NSDate *dateSelected = [DDHelperController getDateForYear:[[weekAndYearSelected substringToIndex:4] intValue] week:[[weekAndYearSelected substringFromIndex:4] intValue] andDay:[event.day intValue]];
+        NSDate *nextWeekAndDay = [DDHelperController getNextWeekForDate:dateSelected];
+        NSDate *previousWeekAndDay = [DDHelperController getPreviousWeekForDate:dateSelected];
+        
+        //Si on supprime seulement l'event selectionné
+        if (buttonIndex == 2)
+        {
+            //On crée le nouvel évènement
+            Event *newEvent;
+            NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+            newEvent = [[Event alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+            
+            //On met à jour les infos sur l'évènement
+            [newEvent setDay:event.day];
+            [newEvent setRecurrent:[NSNumber numberWithBool:YES]];
+            [newEvent setComment:event.comment];
+            [[DDDatabaseAccess instance] createEvent:newEvent forPlayer:[[DDManagerSingleton instance] currentPlayer] forTask:event.achievement.task atWeekAndYear:[DDHelperController getWeekAndYearForDate:nextWeekAndDay]];
+        }
+
+        //Si l'event ne corresponds pas à celui qui est à l'origine de la récurrence on l'update
+        if (![[(RecurrenceEnd *)event.recurrenceEnd weekAndYear] isEqualToString:weekAndYearSelected] && ![event.achievement.weekAndYear isEqualToString:weekAndYearSelected])
+        {
+            [(RecurrenceEnd *)[event recurrenceEnd] setWeekAndYear:[DDHelperController getWeekAndYearForDate:previousWeekAndDay]];
+            [[DDDatabaseAccess instance] updateEvent:event];
+        }
+        //Sinon on le supprime
+        else
+        {
+            [[DDDatabaseAccess instance] deleteEvent:event];
+        }
+        
+        //On met à jour le tableau
         [self.arrayEvent removeObjectAtIndex:alertView.tag];
         
         //On recharge la tableView

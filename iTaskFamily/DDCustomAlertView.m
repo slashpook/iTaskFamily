@@ -41,4 +41,12 @@
     [alertView show];
 }
 
+//On affiche une alertView à 3 choix
++ (void)displayCustomMessage:(NSString *)message withDelegate:(id<UIAlertViewDelegate>)delegate andSetTag:(int)tagInfo withFirstChoice:(NSString *)firstChoice secondChoice:(NSString *)secondChoice andThirdChoice:(NSString *)thirdChoice
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:message delegate:delegate cancelButtonTitle:firstChoice otherButtonTitles:secondChoice, thirdChoice, nil];
+    [alertView setTag:tagInfo];
+    [alertView show];
+}
+
 @end
