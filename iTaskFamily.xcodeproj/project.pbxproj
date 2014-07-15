@@ -20,6 +20,8 @@
 		6D33D7461855D27F001E1B3A /* DDRootPodiumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D33D7451855D27F001E1B3A /* DDRootPodiumViewController.m */; };
 		6D3A26B818B7956600545FF2 /* DDCustomOccurenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A26B718B7956600545FF2 /* DDCustomOccurenceCell.m */; };
 		6D3A26BC18B7A1FB00545FF2 /* DDCategoriesListEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A26BB18B7A1FB00545FF2 /* DDCategoriesListEventViewController.m */; };
+		6D4563CF19752CC400FB668A /* RecurrenceEnd.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4563CE19752CC400FB668A /* RecurrenceEnd.m */; };
+		6D4563D219752CC500FB668A /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4563D119752CC500FB668A /* Event.m */; };
 		6D46EB9A1843486F00287ACC /* DDPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D46EB991843486F00287ACC /* DDPlayerViewController.m */; };
 		6D4D429E19266C0D008A7B75 /* DDCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4D429D19266C0D008A7B75 /* DDCustomButton.m */; };
 		6D5549F01844ECC7009022C5 /* DDPopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5549EF1844ECC7009022C5 /* DDPopOverViewController.m */; };
@@ -48,7 +50,6 @@
 		6D7E2812189F8FAB00BCBA9F /* DDAwardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7E2811189F8FAB00BCBA9F /* DDAwardViewController.m */; };
 		6D852D431843664800CA43EC /* DDRootTrophyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D852D421843664800CA43EC /* DDRootTrophyViewController.m */; };
 		6D87CE071937B92F000F6609 /* Achievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D87CE061937B92F000F6609 /* Achievement.m */; };
-		6D87CE0A1937BA7D000F6609 /* RecurrenceEnd.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D87CE091937BA7D000F6609 /* RecurrenceEnd.m */; };
 		6D8970CB1848928500F815CD /* DDCustomImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8970CA1848928500F815CD /* DDCustomImagePickerViewController.m */; };
 		6D8970CF1848933500F815CD /* UIImage+CustomImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8970CE1848933500F815CD /* UIImage+CustomImage.m */; };
 		6D8970D318489A0C00F815CD /* DDManagerSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8970D218489A0C00F815CD /* DDManagerSingleton.m */; };
@@ -59,7 +60,6 @@
 		6D8970EC1848EF9900F815CD /* DDDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8970EB1848EF9900F815CD /* DDDatabaseManager.m */; };
 		6D8970EF1848F1AB00F815CD /* DDDatabaseAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8970EE1848F1AB00F815CD /* DDDatabaseAccess.m */; };
 		6D8970F31848F56B00F815CD /* DDCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8970F21848F56B00F815CD /* DDCustomAlertView.m */; };
-		6D8B3ED6192409FD009626DA /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8B3ED5192409FD009626DA /* Event.m */; };
 		6D94A6D018C601620047045C /* DDCustomCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D94A6CF18C601620047045C /* DDCustomCheckbox.m */; };
 		6D9B323E183F60A60038D7DB /* DDMeteoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B323D183F60A60038D7DB /* DDMeteoView.m */; };
 		6D9B3242183F99860038D7DB /* DDWeatherInfos.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3241183F99860038D7DB /* DDWeatherInfos.m */; };
@@ -124,6 +124,10 @@
 		6D3A26B718B7956600545FF2 /* DDCustomOccurenceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomOccurenceCell.m; sourceTree = "<group>"; };
 		6D3A26BA18B7A1FB00545FF2 /* DDCategoriesListEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCategoriesListEventViewController.h; sourceTree = "<group>"; };
 		6D3A26BB18B7A1FB00545FF2 /* DDCategoriesListEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCategoriesListEventViewController.m; sourceTree = "<group>"; };
+		6D4563CD19752CC400FB668A /* RecurrenceEnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecurrenceEnd.h; sourceTree = "<group>"; };
+		6D4563CE19752CC400FB668A /* RecurrenceEnd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecurrenceEnd.m; sourceTree = "<group>"; };
+		6D4563D019752CC500FB668A /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		6D4563D119752CC500FB668A /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		6D46EB981843486F00287ACC /* DDPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPlayerViewController.h; sourceTree = "<group>"; };
 		6D46EB991843486F00287ACC /* DDPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPlayerViewController.m; sourceTree = "<group>"; };
 		6D4D429C19266C0D008A7B75 /* DDCustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomButton.h; sourceTree = "<group>"; };
@@ -173,8 +177,6 @@
 		6D852D421843664800CA43EC /* DDRootTrophyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRootTrophyViewController.m; sourceTree = "<group>"; };
 		6D87CE051937B92F000F6609 /* Achievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Achievement.h; sourceTree = "<group>"; };
 		6D87CE061937B92F000F6609 /* Achievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Achievement.m; sourceTree = "<group>"; };
-		6D87CE081937BA7D000F6609 /* RecurrenceEnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecurrenceEnd.h; sourceTree = "<group>"; };
-		6D87CE091937BA7D000F6609 /* RecurrenceEnd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecurrenceEnd.m; sourceTree = "<group>"; };
 		6D8970C91848928500F815CD /* DDCustomImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomImagePickerViewController.h; sourceTree = "<group>"; };
 		6D8970CA1848928500F815CD /* DDCustomImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomImagePickerViewController.m; sourceTree = "<group>"; };
 		6D8970CD1848933500F815CD /* UIImage+CustomImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CustomImage.h"; sourceTree = "<group>"; };
@@ -195,8 +197,6 @@
 		6D8970EE1848F1AB00F815CD /* DDDatabaseAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDatabaseAccess.m; sourceTree = "<group>"; };
 		6D8970F11848F56B00F815CD /* DDCustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomAlertView.h; sourceTree = "<group>"; };
 		6D8970F21848F56B00F815CD /* DDCustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomAlertView.m; sourceTree = "<group>"; };
-		6D8B3ED4192409FD009626DA /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		6D8B3ED5192409FD009626DA /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		6D94A6CE18C601620047045C /* DDCustomCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomCheckbox.h; sourceTree = "<group>"; };
 		6D94A6CF18C601620047045C /* DDCustomCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomCheckbox.m; sourceTree = "<group>"; };
 		6D9B323C183F60A60038D7DB /* DDMeteoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMeteoView.h; sourceTree = "<group>"; };
@@ -598,12 +598,12 @@
 				6D8970EB1848EF9900F815CD /* DDDatabaseManager.m */,
 				6D8970ED1848F1AB00F815CD /* DDDatabaseAccess.h */,
 				6D8970EE1848F1AB00F815CD /* DDDatabaseAccess.m */,
-				6D8B3ED4192409FD009626DA /* Event.h */,
-				6D8B3ED5192409FD009626DA /* Event.m */,
 				6D87CE051937B92F000F6609 /* Achievement.h */,
 				6D87CE061937B92F000F6609 /* Achievement.m */,
-				6D87CE081937BA7D000F6609 /* RecurrenceEnd.h */,
-				6D87CE091937BA7D000F6609 /* RecurrenceEnd.m */,
+				6D4563CD19752CC400FB668A /* RecurrenceEnd.h */,
+				6D4563CE19752CC400FB668A /* RecurrenceEnd.m */,
+				6D4563D019752CC500FB668A /* Event.h */,
+				6D4563D119752CC500FB668A /* Event.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1059,6 +1059,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D4563D219752CC500FB668A /* Event.m in Sources */,
 				6D9B3242183F99860038D7DB /* DDWeatherInfos.m in Sources */,
 				6D9B3C19191BF45C0001C672 /* Task.m in Sources */,
 				6D8970EF1848F1AB00F815CD /* DDDatabaseAccess.m in Sources */,
@@ -1092,11 +1093,10 @@
 				6DCB2A8E18B66A0B000FDFCA /* DDOccurenceViewController.m in Sources */,
 				6D2E618318D0E976001A971B /* DDEventManagerTableViewController.m in Sources */,
 				6D030BA318CB8BC900C3B95C /* DDCustomValidation.m in Sources */,
-				6D87CE0A1937BA7D000F6609 /* RecurrenceEnd.m in Sources */,
+				6D4563CF19752CC400FB668A /* RecurrenceEnd.m in Sources */,
 				6DF00ED0184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.m in Sources */,
 				6D3A26BC18B7A1FB00545FF2 /* DDCategoriesListEventViewController.m in Sources */,
 				6D61F6631851DBB600759AFC /* DDCategorieListViewController.m in Sources */,
-				6D8B3ED6192409FD009626DA /* Event.m in Sources */,
 				6D46EB9A1843486F00287ACC /* DDPlayerViewController.m in Sources */,
 				6D852D431843664800CA43EC /* DDRootTrophyViewController.m in Sources */,
 				6D29FC00184282C90059AA35 /* DDEventView.m in Sources */,

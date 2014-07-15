@@ -31,7 +31,7 @@
     </entity>
     <entity name="RecurrenceEnd" representedClassName="RecurrenceEnd" syncable="YES">
         <attribute name="weekAndYear" attributeType="String" syncable="YES"/>
-        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="recurrenceEnd" inverseEntity="Event" syncable="YES"/>
+        <relationship name="events" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="recurrenceEnd" inverseEntity="Event" syncable="YES"/>
     </entity>
     <entity name="Reward" representedClassName="Reward" syncable="YES">
         <attribute name="libelle" optional="YES" attributeType="String" syncable="YES"/>
@@ -56,7 +56,7 @@
         <element name="CategoryTrophy" positionX="-90" positionY="-25" width="128" height="88"/>
         <element name="Event" positionX="502" positionY="-162" width="128" height="133"/>
         <element name="Player" positionX="-81" positionY="-189" width="128" height="88"/>
-        <element name="RecurrenceEnd" positionX="-117" positionY="-36" width="128" height="75"/>
+        <element name="RecurrenceEnd" positionX="367" positionY="60" width="128" height="73"/>
         <element name="Reward" positionX="-324" positionY="-165" width="128" height="75"/>
         <element name="Task" positionX="-155" positionY="146" width="128" height="133"/>
         <element name="Trophy" positionX="322" positionY="198" width="128" height="88"/>

@@ -350,6 +350,12 @@
     
     [event setAchievement:achievement];
     
+    //On set si on doit gérer une date de fin ou pas
+    if ([event.recurrent boolValue] == YES)
+        [event.recurrenceEnd setWeekAndYear:@"0"];
+    else
+        [event.recurrenceEnd setWeekAndYear:@"-1"];
+    
     //On regarde si on a pas déjà un event qui existe pour ce jour
     int countOfEvent = [self getCountOfEventForAchievement:achievement andDay:event.day];
     if (countOfEvent >= 2)

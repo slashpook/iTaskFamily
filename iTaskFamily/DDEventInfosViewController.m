@@ -139,10 +139,23 @@
     [self updateComponent];
 }
 
+//On demande à supprimer l'élément sélectionné
+- (void)deleteEvent:(Event *)event
+{
+    if (![[[event recurrenceEnd] weekAndYear] isEqualToString:@"-1"])
+    {
+        [DDCustomAlertView displayCustomMessage:@"Vous allez supprimer un évènement récurrent. Que souhaitez vous faire ?" withDelegate:self andSetTag:(int)[self.arrayEvent indexOfObject:event] withFirstChoice:@"Supprimer cet évènement et ses récurrences" secondChoice:@"Annuler" andThirdChoice:@"Supprimer uniquement cet évènement"];
+    }
+    else
+    {
+        [DDCustomAlertView displayAnswerMessage:@"Voulez vous vraiment supprimer cet évènement ?" withDelegate:self andSetTag:(int)[self.arrayEvent indexOfObject:event]];
+    }
+}
+
 //On appuie sur le bouton pour supprimer des évènements
 - (IBAction)onPushDeleteEventButon:(id)sender
 {
-    [DDCustomAlertView displayAnswerMessage:@"Voulez vous vraiment supprimer cet évènement" withDelegate:self andSetTag:(int)[self.arrayEvent indexOfObject:self.currentEvent]];
+    [self deleteEvent:self.currentEvent];
 }
 
 //On appuie sur le bouton pour modifier un évènement
@@ -178,7 +191,7 @@
         else
         {
             //On bouge la récurrence
-            [(RecurrenceEnd *)event.recurrenceEnd setWeekAndYear:@"-1"];
+            [event.recurrenceEnd setWeekAndYear:@"-1"];
             [[DDDatabaseAccess instance] updateEvent:event];
             
             //On crée le nouvel évènement
@@ -310,12 +323,7 @@
     {
         //On récupère l'event à supprimer pour adapter la réponse
         Event *eventToDelete= [self.arrayEvent objectAtIndex:indexPath.row];
-        
-        if (![[(RecurrenceEnd *)[eventToDelete recurrenceEnd] weekAndYear] isEqualToString:@"-1"])
-            [DDCustomAlertView displayCustomMessage:@"Vous allez supprimer un évènement récurrent. Que souhaitez vous faire ?" withDelegate:self andSetTag:(int)indexPath.row withFirstChoice:@"Supprimer cet évènement et ses récurrences" secondChoice:@"Annuler" andThirdChoice:@"Supprimer uniquement cet évènement"];
-        
-        else
-            [DDCustomAlertView displayAnswerMessage:@"Voulez vous vraiment supprimer cet évènement ?" withDelegate:self andSetTag:(int)indexPath.row];
+        [self deleteEvent:eventToDelete];
     }
 }
 
@@ -340,7 +348,7 @@
         //On récupère l'event
         Event *event = [self.arrayEvent objectAtIndex:alertView.tag];
         
-        //On récupère la date sélectionné ainsi que la date à semaine -1 et semaine +1
+        //On récupère la date sélectionnée ainsi que la date à semaine -1 et semaine +1
         NSDate *dateSelected = [DDHelperController getDateForYear:[[weekAndYearSelected substringToIndex:4] intValue] week:[[weekAndYearSelected substringFromIndex:4] intValue] andDay:[event.day intValue]];
         NSDate *nextWeekAndDay = [DDHelperController getNextWeekForDate:dateSelected];
         NSDate *previousWeekAndDay = [DDHelperController getPreviousWeekForDate:dateSelected];
@@ -361,9 +369,9 @@
         }
 
         //Si l'event ne corresponds pas à celui qui est à l'origine de la récurrence on l'update
-        if (![[(RecurrenceEnd *)event.recurrenceEnd weekAndYear] isEqualToString:weekAndYearSelected] && ![event.achievement.weekAndYear isEqualToString:weekAndYearSelected])
+        if (![[event.recurrenceEnd weekAndYear] isEqualToString:weekAndYearSelected] && ![event.achievement.weekAndYear isEqualToString:weekAndYearSelected])
         {
-            [(RecurrenceEnd *)[event recurrenceEnd] setWeekAndYear:[DDHelperController getWeekAndYearForDate:previousWeekAndDay]];
+            [[event recurrenceEnd] setWeekAndYear:[DDHelperController getWeekAndYearForDate:previousWeekAndDay]];
             [[DDDatabaseAccess instance] updateEvent:event];
         }
         //Sinon on le supprime
