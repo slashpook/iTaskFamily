@@ -851,25 +851,26 @@
                                             <action selector="onPushAddPlayerButton:" destination="y4P-vS-qVT" eventType="touchUpInside" id="bJb-Qe-zRu"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeButtonAdd" translatesAutoresizingMaskIntoConstraints="NO" id="2sW-r1-b6q" userLabel="Image View - + for button">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HomeButtonAdd" translatesAutoresizingMaskIntoConstraints="NO" id="2sW-r1-b6q" userLabel="Image View - + for button">
                                         <rect key="frame" x="300" y="205" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="Kc6-5v-hau"/>
-                                            <constraint firstAttribute="height" constant="40" id="QUY-7D-gl4"/>
-                                        </constraints>
                                     </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Aucun évènements crées pour ce jour" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="li2-RD-Ae8">
+                                        <rect key="frame" x="166" y="195" width="521" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="66g-oa-eJ1" firstAttribute="leading" secondItem="y4P-vS-qVT" secondAttribute="leading" id="0EV-en-4nk"/>
                                     <constraint firstAttribute="bottom" secondItem="rp2-h1-6l0" secondAttribute="bottom" constant="95" id="0db-d8-aOY"/>
                                     <constraint firstAttribute="trailing" secondItem="66g-oa-eJ1" secondAttribute="trailing" id="DiW-Xh-glf"/>
-                                    <constraint firstItem="2sW-r1-b6q" firstAttribute="leading" secondItem="y4P-vS-qVT" secondAttribute="leading" constant="300" id="Eq2-4g-YpC"/>
                                     <constraint firstItem="rp2-h1-6l0" firstAttribute="leading" secondItem="y4P-vS-qVT" secondAttribute="leading" constant="245" id="Hz2-r1-OUL"/>
                                     <constraint firstAttribute="bottom" secondItem="66g-oa-eJ1" secondAttribute="bottom" constant="300" id="K0o-Tk-bJM"/>
                                     <constraint firstItem="66g-oa-eJ1" firstAttribute="top" secondItem="y4P-vS-qVT" secondAttribute="top" id="fCN-24-dbg"/>
-                                    <constraint firstItem="2sW-r1-b6q" firstAttribute="top" secondItem="y4P-vS-qVT" secondAttribute="top" constant="205" id="pRL-vd-1Yj"/>
                                     <constraint firstItem="rp2-h1-6l0" firstAttribute="top" secondItem="y4P-vS-qVT" secondAttribute="top" constant="195" id="r2W-8F-eD1"/>
                                     <constraint firstAttribute="trailing" secondItem="rp2-h1-6l0" secondAttribute="trailing" constant="244" id="zuI-iy-pOv"/>
                                 </constraints>
@@ -884,11 +885,11 @@
                                     <outlet property="buttonSamedi" destination="7yn-sv-xAW" id="He0-JH-hM8"/>
                                     <outlet property="buttonToday" destination="omQ-hf-EtB" id="Cnr-EW-ncQ"/>
                                     <outlet property="buttonVendredi" destination="H4d-d5-P4F" id="EkI-aV-R3j"/>
-                                    <outlet property="constraintPostionXImagePlus" destination="Eq2-4g-YpC" id="9Gp-ki-8fW"/>
                                     <outlet property="imageViewHeader" destination="66g-oa-eJ1" id="Z95-Xy-Wun"/>
                                     <outlet property="imageViewPlus" destination="2sW-r1-b6q" id="ohC-aT-Dyt"/>
                                     <outlet property="imageViewSelection" destination="Zsa-sL-Eif" id="qqi-KP-nKg"/>
                                     <outlet property="labelDateSelected" destination="Cwv-2e-K30" id="uLs-O2-fcy"/>
+                                    <outlet property="labelNoEvent" destination="li2-RD-Ae8" id="bKV-s7-BaE"/>
                                 </connections>
                             </view>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="iUr-Bs-cW9">
@@ -2726,7 +2727,7 @@
         <scene sceneID="xEB-R1-l8i">
             <objects>
                 <tableViewController id="gXV-LO-1Vk" customClass="DDEventManagerTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="HIL-xE-EeR">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="HIL-xE-EeR">
                         <rect key="frame" x="0.0" y="0.0" width="380" height="132"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

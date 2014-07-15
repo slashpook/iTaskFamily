@@ -31,6 +31,8 @@
     //On configure les polices et couleur des boutons et labels
     [[self.buttonAddPlayer titleLabel] setFont:POLICE_EVENT_NO_PLAYER];
     [[self.buttonBigAddEvent titleLabel] setFont:POLICE_EVENT_NO_EVENT];
+    [self.labelNoEvent setFont:POLICE_EVENT_NO_EVENT];
+    [self.labelNoEvent setTextColor:COULEUR_HOME];
     [self.imageViewHeader setBackgroundColor:COULEUR_BLACK];
     [self.buttonToday setColorTitleEnable:COULEUR_WHITE];
     
@@ -73,6 +75,7 @@
     NSString *weekAndYearSelected = [DDHelperController getWeekAndYearForDate:dateEvent];
     
     [self.eventInfosViewController.view setHidden:YES];
+    [self.labelNoEvent setHidden:YES];
     [self.imageViewPlus setHidden:NO];
     
     //si le joueur n'existe pas on désactive les boutons
@@ -80,7 +83,7 @@
     {
         [self.buttonAddPlayer setHidden:NO];
         [self.buttonBigAddEvent setHidden:YES];
-        [[self constraintPostionXImagePlus] setConstant:310];
+        [[self imageViewPlus] setFrame:CGRectMake(self.buttonAddPlayer.frame.origin.x + 10, self.buttonAddPlayer.frame.origin.y + 10, 40, 40)];
     }
     //Sinon on vérifie qu'il y ai des évènements
     else
@@ -102,13 +105,17 @@
         }
         else
         {
-            [[self constraintPostionXImagePlus] setConstant:260];
+            [[self imageViewPlus] setFrame:CGRectMake(self.buttonBigAddEvent.frame.origin.x + 10, self.buttonBigAddEvent.frame.origin.y + 10, 40, 40)];
             
             //On affiche le bouton pour afficher des events que si on est dans le présent ou le futur
             if ([currentWeekAndYear intValue] <= [weekAndYearSelected intValue])
                 [self.buttonBigAddEvent setHidden:NO];
             else
+            {
+                [self.imageViewPlus setHidden:YES];
                 [self.buttonBigAddEvent setHidden:YES];
+                [self.labelNoEvent setHidden:NO];
+            }
         }
     }
     

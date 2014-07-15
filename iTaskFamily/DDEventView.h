@@ -79,11 +79,11 @@
 //ImageVIew utilisé sur les boutons d'ajout de joueur ou évènement
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPlus;
 
-//Contrainte sur l'image plus
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintPostionXImagePlus;
-
 //Label pour afficher la date correspondant au jour sélectionné
 @property (weak, nonatomic) IBOutlet UILabel *labelDateSelected;
+
+//Label pour indiquer si un évènement à au moins été crée dans une semaine passé ou non
+@property (weak, nonatomic) IBOutlet UILabel *labelNoEvent;
 
 
 #pragma mark - Fonctions
