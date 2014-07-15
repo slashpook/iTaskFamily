@@ -331,6 +331,41 @@
         return @"Veuillez renseigner une tache !";
 }
 
+//On crée l'event avec une récurrenceEnd
+- (NSString *)createEvent:(Event *)event forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear andRecurrenceEnd:(RecurrenceEnd *)recurrenceEnd
+{
+    if (task != nil)
+    {
+        //On récupère l'achievement du player s'il existe
+        Achievement *achievement = [self getAchievementsForPlayer:player forTask:task atWeekAndYear:weekAndYear];
+        
+        //S'il n'existe pas, on le crée
+        if (achievement == nil)
+            achievement = [self createAchievementForPlayer:player andTask:task atWeekAndYear:weekAndYear];
+        else
+        {
+            //On regarde si on a pas déjà un event qui existe pour ce jour
+            Event *eventInDB = [self getEventForAchievement:achievement andDay:event.day];
+            
+            if (eventInDB != nil)
+                return @"Un évènement existe déjà pour cette tache";
+        }
+        
+        //On sauvegarde l'event
+        [self.dataBaseManager.managedObjectContext insertObject:event];
+        [achievement addEventsObject:event];
+        
+        //On met le booléen à non réalisé
+        [event setChecked:[NSNumber numberWithBool:NO]];
+        [event setRecurrenceEnd:recurrenceEnd];
+        
+        [self saveContext];
+        return nil;
+    }
+    else
+        return @"Veuillez renseigner une tache !";
+}
+
 //On update l'event donné
 - (void)updateEvent:(Event *)event
 {
@@ -366,6 +401,34 @@
     return nil;
 }
 
+//On regarde si on a un évent qui existe déjà à la date donnée
+- (BOOL)eventExistForPlayer:(Player *)player atWeekAndYear:(NSString *)weekAndYear andDay:(NSString *)day
+{
+    //On défini la classe pour la requète
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Event" inManagedObjectContext:self.dataBaseManager.managedObjectContext];
+    [fetchRequest setEntity:entityDescription];
+    
+    //On rajoute un filtre
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && achievement.weekAndYear == %@ && day == %@", player.pseudo, weekAndYear, day];
+    [fetchRequest setPredicate:newPredicate];
+    
+    //On rajoute un tri sur l'history
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"achievement.task.libelle"
+                                                                   ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSError *error;
+    NSArray *fetchedObjects = [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if ([fetchedObjects count] > 0)
+        return YES;
+    else
+        return NO;
+}
+
 //On récupère tous les events
 - (NSArray *)getEvents
 {
@@ -396,6 +459,58 @@
     
     //On renvoie le tableau de la requète
     return fetchedObjects;
+}
+
+//On regarde si on a un évent qui existe dans le futur
+- (Event *)getEventForPlayer:(Player *)player futureToWeekAndYear:(NSString *)weekAndYear andDay:(NSString *)day
+{
+    //On défini la classe pour la requète
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Event" inManagedObjectContext:self.dataBaseManager.managedObjectContext];
+    [fetchRequest setFetchLimit:1];
+    [fetchRequest setEntity:entityDescription];
+    
+    //On rajoute un filtre
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && achievement.weekAndYear > %@ && recurrenceEnd.weekAndYear != - 1 && day == %@", player.pseudo, weekAndYear, day];
+    [fetchRequest setPredicate:newPredicate];
+    
+    //On rajoute un tri sur l'history
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"achievement.weekAndYear"
+                                                                   ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSError *error;
+    NSArray *fetchedObjects = [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if ([fetchedObjects count] > 0)
+        return [fetchedObjects objectAtIndex:0];
+    else
+        return nil;
+}
+
+
+//On récupère tous les event de la tache récurrent dans le futur
+- (NSArray *)getEventsForPlayer:(Player *)player futureToWeekAndYear:(NSString *)weekAndYear andDay:(NSString *)day
+{
+    //On défini la classe pour la requète
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Event" inManagedObjectContext:self.dataBaseManager.managedObjectContext];
+    [fetchRequest setEntity:entityDescription];
+    
+    //On rajoute un filtre
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && achievement.weekAndYear > %@ && recurrenceEnd.weekAndYear != - 1 && day == %@", player.pseudo, weekAndYear, day];
+    [fetchRequest setPredicate:newPredicate];
+    
+    NSError *error;
+    NSArray *fetchedObjects = [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if ([fetchedObjects count] > 0)
+        return fetchedObjects;
+    else
+        return nil;
 }
 
 //On récupère l'event de l'achievement donnée, au jour donné

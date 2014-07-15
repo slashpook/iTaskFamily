@@ -2476,11 +2476,11 @@
                         <viewControllerLayoutGuide type="bottom" id="IZU-dc-jyw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="b2H-sY-u9P">
-                        <rect key="frame" x="0.0" y="0.0" width="380" height="490"/>
+                        <rect key="frame" x="0.0" y="0.0" width="380" height="470"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ci0-mt-uvd">
-                                <rect key="frame" x="0.0" y="50" width="380" height="440"/>
+                                <rect key="frame" x="0.0" y="50" width="380" height="420"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ihH-22-oHI">
@@ -2520,7 +2520,7 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="380" height="490"/>
+                    <size key="freeformSize" width="380" height="470"/>
                     <connections>
                         <outlet property="collectionView" destination="ci0-mt-uvd" id="iEG-fj-WQ0"/>
                     </connections>

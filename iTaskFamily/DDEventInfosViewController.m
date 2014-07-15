@@ -345,45 +345,78 @@
     //Si on annule pas l'évènement
     if (buttonIndex != 1)
     {
-        //On récupère l'event
-        Event *event = [self.arrayEvent objectAtIndex:alertView.tag];
+        //On récupère l'event et le player
+        Event *currentEvent = [self.arrayEvent objectAtIndex:alertView.tag];
+        Player *player = [[DDManagerSingleton instance] currentPlayer];
         
         //On récupère la date sélectionnée ainsi que la date à semaine -1 et semaine +1
-        NSDate *dateSelected = [DDHelperController getDateForYear:[[weekAndYearSelected substringToIndex:4] intValue] week:[[weekAndYearSelected substringFromIndex:4] intValue] andDay:[event.day intValue]];
-        NSDate *nextWeekAndDay = [DDHelperController getNextWeekForDate:dateSelected];
-        NSDate *previousWeekAndDay = [DDHelperController getPreviousWeekForDate:dateSelected];
+        NSDate *dateSelected = [DDHelperController getDateForYear:[[weekAndYearSelected substringToIndex:4] intValue] week:[[weekAndYearSelected substringFromIndex:4] intValue] andDay:[currentEvent.day intValue]];
+        NSDate *dateNextWeekAndDay = [DDHelperController getNextWeekForDate:dateSelected];
+        NSDate *datePreviousWeekAndDay = [DDHelperController getPreviousWeekForDate:dateSelected];
         
-        //Si on supprime seulement l'event selectionné
-        if (buttonIndex == 2)
+        //On regarde si on a pas déjà une récurrence la semaine d'après
+        BOOL eventExistInFuture = [[DDDatabaseAccess instance] eventExistForPlayer:player atWeekAndYear:[DDHelperController getWeekAndYearForDate:dateNextWeekAndDay] andDay:currentEvent.day];
+        
+        //Si on doit supprimer tous les évènement réccurent pour la tache récupérée
+        if (buttonIndex == 0)
         {
+            //On regarde si on a pas déjà un évènement futur
+            NSArray *arrayEvent = [[DDDatabaseAccess instance] getEventsForPlayer:player futureToWeekAndYear:[DDHelperController getWeekAndYearForDate:dateSelected] andDay:currentEvent.day];
+            
+            if ([arrayEvent count] > 0)
+            {
+                for (int i = ([arrayEvent count] - 1); i >= 0; i--)
+                {
+                    Event *eventToDelete = [arrayEvent objectAtIndex:i];
+                    [[DDDatabaseAccess instance] deleteEvent:eventToDelete];
+                }
+            }
+        }
+        //Si on supprime seulement l'event selectionné et qu'on a pas de récurrence future, on crée un nouvel évènement
+        else if (buttonIndex == 2 && eventExistInFuture == NO)
+        {
+            //On regarde si on a pas déjà un évènement futur
+            Event *eventInFuture = [[DDDatabaseAccess instance] getEventForPlayer:player futureToWeekAndYear:[DDHelperController getWeekAndYearForDate:dateSelected] andDay:currentEvent.day];
+            
             //On crée le nouvel évènement
-            Event *newEvent;
+            Event *event;
             NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
-            newEvent = [[Event alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+            event = [[Event alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
             
             //On met à jour les infos sur l'évènement
-            [newEvent setDay:event.day];
-            [newEvent setRecurrent:[NSNumber numberWithBool:YES]];
-            [newEvent setComment:event.comment];
-            [[DDDatabaseAccess instance] createEvent:newEvent forPlayer:[[DDManagerSingleton instance] currentPlayer] forTask:event.achievement.task atWeekAndYear:[DDHelperController getWeekAndYearForDate:nextWeekAndDay]];
-        }
+            [event setDay:currentEvent.day];
+            [event setRecurrent:[NSNumber numberWithBool:YES]];
+            [event setComment:currentEvent.comment];
+            
+            //Si on a un évènement récurrent dans le futur, on récupère sa date pour mettre une date de fin à la récurrence de l'event qu'on cré
+            if (eventInFuture != nil)
+            {
+                //On crée la date de fin de récurrence
+                RecurrenceEnd *recurrenceEnd = [NSEntityDescription insertNewObjectForEntityForName:@"RecurrenceEnd"
+                                                                             inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+                
+                NSDate *dateEvent = [DDHelperController getDateForYear:[[eventInFuture.achievement.weekAndYear substringToIndex:4] intValue] week:[[eventInFuture.achievement.weekAndYear substringFromIndex:4] intValue] andDay:[currentEvent.day intValue]];
+                NSDate *datePreviousEvent = [DDHelperController getPreviousWeekForDate:dateEvent];
+                [recurrenceEnd setWeekAndYear:[DDHelperController getWeekAndYearForDate:datePreviousEvent]];
 
+                [[DDDatabaseAccess instance] createEvent:event forPlayer:player forTask:currentEvent.achievement.task atWeekAndYear:[DDHelperController getWeekAndYearForDate:dateNextWeekAndDay] andRecurrenceEnd:recurrenceEnd];
+            }
+            else
+                [[DDDatabaseAccess instance] createEvent:event forPlayer:player forTask:currentEvent.achievement.task atWeekAndYear:[DDHelperController getWeekAndYearForDate:dateNextWeekAndDay]];
+        }
+        
         //Si l'event ne corresponds pas à celui qui est à l'origine de la récurrence on l'update
-        if (![[event.recurrenceEnd weekAndYear] isEqualToString:weekAndYearSelected] && ![event.achievement.weekAndYear isEqualToString:weekAndYearSelected])
+        if (![currentEvent.achievement.weekAndYear isEqualToString:weekAndYearSelected])
         {
-            [[event recurrenceEnd] setWeekAndYear:[DDHelperController getWeekAndYearForDate:previousWeekAndDay]];
-            [[DDDatabaseAccess instance] updateEvent:event];
+            [[currentEvent recurrenceEnd] setWeekAndYear:[DDHelperController getWeekAndYearForDate:datePreviousWeekAndDay]];
+            [[DDDatabaseAccess instance] updateEvent:currentEvent];
         }
         //Sinon on le supprime
         else
-        {
-            [[DDDatabaseAccess instance] deleteEvent:event];
-        }
+            [[DDDatabaseAccess instance] deleteEvent:currentEvent];
         
-        //On met à jour le tableau
+        //On met à jour le tableau et on recharge la tableView
         [self.arrayEvent removeObjectAtIndex:alertView.tag];
-        
-        //On recharge la tableView
         [self.tableViewEvents deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:alertView.tag inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
         
         //On met à jour les composants

@@ -49,7 +49,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat: @"EEEE"];
     NSString *weekday = [formatter stringFromDate:today];
-
+    
     return [weekday capitalizedString];
 }
 
@@ -169,15 +169,22 @@
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
     NSDateComponents *dateComponent = [calendar components:(NSWeekOfYearCalendarUnit |           NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:date];
-
+    
     //On gère le fait que la semaine doit toujours avoir 2 digit
     NSString *weakOfYear = nil;
+    int month = dateComponent.month;
+    
     if (dateComponent.weekOfYear < 10)
         weakOfYear = [NSString stringWithFormat:@"0%i", (int)dateComponent.weekOfYear];
     else
         weakOfYear = [NSString stringWithFormat:@"%i", (int)dateComponent.weekOfYear];
     
-    NSString *weekAndYearString = [NSString stringWithFormat:@"%i%@", (int)dateComponent.year, weakOfYear];
+    NSString *weekAndYearString;
+    
+    if (month == 12 && [weakOfYear isEqualToString:@"01"])
+        weekAndYearString = [NSString stringWithFormat:@"%i%@", ((int)dateComponent.year + 1), weakOfYear];
+    else
+        weekAndYearString = [NSString stringWithFormat:@"%i%@", (int)dateComponent.year, weakOfYear];
     
     return weekAndYearString;
 }
