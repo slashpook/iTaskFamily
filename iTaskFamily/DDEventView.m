@@ -100,7 +100,7 @@
             [self.eventInfosViewController.view setHidden:NO];
             [self.eventInfosViewController getEventsForDay:self.daySelected];
             //Si on a fini la tache sélectionnée, on désactive le bouton pour modifier l'évènement
-            if ([self.eventInfosViewController.currentEvent.checked boolValue] == YES)
+            if (([self.eventInfosViewController.currentEvent.checked boolValue] == YES && [self.eventInfosViewController.currentEvent.achievement.weekAndYear intValue] == [weekAndYearSelected intValue]) || [weekAndYearSelected intValue] < [currentWeekAndYear intValue])
                 [[self.eventInfosViewController buttonModifyEvent] setEnabled:NO];
         }
         else

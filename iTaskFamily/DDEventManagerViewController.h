@@ -19,7 +19,7 @@
 
 @end
 
-@interface DDEventManagerViewController : UIViewController <DDCustomNavBarProtocol, UITextViewDelegate, DDOccurenceViewProtocol, DDTaskEventViewProtocol, DDEventManagerTableViewProtocol>
+@interface DDEventManagerViewController : UIViewController <DDCustomNavBarProtocol, UITextViewDelegate, DDOccurenceViewProtocol, DDTaskEventViewProtocol, DDEventManagerTableViewProtocol, UIAlertViewDelegate>
 
 
 #pragma mark - Variables

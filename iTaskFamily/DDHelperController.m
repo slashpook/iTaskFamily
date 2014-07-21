@@ -172,7 +172,7 @@
     
     //On gère le fait que la semaine doit toujours avoir 2 digit
     NSString *weakOfYear = nil;
-    int month = dateComponent.month;
+    int month = (int)dateComponent.month;
     
     if (dateComponent.weekOfYear < 10)
         weakOfYear = [NSString stringWithFormat:@"0%i", (int)dateComponent.weekOfYear];

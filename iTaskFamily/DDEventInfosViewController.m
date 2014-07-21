@@ -357,7 +357,7 @@
         //On regarde si on a pas déjà une récurrence la semaine d'après
         BOOL eventExistInFuture = [[DDDatabaseAccess instance] eventExistForPlayer:player atWeekAndYear:[DDHelperController getWeekAndYearForDate:dateNextWeekAndDay] andDay:currentEvent.day];
         
-        //Si on doit supprimer tous les évènement réccurent pour la tache récupérée
+        //Si on doit supprimer tous les évènement récurrent pour la tache récupérée
         if (buttonIndex == 0)
         {
             //On regarde si on a pas déjà un évènement futur
@@ -365,7 +365,7 @@
             
             if ([arrayEvent count] > 0)
             {
-                for (int i = ([arrayEvent count] - 1); i >= 0; i--)
+                for (int i = (int)([arrayEvent count] - 1); i >= 0; i--)
                 {
                     Event *eventToDelete = [arrayEvent objectAtIndex:i];
                     [[DDDatabaseAccess instance] deleteEvent:eventToDelete];

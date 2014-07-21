@@ -490,6 +490,33 @@
         return nil;
 }
 
+//On récupère tous les évènements lié à une tache, un jour donnée et une date de fin de récurrence
+- (NSArray *)getEventsRecurrentForPlayer:(Player *)player atWeekAndYear:(NSString *)weekAndYear forTask:(Task *)task andDay:(NSString *)day
+{
+    //On défini la classe pour la requète
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Event" inManagedObjectContext:self.dataBaseManager.managedObjectContext];
+    [fetchRequest setEntity:entityDescription];
+    
+    //On rajoute un filtre
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && achievement.task.libelle == %@ && (recurrenceEnd.weekAndYear == 0 || recurrenceEnd.weekAndYear >= %@) && day == %@", player.pseudo, task.libelle, weekAndYear, day];
+    [fetchRequest setPredicate:newPredicate];
+    
+    //On rajoute un tri sur l'history
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"achievement.weekAndYear"
+                                                                   ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSError *error;
+    NSArray *fetchedObjects = [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if ([fetchedObjects count] > 0)
+        return fetchedObjects;
+    else
+        return nil;
+}
 
 //On récupère tous les event de la tache récurrent dans le futur
 - (NSArray *)getEventsForPlayer:(Player *)player futureToWeekAndYear:(NSString *)weekAndYear andDay:(NSString *)day

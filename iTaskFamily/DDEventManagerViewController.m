@@ -159,8 +159,92 @@
     return occurenceString;
 }
 
+//On sauvegarde la donnée avec le jour rentré à l'index donné
+- (void)checkIfEventCanBeCreatedWithIndexOfArrayOccurence:(int)dayIndex
+{
+    //On teste d'abord si tous les champs obligatoires sont remplis
+    if ([self.arrayOccurence count] > 0)
+    {
+        //On récupère l'occurence à créer
+        NSString *day = [self.arrayOccurence objectAtIndex:dayIndex];
+        NSString *dayNumber = [[NSNumber numberWithInteger:[[[DDManagerSingleton instance] arrayWeek] indexOfObject:day]] stringValue];
+        
+        //On récupère le joueur courant
+        Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
+        NSDate *dateEvent = [[DDManagerSingleton instance] currentDateSelected];
+        
+        if ((self.tableViewEvent.switchRecurrence.isOn == YES && self.isModifyEvent == NO) || (self.isModifyEvent == YES))
+        {
+            //On regarde si on a pas déjà un évènement futur
+            NSArray *arrayEvent = [[DDDatabaseAccess instance] getEventsRecurrentForPlayer:currentPlayer atWeekAndYear:[DDHelperController getWeekAndYearForDate:dateEvent] forTask:self.task andDay:dayNumber];
+            
+            if ([arrayEvent count] > 0 && self.isModifyEvent == NO)
+            {
+                [DDCustomAlertView displayAnswerMessage:[NSString stringWithFormat:@"L'évènement que vous créez est récurrent dans le futur pour le %@. L'évènement va être modifier dans le futur à partir de cette tache. Voulez vous continuer ?", day] withDelegate:self];
+                return;
+            }
+            else if (([arrayEvent count] > 0 || [self.eventToModify.recurrenceEnd.weekAndYear intValue] != -1) && self.isModifyEvent == YES)
+            {
+                [DDCustomAlertView displayCustomMessage:[NSString stringWithFormat:@"L'évènement que vous allez mettre à jour est récurrent dans le futur pour le %@. Que souhaitez vous faire ?", day] withDelegate:self andSetTag:0 withFirstChoice:@"Mettre à jour cet évènement et ses récurrences" secondChoice:@"Annuler" andThirdChoice:@"Mettre à jour uniquement cet évènement"];
+                return;
+            }
+        }
+        
+        //On sauvegarde la donnée
+        [self saveDataForIndexInOccurence:(int)[self.arrayOccurence indexOfObject:day] withOption:ADD_ONLY];
+        return;
+    }
+    else
+    {
+        [DDCustomAlertView displayErrorMessage:@"Veuillez choisir un ou plusieurs jours pour la tache à accomplir"];
+        return;
+    }
+}
+
+//On sauvegarde la donnée avec l'index pour l'occurence donnée
+- (void)saveDataForIndexInOccurence:(int)dayIndex withOption:(AddEventOption)addEventOption
+{
+    //String qui contiendra un éventuel message d'erreur
+    NSString *errorMessage = nil;
+    NSString *day = [self.arrayOccurence objectAtIndex:dayIndex];
+    
+    //On sauvegarde l'event
+    errorMessage = [self saveEventForDay:day forAddEventOption:addEventOption];
+    if (errorMessage != nil)
+    {
+        [DDCustomAlertView displayErrorMessage:errorMessage];
+        return;
+    }
+    //Si on a pas de message d'erreur, on met à jour l'historique de la tache
+    else
+    {
+        NSNumber *history = [[NSNumber alloc] initWithInt:([self.task.history intValue] + 1)];
+        [self.task setHistory:history];
+    }
+    
+    //Si on arrive à la dernière sauvegarde sans encombre, on affiche les informations
+    if (dayIndex == [self.arrayOccurence count] -1)
+    {
+        //On affiche un message d'info pour indiquer qu'on a crée ou modifié un évènement
+        if (self.isModifyEvent == NO)
+        {
+            if ([self.arrayOccurence count] == 1)
+                [DDCustomAlertView displayInfoMessage:@"Evènement enregistré"];
+            else
+                [DDCustomAlertView displayInfoMessage:@"Evènements enregistrés"];
+        }
+        else
+            [DDCustomAlertView displayInfoMessage:@"Evènement modifié"];
+        
+        //On ferme la vue
+        [self.delegate closeEventManagerView];
+    }
+    else
+        [self checkIfEventCanBeCreatedWithIndexOfArrayOccurence:(dayIndex +1)];
+}
+
 //On sauvegarde l'event
-- (NSString *)saveEventForDay:(NSString *)day
+- (NSString *)saveEventForDay:(NSString *)day forAddEventOption:(AddEventOption)addEventOption
 {
     //On récupère le numéro du jour de la semaine
     NSString *dayNumber = [[NSNumber numberWithInteger:[[[DDManagerSingleton instance] arrayWeek] indexOfObject:day]] stringValue];
@@ -178,6 +262,36 @@
     }
     else
         event = self.eventToModify;
+    
+    //On regarde si on a pas déjà un évènement futur
+    NSArray *arrayEvent = [[DDDatabaseAccess instance] getEventsRecurrentForPlayer:currentPlayer atWeekAndYear:[DDHelperController getWeekAndYearForDate:dateEvent] forTask:self.task andDay:dayNumber];
+    
+    switch (addEventOption) {
+        case JUST_UPDATE:
+            //Récupérer l'évènement le plus proche dans le passé d'aujourd'hui et le mettre à jour uniquement si la weekAndYear de l'achievement est antérieur
+            //Créer un évènement la semaine après qui va jusqu'à la récurrence de l'évènement d'avant
+            break;
+        case UPDATE_IN_FUTURE:
+            //Récupérer l'évènement le plus proche dans le passé d'aujourd'hui et le mettre à jour uniquement si la weekAndYear de l'achievement est antérieur
+            //Supprimer tous les évènements futur
+            break;
+        default:
+            break;
+    }
+    
+//    if ([arrayEvent count] > 0 && self.isModifyEvent == NO)
+//    {
+//        Event *pastEvent = [arrayEvent objectAtIndex:0];
+//        //On vérifie que l'évènement est antérieur à celui que l'on veut créer et que sa récurrence se poursuit dans le futur
+//        if ([[[pastEvent achievement] weekAndYear] intValue] < [[DDHelperController getWeekAndYearForDate:dateEvent] intValue] && ([pastEvent.recurrenceEnd.weekAndYear intValue] == 0 || [pastEvent.recurrenceEnd.weekAndYear intValue] >= [[DDHelperController getWeekAndYearForDate:dateEvent] intValue]))
+//        {
+//            
+//        }
+//    }
+//    else if (([arrayEvent count] > 0 || [self.eventToModify.recurrenceEnd.weekAndYear intValue] != -1) && self.isModifyEvent == YES)
+//    {
+//        
+//    }
     
     //On met à jour les infos sur l'évènement
     [event setDay:dayNumber];
@@ -268,49 +382,7 @@
 //On appuie sue le bouton de droite
 - (void)onPushRightBarButton
 {
-    //String qui contiendra un éventuel message d'erreur
-    NSString *errorMessage = nil;
-    
-    //On teste d'abord si tous les champs obligatoires sont remplis
-    if ([self.arrayOccurence count] > 0)
-    {
-        //On boucle sur le nombre d'occurence de l'évènement
-        for (NSString *day in self.arrayOccurence)
-        {
-            //On sauvegarde l'event
-            errorMessage = [self saveEventForDay:day];
-            if (errorMessage != nil)
-            {
-                [DDCustomAlertView displayErrorMessage:errorMessage];
-                return;
-            }
-            //Si on a pas de message d'erreur, on met à jour l'historique de la tache
-            else
-            {
-                NSNumber *history = [[NSNumber alloc] initWithInt:([self.task.history intValue] + 1)];
-                [self.task setHistory:history];
-            }
-        }
-    }
-    else
-    {
-        [DDCustomAlertView displayErrorMessage:@"Veuillez choisir un ou plusieurs jours pour la tache à accomplir"];
-        return;
-    }
-    
-    //On affiche un message d'info pour indiquer qu'on a crée ou modifié un évènement
-    if (self.isModifyEvent == NO)
-    {
-        if ([self.arrayOccurence count] == 1)
-            [DDCustomAlertView displayInfoMessage:@"Evènement enregistré"];
-        else
-            [DDCustomAlertView displayInfoMessage:@"Evènements enregistrés"];
-    }
-    else
-        [DDCustomAlertView displayInfoMessage:@"Evènement modifié"];
-    
-    //On ferme la vue
-    [self.delegate closeEventManagerView];
+    [self checkIfEventCanBeCreatedWithIndexOfArrayOccurence:0];
 }
 
 
@@ -323,6 +395,20 @@
     
     //On met à jour les composants
     [self updateComponent];
+}
+
+#pragma mark - UIAlerViewDelegate fonctions
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    //Si on annule pas l'évènement
+    if (buttonIndex != 1)
+    {
+        if (buttonIndex == 0)
+            [self saveDataForIndexInOccurence:alertView.tag withOption:UPDATE_IN_FUTURE];
+        else
+            [self saveDataForIndexInOccurence:alertView.tag withOption:JUST_UPDATE];
+    }
 }
 
 @end

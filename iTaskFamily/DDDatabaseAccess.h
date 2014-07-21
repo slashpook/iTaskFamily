@@ -109,6 +109,9 @@
 //On regarde si on a un évent qui existe dans le futur
 - (Event *)getEventForPlayer:(Player *)player futureToWeekAndYear:(NSString *)weekAndYear andDay:(NSString *)day;
 
+//On récupère tous les évènements lié à une tache, un jour donnée et une date de fin de récurrence
+- (NSArray *)getEventsRecurrentForPlayer:(Player *)player atWeekAndYear:(NSString *)weekAndYear forTask:(Task *)task andDay:(NSString *)day;
+
 //On récupère tous les event de la tache récurrent dans le futur
 - (NSArray *)getEventsForPlayer:(Player *)player futureToWeekAndYear:(NSString *)weekAndYear andDay:(NSString *)day;
 

@@ -10,6 +10,13 @@
 
 @interface DDConstant : NSObject
 
+#pragma mark - Enumération
+
+typedef enum {
+    ADD_ONLY,
+    JUST_UPDATE,
+    UPDATE_IN_FUTURE,
+} AddEventOption;
 
 #pragma mark - Variables pour détecter sur quelle version d'iOS on se trouve
 
