@@ -113,9 +113,9 @@
         
         //Si on est sur une nouvelle page
         if (i == self.pageControlPodium.currentPage && podiumViewController.viewPremier.frame.size.height == 0)
-            [podiumViewController updateComponentsAndDisplayProgressBar:YES];
+            [podiumViewController updateComponentsAndDisplayProgressBar:YES forTypeOfPodium:i];
         else if (i != self.pageControlPodium.currentPage)
-            [podiumViewController updateComponentsAndDisplayProgressBar:NO];
+            [podiumViewController updateComponentsAndDisplayProgressBar:NO forTypeOfPodium:i];
     }
 }
 
@@ -123,7 +123,7 @@
 - (void)updateCurrentPodium
 {
     DDPodiumViewController *podiumViewController = (DDPodiumViewController *)[self.arrayPodiums objectAtIndex:self.pageControlPodium.currentPage];
-    [podiumViewController updateComponentsAndDisplayProgressBar:YES];
+    [podiumViewController updateComponentsAndDisplayProgressBar:YES forTypeOfPodium:self.pageControlPodium.currentPage];
 }
 
 //On appuie sur le menu

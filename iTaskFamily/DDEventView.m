@@ -225,6 +225,7 @@
     [[DDManagerSingleton instance] setCurrentDateSelected:previousWeekDate];
     
     //On update la vue
+    [self.eventInfosViewController setCurrentEvent:nil];
     [self updateComponent];
 }
 
@@ -238,6 +239,7 @@
     [[DDManagerSingleton instance] setCurrentDateSelected:nextWeekDate];
     
     //On update la vue
+    [self.eventInfosViewController setCurrentEvent:nil];
     [self updateComponent];
 }
 
@@ -313,6 +315,7 @@
     //On configure le controller
     [self.eventManagerViewController setIsModifyEvent:YES];
     [self.eventManagerViewController setEventToModify:self.eventInfosViewController.currentEvent];
+    [self.eventManagerViewController setTask:self.eventInfosViewController.currentEvent.achievement.task];
     [[self.eventManagerViewController arrayOccurence] removeAllObjects];
     [[self.eventManagerViewController arrayOccurence] addObject:[[[DDManagerSingleton instance] arrayWeek]  objectAtIndex:self.eventInfosViewController.currentEvent.day.intValue]];
     [self.eventManagerViewController updateComponent];

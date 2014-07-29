@@ -102,7 +102,7 @@
 #pragma mark - Fonctions
 
 //Fonctions pour mettre à jour les composants
-- (void)updateComponentsAndDisplayProgressBar:(BOOL)display;
+- (void)updateComponentsAndDisplayProgressBar:(BOOL)display forTypeOfPodium:(TypeOfPodium)typeOfPodium;
 
 //Fonction pour ajouter une récompense
 - (IBAction)onPushAddAward:(id)sender;

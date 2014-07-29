@@ -110,7 +110,7 @@
     else
     {
         [self.custoNavBar.imageViewBackground setImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
-        [self.tableViewEvent.labelTacheContent setText:self.eventToModify.achievement.task.libelle];
+        [self.tableViewEvent.labelTacheContent setText:self.task.libelle];
         [self.tableViewEvent.labelDateContent setText:[self formatOccurence]];
         [self.tableViewEvent.switchRecurrence setOn:[self.eventToModify.recurrent boolValue]];
         [self.textViewComment setText:self.eventToModify.comment];
@@ -180,7 +180,7 @@
             
             if ([arrayEvent count] > 0 && self.isModifyEvent == NO)
             {
-                [DDCustomAlertView displayAnswerMessage:[NSString stringWithFormat:@"L'évènement que vous créez est récurrent dans le futur pour le %@. L'évènement va être modifier dans le futur à partir de cette tache. Voulez vous continuer ?", day] withDelegate:self];
+                [DDCustomAlertView displayCustomMessage:[NSString stringWithFormat:@"L'évènement que vous créez est récurrent dans le futur pour le %@. Que souhaitez vous faire ?", day] withDelegate:self andSetTag:0 withFirstChoice:@"Créer l'évènement et mettre à jour les récurrences" secondChoice:@"Annuler" andThirdChoice:@"Créer uniquement cet évènement"];
                 return;
             }
             else if (([arrayEvent count] > 0 || [self.eventToModify.recurrenceEnd.weekAndYear intValue] != -1) && self.isModifyEvent == YES)
@@ -246,66 +246,92 @@
 //On sauvegarde l'event
 - (NSString *)saveEventForDay:(NSString *)day forAddEventOption:(AddEventOption)addEventOption
 {
-    //On récupère le numéro du jour de la semaine
-    NSString *dayNumber = [[NSNumber numberWithInteger:[[[DDManagerSingleton instance] arrayWeek] indexOfObject:day]] stringValue];
+    //Corriger quand on est sur l'évènement crée au jour de la modification
+    //Message d'erreur si on met l'event sur un jour ou une tache existe déjà
     
-    //On récupère le joueur en courant
+    //On récupère les variables qu'on va utiliser plus tard
+    NSString *dayNumber = [[NSNumber numberWithInteger:[[[DDManagerSingleton instance] arrayWeek] indexOfObject:day]] stringValue];
     Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
     NSDate *dateEvent = [[DDManagerSingleton instance] currentDateSelected];
+    NSDate *datePastEvent = [DDHelperController getPreviousWeekForDate:dateEvent];
+    NSDate *dateFutureEvent = [DDHelperController getNextWeekForDate:dateEvent];
+    NSString *weekAndYear = [DDHelperController getWeekAndYearForDate:dateEvent];
+    NSString *pastWeekAndYear = [DDHelperController getWeekAndYearForDate:datePastEvent];
+    NSString *futureWeekAndYear = [DDHelperController getWeekAndYearForDate:dateFutureEvent];
     
-    //On crée le nouvel évènement ou récupère l'event à modifier
-    Event *event;
-    if (self.isModifyEvent == NO)
+    //On crée le nouvel évènement
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+    Event *event = [[Event alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    
+    //Si on doit faire diverse manipulation
+    if (addEventOption == JUST_UPDATE || addEventOption == UPDATE_IN_FUTURE)
     {
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
-        event = [[Event alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+        Event *pastEventCloseToNew = nil;
+        //On regarde si un évènement antérieur n'est pas déjà récurrent
+        if (self.isModifyEvent == NO)
+            pastEventCloseToNew = [[DDDatabaseAccess instance] getAnteriorEventsRecurrentForPlayer:currentPlayer closeToWeekAndYear:weekAndYear forTask:self.task andDay:dayNumber];
+        else
+            pastEventCloseToNew = self.eventToModify;
+        
+        //Si c'est le cas
+        if (pastEventCloseToNew != nil)
+        {
+            NSString *weekAndYearReccurrence = pastEventCloseToNew.recurrenceEnd.weekAndYear;
+            
+            //On met à jour l'ancien event
+            [pastEventCloseToNew.recurrenceEnd setWeekAndYear:pastWeekAndYear];
+            [[DDDatabaseAccess instance] updateEvent:pastEventCloseToNew];
+            
+            //Si on modifie seulement cet évènement
+            if (addEventOption == JUST_UPDATE)
+            {
+                //On enlève sa récurrence
+                [event setRecurrent:[NSNumber numberWithBool:NO]];
+                
+                //On crée l'évènement futur à celui ci
+                Event *futureEventCloseToNew;
+                NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+                futureEventCloseToNew = [[Event alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+                
+                //On met à jour les infos sur l'évènement
+                [futureEventCloseToNew setDay:pastEventCloseToNew.day];
+                [futureEventCloseToNew setRecurrent:[NSNumber numberWithBool:YES]];
+                [futureEventCloseToNew setComment:pastEventCloseToNew.comment];
+                
+                //On sauvegarde l'évènement
+                [[DDDatabaseAccess instance] createEvent:futureEventCloseToNew checked:NO forPlayer:currentPlayer forTask:pastEventCloseToNew.achievement.task atWeekAndYear:futureWeekAndYear andRecurrenceEndAtWeekAndYear:weekAndYearReccurrence];
+            }
+        }
+        
+        //Si l'évènement écrase les futurs évènements
+        if (addEventOption == UPDATE_IN_FUTURE)
+        {
+            //On regarde si on a pas déjà un évènement futur
+            NSArray *arrayEvent = [[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer futureToWeekAndYear:weekAndYear andDay:dayNumber];
+            
+            if ([arrayEvent count] > 0)
+            {
+                for (int i = (int)([arrayEvent count] - 1); i >= 0; i--)
+                {
+                    Event *eventToDelete = [arrayEvent objectAtIndex:i];
+                    [[DDDatabaseAccess instance] deleteEvent:eventToDelete];
+                }
+            }
+        }
     }
-    else
-        event = self.eventToModify;
-    
-    //On regarde si on a pas déjà un évènement futur
-    NSArray *arrayEvent = [[DDDatabaseAccess instance] getEventsRecurrentForPlayer:currentPlayer atWeekAndYear:[DDHelperController getWeekAndYearForDate:dateEvent] forTask:self.task andDay:dayNumber];
-    
-    switch (addEventOption) {
-        case JUST_UPDATE:
-            //Récupérer l'évènement le plus proche dans le passé d'aujourd'hui et le mettre à jour uniquement si la weekAndYear de l'achievement est antérieur
-            //Créer un évènement la semaine après qui va jusqu'à la récurrence de l'évènement d'avant
-            break;
-        case UPDATE_IN_FUTURE:
-            //Récupérer l'évènement le plus proche dans le passé d'aujourd'hui et le mettre à jour uniquement si la weekAndYear de l'achievement est antérieur
-            //Supprimer tous les évènements futur
-            break;
-        default:
-            break;
-    }
-    
-//    if ([arrayEvent count] > 0 && self.isModifyEvent == NO)
-//    {
-//        Event *pastEvent = [arrayEvent objectAtIndex:0];
-//        //On vérifie que l'évènement est antérieur à celui que l'on veut créer et que sa récurrence se poursuit dans le futur
-//        if ([[[pastEvent achievement] weekAndYear] intValue] < [[DDHelperController getWeekAndYearForDate:dateEvent] intValue] && ([pastEvent.recurrenceEnd.weekAndYear intValue] == 0 || [pastEvent.recurrenceEnd.weekAndYear intValue] >= [[DDHelperController getWeekAndYearForDate:dateEvent] intValue]))
-//        {
-//            
-//        }
-//    }
-//    else if (([arrayEvent count] > 0 || [self.eventToModify.recurrenceEnd.weekAndYear intValue] != -1) && self.isModifyEvent == YES)
-//    {
-//        
-//    }
     
     //On met à jour les infos sur l'évènement
     [event setDay:dayNumber];
-    [event setRecurrent:[NSNumber numberWithBool:self.tableViewEvent.switchRecurrence.isOn]];
     [event setComment:self.textViewComment.text];
     
-    if (self.isModifyEvent == NO)
-    {
-        return [[DDDatabaseAccess instance] createEvent:event forPlayer:currentPlayer forTask:self.task atWeekAndYear:[DDHelperController getWeekAndYearForDate:dateEvent]];
-    }
-    else
-    {
-        return [[DDDatabaseAccess instance] updateEvent:event forPlayer:currentPlayer forTask:self.task atWeekAndYear:[DDHelperController getWeekAndYearForDate:dateEvent]];
-    }
+    if (addEventOption == ADD_ONLY || addEventOption == UPDATE_IN_FUTURE)
+        [event setRecurrent:[NSNumber numberWithBool:self.tableViewEvent.switchRecurrence.isOn]];
+    
+    //On sauvegarde l'évènement
+//    if (self.isModifyEvent == NO)
+        return [[DDDatabaseAccess instance] createEvent:event checked:NO forPlayer:currentPlayer forTask:self.task atWeekAndYear:weekAndYear];
+//    else
+//        return [[DDDatabaseAccess instance] updateEvent:event forPlayer:currentPlayer forTask:self.task atWeekAndYear:weekAndYear];
 }
 
 

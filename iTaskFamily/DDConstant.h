@@ -15,8 +15,14 @@
 typedef enum {
     ADD_ONLY,
     JUST_UPDATE,
-    UPDATE_IN_FUTURE,
+    UPDATE_IN_FUTURE
 } AddEventOption;
+
+typedef enum {
+    SCORE_SEMAINE = 0,
+    SCORE_TOTAL = 1,
+    SCORE_TROPHEES = 2
+} TypeOfPodium;
 
 #pragma mark - Variables pour détecter sur quelle version d'iOS on se trouve
 

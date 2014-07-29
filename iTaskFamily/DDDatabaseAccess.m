@@ -288,7 +288,7 @@
 
 
 //On crée l'event après avoir fait quelques tests préalable
-- (NSString *)createEvent:(Event *)event forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear
+- (NSString *)createEvent:(Event *)event checked:(BOOL)checked forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear
 {
     if (task != nil)
     {
@@ -315,8 +315,9 @@
         RecurrenceEnd *recurrenceEnd = [NSEntityDescription insertNewObjectForEntityForName:@"RecurrenceEnd"
                                                                  inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
         
-        //On met le booléen à non réalisé
-        [event setChecked:[NSNumber numberWithBool:NO]];
+        //On set le booléen de réalisation
+        [event setChecked:[NSNumber numberWithBool:checked]];
+        
         //On set si on doit gérer une date de fin ou pas
         if ([event.recurrent boolValue] == YES)
             [recurrenceEnd setWeekAndYear:@"0"];
@@ -331,8 +332,8 @@
         return @"Veuillez renseigner une tache !";
 }
 
-//On crée l'event avec une récurrenceEnd
-- (NSString *)createEvent:(Event *)event forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear andRecurrenceEnd:(RecurrenceEnd *)recurrenceEnd
+//On crée l'event avec une weekAndYear pour la récurrence
+- (NSString *)createEvent:(Event *)event checked:(BOOL)checked forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear andRecurrenceEndAtWeekAndYear:(NSString *)weekAndYearRecurrence
 {
     if (task != nil)
     {
@@ -355,8 +356,13 @@
         [self.dataBaseManager.managedObjectContext insertObject:event];
         [achievement addEventsObject:event];
         
-        //On met le booléen à non réalisé
-        [event setChecked:[NSNumber numberWithBool:NO]];
+        //On set le booléen de réalisation
+        [event setChecked:[NSNumber numberWithBool:checked]];
+        
+        //On crée la date de fin de récurrence
+        RecurrenceEnd *recurrenceEnd = [NSEntityDescription insertNewObjectForEntityForName:@"RecurrenceEnd"
+                                                                     inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+        [recurrenceEnd setWeekAndYear:weekAndYearRecurrence];
         [event setRecurrenceEnd:recurrenceEnd];
         
         [self saveContext];
@@ -514,6 +520,34 @@
     
     if ([fetchedObjects count] > 0)
         return fetchedObjects;
+    else
+        return nil;
+}
+
+//On récupère tous l'évènement dans le passé le plus proche à celui que l'on crée est qui n'est pas terminé
+- (Event *)getAnteriorEventsRecurrentForPlayer:(Player *)player closeToWeekAndYear:(NSString *)weekAndYear forTask:(Task *)task andDay:(NSString *)day
+{
+    //On défini la classe pour la requète
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Event" inManagedObjectContext:self.dataBaseManager.managedObjectContext];
+    [fetchRequest setEntity:entityDescription];
+    
+    //On rajoute un filtre
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && achievement.task.libelle == %@ && achievement.weekAndYear <= %@ && (recurrenceEnd.weekAndYear == 0 || recurrenceEnd.weekAndYear >= %@) && day == %@", player.pseudo, task.libelle, weekAndYear, weekAndYear, day];
+    [fetchRequest setPredicate:newPredicate];
+    
+    //On rajoute un tri sur l'history
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"achievement.weekAndYear"
+                                                                   ascending:NO];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSError *error;
+    NSArray *fetchedObjects = [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if ([fetchedObjects count] > 0)
+        return [fetchedObjects objectAtIndex:0];
     else
         return nil;
 }

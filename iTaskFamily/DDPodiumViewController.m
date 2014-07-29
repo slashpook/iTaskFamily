@@ -73,7 +73,7 @@
 #pragma mark - Controller fonctions
 
 //Fonctions pour mettre à jour les composants
-- (void)updateComponentsAndDisplayProgressBar:(BOOL)display
+- (void)updateComponentsAndDisplayProgressBar:(BOOL)display forTypeOfPodium:(TypeOfPodium)typeOfPodium
 {
     //On récupère le tableau des joueurs
     NSArray *arrayPlayer = [[DDDatabaseAccess instance] getPlayers];
@@ -105,26 +105,30 @@
             //On récupère le joueur
             player = [arrayPlayer objectAtIndex:i];
             
-#warning - A enlever quand on aura des vraies données
-            int scoreSemaine = 0;
-            if (i == 0)
-                scoreSemaine = 4800;
-            else if (i == 1)
-                scoreSemaine = 3000;
+            //On récupère la donnée à afficher (score, nombre de trophées etc...)
+            int dataToDisplay = 0;
+            if (typeOfPodium == SCORE_SEMAINE)
+                dataToDisplay = [[DDDatabaseAccess instance] getScoreWeekForPlayer:player forWeekAndYear:[DDHelperController getWeekAndYearForDate:[[DDManagerSingleton instance] currentDateSelected]]];
+            else if (typeOfPodium == SCORE_TOTAL)
+                dataToDisplay = [[DDDatabaseAccess instance] getScoreTotalForPlayer:player];
             else
-                scoreSemaine = 1200;
+                dataToDisplay = [[DDDatabaseAccess instance] getNumberOfTrophyAchievedForPlayer:player];
             
             int height = HEIGHT_MAX_PODIUM;
 
-            //Si on est sur le premier, on récupère son score
-            if (i == 0)
-                highScore = scoreSemaine;
-            //On calcule quel est le pourcentage du score vis à vis du premier
+            //On calcule le pourcentage de la barre du score
+            if (dataToDisplay == 0)
+                pourcentOfHighNumber = 0;
+            else if (i == 0)
+                highScore = dataToDisplay;
             else
-                pourcentOfHighNumber = scoreSemaine / highScore;
+                pourcentOfHighNumber = dataToDisplay / (float)highScore;
             
             //Mise à jour du titre et du score
-            [labelScore setText:[NSString stringWithFormat:@"%i points", scoreSemaine]];
+            if (typeOfPodium == SCORE_SEMAINE || typeOfPodium == SCORE_TOTAL)
+                [labelScore setText:[NSString stringWithFormat:@"%i Points", dataToDisplay]];
+            else
+                [labelScore setText:[NSString stringWithFormat:@"%i Trophées", dataToDisplay]];
             
             //Mise à jour de la Progression
             [progressView setColorView:self.colorProgressView];

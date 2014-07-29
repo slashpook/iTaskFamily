@@ -57,6 +57,9 @@
 //Tache que l'on va ajouter à l'évènement
 @property (strong, nonatomic) Task *task;
 
+//Tache que l'on va ajouter à l'évènement
+@property (strong, nonatomic) NSString *weekAndYearSelected;
+
 
 #pragma mark - Fonctions
 
