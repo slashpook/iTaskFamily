@@ -63,6 +63,9 @@
 
 #pragma mark - Fonctions
 
+//Fonction appelé avant d'ouvrir cette vu
+- (void)initiateComponent;
+
 //On met à jour les composants
 - (void)updateComponent;
 

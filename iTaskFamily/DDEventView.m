@@ -252,7 +252,7 @@
     [self.eventManagerViewController setTask:nil];
     [[self.eventManagerViewController arrayOccurence] removeAllObjects];
     [[self.eventManagerViewController arrayOccurence] addObject:[[[DDManagerSingleton instance] arrayWeek]  objectAtIndex:self.daySelected.intValue]];
-    [self.eventManagerViewController updateComponent];
+    [self.eventManagerViewController initiateComponent];
     
     //On ouvre la popUp
     [self openEventManagerViewController];
@@ -318,7 +318,7 @@
     [self.eventManagerViewController setTask:self.eventInfosViewController.currentEvent.achievement.task];
     [[self.eventManagerViewController arrayOccurence] removeAllObjects];
     [[self.eventManagerViewController arrayOccurence] addObject:[[[DDManagerSingleton instance] arrayWeek]  objectAtIndex:self.eventInfosViewController.currentEvent.day.intValue]];
-    [self.eventManagerViewController updateComponent];
+    [self.eventManagerViewController initiateComponent];
     
     //On ouvre la popUp
     [self openEventManagerViewController];

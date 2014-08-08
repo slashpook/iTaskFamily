@@ -48,11 +48,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated
-{
-#warning Voir si on peut empêcher ça (pas très propre)
-    //On remet une frame
-    [[self.custoNavBar view] setFrame:CGRectMake(0, 0, 380, 50)];
-    
+{    
     [[self collectionView] reloadData];
 }
 

@@ -86,10 +86,10 @@
 #pragma mark - CRUD Event
 
 //On crée l'event après avoir fait quelques tests préalable
-- (NSString *)createEvent:(Event *)event checked:(BOOL)checked forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear;
+-(NSString *)createEvent:(Event *)event checked:(BOOL)checked forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear andForceUpdate:(BOOL)forceUpdate;
 
 //On crée l'event avec une weekAndYear pour la récurrence
-- (NSString *)createEvent:(Event *)event checked:(BOOL)checked forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear andRecurrenceEndAtWeekAndYear:(NSString *)weekAndYearRecurrence;
+- (NSString *)createEvent:(Event *)event checked:(BOOL)checked forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear andRecurrenceEndAtWeekAndYear:(NSString *)weekAndYearRecurrence andForceUpdate:(BOOL)forceUpdate;
 
 //On update l'event donné
 - (void)updateEvent:(Event *)event;
@@ -97,8 +97,8 @@
 //On update l'event donné après avoir fait quelques test
 - (NSString *)updateEvent:(Event *)event forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear;
 
-//On regarde si on a un évent qui existe déjà à la date donnée
-- (BOOL)eventExistForPlayer:(Player *)player atWeekAndYear:(NSString *)weekAndYear andDay:(NSString *)day;
+//On regarde si on a un évent qui existe déjà à la date donnée pour une tache donnée
+- (BOOL)eventExistForPlayer:(Player *)player atWeekAndYear:(NSString *)weekAndYear forTask:(Task *)task andDay:(NSString *)day;
 
 //On récupère tous les events
 - (NSArray *)getEvents;
@@ -106,17 +106,17 @@
 //On récupère tous les events d'un joueur données, pour une semaine donnée et un jour donné
 - (NSArray *)getEventsForPlayer:(Player *)player atWeekAndYear:(NSString *)weekAndYear andDay:(NSString *)day;
 
-//On regarde si on a un évent qui existe dans le futur
-- (Event *)getEventForPlayer:(Player *)player futureToWeekAndYear:(NSString *)weekAndYear andDay:(NSString *)day;
+//On regarde si on a un évent qui existe dans le futur pour la tache donnée
+- (Event *)getEventForPlayer:(Player *)player futureToWeekAndYear:(NSString *)weekAndYear forTask:(Task *)task andDay:(NSString *)day;
 
 //On récupère tous les évènements lié à une tache, un jour donnée et une date de fin de récurrence
 - (NSArray *)getEventsRecurrentForPlayer:(Player *)player atWeekAndYear:(NSString *)weekAndYear forTask:(Task *)task andDay:(NSString *)day;
 
-//On récupère tous les event de la tache récurrent dans le futur
-- (NSArray *)getEventsForPlayer:(Player *)player futureToWeekAndYear:(NSString *)weekAndYear andDay:(NSString *)day;
+//On récupère tous les event de la tache récurrent dans le futur pour la tache donnée
+- (NSArray *)getEventsForPlayer:(Player *)player futureToWeekAndYear:(NSString *)weekAndYear forTask:(Task *)task andDay:(NSString *)day;
 
 //On récupère tous l'évènement dans le passé le plus proche à celui que l'on crée est qui n'est pas terminé
-- (Event *)getAnteriorEventsRecurrentForPlayer:(Player *)player closeToWeekAndYear:(NSString *)weekAndYear forTask:(Task *)task andDay:(NSString *)day;
+- (Event *)getAnteriorEventRecurrentForPlayer:(Player *)player closeToWeekAndYear:(NSString *)weekAndYear forTask:(Task *)task andDay:(NSString *)day;
 
 //On récupère l'event de l'achievement donnée, au jour donné
 - (Event *)getEventForAchievement:(Achievement *)achievement andDay:(NSString *)day;
