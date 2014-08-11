@@ -28,9 +28,6 @@
 //Annulation de l'action
 - (void)rollback;
 
-//On récupère tous les objets de l'entity donnée
-- (NSArray *)getAllObjectForEntity:(NSString *)entityName;
-
 
 #pragma mark - CRUD Achievement
 

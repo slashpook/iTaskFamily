@@ -10,7 +10,6 @@
 
 @implementation DDDatabaseAccess
 
-
 #pragma mark - Init
 
 //Instance du singleton
@@ -53,8 +52,8 @@
     [self.dataBaseManager.managedObjectContext rollback];
 }
 
-//On récupère tous les objets de l'entity donnée
-- (NSArray *)getAllObjectForEntity:(NSString *)entityName
+//On récupère tous les objets de l'entity donnée et on la trie s'il le faut
+- (NSArray *)getAllObjectForEntity:(NSString *)entityName andSortWithProperties:(NSString *)sortProperties
 {
     //On défini la classe pour la requète
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -62,11 +61,18 @@
                                               entityForName:entityName inManagedObjectContext:self.dataBaseManager.managedObjectContext];
     [fetchRequest setEntity:entityDescription];
     
+    //On trie la requète s'il le faut
+    if (sortProperties != nil) {
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:sortProperties
+                                                                       ascending:YES];
+        NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+        [fetchRequest setSortDescriptors:sortDescriptors];
+    }
+        
     NSError *error;
-    NSArray *fetchedObjects = [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     
     //On renvoie le tableau de la requète
-    return fetchedObjects;
+    return [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 
 
@@ -77,7 +83,7 @@
 - (Achievement *)createAchievementForPlayer:(Player *)player andTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear
 {
     Achievement *achievement = [NSEntityDescription insertNewObjectForEntityForName:@"Achievement"
-                                                             inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+                                                             inManagedObjectContext:self.dataBaseManager.managedObjectContext];
     [achievement setWeekAndYear:weekAndYear];
     [achievement setPlayer:player];
     [achievement setTask:task];
@@ -88,20 +94,12 @@
 //On récupère tous les achievements
 - (NSArray *)getAchievements
 {
-    NSArray *arrayEntities = [self getAllObjectForEntity:@"Achievement"];
-    
-    //Si on a des achievements, on les tries par date
-    if (arrayEntities.count > 0)
-    {
-        arrayEntities = [arrayEntities sortedArrayUsingComparator:^NSComparisonResult(Achievement *obj1, Achievement *obj2) {
-            return (NSComparisonResult)[obj2.weekAndYear compare:obj1.weekAndYear];
-        }];
-    }
+    NSArray *arrayEntities = [self getAllObjectForEntity:@"Achievement" andSortWithProperties:@"weekAndYear"];
     
     return arrayEntities;
 }
 
-//On récupère tous les achievements d pour un player donné (utile pour récupérer les points totaux gagnés)
+//On récupère tous les achievements pour un player donné (utile pour récupérer les points totaux gagnés)
 - (NSArray *)getAchievementsForPlayer:(Player *)player
 {
     //On défini la classe pour la requète
@@ -115,10 +113,9 @@
     [fetchRequest setPredicate:newPredicate];
     
     NSError *error;
-    NSArray *fetchedObjects = [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
+
     //On renvoie le tableau de la requète
-    return fetchedObjects;
+    return [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 
 //On récupère tous les achievements d'une semaine donnée pour un player donné (utile pour récupérer les points gagnés dans la semaine)
@@ -135,10 +132,9 @@
     [fetchRequest setPredicate:newPredicate];
     
     NSError *error;
-    NSArray *fetchedObjects = [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
+
     //On renvoie le tableau de la requète
-    return fetchedObjects;
+    return [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 
 //On récupère l'achievement d'une semaine donnée pour un player donné et une task donnée
@@ -184,16 +180,8 @@
 //On récupère toutes les categoryTasks
 - (NSArray *)getCategoryTasks
 {
-    NSArray *arrayEntities = [self getAllObjectForEntity:@"CategoryTask"];
-    
-    //Si on a des categoryTasks, on les tries par libelle
-    if (arrayEntities.count > 0)
-    {
-        arrayEntities = [arrayEntities sortedArrayUsingComparator:^NSComparisonResult(CategoryTask *obj1, CategoryTask *obj2) {
-            return (NSComparisonResult)[obj1.libelle compare:obj2.libelle];
-        }];
-    }
-    
+    NSArray *arrayEntities = [self getAllObjectForEntity:@"CategoryTask" andSortWithProperties:@"libelle"];
+
     return arrayEntities;
 }
 
@@ -241,15 +229,7 @@
 //On récupère tous les categoryTrophies
 - (NSArray *)getCategoryTrophies
 {
-    NSArray *arrayEntities = [self getAllObjectForEntity:@"CategoryTrophy"];
-    
-    //Si on a des categoryTrophy, on les tries par category
-    if (arrayEntities.count > 0)
-    {
-        arrayEntities = [arrayEntities sortedArrayUsingComparator:^NSComparisonResult(CategoryTrophy *obj1, CategoryTrophy *obj2) {
-            return (NSComparisonResult)[obj1.category.libelle compare:obj2.category.libelle];
-        }];
-    }
+    NSArray *arrayEntities = [self getAllObjectForEntity:@"CategoryTrophy" andSortWithProperties:@"category.libelle"];
     
     return arrayEntities;
 }
@@ -290,6 +270,7 @@
 //On crée l'event après avoir fait quelques tests préalable
 - (NSString *)createEvent:(Event *)event checked:(BOOL)checked forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear andForceUpdate:(BOOL)forceUpdate
 {
+    //Si on a une tache
     if (task != nil)
     {
         //On récupère l'achievement du player s'il existe
@@ -302,11 +283,12 @@
         //On regarde si on a pas déjà un event qui existe pour ce jour
         Event *eventInDB = [self getEventForAchievement:achievement andDay:event.day];
         
+        //Si on force pas l'update, on retourne un message d'erreur si l'event existe déjà
         if (eventInDB != nil && forceUpdate == NO)
             return @"Un évènement existe déjà pour cette tache";
+        //On supprime l'event sinon avant de créer le nouveau
         else if (eventInDB != nil && forceUpdate == YES)
             [self deleteEvent:eventInDB];
-        
         
         //On sauvegarde l'event
         [self.dataBaseManager.managedObjectContext insertObject:event];
@@ -314,7 +296,7 @@
         
         //On crée la date de fin de récurrence
         RecurrenceEnd *recurrenceEnd = [NSEntityDescription insertNewObjectForEntityForName:@"RecurrenceEnd"
-                                                                     inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+                                                                     inManagedObjectContext:self.dataBaseManager.managedObjectContext];
         
         //On set le booléen de réalisation
         [event setChecked:[NSNumber numberWithBool:checked]];
@@ -336,6 +318,7 @@
 //On crée l'event avec une weekAndYear pour la récurrence
 - (NSString *)createEvent:(Event *)event checked:(BOOL)checked forPlayer:(Player *)player forTask:(Task *)task atWeekAndYear:(NSString *)weekAndYear andRecurrenceEndAtWeekAndYear:(NSString *)weekAndYearRecurrence andForceUpdate:(BOOL)forceUpdate
 {
+    //Si on a une tache
     if (task != nil)
     {
         //On récupère l'achievement du player s'il existe
@@ -349,8 +332,10 @@
             //On regarde si on a pas déjà un event qui existe pour ce jour
             Event *eventInDB = [self getEventForAchievement:achievement andDay:event.day];
             
+            //Si on force pas l'update, on retourne un message d'erreur si l'event existe déjà
             if (eventInDB != nil && forceUpdate == NO)
                 return @"Un évènement existe déjà pour cette tache";
+            //On supprime l'event sinon avant de créer le nouveau
             else if (eventInDB != nil && forceUpdate == YES)
                 [self deleteEvent:eventInDB];
         }
@@ -364,7 +349,7 @@
         
         //On crée la date de fin de récurrence
         RecurrenceEnd *recurrenceEnd = [NSEntityDescription insertNewObjectForEntityForName:@"RecurrenceEnd"
-                                                                     inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
+                                                                     inManagedObjectContext:self.dataBaseManager.managedObjectContext];
         [recurrenceEnd setWeekAndYear:weekAndYearRecurrence];
         [event setRecurrenceEnd:recurrenceEnd];
         
@@ -423,12 +408,6 @@
     NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && achievement.task.libelle == %@ && achievement.weekAndYear == %@ && day == %@", player.pseudo, task.libelle, weekAndYear, day];
     [fetchRequest setPredicate:newPredicate];
     
-    //On rajoute un tri sur l'history
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"achievement.task.libelle"
-                                                                   ascending:YES];
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    
     NSError *error;
     NSArray *fetchedObjects = [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     
@@ -441,10 +420,10 @@
 //On récupère tous les events
 - (NSArray *)getEvents
 {
-    return [self getAllObjectForEntity:@"Event"];
+    return [self getAllObjectForEntity:@"Event" andSortWithProperties:nil];
 }
 
-//On récupère tous les events d'un joueur données, pour une semaine donnée et un jour donné
+//On récupère tous les events d'un joueur donné, pour une semaine donnée et un jour donné
 - (NSArray *)getEventsForPlayer:(Player *)player atWeekAndYear:(NSString *)weekAndYear andDay:(NSString *)day
 {
     //On défini la classe pour la requète
@@ -464,10 +443,8 @@
     [fetchRequest setSortDescriptors:sortDescriptors];
     
     NSError *error;
-    NSArray *fetchedObjects = [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
     //On renvoie le tableau de la requète
-    return fetchedObjects;
+    return [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 
 //On regarde si on a un évent qui existe dans le futur pour la tache donnée
@@ -499,7 +476,7 @@
         return nil;
 }
 
-//On récupère tous les évènements lié à une tache, un jour donnée et une date de fin de récurrence
+//On récupère tous les évènements liés à une tache, un jour donnée et une date de fin de récurrence
 - (NSArray *)getEventsRecurrentForPlayer:(Player *)player atWeekAndYear:(NSString *)weekAndYear forTask:(Task *)task andDay:(NSString *)day
 {
     //On défini la classe pour la requète
@@ -527,7 +504,7 @@
         return nil;
 }
 
-//On récupère tous l'évènement dans le passé le plus proche à celui que l'on crée est qui n'est pas terminé
+//On récupère l'event dans le passé le plus proche à celui que l'on crée et qui n'est pas terminé
 - (Event *)getAnteriorEventRecurrentForPlayer:(Player *)player closeToWeekAndYear:(NSString *)weekAndYear forTask:(Task *)task andDay:(NSString *)day
 {
     //On défini la classe pour la requète
@@ -555,7 +532,7 @@
         return nil;
 }
 
-//On récupère tous les event de la tache récurrent dans le futur pour la tache donnée
+//On récupère tous les events de la tache récurrent dans le futur pour la tache donnée
 - (NSArray *)getEventsForPlayer:(Player *)player futureToWeekAndYear:(NSString *)weekAndYear forTask:(Task *)task andDay:(NSString *)day
 {
     //On défini la classe pour la requète
@@ -619,7 +596,7 @@
     return count;
 }
 
-//On récupère tous les events réalisé d'un player donné pour une task donnée.
+//On récupère tous les events réalisés d'un player donné pour une task donnée.
 - (int)getNumberOfEventCheckedForPlayer:(Player *)player forTask:(Task *)task
 {
     //On défini la classe pour la requète
@@ -757,15 +734,7 @@
 //On récupère tous les players
 - (NSArray *)getPlayers
 {
-    NSArray *arrayEntities = [self getAllObjectForEntity:@"Player"];
-    
-    //Si on a des players, on les tries par pseudo
-    if (arrayEntities.count > 0)
-    {
-        arrayEntities = [arrayEntities sortedArrayUsingComparator:^NSComparisonResult(Player *obj1, Player *obj2) {
-            return (NSComparisonResult)[obj1.pseudo compare:obj2.pseudo];
-        }];
-    }
+    NSArray *arrayEntities = [self getAllObjectForEntity:@"Player" andSortWithProperties:@"pseudo"];
     
     return arrayEntities;
 }
@@ -792,9 +761,7 @@
     
     //Si on a des objets on retourne NO
     if (fetchedObjects.count > 0)
-    {
         return [fetchedObjects objectAtIndex:0];
-    }
     
     return nil;
 }
@@ -1036,7 +1003,7 @@
 //On récupère tous les tasks
 - (NSArray *)getTasks
 {
-    return [self getAllObjectForEntity:@"Task"];
+    return [self getAllObjectForEntity:@"Task" andSortWithProperties:nil];
 }
 
 //On récupère les tasks d'une categoryTask
@@ -1108,9 +1075,7 @@
     
     //Si on a une task, on la renvoie
     if (fetchedObjects.count > 0)
-    {
         return [fetchedObjects objectAtIndex:0];
-    }
     
     //Sinon on renvoie nil
     return nil;
@@ -1174,7 +1139,7 @@
 //On récupère tous les trophies
 - (NSArray *)getTrophies
 {
-    return [self getAllObjectForEntity:@"Trophy"];
+    return [self getAllObjectForEntity:@"Trophy" andSortWithProperties:nil];
 }
 
 //On récupère le trophy pour le type donnée
