@@ -8,19 +8,29 @@
 
 #import <UIKit/UIKit.h>
 
+@class DDMainInformationTrophyViewController;
+
 @interface DDRootTrophyViewController : UIViewController
 
 
 #pragma mark - Variable
 
-//La tableView qui contient des trophées
-@property (weak, nonatomic) IBOutlet UITableView *tableViewTrophy;
+//La collectionView qui contient les catégories
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionViewMiniature;
 
-//Tableau des catégories
-@property (strong, nonatomic) NSMutableArray *arrayCategory;
+//ScrollView generale
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollViewGeneral;
+
+//Page control du controller
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+
+//Le controller avec les infos principales
+@property (strong, nonatomic) DDMainInformationTrophyViewController *mainInformationTrophyViewController;
 
 
 #pragma mark - Fonctions
 
+//On met à jour la vue
+- (void)updateComponent;
 
 @end

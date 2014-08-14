@@ -40,6 +40,9 @@
 //On récupère tous les achievements d pour un player donné (utile pour récupérer les points totaux gagnés)
 - (NSArray *)getAchievementsForPlayer:(Player *)player;
 
+//On récupère tous les achievements pour un player donné à la catégorie donnée
+- (NSArray *)getAchievementsForPlayer:(Player *)player forCategory:(CategoryTask *)category;
+
 //On récupère tous les achievements d'une semaine donnée (utile pour récupérer les points gagnés dans la semaine)
 - (NSArray *)getAchievementsForPlayer:(Player *)player atWeekAndYear:(NSString *)weekAndYear;
 
@@ -103,6 +106,9 @@
 //On récupère tous les events d'un joueur données, pour une semaine donnée et un jour donné
 - (NSArray *)getEventsForPlayer:(Player *)player atWeekAndYear:(NSString *)weekAndYear andDay:(NSString *)day;
 
+//On récupère tous les events d'un joueur donné, pour une semaine donnée et une catégorie donnée
+- (NSArray *)getEventsForPlayer:(Player *)player atWeekAndYear:(NSString *)weekAndYear forCategory:(CategoryTask *)category;
+
 //On regarde si on a un évent qui existe dans le futur pour la tache donnée
 - (Event *)getEventForPlayer:(Player *)player futureToWeekAndYear:(NSString *)weekAndYear forTask:(Task *)task andDay:(NSString *)day;
 
@@ -161,6 +167,9 @@
 
 //On récupère le score total pour le player
 - (int)getScoreTotalForPlayer:(Player *)player;
+
+//On récupère le score total pour le player pour la catégorie donnée
+- (int)getScoreTotalForPlayer:(Player *)player forCategory:(CategoryTask *)category;
 
 //On supprime le player donné
 - (void)deletePlayer:(Player *)player;

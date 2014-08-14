@@ -70,6 +70,7 @@
 		6D9B3C2B191BF45C0001C672 /* Reward.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3C2A191BF45C0001C672 /* Reward.m */; };
 		6D9B3C2E191BF45D0001C672 /* CategoryTrophy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3C2D191BF45D0001C672 /* CategoryTrophy.m */; };
 		6DAE048418D086E100F6765E /* DDCustomButtonNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAE048318D086E100F6765E /* DDCustomButtonNotification.m */; };
+		6DB39C92199D21F7004D3155 /* DDMainInformationTrophyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB39C91199D21F7004D3155 /* DDMainInformationTrophyViewController.m */; };
 		6DC986F6185092A200A5A65F /* DDCustomProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC986F5185092A200A5A65F /* DDCustomProgressBar.m */; };
 		6DC986FA1850E89B00A5A65F /* DDTaskManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC986F91850E89B00A5A65F /* DDTaskManagerViewController.m */; };
 		6DCB2A8A18B6177B000FDFCA /* DDEventManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB2A8918B6177B000FDFCA /* DDEventManagerViewController.m */; };
@@ -217,6 +218,8 @@
 		6D9B3C2D191BF45D0001C672 /* CategoryTrophy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTrophy.m; sourceTree = "<group>"; };
 		6DAE048218D086E100F6765E /* DDCustomButtonNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomButtonNotification.h; sourceTree = "<group>"; };
 		6DAE048318D086E100F6765E /* DDCustomButtonNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomButtonNotification.m; sourceTree = "<group>"; };
+		6DB39C90199D21F7004D3155 /* DDMainInformationTrophyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMainInformationTrophyViewController.h; sourceTree = "<group>"; };
+		6DB39C91199D21F7004D3155 /* DDMainInformationTrophyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMainInformationTrophyViewController.m; sourceTree = "<group>"; };
 		6DC986F4185092A200A5A65F /* DDCustomProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomProgressBar.h; sourceTree = "<group>"; };
 		6DC986F5185092A200A5A65F /* DDCustomProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomProgressBar.m; sourceTree = "<group>"; };
 		6DC986F81850E89B00A5A65F /* DDTaskManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTaskManagerViewController.h; sourceTree = "<group>"; };
@@ -672,6 +675,7 @@
 		6D852D3D1843624300CA43EC /* RootTrophyViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6DB39C8F199D21D4004D3155 /* MainInformationTrophyViewController */,
 				6D852D411843664800CA43EC /* DDRootTrophyViewController.h */,
 				6D852D421843664800CA43EC /* DDRootTrophyViewController.m */,
 			);
@@ -791,6 +795,15 @@
 				6DAE048318D086E100F6765E /* DDCustomButtonNotification.m */,
 			);
 			name = CustomNotification;
+			sourceTree = "<group>";
+		};
+		6DB39C8F199D21D4004D3155 /* MainInformationTrophyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6DB39C90199D21F7004D3155 /* DDMainInformationTrophyViewController.h */,
+				6DB39C91199D21F7004D3155 /* DDMainInformationTrophyViewController.m */,
+			);
+			name = MainInformationTrophyViewController;
 			sourceTree = "<group>";
 		};
 		6DBB44AD189B9CCD00A5AD66 /* PodiumViewController */ = {
@@ -1102,6 +1115,7 @@
 				6D2E618318D0E976001A971B /* DDEventManagerTableViewController.m in Sources */,
 				6D030BA318CB8BC900C3B95C /* DDCustomValidation.m in Sources */,
 				6D4563CF19752CC400FB668A /* RecurrenceEnd.m in Sources */,
+				6DB39C92199D21F7004D3155 /* DDMainInformationTrophyViewController.m in Sources */,
 				6DF00ED0184F444E00F8F3C5 /* DDCustomPlayerListCollectionViewCell.m in Sources */,
 				6D3A26BC18B7A1FB00545FF2 /* DDCategoriesListEventViewController.m in Sources */,
 				6D61F6631851DBB600759AFC /* DDCategorieListViewController.m in Sources */,

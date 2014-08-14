@@ -8,18 +8,26 @@
 
 #import "DDRootTrophyViewController.h"
 #import "DDTrophyRootCell.h"
+#import "DDCategoryMiniatureCollectionViewCell.h"
+#import "DDMainInformationTrophyViewController.h"
 
 @interface DDRootTrophyViewController ()
+{
+    NSMutableArray *arrayCategories;
+    CategoryTask *category;
+}
 
 @end
 
 @implementation DDRootTrophyViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithCoder:aDecoder];
     if (self) {
-        // Custom initialization
+        //On récupère le tableau des catégories
+        arrayCategories = [[NSMutableArray alloc] initWithArray:[[DDDatabaseAccess instance] getCategoryTasks]];
+        category = [arrayCategories objectAtIndex:0];
     }
     return self;
 }
@@ -31,59 +39,75 @@
     //On configure le background de la vue
     [[self view] setBackgroundColor:COULEUR_WHITE];
     
-    //On s'enregistre sur la classe de la cellule
-    [self.tableViewTrophy registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    //On s'abonne a un type de cellule pour la collectionView
+    [self.collectionViewMiniature registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"CellCollectionView"];
     
-    //On récupère le tableau des catégories
-    _arrayCategory = [NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getCategoryTasks]];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-#pragma mark - UITableView Datasource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.arrayCategory count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //On récupère la catégorie à l'index donnée
-    CategoryTask *category = [self.arrayCategory objectAtIndex:indexPath.row];
- 
-    //On récupère le nombre total de trophées pour la catégorie donnée
-    int numberTotalTrophy = (int)[[[DDDatabaseAccess instance] getTasksForCategory:category] count] * 3;
-    int numberBronzeTrophyRealised = 0;
-    int numberArgentTrophyRealised = 0;
-    int numberOrTrophyRealised = 0;
-    int numberTotalTrophyRealised = 0;
+    //On ajoute le mainTrophyController à la scrollView
+    _mainInformationTrophyViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"MainInformationTrophyViewController"];
+    [self.scrollViewGeneral addSubview:[self.mainInformationTrophyViewController view]];
     
-    //On récupère le joueur sélectionné
-    Player *player = [[DDManagerSingleton instance] currentPlayer];
-    //Si le joueur existe on récupère le nombre de trophées qu'il a réalisé
-    if (player != nil)
-    {
-        numberBronzeTrophyRealised = [[DDDatabaseAccess instance] getNumberOfTrophyAchievedForPlayer:player inCategory:category andType:@"Bronze"];
-        numberArgentTrophyRealised = [[DDDatabaseAccess instance] getNumberOfTrophyAchievedForPlayer:player inCategory:category andType:@"Argent"];
-        numberOrTrophyRealised = [[DDDatabaseAccess instance] getNumberOfTrophyAchievedForPlayer:player inCategory:category andType:@"Or"];
-        numberTotalTrophyRealised = numberBronzeTrophyRealised + numberArgentTrophyRealised + numberOrTrophyRealised;
-    }
+    //On met à jour les composants
+    [self updateComponent];
+}
+
+
+#pragma mark - Fonctions du controller
+
+//On met à jour la vue
+- (void)updateComponent
+{
+    [self.mainInformationTrophyViewController setCategory:category];
+    [self.mainInformationTrophyViewController updateComponent];
+    
+    [self.pageControl setCurrentPageIndicatorTintColor:[[[DDManagerSingleton instance] dictColor] objectForKey:category.libelle]];
+}
+
+#pragma mark - UICollectionViewDelegate functions
+
+- (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section
+{
+    return [arrayCategories count];
+}
+
+- (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView
+{
+    return 1;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    //On récupère le dictionnaire des couleurs des catégories
+    NSDictionary *dictColor = [[DDManagerSingleton instance] dictColor];
     
     //On récupère la cellule
-    DDTrophyRootCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TrophyRootCell" forIndexPath:indexPath];
+    DDCategoryMiniatureCollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"CategoryMiniatureCell" forIndexPath:indexPath];
     
-    //On configure la cellule
-    [cell.viewCouleurCategory setBackgroundColor:[[[DDManagerSingleton instance] dictColor] objectForKey:category.libelle]];
-    [cell.labelName setText:category.libelle];
-    [cell.labelNumberTrophyCategory setText:[NSString stringWithFormat:@"%i/%i", numberTotalTrophyRealised ,numberTotalTrophy]];
+    //On récupère la category
+    CategoryTask *categoryMiniature = [arrayCategories objectAtIndex:indexPath.row];
+    
+    //On configure l'image du joueur
+    [cell.imageViewCategory.layer setCornerRadius:10.0];
+    [cell.imageViewCategory setBackgroundColor:[dictColor objectForKey:categoryMiniature.libelle]];
+    
+    //On configure le label du nom de la catégorie
+    [cell.labelName setTextColor:COULEUR_WHITE];
+    [cell.labelName setFont:POLICE_CATEGORY_TROPHY_MINIATURE];
+    [cell.labelName setText:categoryMiniature.libelle];
     
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    //On récupère la categorie
+    category = [arrayCategories objectAtIndex:indexPath.row];
+    //On met à jour les composants
+    [self updateComponent];
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 @end

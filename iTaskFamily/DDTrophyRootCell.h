@@ -17,12 +17,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelNumberTrophyCategory;
 
 //Vue de la couleur de la catégorie
-@property (weak, nonatomic) IBOutlet UIView *viewCouleurCategory;
+@property (weak, nonatomic) IBOutlet UIView *viewSeparator;
 
 //Label du nom de la catégorie
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
 
-//Vue du background des trophées
-@property (weak, nonatomic) IBOutlet UIView *viewBackgroundTrophies;
+//Vue du background des categories
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewBackgroundCategory;
+//Vue du background des categories 2
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewBackgroundCategory2;
+
 
 @end

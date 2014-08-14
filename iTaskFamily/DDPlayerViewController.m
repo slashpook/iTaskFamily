@@ -99,18 +99,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self updateComponent];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -190,7 +181,7 @@
         
         //On rend la tableView accessible
         [[self.rootTrophyNavigationViewController view] setUserInteractionEnabled:YES];
-        [rootTrophyViewController.tableViewTrophy reloadData];
+        [rootTrophyViewController updateComponent];
     }
     else
     {
@@ -207,9 +198,6 @@
         //On désactive la tableView
         [self.rootTrophyNavigationViewController popToRootViewControllerAnimated:YES];
         [[self.rootTrophyNavigationViewController view] setUserInteractionEnabled:NO];
-        
-        //On fait scroller la vue vers le haut
-        [rootTrophyViewController.tableViewTrophy scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
     }
     
     //On recharge la collection view

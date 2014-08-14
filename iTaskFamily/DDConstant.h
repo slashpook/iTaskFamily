@@ -99,6 +99,9 @@ typedef enum {
 #define POLICE_EVENTINFO_TASK [UIFont fontWithName:@"HelveticaNeue-Light" size:24.0]
 #define POLICE_EVENTINFO_BULLE [UIFont fontWithName:@"HelveticaNeue-Light" size:28.0]
 #define POLICE_EVENTINFO_COMMENT [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0]
+#define POLICE_TROPHY_TITLE [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0]
+#define POLICE_TROPHY_CONTENT [UIFont fontWithName:@"HelveticaNeue" size:17.0]
+#define POLICE_CATEGORY_TROPHY_MINIATURE [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0]
 
 
 #pragma mark - Notification

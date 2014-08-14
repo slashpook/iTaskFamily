@@ -118,6 +118,25 @@
     return [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 
+//On récupère tous les achievements pour un player donné à la catégorie donnée
+- (NSArray *)getAchievementsForPlayer:(Player *)player forCategory:(CategoryTask *)category
+{
+    //On défini la classe pour la requète
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Achievement" inManagedObjectContext:self.dataBaseManager.managedObjectContext];
+    [fetchRequest setEntity:entityDescription];
+    
+    //On rajoute un filtre
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"player.pseudo == %@ && task.category.libelle == %@", player.pseudo, category.libelle];
+    [fetchRequest setPredicate:newPredicate];
+    
+    NSError *error;
+    
+    //On renvoie le tableau de la requète
+    return [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+}
+
 //On récupère tous les achievements d'une semaine donnée pour un player donné (utile pour récupérer les points gagnés dans la semaine)
 - (NSArray *)getAchievementsForPlayer:(Player *)player atWeekAndYear:(NSString *)weekAndYear
 {
@@ -281,7 +300,7 @@
             achievement = [self createAchievementForPlayer:player andTask:task atWeekAndYear:weekAndYear];
         
         //On regarde si on a pas déjà un event qui existe pour ce jour
-        Event *eventInDB = [self getEventForAchievement:achievement andDay:event.day];
+        Event *eventInDB = [self getEventForAchievement:achievement andDay:event.day forTask:task];
         
         //Si on force pas l'update, on retourne un message d'erreur si l'event existe déjà
         if (eventInDB != nil && forceUpdate == NO)
@@ -330,7 +349,7 @@
         else
         {
             //On regarde si on a pas déjà un event qui existe pour ce jour
-            Event *eventInDB = [self getEventForAchievement:achievement andDay:event.day];
+            Event *eventInDB = [self getEventForAchievement:achievement andDay:event.day forTask:task];
             
             //Si on force pas l'update, on retourne un message d'erreur si l'event existe déjà
             if (eventInDB != nil && forceUpdate == NO)
@@ -434,6 +453,30 @@
     
     //On rajoute un filtre
     NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && (achievement.weekAndYear == %@ || (achievement.weekAndYear < %@ && (recurrenceEnd.weekAndYear == 0 || recurrenceEnd.weekAndYear >= %@))) && day == %@", player.pseudo, weekAndYear, weekAndYear, weekAndYear, day];
+    [fetchRequest setPredicate:newPredicate];
+    
+    //On rajoute un tri sur l'history
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"achievement.task.libelle"
+                                                                   ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSError *error;
+    //On renvoie le tableau de la requète
+    return [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+}
+
+//On récupère tous les events d'un joueur donné, pour une semaine donnée et une catégorie donnée
+- (NSArray *)getEventsForPlayer:(Player *)player atWeekAndYear:(NSString *)weekAndYear forCategory:(CategoryTask *)category
+{
+    //On défini la classe pour la requète
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Event" inManagedObjectContext:self.dataBaseManager.managedObjectContext];
+    [fetchRequest setEntity:entityDescription];
+    
+    //On rajoute un filtre
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && (achievement.weekAndYear == %@ || (achievement.weekAndYear < %@ && (recurrenceEnd.weekAndYear == 0 || recurrenceEnd.weekAndYear >= %@))) && achievement.task.category.libelle == %@", player.pseudo, weekAndYear, weekAndYear, weekAndYear, category.libelle];
     [fetchRequest setPredicate:newPredicate];
     
     //On rajoute un tri sur l'history
@@ -555,7 +598,7 @@
 }
 
 //On récupère l'event de l'achievement donnée, au jour donné
-- (Event *)getEventForAchievement:(Achievement *)achievement andDay:(NSString *)day
+- (Event *)getEventForAchievement:(Achievement *)achievement andDay:(NSString *)day forTask:(Task *)task
 {
     //On défini la classe pour la requète
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -564,7 +607,7 @@
     [fetchRequest setEntity:entityDescription];
     
     //On rajoute un filtre
-    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && (achievement.weekAndYear == %@ || (achievement.weekAndYear < %@ && recurrenceEnd.weekAndYear >= 0)) && day == %@", achievement.player.pseudo, achievement.weekAndYear, achievement.weekAndYear, day];
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"achievement.player.pseudo == %@ && (achievement.weekAndYear == %@ || (achievement.weekAndYear < %@ && recurrenceEnd.weekAndYear >= 0)) && day == %@ && achievement.task.libelle == %@", achievement.player.pseudo, achievement.weekAndYear, achievement.weekAndYear, day, task.libelle];
     [fetchRequest setPredicate:newPredicate];
     
     //On rajoute un tri sur l'history
@@ -858,6 +901,27 @@
     
     return scoreTotal;
 }
+
+//On récupère le score total pour le player pour la catégorie donnée
+- (int)getScoreTotalForPlayer:(Player *)player forCategory:(CategoryTask *)category
+{
+    NSArray *arrayAchievement = [self getAchievementsForPlayer:player forCategory:category];
+    int scoreTotal = 0;
+    
+    //On parse le tableau des achievements
+    for (Achievement *achievement in arrayAchievement)
+    {
+        //On parse les event d'un achievement donné
+        for (Event *event in [[achievement events] allObjects])
+        {
+            if ([event.checked boolValue] == YES)
+                scoreTotal += [event.achievement.task.point intValue];
+        }
+    }
+    
+    return scoreTotal;
+}
+
 
 //On supprime le player donné
 - (void)deletePlayer:(Player *)player
