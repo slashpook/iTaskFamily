@@ -151,6 +151,8 @@
     //On récupère une référence vers le trophyRootViewController
     DDRootTrophyViewController *rootTrophyViewController = [[self.rootTrophyNavigationViewController viewControllers] objectAtIndex:0];
     
+    int totalTrophyCategory = (int)[[[DDDatabaseAccess instance] getTasks] count] * 3;
+    
     //Suivant si on a des joueurs ou non, on applique des configurations différentes
     if ([self.arrayPlayer count] > 0)
     {
@@ -175,7 +177,8 @@
         //On met à jour les informations du joueur en cours
         [self.imageViewProfil setImage:[[[DDManagerSingleton instance] dictImagePlayer] objectForKey:self.currentPlayer.pseudo]];
         [self.labelNameProfil setText:self.currentPlayer.pseudo];
-        [self.labelNbrTrophy setText:[NSString stringWithFormat:@"%i",[[DDDatabaseAccess instance] getNumberOfTrophyAchievedForPlayer:self.currentPlayer]]];
+        int totalTrophyWin = [[DDDatabaseAccess instance] getNumberOfTrophyAchievedForPlayer:self.currentPlayer];
+        [self.labelNbrTrophy setText:[NSString stringWithFormat:@"%i/%i",totalTrophyWin, totalTrophyCategory]];
         [self.labelWeekScore setText:[NSString stringWithFormat:@"%i",[[DDDatabaseAccess instance] getScoreWeekForPlayer:self.currentPlayer forWeekAndYear:[DDHelperController getWeekAndYearForDate:[NSDate date]]]]];
         [self.labelTotalScore setText:[NSString stringWithFormat:@"%i",[[DDDatabaseAccess instance] getScoreTotalForPlayer:self.currentPlayer]]];
         
@@ -191,7 +194,7 @@
         //On met à jour les informations du joueur en cours
         [self.imageViewProfil setImage:[UIImage imageNamed:@"PlayerProfil"]];
         [self.labelNameProfil setText:@"Aucun joueur"];
-        [self.labelNbrTrophy setText:@"0"];
+        [self.labelNbrTrophy setText:[NSString stringWithFormat:@"0/%i", totalTrophyCategory]];
         [self.labelWeekScore setText:@"0"];
         [self.labelTotalScore setText:@"0"];
         

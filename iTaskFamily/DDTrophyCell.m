@@ -1,14 +1,14 @@
 //
-//  DDTrophyRootCell.m
+//  DDTrophyCell.m
 //  iTaskFamily
 //
 //  Created by Damien DELES on 02/12/2013.
 //  Copyright (c) 2013 Damien DELES. All rights reserved.
 //
 
-#import "DDTrophyRootCell.h"
+#import "DDTrophyCell.h"
 
-@implementation DDTrophyRootCell
+@implementation DDTrophyCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

@@ -7,9 +7,9 @@
 //
 
 #import "DDRootTrophyViewController.h"
-#import "DDTrophyRootCell.h"
 #import "DDCategoryMiniatureCollectionViewCell.h"
 #import "DDMainInformationTrophyViewController.h"
+#import "DDListTrophyViewController.h"
 
 @interface DDRootTrophyViewController ()
 {
@@ -42,9 +42,20 @@
     //On s'abonne a un type de cellule pour la collectionView
     [self.collectionViewMiniature registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"CellCollectionView"];
     
-    //On ajoute le mainTrophyController à la scrollView
+    //On ajoute les controllers à la scrollView
     _mainInformationTrophyViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"MainInformationTrophyViewController"];
+    _listTrophyBronzeViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"ListTrophyViewController"];
+    [[self.listTrophyBronzeViewController view] setFrame:CGRectMake(self.scrollViewGeneral.frame.size.width, 0, self.listTrophyBronzeViewController.view.frame.size.width, self.listTrophyBronzeViewController.view.frame.size.height)];
+    _listTrophyArgentViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"ListTrophyViewController"];
+    [[self.listTrophyArgentViewController view] setFrame:CGRectMake(self.scrollViewGeneral.frame.size.width * 2, 0, self.listTrophyArgentViewController.view.frame.size.width, self.listTrophyArgentViewController.view.frame.size.height)];
+    _listTrophyOrViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"ListTrophyViewController"];
+    [[self.listTrophyOrViewController view] setFrame:CGRectMake(self.scrollViewGeneral.frame.size.width * 3, 0, self.listTrophyOrViewController.view.frame.size.width, self.listTrophyOrViewController.view.frame.size.height)];
+    
+    [self.scrollViewGeneral setContentSize:CGSizeMake(self.scrollViewGeneral.frame.size.width * 4, self.scrollViewGeneral.frame.size.height)];
     [self.scrollViewGeneral addSubview:[self.mainInformationTrophyViewController view]];
+    [self.scrollViewGeneral addSubview:[self.listTrophyBronzeViewController view]];
+    [self.scrollViewGeneral addSubview:[self.listTrophyArgentViewController view]];
+    [self.scrollViewGeneral addSubview:[self.listTrophyOrViewController view]];
     
     //On met à jour les composants
     [self updateComponent];
@@ -56,9 +67,19 @@
 //On met à jour la vue
 - (void)updateComponent
 {
+    NSArray *arrayTrophies = [[DDDatabaseAccess instance] getCategoryTrophiesForCategorySorted:category];
+    
     [self.mainInformationTrophyViewController setCategory:category];
     [self.mainInformationTrophyViewController updateComponent];
-    
+    [self.listTrophyBronzeViewController setCategory:category];
+    [self.listTrophyBronzeViewController setTrophy:[arrayTrophies objectAtIndex:0]];
+    [self.listTrophyBronzeViewController updateComponent];
+    [self.listTrophyArgentViewController setCategory:category];
+    [self.listTrophyArgentViewController setTrophy:[arrayTrophies objectAtIndex:1]];
+    [self.listTrophyArgentViewController updateComponent];
+    [self.listTrophyOrViewController setCategory:category];
+    [self.listTrophyOrViewController setTrophy:[arrayTrophies objectAtIndex:2]];
+    [self.listTrophyOrViewController updateComponent];
     [self.pageControl setCurrentPageIndicatorTintColor:[[[DDManagerSingleton instance] dictColor] objectForKey:category.libelle]];
 }
 

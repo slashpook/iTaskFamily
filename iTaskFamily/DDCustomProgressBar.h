@@ -19,6 +19,12 @@
 //Player courant
 @property (strong, nonatomic) Player *player;
 
+//Category pour la progressBar
+@property (strong, nonatomic) CategoryTask *category;
+
+//Type du trophés réalisé
+@property (strong, nonatomic) NSString *typeTrophy;
+
 //Couleur de fond
 @property (strong, nonatomic) UIColor *colorBackground;
 

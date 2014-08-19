@@ -36,20 +36,37 @@
     [self.colorBackground setFill];
     [rectanglePath fill];
     
-    //On récupère le nombre de fois qu'on a réalisé la tache
-    int countOfTaskRealized = [[DDDatabaseAccess instance] getNumberOfEventCheckedForPlayer:self.player forTask:self.trophy.task];
-    
-    //Si on a un début de progression
-    if (countOfTaskRealized != 0)
+    if (self.category == nil)
     {
-        //Si on a réalisé plus que ne le demande le trophy, on met le count au total
-        if (countOfTaskRealized > [self.trophy.iteration intValue])
-            countOfTaskRealized = [self.trophy.iteration intValue];
+        //On récupère le nombre de fois qu'on a réalisé la tache
+        int countOfTaskRealized = [[DDDatabaseAccess instance] getNumberOfEventCheckedForPlayer:self.player forTask:self.trophy.task];
         
-        float progression = countOfTaskRealized / [self.trophy.iteration floatValue];
-        UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(0, 0, self.frame.size.width * progression, self.frame.size.height) cornerRadius:5.0];
-        [self.colorRealisation setFill];
-        [roundedRectanglePath fill];
+        //Si on a un début de progression
+        if (countOfTaskRealized != 0)
+        {
+            //Si on a réalisé plus que ne le demande le trophy, on met le count au total
+            if (countOfTaskRealized > [self.trophy.iteration intValue])
+                countOfTaskRealized = [self.trophy.iteration intValue];
+            
+            float progression = countOfTaskRealized / [self.trophy.iteration floatValue];
+            UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(0, 0, self.frame.size.width * progression, self.frame.size.height) cornerRadius:5.0];
+            [self.colorRealisation setFill];
+            [roundedRectanglePath fill];
+        }
+    }
+    else
+    {
+        //On récupère le nombre de fois qu'on a réalisé la tache
+        int countOfTaskRealized = [[DDDatabaseAccess instance] getNumberOfTrophyAchievedForPlayer:self.player inCategory:self.category andType:self.typeTrophy];
+        
+        //Si on a un début de progression
+        if (countOfTaskRealized != 0)
+        {
+            float progression = countOfTaskRealized / [[[DDDatabaseAccess instance] getTasksForCategory:self.category] count];
+            UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(0, 0, self.frame.size.width * progression, self.frame.size.height) cornerRadius:5.0];
+            [self.colorRealisation setFill];
+            [roundedRectanglePath fill];
+        }
     }
     
     CGContextSaveGState(context);

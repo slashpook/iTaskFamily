@@ -153,6 +153,9 @@
 //On récupère le premier player
 - (Player *)getFirstPlayer;
 
+//On récupère tous les players trié pour le type de podium demandé
+- (NSArray *)getPlayersSortedByTypeOfPodium:(TypeOfPodium)typeOfPodium;
+
 //On récupère le joueur donné
 - (Player *)getPlayerForPseudo:(NSString *)pseudo;
 

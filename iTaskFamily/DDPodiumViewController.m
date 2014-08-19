@@ -76,7 +76,7 @@
 - (void)updateComponentsAndDisplayProgressBar:(BOOL)display forTypeOfPodium:(TypeOfPodium)typeOfPodium
 {
     //On récupère le tableau des joueurs
-    NSArray *arrayPlayer = [[DDDatabaseAccess instance] getPlayers];
+    NSArray *arrayPlayer = [[DDDatabaseAccess instance] getPlayersSortedByTypeOfPodium:typeOfPodium];
     
     //On crée une variable pour récupérer le plus haut score
     int highScore;
@@ -134,7 +134,7 @@
             [progressView setColorView:self.colorProgressView];
             [progressView setBackgroundColor:[UIColor clearColor]];
             [progressView setNeedsDisplay];
-            [progressView setAlpha:(pourcentOfHighNumber + (pourcentOfHighNumber * 0.25))];
+            [progressView setAlpha:((1.0/(i+1)) + 0.25)];
             
             //On reset les frames des éléments
             [progressView setFrame:CGRectMake(progressView.frame.origin.x, ORIGIN_SEPARATOR, progressView.frame.size.width, 0)];

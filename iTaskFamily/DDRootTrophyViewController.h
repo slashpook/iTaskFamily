@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class DDMainInformationTrophyViewController;
+@class DDListTrophyViewController;
 
 @interface DDRootTrophyViewController : UIViewController
 
@@ -26,6 +27,15 @@
 
 //Le controller avec les infos principales
 @property (strong, nonatomic) DDMainInformationTrophyViewController *mainInformationTrophyViewController;
+
+//Le controller de la liste des trophées de bronze
+@property (strong, nonatomic) DDListTrophyViewController *listTrophyBronzeViewController;
+
+//Le controller de la liste des trophées d'argent
+@property (strong, nonatomic) DDListTrophyViewController *listTrophyArgentViewController;
+
+//Le controller de la liste des trophées d'or
+@property (strong, nonatomic) DDListTrophyViewController *listTrophyOrViewController;
 
 
 #pragma mark - Fonctions

@@ -68,7 +68,7 @@
         NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
         [fetchRequest setSortDescriptors:sortDescriptors];
     }
-        
+    
     NSError *error;
     
     //On renvoie le tableau de la requète
@@ -113,7 +113,7 @@
     [fetchRequest setPredicate:newPredicate];
     
     NSError *error;
-
+    
     //On renvoie le tableau de la requète
     return [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
@@ -151,7 +151,7 @@
     [fetchRequest setPredicate:newPredicate];
     
     NSError *error;
-
+    
     //On renvoie le tableau de la requète
     return [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
@@ -200,7 +200,7 @@
 - (NSArray *)getCategoryTasks
 {
     NSArray *arrayEntities = [self getAllObjectForEntity:@"CategoryTask" andSortWithProperties:@"libelle"];
-
+    
     return arrayEntities;
 }
 
@@ -809,6 +809,58 @@
     return nil;
 }
 
+//On récupère tous les players trié pour le type de podium demandé
+- (NSArray *)getPlayersSortedByTypeOfPodium:(TypeOfPodium)typeOfPodium
+{
+    NSArray *arrayPlayer = [self getPlayers];
+    NSMutableArray *arrayPlayerSorted = [[NSMutableArray alloc] init];
+    NSMutableArray *arrayScoreSorted = [[NSMutableArray alloc] init];
+    
+    for (Player *player in arrayPlayer)
+    {
+        int score = 0;
+        if (typeOfPodium == SCORE_SEMAINE)
+            score = [self getScoreWeekForPlayer:player forWeekAndYear:[DDHelperController getWeekAndYearForDate:[NSDate date]]];
+        else if (typeOfPodium == SCORE_TOTAL)
+            score = [self getScoreTotalForPlayer:player];
+        else
+            score = [self getNumberOfTrophyAchievedForPlayer:player];
+        
+        if ([arrayScoreSorted count] == 0)
+        {
+            [arrayPlayerSorted addObject:player];
+            [arrayScoreSorted addObject:[NSNumber numberWithInt:score]];
+        }
+        else
+        {
+            int count = (int)[arrayScoreSorted count];
+            for (int i = 0; i < count; i++)
+            {
+                if ([[arrayScoreSorted objectAtIndex:i] intValue] < score)
+                {
+                    [arrayPlayerSorted insertObject:player atIndex:i];
+                    [arrayScoreSorted insertObject:[NSNumber numberWithInt:score] atIndex:i];
+                    break;
+                }
+                else if (i == [arrayScoreSorted count] - 1 && [[arrayScoreSorted objectAtIndex:i] intValue] > score)
+                {
+                    [arrayPlayerSorted addObject:player];
+                    [arrayScoreSorted addObject:[NSNumber numberWithInt:score]];
+                    break;
+                }
+                else if (i == [arrayScoreSorted count] - 1)
+                {
+                    [arrayPlayerSorted insertObject:player atIndex:0];
+                    [arrayScoreSorted insertObject:[NSNumber numberWithInt:score] atIndex:0];
+                    break;
+                }
+            }
+        }
+    }
+    
+    return arrayPlayerSorted;
+}
+
 //On récupère le joueur donné
 - (Player *)getPlayerForPseudo:(NSString *)pseudo
 {
@@ -1049,7 +1101,7 @@
     if ([task.libelle length] != 0 && task.point != nil)
     {
         //On fait les tests sur la tache
-        if ([self getCountOfTaskWithLibelle:task.libelle] > 2)
+        if ([self getCountOfTaskWithLibelle:task.libelle] < 2)
         {
             //On sauvegarde la task ainsi que les trophies
             [self saveContext];
