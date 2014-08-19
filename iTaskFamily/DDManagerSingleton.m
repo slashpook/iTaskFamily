@@ -85,7 +85,7 @@
         
     };
     
-    [self.library enumerateGroupsWithTypes:ALAssetsGroupAlbum
+    [self.library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos
                                 usingBlock:assetGroupEnumerator
                               failureBlock: ^(NSError *error) {
                                   NSLog(@"Failure");
