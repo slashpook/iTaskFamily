@@ -42,7 +42,7 @@
     //On s'abonne a un type de cellule pour la collectionView
     [self.collectionViewMiniature registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"CellCollectionView"];
     
-    //On ajoute les controllers à la scrollView
+    //On crée les controllers et on les ajoute à la scrollView
     _mainInformationTrophyViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"MainInformationTrophyViewController"];
     _listTrophyBronzeViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"ListTrophyViewController"];
     [[self.listTrophyBronzeViewController view] setFrame:CGRectMake(self.scrollViewGeneral.frame.size.width, 0, self.listTrophyBronzeViewController.view.frame.size.width, self.listTrophyBronzeViewController.view.frame.size.height)];
@@ -52,10 +52,15 @@
     [[self.listTrophyOrViewController view] setFrame:CGRectMake(self.scrollViewGeneral.frame.size.width * 3, 0, self.listTrophyOrViewController.view.frame.size.width, self.listTrophyOrViewController.view.frame.size.height)];
     
     [self.scrollViewGeneral setContentSize:CGSizeMake(self.scrollViewGeneral.frame.size.width * 4, self.scrollViewGeneral.frame.size.height)];
+    [self.scrollViewGeneral setClipsToBounds:NO];
+    [self.scrollViewGeneral setDelegate:self];
     [self.scrollViewGeneral addSubview:[self.mainInformationTrophyViewController view]];
     [self.scrollViewGeneral addSubview:[self.listTrophyBronzeViewController view]];
     [self.scrollViewGeneral addSubview:[self.listTrophyArgentViewController view]];
     [self.scrollViewGeneral addSubview:[self.listTrophyOrViewController view]];
+    
+    [self.pageControl setNumberOfPages:4];
+    [self.pageControl setCurrentPage:0];
     
     //On met à jour les composants
     [self updateComponent];
@@ -69,6 +74,7 @@
 {
     NSArray *arrayTrophies = [[DDDatabaseAccess instance] getCategoryTrophiesForCategorySorted:category];
     
+    //On met à jour toutes les sous vue de la scrollView
     [self.mainInformationTrophyViewController setCategory:category];
     [self.mainInformationTrophyViewController updateComponent];
     [self.listTrophyBronzeViewController setCategory:category];
@@ -129,6 +135,23 @@
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     return UIEdgeInsetsMake(0, 0, 0, 0);
+}
+
+
+#pragma mark - UIScrollViewDelegate functions
+
+//Fonction utilisé pour mettre à jour les données du joueur
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //On récupère la page courante
+    int currentPage = floor((scrollView.contentOffset.x - scrollView.frame.size.width / 2) / scrollView.frame.size.width) + 1;
+    self.pageControl.currentPage = currentPage;
+}
+
+//On change la page
+- (IBAction)changePlayerInPageControl:(id)sender
+{
+    [self.scrollViewGeneral setContentOffset:CGPointMake((self.scrollViewGeneral.contentSize.width / 4) * self.pageControl.currentPage, 0) animated:YES];
 }
 
 @end

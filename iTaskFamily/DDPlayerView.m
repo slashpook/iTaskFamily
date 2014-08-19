@@ -262,7 +262,7 @@
 {
     if ([self.arrayPlayer count] > 0)
     {
-        [self.scrollViewPlayer setContentOffset:CGPointMake((self.scrollViewPlayer.contentSize.width / [self.arrayPlayer count]) * self.pageControl.currentPage, 0)];
+        [self.scrollViewPlayer setContentOffset:CGPointMake((self.scrollViewPlayer.contentSize.width / [self.arrayPlayer count]) * self.pageControl.currentPage, 0) animated:YES];
         [self refreshPageControlWithScrollView:self.scrollViewPlayer];
     }
     else

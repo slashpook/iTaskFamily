@@ -121,9 +121,6 @@
 //On récupère tous l'évènement dans le passé le plus proche à celui que l'on crée est qui n'est pas terminé
 - (Event *)getAnteriorEventRecurrentForPlayer:(Player *)player closeToWeekAndYear:(NSString *)weekAndYear forTask:(Task *)task andDay:(NSString *)day;
 
-//On récupère l'event de l'achievement donnée, au jour donné
-- (Event *)getEventForAchievement:(Achievement *)achievement andDay:(NSString *)day;
-
 //On récupère le nombre d'event de l'achievement donnée, au jour donné
 - (int)getCountOfEventForAchievement:(Achievement *)achievement andDay:(NSString *)day;
 

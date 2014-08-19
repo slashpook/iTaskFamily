@@ -38,14 +38,16 @@
 //On met à jour la vue
 - (void)updateComponent
 {
+    //On affiche le nom du trophée
     [self.labelLibelleTrophy setText:self.trophy.libelle];
     
+    //Suivant le type de trophée, on affiche l'image qui lui correspond
     if ([self.trophy.type isEqualToString:@"Bronze"])
-       [self.imageViewTrophy setImage:[UIImage imageNamed:@"Trophy3"]];
+       [self.imageViewTrophy setImage:[UIImage imageNamed:@"TrophyManager3"]];
     else if ([self.trophy.type isEqualToString:@"Argent"])
-        [self.imageViewTrophy setImage:[UIImage imageNamed:@"Trophy2"]];
+        [self.imageViewTrophy setImage:[UIImage imageNamed:@"TrophyManager2"]];
     else
-        [self.imageViewTrophy setImage:[UIImage imageNamed:@"Trophy1"]];
+        [self.imageViewTrophy setImage:[UIImage imageNamed:@"TrophyManager1"]];
     
     [self.tableViewTrophy reloadData];
 }
@@ -63,6 +65,7 @@
     //On récupère la cellule
     DDTrophyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TrophyCell" forIndexPath:indexPath];
     
+    //On set la progress Bar
     [cell.progressBar setBackgroundColor:[UIColor clearColor]];
     [cell.progressBar setColorBackground:COULEUR_BLACK];
     

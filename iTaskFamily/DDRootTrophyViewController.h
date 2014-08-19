@@ -11,7 +11,7 @@
 @class DDMainInformationTrophyViewController;
 @class DDListTrophyViewController;
 
-@interface DDRootTrophyViewController : UIViewController
+@interface DDRootTrophyViewController : UIViewController <UIScrollViewDelegate>
 
 
 #pragma mark - Variable
@@ -42,5 +42,8 @@
 
 //On met à jour la vue
 - (void)updateComponent;
+
+//On change la page
+- (IBAction)changePlayerInPageControl:(id)sender;
 
 @end
