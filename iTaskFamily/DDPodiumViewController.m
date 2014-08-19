@@ -39,9 +39,9 @@
     [self.imageViewTroisieme.layer setMasksToBounds:YES];
     
     //On configure le bouton pour ajouter des récompenses
-    [self.buttonAddReward.layer setCornerRadius:35.0];
+    [self.buttonAddReward.layer setCornerRadius:40.0];
     [self.buttonAddReward.layer setBorderColor:COULEUR_TASK.CGColor];
-    [self.buttonAddReward.layer setBorderWidth:1.0];
+    [self.buttonAddReward.layer setBorderWidth:2.0];
     [self.buttonAddReward.layer setMasksToBounds:YES];
     
     //On initialise le tableau qui va contenir tous les éléments et on lui ajoutes des sous tableaux
@@ -134,7 +134,11 @@
             [progressView setColorView:self.colorProgressView];
             [progressView setBackgroundColor:[UIColor clearColor]];
             [progressView setNeedsDisplay];
-            [progressView setAlpha:((1.0/(i+1)) + 0.25)];
+            //On change l'alpha du graphe pour les différents joueurs
+            if (i == 0)
+                [progressView setAlpha:1.0];
+            else
+                [progressView setAlpha:(1.0 - (i/3.0))];
             
             //On reset les frames des éléments
             [progressView setFrame:CGRectMake(progressView.frame.origin.x, ORIGIN_SEPARATOR, progressView.frame.size.width, 0)];
@@ -160,11 +164,19 @@
 
             //Mise à jour de l'image du joueur
             [imageViewProfil setImage:[[[DDManagerSingleton instance] dictImagePlayer] objectForKey:player.pseudo]];
-            imageViewProfil.layer.borderColor = self.colorProgressView.CGColor;
+            
             if ([[[[DDManagerSingleton instance] currentPlayer] pseudo] isEqualToString:player.pseudo])
-                imageViewProfil.layer.borderWidth = 2;
+            {
+               [imageViewProfil setFrame:CGRectMake(viewSeparation.frame.origin.x - 10, 473, 130, 130)];
+                [imageViewProfil.layer setCornerRadius:65.0];
+                [labelPseudo setFont:POLICE_PODIUM_PLAYER_SELECTED];
+            }
             else
-                imageViewProfil.layer.borderWidth = 0;
+            {
+                [imageViewProfil setFrame:CGRectMake(viewSeparation.frame.origin.x, 483, 110, 110)];
+                [imageViewProfil.layer setCornerRadius:55.0];
+                [labelPseudo setFont:POLICE_PODIUM_PLAYER_NORMAL];
+            }
  
             //Mise à jour du nom du joueur
             [labelPseudo setText:player.pseudo];

@@ -102,6 +102,8 @@ typedef enum {
 #define POLICE_TROPHY_TITLE [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0]
 #define POLICE_TROPHY_CONTENT [UIFont fontWithName:@"HelveticaNeue" size:17.0]
 #define POLICE_CATEGORY_TROPHY_MINIATURE [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0]
+#define POLICE_PODIUM_PLAYER_NORMAL [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0]
+#define POLICE_PODIUM_PLAYER_SELECTED [UIFont fontWithName:@"HelveticaNeue" size:20.0]
 
 
 #pragma mark - Notification

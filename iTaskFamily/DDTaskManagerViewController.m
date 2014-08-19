@@ -77,6 +77,16 @@
     [self.textFieldOr setBackgroundColor:COULEUR_WHITE];
     [self.textFieldOr setFont:POLICE_TASK_CONTENT];
     
+    //On set le delegate aux textFields de la tableView
+    [self.tableViewTask.textFieldNameTask setDelegate:self];
+    [self.tableViewTask.textFieldPoint setDelegate:self];
+    
+    //On met en place la notification pour savoir quand le clavier est caché
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHide:)
+                                                 name:UIKeyboardDidHideNotification
+                                               object:nil];
+    
     //On met à jour les composants
     [self updateComponent];
 }
@@ -218,7 +228,7 @@
     [self.task setLibelle:self.tableViewTask.textFieldNameTask.text];
     [self.task setPoint:[NSNumber numberWithInt:[self.tableViewTask.textFieldPoint.text intValue]]];
     [self.task setCategory:self.currentCategory];
-    
+
     //On boucle sur les réalisations de la tache pour les mettres à jour
     for (Trophy *trophy in [self.task.trophies allObjects])
     {
@@ -263,19 +273,27 @@
 }
 
 
-#pragma mark Fonctions de UITextViewDelegate
+#pragma mark - Keyboard fonctions
+
+//Fonction appelé lorsque l'on commence l'édition d'un champs
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithInteger:220]];
+}
+
+//Fonction appelé lorsqu'on l'on termine l'édition d'un champs
+- (void)keyboardDidHide:(NSNotification *)notif
+{
+    //On redescend la vue
+    [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithInteger:0]];
+}
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithBool:true]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithInteger:220]];
     return true;
 }
 
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithBool:false]];
-    return true;
-}
 
 
 #pragma mark - NavigationBar fonctions
