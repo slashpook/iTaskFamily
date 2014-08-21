@@ -71,6 +71,7 @@
 		6D9B3C2E191BF45D0001C672 /* CategoryTrophy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3C2D191BF45D0001C672 /* CategoryTrophy.m */; };
 		6DAE048418D086E100F6765E /* DDCustomButtonNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAE048318D086E100F6765E /* DDCustomButtonNotification.m */; };
 		6DB39C92199D21F7004D3155 /* DDMainInformationTrophyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB39C91199D21F7004D3155 /* DDMainInformationTrophyViewController.m */; };
+		6DB8F1FA19A5E19F00B22DB2 /* DDCustomColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8F1F919A5E19F00B22DB2 /* DDCustomColorViewController.m */; };
 		6DC986F6185092A200A5A65F /* DDCustomProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC986F5185092A200A5A65F /* DDCustomProgressBar.m */; };
 		6DC986FA1850E89B00A5A65F /* DDTaskManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC986F91850E89B00A5A65F /* DDTaskManagerViewController.m */; };
 		6DCB2A8A18B6177B000FDFCA /* DDEventManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB2A8918B6177B000FDFCA /* DDEventManagerViewController.m */; };
@@ -222,6 +223,8 @@
 		6DAE048318D086E100F6765E /* DDCustomButtonNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomButtonNotification.m; sourceTree = "<group>"; };
 		6DB39C90199D21F7004D3155 /* DDMainInformationTrophyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMainInformationTrophyViewController.h; sourceTree = "<group>"; };
 		6DB39C91199D21F7004D3155 /* DDMainInformationTrophyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMainInformationTrophyViewController.m; sourceTree = "<group>"; };
+		6DB8F1F819A5E19F00B22DB2 /* DDCustomColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomColorViewController.h; sourceTree = "<group>"; };
+		6DB8F1F919A5E19F00B22DB2 /* DDCustomColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomColorViewController.m; sourceTree = "<group>"; };
 		6DC986F4185092A200A5A65F /* DDCustomProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomProgressBar.h; sourceTree = "<group>"; };
 		6DC986F5185092A200A5A65F /* DDCustomProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomProgressBar.m; sourceTree = "<group>"; };
 		6DC986F81850E89B00A5A65F /* DDTaskManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTaskManagerViewController.h; sourceTree = "<group>"; };
@@ -343,6 +346,7 @@
 		6D33D446189FA82A0057D168 /* SettingViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6DB8F1F719A5E18B00B22DB2 /* CustomColorViewController */,
 				6D33D447189FA8460057D168 /* DDSettingViewController.h */,
 				6D33D448189FA8460057D168 /* DDSettingViewController.m */,
 			);
@@ -823,6 +827,15 @@
 			name = MainInformationTrophyViewController;
 			sourceTree = "<group>";
 		};
+		6DB8F1F719A5E18B00B22DB2 /* CustomColorViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6DB8F1F819A5E19F00B22DB2 /* DDCustomColorViewController.h */,
+				6DB8F1F919A5E19F00B22DB2 /* DDCustomColorViewController.m */,
+			);
+			name = CustomColorViewController;
+			sourceTree = "<group>";
+		};
 		6DBB44AD189B9CCD00A5AD66 /* PodiumViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1167,6 +1180,7 @@
 				6D8970CF1848933500F815CD /* UIImage+CustomImage.m in Sources */,
 				6D8970E61848DDC600F815CD /* DDImageCropper.m in Sources */,
 				6D5E3D3B18C374AF003BA0F2 /* DDCustomEventCell.m in Sources */,
+				6DB8F1FA19A5E19F00B22DB2 /* DDCustomColorViewController.m in Sources */,
 				6DC986F6185092A200A5A65F /* DDCustomProgressBar.m in Sources */,
 				6DC986FA1850E89B00A5A65F /* DDTaskManagerViewController.m in Sources */,
 				6D8970CB1848928500F815CD /* DDCustomImagePickerViewController.m in Sources */,

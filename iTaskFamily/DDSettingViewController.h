@@ -7,13 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DDCustomColorViewController.h"
 
+@class DDPopOverViewController;
 @class DDCustomButton;
 
-@interface DDSettingViewController : UIViewController
+
+@interface DDSettingViewController : UIViewController <DDCustomColorViewProtocol>
 
 
 #pragma mark - Variables
+
+//PopOver de la vue
+@property (strong, nonatomic) DDPopOverViewController *popOverViewController;
+
+//Vue pour changer la couleur de l'appli
+@property (strong, nonatomic) DDCustomColorViewController *customColorViewController;
 
 //Vue de la protection
 @property (weak, nonatomic) IBOutlet UIView *viewRecompense;
@@ -26,6 +35,9 @@
 
 //Label info des récompenses
 @property (weak, nonatomic) IBOutlet UILabel *labelInfoRecompense;
+
+//Un boutton pour créer les récompenses
+@property (weak, nonatomic) IBOutlet DDCustomButton *buttonConfigureRecompense;
 
 //Vue de réinitialisation des taches
 @property (weak, nonatomic) IBOutlet UIView *viewTask;
@@ -140,5 +152,8 @@
 
 //Fonction pour changer la couleur de l'appli
 - (IBAction)onPushButtonColor:(id)sender;
+
+//Fonction pour ouvrir une popup et choisir une couleur personalisé
+- (IBAction)onPushButtonChoiceColorPerso:(id)sender;
 
 @end

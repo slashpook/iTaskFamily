@@ -24,7 +24,7 @@
 #import "NKOColorPickerView.h"
 
 CGFloat const NKOPickerViewGradientViewHeight           = 40.f;
-CGFloat const NKOPickerViewGradientTopMargin            = 20.f;
+CGFloat const NKOPickerViewGradientTopMargin            = 40.f;
 CGFloat const NKOPickerViewDefaultMargin                = 10.f;
 CGFloat const NKOPickerViewBrightnessIndicatorWidth     = 16.f;
 CGFloat const NKOPickerViewBrightnessIndicatorHeight    = 48.f;
