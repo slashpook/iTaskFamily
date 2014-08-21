@@ -37,7 +37,7 @@
     [self.navigationController.view.layer setMasksToBounds:YES];
     
     //On met en place la barre de navigation
-    _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:COULEUR_TASK andImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
+    _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:[DDHelperController getMainTheme] andImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
     [[self.custoNavBar view] setFrame:CGRectMake(0, 0, 380, 50)];
     [[self.custoNavBar buttonRight] setTitle:@"Sauver" forState:UIControlStateNormal];
     [[self.custoNavBar buttonLeft] setTitle:@"Annuler" forState:UIControlStateNormal];
@@ -85,6 +85,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardDidHide:)
                                                  name:UIKeyboardDidHideNotification
+                                               object:nil];
+    
+    //On met en place la notification pour mettre à jour le theme
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateTheme)
+                                                 name:UPDATE_THEME
                                                object:nil];
     
     //On met à jour les composants
@@ -143,6 +149,12 @@
                 [self.textFieldOr setText:[NSString stringWithFormat:@"%i", trophy.iteration.intValue]];
         }
     }
+}
+
+//On met à jour le theme
+- (void)updateTheme
+{
+    [self.custoNavBar.view setBackgroundColor:[DDHelperController getMainTheme]];
 }
 
 //On teste si le texte rentré est un chiffre
@@ -266,7 +278,7 @@
         //On initialise la liste des categories
         DDCategorieListViewController *categorieListViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"CategorieListViewController"];
         [categorieListViewController setDelegate:self];
-        [categorieListViewController setCouleurBackground:COULEUR_TASK];
+        [categorieListViewController setCouleurBackground:[DDHelperController getMainTheme]];
         //On push la vue dans le navigation controller
         [self.navigationController pushViewController:categorieListViewController animated:YES];
     }
@@ -274,12 +286,6 @@
 
 
 #pragma mark - Keyboard fonctions
-
-//Fonction appelé lorsque l'on commence l'édition d'un champs
-- (void)textViewDidBeginEditing:(UITextView *)textView
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithInteger:220]];
-}
 
 //Fonction appelé lorsqu'on l'on termine l'édition d'un champs
 - (void)keyboardDidHide:(NSNotification *)notif

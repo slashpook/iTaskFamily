@@ -39,6 +39,21 @@
     return imageViewSnapshot;
 }
 
+//On sauvegarde la couleur dans les NSUserDefault
++ (void)saveThemeWithColor:(UIColor *)color
+{
+    NSData *savedColor = [NSKeyedArchiver archivedDataWithRootObject:color];
+    [[NSUserDefaults standardUserDefaults] setObject:savedColor forKey:@"mainColor"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+//On récupère la couleur
++ (UIColor *)getMainTheme
+{
+    //On désarchive les données
+    UIColor *color = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"mainColor"]];
+    return color;
+}
 
 #pragma mark - Date fonctions
 

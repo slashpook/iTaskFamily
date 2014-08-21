@@ -57,14 +57,11 @@
     [[self textViewComment] setFont:POLICE_EVENT_CELL];
     [[self textViewComment] setTextColor:COULEUR_BLACK];
     
-    //On configure la couleur de teinte des switchs
-    [self.tableViewEvent.switchRecurrence setOnTintColor:COULEUR_HOME];
-    
     //On configure les delegate
     [self.textViewComment setDelegate:self];
     
     //On met en place la barre de navigation
-    _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:COULEUR_HOME andImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
+    _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:[DDHelperController getMainTheme] andImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
     [[self.custoNavBar view] setFrame:CGRectMake(0, 0, 380, 50)];
     [[self.custoNavBar buttonRight] setTitle:@"Sauver" forState:UIControlStateNormal];
     [[self.custoNavBar buttonLeft] setTitle:@"Annuler" forState:UIControlStateNormal];
@@ -76,8 +73,15 @@
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
     
+    //On met en place la notification pour mettre à jour le theme
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateTheme)
+                                                 name:UPDATE_THEME
+                                               object:nil];
+    
     //On met à jour les composants
     [self updateComponent];
+    [self updateTheme];
 }
 
 - (void)didReceiveMemoryWarning
@@ -120,6 +124,13 @@
 {
     [self.tableViewEvent.labelTacheContent setText:self.task.libelle];
     [self.tableViewEvent.labelDateContent setText:[self formatOccurence]];
+}
+
+//On met à jour le theme
+- (void)updateTheme
+{
+    [self.custoNavBar.view setBackgroundColor:[DDHelperController getMainTheme]];
+    [self.tableViewEvent.switchRecurrence setOnTintColor:[DDHelperController getMainTheme]];
 }
 
 //On affiche correctement le string

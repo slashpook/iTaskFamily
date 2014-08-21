@@ -34,7 +34,7 @@
         _arrayImagePicker = [[NSMutableArray alloc] init];
         _library = [[ALAssetsLibrary alloc] init];
         _dictImagePlayer = [[NSMutableDictionary alloc] init];
-        
+                
         //On récupère la liste des joueurs
         NSMutableArray *arrayPlayer = [NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getPlayers]];
         

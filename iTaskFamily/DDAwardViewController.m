@@ -72,7 +72,7 @@
     [self.navigationController.view.layer setMasksToBounds:YES];
     
     //On met en place la barre de navigation
-    _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:COULEUR_PODIUM andImage:[UIImage imageNamed:@"AwardAddButtonNavBar"]];
+    _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:[DDHelperController getMainTheme] andImage:[UIImage imageNamed:@"AwardAddButtonNavBar"]];
     [[self.custoNavBar view] setFrame:CGRectMake(0, 0, 380, 50)];
     [[self.custoNavBar buttonRight] setTitle:@"Sauver" forState:UIControlStateNormal];
     [[self.custoNavBar buttonLeft] setTitle:@"Annuler" forState:UIControlStateNormal];
@@ -82,6 +82,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardDidHide:)
                                                  name:UIKeyboardDidHideNotification
+                                               object:nil];
+    //On met en place la notification pour mettre à jour le theme
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateTheme)
+                                                 name:UPDATE_THEME
                                                object:nil];
 }
 
@@ -93,25 +98,18 @@
 
 #pragma mark - Fonctions du controller
 
+//On sauvegarde les récompenses
+- (void)saveAward
+{
+
+}
 
 #pragma mark - UITextFieldDelegate fonctions
 
 //Fonction appelé lorsque l'on commence l'édition d'un champs
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    //On bouge la vue suivant si le textfield est caché ou non
-    if (textField == self.textFieldPremier)
-    {
-        [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithInteger:0]];
-    }
-    else if (textField == self.textFieldSecond)
-    {
-        [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithInteger:20]];
-    }
-    else
-    {
-        [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithInteger:70]];
-    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithInteger:100]];
 }
 
 //Fonction appelé lorsqu'on l'on termine l'édition d'un champs

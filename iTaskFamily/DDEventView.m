@@ -32,7 +32,6 @@
     [[self.buttonAddPlayer titleLabel] setFont:POLICE_EVENT_NO_PLAYER];
     [[self.buttonBigAddEvent titleLabel] setFont:POLICE_EVENT_NO_EVENT];
     [self.labelNoEvent setFont:POLICE_EVENT_NO_EVENT];
-    [self.labelNoEvent setTextColor:COULEUR_HOME];
     [self.imageViewHeader setBackgroundColor:COULEUR_BLACK];
     [self.buttonToday setColorTitleEnable:COULEUR_WHITE];
     
@@ -58,12 +57,26 @@
     //On met à jour les données pour que l'on soit sur aujourd'hui
     [self setDataToSelectToday];
     
-    //On rafraichis les composants
+    //On rafraichis les composants et on met à jour le thème
     [self updateComponent];
+    [self updateTheme];
 }
 
 
 #pragma mark - View fonctions
+
+//Fonction pour mettre le theme à jour
+- (void)updateTheme
+{
+    [self.labelNoEvent setTextColor:[DDHelperController getMainTheme]];
+    [self.buttonAddPlayer setColorTitleEnable:[DDHelperController getMainTheme]];
+    [self.buttonAddPlayer setColorTitleDisable:[DDHelperController getMainTheme]];
+    [self.buttonAddPlayer setNeedsDisplay];
+    [self.buttonBigAddEvent setColorTitleEnable:[DDHelperController getMainTheme]];
+    [self.buttonBigAddEvent setColorTitleDisable:[DDHelperController getMainTheme]];
+    [self.buttonBigAddEvent setNeedsDisplay];
+    [self.imageViewSelection setBackgroundColor:[DDHelperController getMainTheme]];
+}
 
 //On met à jour les composants en fonctions des joueurs
 - (void)updateComponent

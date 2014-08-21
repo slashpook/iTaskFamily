@@ -2,7 +2,7 @@
 //  Reward.m
 //  iTaskFamily
 //
-//  Created by Damien DELES on 08/05/2014.
+//  Created by Damien DELES on 19/08/2014.
 //  Copyright (c) 2014 Damien DELES. All rights reserved.
 //
 
@@ -13,5 +13,6 @@
 
 @dynamic libelle;
 @dynamic type;
+@dynamic weekAndYear;
 
 @end

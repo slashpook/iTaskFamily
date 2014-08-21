@@ -91,6 +91,9 @@
 //On met à jour les composants en fonctions des joueurs
 - (void)updateComponent;
 
+//Fonction pour mettre le theme à jour
+- (void)updateTheme;
+
 //On se positionne sur le bon jour
 - (void)updatePositionOfSelectedDay;
 

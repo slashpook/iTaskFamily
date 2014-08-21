@@ -22,12 +22,6 @@
 
 - (void)awakeFromNib
 {
-    //On set la couleur de base des imageViews
-    [self setBackgroundColor:COULEUR_BLACK];
-    [self.imageViewLeftBar setBackgroundColor:COULEUR_HOME];
-    [self.imageViewSelection setBackgroundColor:COULEUR_HOME];
-    [self.imageViewBackgroundPlayer setBackgroundColor:COULEUR_HOME];
-    
     //On configure le boutton pour sélectionner le joueur principal
     [self.buttonPlayer.imageView setContentMode:UIViewContentModeScaleAspectFill];
     [[self.buttonPlayer layer] setCornerRadius:44.0];
@@ -52,10 +46,29 @@
                                              selector:@selector(updateMainPlayer)
                                                  name:UPDATE_PLAYER
                                                object:nil];
+    
+    //On met en place la notification pour mettre à jour le theme
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateTheme)
+                                                 name:UPDATE_THEME
+                                               object:nil];
+    
+    //On met à jour le thème
+    [self updateTheme];
 }
 
 
 #pragma mark - View fonctions
+
+//Fonction pour mettre le theme à jour
+- (void)updateTheme
+{
+    //On set la couleur de base des imageViews
+    [self setBackgroundColor:COULEUR_BLACK];
+    [self.imageViewLeftBar setBackgroundColor:[DDHelperController getMainTheme]];
+    [self.imageViewSelection setBackgroundColor:[DDHelperController getMainTheme]];
+    [self.imageViewBackgroundPlayer setBackgroundColor:[DDHelperController getMainTheme]];
+}
 
 //Switch on Home view
 - (IBAction)onPushHomeButton:(UIButton *)sender
@@ -65,7 +78,7 @@
     {
         //On lance les animations
         [self setFrameImageSelection:sender.frame];
-        [self setColorSelection:COULEUR_HOME];
+        [self setColorSelection:[DDHelperController getMainTheme]];
         [self.delegate openHomePage];
     }
 }
@@ -83,7 +96,7 @@
         
         //On lance les animations
         [self setFrameImageSelection:sender.frame];
-        [self setColorSelection:COULEUR_PLAYER];
+        [self setColorSelection:[DDHelperController getMainTheme]];
         [self.delegate openPlayerPageWithSens:sens];
     }
 }
@@ -102,7 +115,7 @@
         //On lance les animations
         //On lance les animations
         [self setFrameImageSelection:sender.frame];
-        [self setColorSelection:COULEUR_TASK];
+        [self setColorSelection:[DDHelperController getMainTheme]];
         [self.delegate openTaskPageWithSens:sens];
     }
 }
@@ -120,7 +133,7 @@
         
         //On lance les animations
         [self setFrameImageSelection:sender.frame];
-        [self setColorSelection:COULEUR_PODIUM];
+        [self setColorSelection:[DDHelperController getMainTheme]];
         [self.delegate openPodiumPageWithSens:sens];
     }
 }
@@ -133,7 +146,7 @@
     {
         //On lance les animations
         [self setFrameImageSelection:sender.frame];
-        [self setColorSelection:COULEUR_SETTING];
+        [self setColorSelection:[DDHelperController getMainTheme]];
         [self.delegate openSettingPage];
     }
 }

@@ -23,6 +23,12 @@
 //Retourne un snapshot d'une vue
 + (UIImageView *)snapshotFromView:(UIView *)viewOriginal withRect:(CGRect)frameSnapshot;
 
+//On sauvegarde la couleur dans les NSUserDefault
++ (void)saveThemeWithColor:(UIColor *)color;
+
+//On récupère la couleur
++ (UIColor *)getMainTheme;
+
 
 #pragma mark - Fonctions Date
 

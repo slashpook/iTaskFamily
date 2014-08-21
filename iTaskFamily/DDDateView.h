@@ -46,5 +46,7 @@
 
 #pragma mark - Fonctions
 
+//Fonction pour mettre le theme à jour
+- (void)updateTheme;
 
 @end

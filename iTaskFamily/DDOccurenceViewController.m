@@ -30,7 +30,7 @@
     [super viewDidLoad];
     
     //On met en place la barre de navigation
-    _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:COULEUR_HOME andImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
+    _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:[DDHelperController getMainTheme] andImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
     [[self.custoNavBar view] setFrame:CGRectMake(0, 0, 380, 50)];
     [[self.custoNavBar buttonRight] setTitle:@"Sauver" forState:UIControlStateNormal];
     [[self.custoNavBar buttonLeft] setTitle:@"Retour" forState:UIControlStateNormal];

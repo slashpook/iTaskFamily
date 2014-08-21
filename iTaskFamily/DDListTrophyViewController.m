@@ -65,10 +65,7 @@
     //On récupère la cellule
     DDTrophyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TrophyCell" forIndexPath:indexPath];
     
-    //On set la progress Bar
-    [cell.progressBar setBackgroundColor:[UIColor clearColor]];
-    [cell.progressBar setColorBackground:COULEUR_BLACK];
-    
+    //On récupère le joueur courant
     Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
     
     //On récupère un tableau des taches de la catégorie sélectionnée
@@ -79,7 +76,9 @@
     NSDictionary *dictColor = [[DDManagerSingleton instance] dictColor];
 
     //On récupère le nombre de fois que le player a réalisé la task
-    int numberOfEventChecked = [[DDDatabaseAccess instance] getNumberOfEventCheckedForPlayer:currentPlayer forTask:task];
+    int numberOfEventChecked = 0;
+    if (currentPlayer != nil)
+        numberOfEventChecked = [[DDDatabaseAccess instance] getNumberOfEventCheckedForPlayer:currentPlayer forTask:task];
     
     //On récupère les trophies de la task
     Trophy *trophyTask;
@@ -94,6 +93,8 @@
     [cell.labelName setText:task.libelle];
     
     //On set les progressBar
+    [cell.progressBar setBackgroundColor:[UIColor clearColor]];
+    [cell.progressBar setColorBackground:COULEUR_BLACK];
     [cell.progressBar setTrophy:trophyTask];
     [cell.progressBar setPlayer:currentPlayer];
     [cell.progressBar setColorRealisation:[dictColor objectForKey:self.category.libelle]];

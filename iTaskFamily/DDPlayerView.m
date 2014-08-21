@@ -85,6 +85,7 @@
     [button addSubview:imageViewHeader];
     [button addSubview:imageViewBottom];
     
+    //On met à jour les composants
     [self updateComponent];
 }
 
@@ -133,7 +134,6 @@
         [self.labelPointPlayer setHidden:NO];
     }
 }
-
 
 
 #pragma mark - ScrollView fonctions

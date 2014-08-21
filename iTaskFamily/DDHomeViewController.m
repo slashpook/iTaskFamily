@@ -9,6 +9,7 @@
 #import "DDHomeViewController.h"
 #import "DDPlayerView.h"
 #import "DDEventView.h"
+#import "DDDateView.h"
 
 @interface DDHomeViewController ()
 
@@ -35,11 +36,8 @@
     [[self view] setBackgroundColor:COULEUR_BACKGROUND];
     
     //On configure le pageControl
-    if ([self.pageControlPlayer respondsToSelector:@selector(setTintColor:)])
-    {
-        [self.pageControlPlayer setTintColor:COULEUR_BLACK];
-        [self.pageControlPlayer setCurrentPageIndicatorTintColor:COULEUR_HOME];
-    }
+    [self.pageControlPlayer setTintColor:COULEUR_BLACK];
+
     
     //On set le pageControl à la vue
     [self.viewPlayer setPageControl:self.pageControlPlayer];
@@ -50,9 +48,15 @@
                                              selector:@selector(updateComponent)
                                                  name:UPDATE_PLAYER
                                                object:nil];
-    
-    //On met à jour les composants
+
+    //On met en place la notification pour mettre à jour le theme
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateTheme)
+                                                 name:UPDATE_THEME
+                                               object:nil];
+    //On met à jour les composants et le theme
     [self updateComponent];
+    [self updateTheme];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -91,5 +95,12 @@
     [self.viewEvent updateComponent];
 }
 
+//Fonction pour mettre le theme à jour
+- (void)updateTheme
+{
+    [self.viewDate updateTheme];
+    [self.viewEvent updateTheme];
+    [self.pageControlPlayer setCurrentPageIndicatorTintColor:[DDHelperController getMainTheme]];
+}
 
 @end

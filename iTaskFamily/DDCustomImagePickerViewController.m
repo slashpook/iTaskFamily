@@ -32,7 +32,7 @@
     [super viewDidLoad];
     
     //On initialise la navigation bar
-    _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:COULEUR_PLAYER andImage:[UIImage imageNamed:@"PlayerButtonLibraryNavBar"]];
+    _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:[DDHelperController getMainTheme] andImage:[UIImage imageNamed:@"PlayerButtonLibraryNavBar"]];
     [[self.custoNavBar view] setFrame:CGRectMake(0, 0, 380, 50)];
     [[self.custoNavBar buttonLeft] setTitle:@"Retour" forState:UIControlStateNormal];
     [[self.custoNavBar buttonRight] setHidden:YES];

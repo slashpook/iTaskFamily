@@ -7,6 +7,7 @@
 //
 
 #import "DDSettingViewController.h"
+#import "DDCustomButton.h"
 
 @interface DDSettingViewController ()
 
@@ -27,56 +28,92 @@
 {
     [super viewDidLoad];
     
+    //On met en place la notification pour mettre à jour le theme
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateTheme)
+                                                 name:UPDATE_THEME
+                                               object:nil];
+    
     //On set le background de la vue
     [[self view] setBackgroundColor:COULEUR_BACKGROUND];
     
     //On configure les radius des vues
-    [self.viewProtection.layer setCornerRadius:10.0];
-    [self.viewProtection.layer setMasksToBounds:YES];
+    [self.viewRecompense.layer setCornerRadius:10.0];
+    [self.viewRecompense.layer setMasksToBounds:YES];
     [self.viewTask.layer setCornerRadius:10.0];
     [self.viewTask.layer setMasksToBounds:YES];
     [self.viewMeteo.layer setCornerRadius:10.0];
     [self.viewMeteo.layer setMasksToBounds:YES];
+    [self.viewTheme.layer setCornerRadius:10.0];
+    [self.viewTheme.layer setMasksToBounds:YES];
     [self.viewTutoriel.layer setCornerRadius:10.0];
     [self.viewTutoriel.layer setMasksToBounds:YES];
+    [self.viewCurrentColor.layer setCornerRadius:5.0];
+    [self.buttonColor1.layer setCornerRadius:5.0];
+    [self.buttonColor2.layer setCornerRadius:5.0];
+    [self.buttonColor3.layer setCornerRadius:5.0];
+    [self.buttonColor4.layer setCornerRadius:5.0];
+    [self.buttonColor5.layer setCornerRadius:5.0];
+    [self.buttonColor6.layer setCornerRadius:5.0];
+    [self.buttonColor7.layer setCornerRadius:5.0];
+    [self.buttonColor8.layer setCornerRadius:5.0];
+    [self.buttonColor9.layer setCornerRadius:5.0];
+    [self.buttonColor10.layer setCornerRadius:5.0];
+    [self.buttonColor11.layer setCornerRadius:5.0];
+    [self.buttonColor12.layer setCornerRadius:5.0];
     
     //On met la couleur de background des view header et background
-    [self.imageViewHeaderProtection setBackgroundColor:COULEUR_BLACK];
+    [self.imageViewHeaderRecompense setBackgroundColor:COULEUR_BLACK];
     [self.imageViewHeaderTask setBackgroundColor:COULEUR_BLACK];
     [self.imageViewHeaderMeteo setBackgroundColor:COULEUR_BLACK];
+    [self.imageViewHeaderTheme setBackgroundColor:COULEUR_BLACK];
     [self.imageViewHeaderTutoriel setBackgroundColor:COULEUR_BLACK];
     
     //On set la police et la couleur des labels et boutons
-    [self.labelTitreProtection setFont:POLICE_HEADER];
-    [self.labelTitreProtection setTextColor:COULEUR_WHITE];
-    [self.labelInfoProtection setFont:POLICE_SETTING_CONTENT];
-    [self.labelInfoProtection setTextColor:COULEUR_BLACK];
+    [self.labelTitreRecompense setFont:POLICE_HEADER];
+    [self.labelTitreRecompense setTextColor:COULEUR_WHITE];
+    [self.labelInfoRecompense setFont:POLICE_SETTING_CONTENT];
+    [self.labelInfoRecompense setTextColor:COULEUR_BLACK];
     [self.labelTitreTask setFont:POLICE_HEADER];
     [self.labelTitreTask setTextColor:COULEUR_WHITE];
     [self.labelInfoTask setFont:POLICE_SETTING_CONTENT];
     [self.labelInfoTask setTextColor:COULEUR_BLACK];
     [[self.buttonResetTask titleLabel] setTextColor:COULEUR_WHITE];
+
     [self.labelTitreMeteo setFont:POLICE_HEADER];
     [self.labelTitreMeteo setTextColor:COULEUR_WHITE];
     [self.labelInfoMeteo setFont:POLICE_SETTING_CONTENT];
     [self.labelInfoMeteo setTextColor:COULEUR_BLACK];
     [[self.buttonChangeVille titleLabel] setTextColor:COULEUR_WHITE];
+
+    [self.labelTitreTheme setFont:POLICE_HEADER];
+    [self.labelTitreTheme setTextColor:COULEUR_WHITE];
+    [[self.buttonColorPerso titleLabel] setTextColor:COULEUR_WHITE];
+
     [self.labelTitreTutoriel setFont:POLICE_HEADER];
     [self.labelTitreTutoriel setTextColor:COULEUR_WHITE];
     
-    //On configure la couleur de teinte des switchs
-    [self.switchPassword setOnTintColor:COULEUR_SETTING];
-    [self.switchMeteo setOnTintColor:COULEUR_SETTING];
-}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    //On met à jour les couleurs de la vue
+    [self updateTheme];
 }
-
 
 #pragma mark - Fonctions du controller
+
+//Fonction pour mettre le theme à jour
+- (void)updateTheme
+{
+    [self.viewCurrentColor setBackgroundColor:[DDHelperController getMainTheme]];
+    [self.buttonResetTask setColorTitleEnable:[DDHelperController getMainTheme]];
+    [self.buttonResetTask setNeedsDisplay];
+    [self.buttonChangeVille setColorTitleEnable:[DDHelperController getMainTheme]];
+    [self.buttonChangeVille setNeedsDisplay];
+    [self.buttonColorPerso setColorTitleEnable:[DDHelperController getMainTheme]];
+    [self.buttonColorPerso setNeedsDisplay];
+    //On configure la couleur de teinte des switchs
+    [self.switchMeteo setOnTintColor:[DDHelperController getMainTheme]];
+}
 
 //Fonction pour réinitialiser les taches
 - (IBAction)onPushButtonResetTask:(id)sender
@@ -88,6 +125,13 @@
 - (IBAction)onPushButtonChangeVille:(id)sender
 {
     
+}
+
+//Fonction pour changer la couleur de l'appli
+- (IBAction)onPushButtonColor:(id)sender
+{
+    [DDHelperController saveThemeWithColor:[sender backgroundColor]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_THEME object:nil];
 }
 
 @end

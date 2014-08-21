@@ -51,14 +51,10 @@
     [[self.buttonScoreSemainePrecedente titleLabel] setFont:POLICE_TITLE];
     [[self.buttonNombreTotalTrophees titleLabel] setTextColor:COULEUR_WHITE];
     [[self.buttonNombreTotalTrophees titleLabel] setFont:POLICE_TITLE];
-    [self.imageViewSelection setBackgroundColor:COULEUR_PODIUM];
     
     //On configure le pageControl
-    if ([self.pageControlPodium respondsToSelector:@selector(setTintColor:)])
-    {
-        [self.pageControlPodium setTintColor:COULEUR_BLACK];
-        [self.pageControlPodium setCurrentPageIndicatorTintColor:COULEUR_PODIUM];
-    }
+    [self.pageControlPodium setTintColor:COULEUR_BLACK];
+
     [self.pageControlPodium setNumberOfPages:3];
     [self.pageControlPodium setCurrentPage:0];
     
@@ -85,12 +81,15 @@
                                              selector:@selector(updateCurrentPodium)
                                                  name:UPDATE_PLAYER
                                                object:nil];
-}
+    
+    //On met en place la notification pour mettre à jour le theme
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateTheme)
+                                                 name:UPDATE_THEME
+                                               object:nil];
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    //On met à jour le thème
+    [self updateTheme];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -103,6 +102,13 @@
 
 
 #pragma mark - Controller fonctions
+
+//Fonction pour mettre le theme à jour
+- (void)updateTheme
+{
+    [[self imageViewSelection] setBackgroundColor:[DDHelperController getMainTheme]];
+    [self.pageControlPodium setCurrentPageIndicatorTintColor:[DDHelperController getMainTheme]];
+}
 
 //On met à jour les podiums
 - (void)updateDisplayOfComponent

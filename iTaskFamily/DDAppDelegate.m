@@ -38,6 +38,10 @@
     //On parse les données
     [self parseData];
     
+    //On initialise la couleur par default de l'appli
+    if ([DDHelperController getMainTheme] == nil)
+        [DDHelperController saveThemeWithColor:COULEUR_HOME];
+    
     return YES;
 }
 

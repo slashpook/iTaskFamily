@@ -164,12 +164,8 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_PLAYER object:nil];
         }
         else
-        {
             self.currentPlayer = [[DDManagerSingleton instance] currentPlayer];
-        }
-        
-        
-        
+
         //On configure les boutons de modification et suppression des joueur
         [self.buttonRemovePlayer setEnabled:YES];
         [self.buttonUpdatePlayer setEnabled:YES];
@@ -181,10 +177,6 @@
         [self.labelNbrTrophy setText:[NSString stringWithFormat:@"%i/%i",totalTrophyWin, totalTrophyCategory]];
         [self.labelWeekScore setText:[NSString stringWithFormat:@"%i",[[DDDatabaseAccess instance] getScoreWeekForPlayer:self.currentPlayer forWeekAndYear:[DDHelperController getWeekAndYearForDate:[NSDate date]]]]];
         [self.labelTotalScore setText:[NSString stringWithFormat:@"%i",[[DDDatabaseAccess instance] getScoreTotalForPlayer:self.currentPlayer]]];
-        
-        //On rend la tableView accessible
-        [[self.rootTrophyNavigationViewController view] setUserInteractionEnabled:YES];
-        [rootTrophyViewController updateComponent];
     }
     else
     {
@@ -197,11 +189,10 @@
         [self.labelNbrTrophy setText:[NSString stringWithFormat:@"0/%i", totalTrophyCategory]];
         [self.labelWeekScore setText:@"0"];
         [self.labelTotalScore setText:@"0"];
-        
-        //On désactive la tableView
-        [self.rootTrophyNavigationViewController popToRootViewControllerAnimated:YES];
-        [[self.rootTrophyNavigationViewController view] setUserInteractionEnabled:NO];
     }
+    
+    //On update les trophées
+    [rootTrophyViewController updateComponent];
     
     //On recharge la collection view
     [self.collectionViewMiniature reloadData];

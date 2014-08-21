@@ -8,25 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
+@class DDCustomButton;
+
 @interface DDSettingViewController : UIViewController
 
 
 #pragma mark - Variables
 
 //Vue de la protection
-@property (weak, nonatomic) IBOutlet UIView *viewProtection;
+@property (weak, nonatomic) IBOutlet UIView *viewRecompense;
 
-//Image du header de la vue protection
-@property (weak, nonatomic) IBOutlet UIImageView *imageViewHeaderProtection;
+//Image du header des récompenses
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewHeaderRecompense;
 
-//Label titre de la protection
-@property (weak, nonatomic) IBOutlet UILabel *labelTitreProtection;
+//Label titre des récompenses
+@property (weak, nonatomic) IBOutlet UILabel *labelTitreRecompense;
 
-//Label d'info de la protection
-@property (weak, nonatomic) IBOutlet UILabel *labelInfoProtection;
-
-//Switch pour configurer le mot de passe
-@property (weak, nonatomic) IBOutlet UISwitch *switchPassword;
+//Label info des récompenses
+@property (weak, nonatomic) IBOutlet UILabel *labelInfoRecompense;
 
 //Vue de réinitialisation des taches
 @property (weak, nonatomic) IBOutlet UIView *viewTask;
@@ -41,7 +40,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelInfoTask;
 
 //Bouton de réinitialisation des taches
-@property (weak, nonatomic) IBOutlet UIButton *buttonResetTask;
+@property (weak, nonatomic) IBOutlet DDCustomButton *buttonResetTask;
 
 //Vue de la météo
 @property (weak, nonatomic) IBOutlet UIView *viewMeteo;
@@ -59,7 +58,64 @@
 @property (weak, nonatomic) IBOutlet UISwitch *switchMeteo;
 
 //Bouton pour changer la ville par défaut de la météo
-@property (weak, nonatomic) IBOutlet UIButton *buttonChangeVille;
+@property (weak, nonatomic) IBOutlet DDCustomButton *buttonChangeVille;
+
+//Vue de setting du thème
+@property (weak, nonatomic) IBOutlet UIView *viewTheme;
+
+//Image du header de la vue de setting du thème
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewHeaderTheme;
+
+//Label titre de la vue de setting du thème
+@property (weak, nonatomic) IBOutlet UILabel *labelTitreTheme;
+
+//Label titre theme courant
+@property (weak, nonatomic) IBOutlet UILabel *labelThemeCourant;
+
+//View couleur sélectionné
+@property (weak, nonatomic) IBOutlet UIView *viewCurrentColor;
+
+//Label choix de la couleur
+@property (weak, nonatomic) IBOutlet UILabel *labelChoiceColor;
+
+//Boutton couleur 1
+@property (weak, nonatomic) IBOutlet UIButton *buttonColor1;
+
+//Boutton couleur 2
+@property (weak, nonatomic) IBOutlet UIButton *buttonColor2;
+
+//Boutton couleur 3
+@property (weak, nonatomic) IBOutlet UIButton *buttonColor3;
+
+//Boutton couleur 4
+@property (weak, nonatomic) IBOutlet UIButton *buttonColor4;
+
+//Boutton couleur 5
+@property (weak, nonatomic) IBOutlet UIButton *buttonColor5;
+
+//Boutton couleur 6
+@property (weak, nonatomic) IBOutlet UIButton *buttonColor6;
+
+//Boutton couleur 7
+@property (weak, nonatomic) IBOutlet UIButton *buttonColor7;
+
+//Boutton couleur 8
+@property (weak, nonatomic) IBOutlet UIButton *buttonColor8;
+
+//Boutton couleur 9
+@property (weak, nonatomic) IBOutlet UIButton *buttonColor9;
+
+//Boutton couleur 10
+@property (weak, nonatomic) IBOutlet UIButton *buttonColor10;
+
+//Boutton couleur 11
+@property (weak, nonatomic) IBOutlet UIButton *buttonColor11;
+
+//Boutton couleur 12
+@property (weak, nonatomic) IBOutlet UIButton *buttonColor12;
+
+//Boutton pour afficher la pop up pour personnaliser la couleur
+@property (weak, nonatomic) IBOutlet DDCustomButton *buttonColorPerso;
 
 //Vue d'affichage du tutoriel
 @property (weak, nonatomic) IBOutlet UIView *viewTutoriel;
@@ -82,5 +138,7 @@
 //Fonction pour changer la ville par défaut de la météo
 - (IBAction)onPushButtonChangeVille:(id)sender;
 
+//Fonction pour changer la couleur de l'appli
+- (IBAction)onPushButtonColor:(id)sender;
 
 @end

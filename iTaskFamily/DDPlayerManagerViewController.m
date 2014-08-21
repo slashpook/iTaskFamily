@@ -53,7 +53,7 @@
     self.textFieldPseudo.leftViewMode = UITextFieldViewModeAlways;
     
     //On met en place la barre de navigation
-    _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:COULEUR_PLAYER andImage:[UIImage imageNamed:@"PlayerAddButtonNavBar"]];
+    _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:[DDHelperController getMainTheme] andImage:[UIImage imageNamed:@"PlayerAddButtonNavBar"]];
     [[self.custoNavBar view] setFrame:CGRectMake(0, 0, 380, 50)];
     [[self.custoNavBar buttonRight] setTitle:@"Sauver" forState:UIControlStateNormal];
     [[self.custoNavBar buttonLeft] setTitle:@"Annuler" forState:UIControlStateNormal];
@@ -73,6 +73,12 @@
     //On initialise le cropper controller
     _cropperController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"CropperController"];
     [self.cropperController setDelegate:self];
+    
+    //On met en place la notification pour mettre à jour le theme
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateTheme)
+                                                 name:UPDATE_THEME
+                                               object:nil];
     
     [self updateComponent];
 }
@@ -96,6 +102,11 @@
 
 #pragma mark - Controller fonctions
 
+//On met à jour le theme
+- (void)updateTheme
+{
+    [self.custoNavBar.view setBackgroundColor:[DDHelperController getMainTheme]];
+}
 
 //On ouvre la bibliothèque de l'iPad
 - (IBAction)onPushOpenLibrary:(id)sender

@@ -39,11 +39,9 @@
     [self.labelMin setFont:POLICE_DATE_BIG];
     [self.labelMin setTextColor:COULEUR_BLACK];
     [self.labelSeparatorHourMin setFont:POLICE_DATE_PONCTUATION];
-    [self.labelSeparatorHourMin setTextColor:COULEUR_HOME];
     
     //On met les images en couleurs
     [self.imageViewHeader setBackgroundColor:COULEUR_BLACK];
-    [self.imageSeparatorDayMonth setBackgroundColor:COULEUR_HOME];
     [self.imageSeparatorDayHour setBackgroundColor:COULEUR_BACKGROUND];
     
     //On lance une première fois la mise à jour de la date pour pas avoir la latence d'une seconde
@@ -53,6 +51,16 @@
     
     //On rajoute une notification pour mettre à jour la date quand on allume l'application
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateDate) name:UPDATE_DATE object:nil];
+    
+    //On met à jour le thème
+    [self updateTheme];
+}
+
+//Fonction pour mettre le theme à jour
+- (void)updateTheme
+{
+    [self.labelSeparatorHourMin setTextColor:[DDHelperController getMainTheme]];
+    [self.imageSeparatorDayMonth setBackgroundColor:[DDHelperController getMainTheme]];
 }
 
 //On met à jour la date

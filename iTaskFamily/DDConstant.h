@@ -114,6 +114,7 @@ typedef enum {
 #define ADD_PLAYER @"ADD_PLAYER"
 #define UP_POPOVER @"UP_POPOVER"
 #define UPDATE_NOTIFICATION @"UPDATE_NOTIFICATION"
+#define UPDATE_THEME @"UPDATE_THEME"
 
 #pragma mark - Jours de la semaine
 
