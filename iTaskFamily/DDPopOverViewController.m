@@ -188,6 +188,7 @@
             [self.view setAlpha:0];
         } completion:^(BOOL finished) {
             [self.viewContainer removeFromSuperview];
+            [self setViewContainer:nil];
             [self.view removeFromSuperview];
         }];
     }

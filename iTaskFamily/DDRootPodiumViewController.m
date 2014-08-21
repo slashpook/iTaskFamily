@@ -192,11 +192,6 @@
         frame.origin.y = 0;
         [[(DDPodiumViewController *)[self.arrayPodiums objectAtIndex:page] view] setFrame:frame];
         
-        if (page == 0)
-            [[(DDPodiumViewController *)[self.arrayPodiums objectAtIndex:page] buttonAddReward] setHidden:NO];
-        else
-            [[(DDPodiumViewController *)[self.arrayPodiums objectAtIndex:page] buttonAddReward] setHidden:YES];
-        
         //On ajoute notre image à la scrollview
         [self.scrollViewPodium addSubview:[[self.arrayPodiums objectAtIndex:page] view]];
     }

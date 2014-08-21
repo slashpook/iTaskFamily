@@ -72,6 +72,7 @@
 		6DAE048418D086E100F6765E /* DDCustomButtonNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAE048318D086E100F6765E /* DDCustomButtonNotification.m */; };
 		6DB39C92199D21F7004D3155 /* DDMainInformationTrophyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB39C91199D21F7004D3155 /* DDMainInformationTrophyViewController.m */; };
 		6DB8F1FA19A5E19F00B22DB2 /* DDCustomColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8F1F919A5E19F00B22DB2 /* DDCustomColorViewController.m */; };
+		6DB8F1FE19A638F400B22DB2 /* DDRewardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8F1FD19A638F400B22DB2 /* DDRewardDetailViewController.m */; };
 		6DC986F6185092A200A5A65F /* DDCustomProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC986F5185092A200A5A65F /* DDCustomProgressBar.m */; };
 		6DC986FA1850E89B00A5A65F /* DDTaskManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC986F91850E89B00A5A65F /* DDTaskManagerViewController.m */; };
 		6DCB2A8A18B6177B000FDFCA /* DDEventManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB2A8918B6177B000FDFCA /* DDEventManagerViewController.m */; };
@@ -225,6 +226,8 @@
 		6DB39C91199D21F7004D3155 /* DDMainInformationTrophyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMainInformationTrophyViewController.m; sourceTree = "<group>"; };
 		6DB8F1F819A5E19F00B22DB2 /* DDCustomColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomColorViewController.h; sourceTree = "<group>"; };
 		6DB8F1F919A5E19F00B22DB2 /* DDCustomColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomColorViewController.m; sourceTree = "<group>"; };
+		6DB8F1FC19A638F400B22DB2 /* DDRewardDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRewardDetailViewController.h; sourceTree = "<group>"; };
+		6DB8F1FD19A638F400B22DB2 /* DDRewardDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRewardDetailViewController.m; sourceTree = "<group>"; };
 		6DC986F4185092A200A5A65F /* DDCustomProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomProgressBar.h; sourceTree = "<group>"; };
 		6DC986F5185092A200A5A65F /* DDCustomProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomProgressBar.m; sourceTree = "<group>"; };
 		6DC986F81850E89B00A5A65F /* DDTaskManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTaskManagerViewController.h; sourceTree = "<group>"; };
@@ -346,6 +349,7 @@
 		6D33D446189FA82A0057D168 /* SettingViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6D7E280F189F8F9500BCBA9F /* AwardViewController */,
 				6DB8F1F719A5E18B00B22DB2 /* CustomColorViewController */,
 				6D33D447189FA8460057D168 /* DDSettingViewController.h */,
 				6D33D448189FA8460057D168 /* DDSettingViewController.m */,
@@ -356,7 +360,6 @@
 		6D33D7431855D264001E1B3A /* PodiumViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6D7E280F189F8F9500BCBA9F /* AwardViewController */,
 				6DBB44AD189B9CCD00A5AD66 /* PodiumViewController */,
 				6D33D7441855D27F001E1B3A /* DDRootPodiumViewController.h */,
 				6D33D7451855D27F001E1B3A /* DDRootPodiumViewController.m */,
@@ -395,6 +398,7 @@
 		6D46EB971843485600287ACC /* PlayerViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6DB8F1FB19A638D400B22DB2 /* RewardDetailViewController */,
 				6D46EB981843486F00287ACC /* DDPlayerViewController.h */,
 				6D46EB991843486F00287ACC /* DDPlayerViewController.m */,
 				6D852D3D1843624300CA43EC /* RootTrophyViewController */,
@@ -836,6 +840,15 @@
 			name = CustomColorViewController;
 			sourceTree = "<group>";
 		};
+		6DB8F1FB19A638D400B22DB2 /* RewardDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6DB8F1FC19A638F400B22DB2 /* DDRewardDetailViewController.h */,
+				6DB8F1FD19A638F400B22DB2 /* DDRewardDetailViewController.m */,
+			);
+			name = RewardDetailViewController;
+			sourceTree = "<group>";
+		};
 		6DBB44AD189B9CCD00A5AD66 /* PodiumViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1187,6 +1200,7 @@
 				6D8970E11848DD2D00F815CD /* DDCropperController.m in Sources */,
 				6D9B3C28191BF45C0001C672 /* Player.m in Sources */,
 				6DF00ECC184F416800F8F3C5 /* DDPlayerListViewController.m in Sources */,
+				6DB8F1FE19A638F400B22DB2 /* DDRewardDetailViewController.m in Sources */,
 				6DF00EDC184F9E3600F8F3C5 /* DDCustomCategoryCell.m in Sources */,
 				6D32CAE7189B9FCC00FD2B3F /* DDPodiumViewController.m in Sources */,
 			);

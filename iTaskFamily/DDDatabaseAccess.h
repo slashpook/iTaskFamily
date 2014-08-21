@@ -153,6 +153,9 @@
 //On récupère tous les players trié pour le type de podium demandé
 - (NSArray *)getPlayersSortedByTypeOfPodium:(TypeOfPodium)typeOfPodium;
 
+//On récupère tous les players trié en fonction du score qu'ils ont fais la semaine passé
+- (NSArray *)getPlayersSortedByTypeScoreLastWeek;
+
 //On récupère le joueur donné
 - (Player *)getPlayerForPseudo:(NSString *)pseudo;
 
@@ -178,13 +181,16 @@
 #pragma mark - CRUD Reward
 
 //On sauvegarde le reward après avoir fait quelques tests préalable
-- (NSString *)saveReward:(Reward *)reward;
+- (NSString *)createReward:(Reward *)reward;
 
-//On tri le tableau de rewards
-- (NSArray *)getRewardSortedInArray:(NSArray *)arrayTrophies;
+//On update la reward donnée
+- (void)updateReward:(Reward *)reward;
 
-//On récupère le reward pour le type donnée
-- (Reward *)getRewardForType:(NSString *)type;
+//On tri le tableau de rewards de la weekAndYear donnée
+- (NSArray *)getRewardSortedForWeekAndYear:(NSString *)weekAndYear;
+
+//On récupère le reward pour le type donnée et la weekAndYear donnée
+- (Reward *)getRewardForType:(NSString *)type forWeekAndYear:(NSString *)weekAndYear;
 
 //On supprime le reward donné
 - (void)deleteReward:(Reward *)reward;

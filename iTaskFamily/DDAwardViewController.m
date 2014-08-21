@@ -13,12 +13,15 @@
 @end
 
 @implementation DDAwardViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    NSArray *arrayReward;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
     if (self) {
-        // Custom initialization
+        arrayReward = [[NSArray alloc] initWithArray: [[DDDatabaseAccess instance] getRewardSortedForWeekAndYear:[DDHelperController getWeekAndYearForDate:[NSDate date]]]];
     }
     return self;
 }
@@ -29,6 +32,10 @@
 	
     //On met la couleur de fond
     [self.view setBackgroundColor:COULEUR_BACKGROUND];
+    
+    //On configure l'arrondi des vues
+    [self.view.layer setCornerRadius:10.0];
+    [self.view.layer setMasksToBounds:YES];
     
     //On set la police et la couleur des label et textfield
     [[self labelPremier] setFont:POLICE_AWARD_TITLE];
@@ -90,19 +97,43 @@
                                                object:nil];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self updateComponent];
 }
 
 #pragma mark - Fonctions du controller
 
-//On sauvegarde les récompenses
-- (void)saveAward
+- (void)updateComponent
 {
+    if ([arrayReward objectAtIndex:0] != [NSNull null])
+        [self.textFieldPremier setText:[[arrayReward objectAtIndex:0] libelle]];
+    
+    if ([arrayReward objectAtIndex:1] != [NSNull null])
+        [self.textFieldSecond setText:[[arrayReward objectAtIndex:1] libelle]];
 
+    if ([arrayReward objectAtIndex:2] != [NSNull null])
+        [self.textFieldTroisieme setText:[[arrayReward objectAtIndex:2] libelle]];
 }
+
+//On met le thème à jour
+- (void)updateTheme
+{
+    [self.custoNavBar.view setBackgroundColor:[DDHelperController getMainTheme]];
+}
+
+//On crée les récompenses
+- (void)saveRewardsWithLibelle:(NSString *)libelle andType:(NSString *)type
+{
+    Reward *reward = [NSEntityDescription insertNewObjectForEntityForName:@"Reward"
+                                                             inManagedObjectContext:[[DDDatabaseAccess instance] dataBaseManager].managedObjectContext];
+    [reward setWeekAndYear:[DDHelperController getWeekAndYearForDate:[NSDate date]]];
+    [reward setLibelle:libelle];
+    [reward setType:type];
+    
+    [[DDDatabaseAccess instance] createReward:reward];
+}
+
 
 #pragma mark - UITextFieldDelegate fonctions
 
@@ -132,6 +163,22 @@
 //On appuie sue le bouton de droite
 - (void)onPushRightBarButton
 {
+    //On supprime toute les récompenses au préalable
+    for (id reward in arrayReward)
+    {
+        if (reward != [NSNull null])
+            [[DDDatabaseAccess instance] deleteReward:reward];
+    }
+    
+    if ([[self.textFieldPremier text] length] > 0)
+        [self saveRewardsWithLibelle:self.textFieldPremier.text andType:@"Or"];
+    
+    if ([[self.textFieldSecond text] length] > 0)
+        [self saveRewardsWithLibelle:self.textFieldSecond.text andType:@"Argent"];
+    
+    if ([[self.textFieldTroisieme text] length] > 0)
+        [self saveRewardsWithLibelle:self.textFieldTroisieme.text andType:@"Bronze"];
+    
     //On ferme la vue
     [self.delegate closeAwardView];
 }

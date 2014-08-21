@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "DDPlayerManagerViewController.h"
+#import "DDRewardDetailViewController.h"
 
 @class DDPopOverViewController;
 @class DDRootTrophyViewController;
+@class DDCustomButton;
 
-@interface DDPlayerViewController : UIViewController <DDPlayerManagerViewProtocol, UIAlertViewDelegate>
+@interface DDPlayerViewController : UIViewController <DDPlayerManagerViewProtocol, DDRewardDetailProtocol, UIAlertViewDelegate>
 
 
 #pragma mark - Variables
@@ -56,6 +58,9 @@
 //Label du score total
 @property (weak, nonatomic) IBOutlet UILabel *labelTotalScore;
 
+//Boutton pour afficher les récompenses
+@property (weak, nonatomic) IBOutlet DDCustomButton *buttonReward;
+
 //Vue racine de la section des trophées
 @property (weak, nonatomic) IBOutlet UIView *viewRootContainer;
 
@@ -76,6 +81,9 @@
 
 //Vue pour manager les joueurs (création et édition)
 @property (strong, nonatomic) DDPlayerManagerViewController *playerManagerViewController;
+
+//Vue pour afficher la récompense
+@property (strong, nonatomic) DDRewardDetailViewController *rewardDetailViewController;
 
 //Root view des trophées du joueur
 @property (strong, nonatomic) UINavigationController *rootTrophyNavigationViewController;
@@ -100,5 +108,8 @@
 
 //On appuie sur l'image de profil
 - (IBAction)onPushImageProfil:(id)sender;
+
+//On affiche la récompense donnée
+- (IBAction)onPushDisplayReward:(id)sender;
 
 @end

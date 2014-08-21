@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "DDCustomColorViewController.h"
+#import "DDAwardViewController.h"
 
 @class DDPopOverViewController;
 @class DDCustomButton;
 
 
-@interface DDSettingViewController : UIViewController <DDCustomColorViewProtocol>
+@interface DDSettingViewController : UIViewController <DDCustomColorViewProtocol, DDAwardViewProtocol>
 
 
 #pragma mark - Variables
@@ -23,6 +24,9 @@
 
 //Vue pour changer la couleur de l'appli
 @property (strong, nonatomic) DDCustomColorViewController *customColorViewController;
+
+//AwardViewController pour rajouter des récompenses
+@property (strong, nonatomic) DDAwardViewController *awardViewController;
 
 //Vue de la protection
 @property (weak, nonatomic) IBOutlet UIView *viewRecompense;
@@ -143,6 +147,9 @@
 
 
 #pragma mark - Fonctions
+
+//Fonction pour ajouter une récompense
+- (IBAction)onPushAddAward:(id)sender;
 
 //Fonction pour réinitialiser les taches
 - (IBAction)onPushButtonResetTask:(id)sender;

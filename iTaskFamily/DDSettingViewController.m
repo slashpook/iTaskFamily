@@ -93,9 +93,11 @@
     
     //On initialise le popOver, le navigation controller et le playerManagerViewController
     _popOverViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PopOverViewController"];
+    _awardViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"AwardViewController"];
+    [self.awardViewController setDelegate:self];
     _customColorViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"CustomColorViewController"];
     [self.customColorViewController setDelegate:self];
-
+    
     //On met à jour les couleurs de la vue
     [self updateTheme];
 }
@@ -116,6 +118,16 @@
     [self.buttonColorPerso setNeedsDisplay];
     //On configure la couleur de teinte des switchs
     [self.switchMeteo setOnTintColor:[DDHelperController getMainTheme]];
+}
+
+//Fonction pour ajouter une récompense
+- (IBAction)onPushAddAward:(id)sender
+{
+    [[[[[[UIApplication sharedApplication] delegate] window] rootViewController] view] addSubview:self.popOverViewController.view];
+    
+    //On présente la popUp
+    CGRect frame = self.awardViewController.view.frame;
+    [self.popOverViewController presentPopOverWithContentView:self.awardViewController.view andSize:frame.size andOffset:CGPointMake(0, 0)];
 }
 
 //Fonction pour réinitialiser les taches
@@ -151,6 +163,16 @@
 #pragma mark - CustomColorView delegate functions
 
 - (void)closeCustomColorView
+{
+    //On enlève la popUp
+    [self.popOverViewController hide];
+}
+
+
+#pragma mark - DDAwardViewProtocol fonctions
+
+//Fonction pour fermer la popUp
+- (void)closeAwardView
 {
     //On enlève la popUp
     [self.popOverViewController hide];

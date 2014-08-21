@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DDAwardViewController.h"
 
 @class DDHistogramView;
 @class DDPopOverViewController;
 
-@interface DDPodiumViewController : UIViewController <DDAwardViewProtocol>
+@interface DDPodiumViewController : UIViewController
 
 
 #pragma mark - Variables
@@ -86,25 +85,10 @@
 //Couleur du graphe
 @property (strong, nonatomic) UIColor *colorProgressView;
 
-//Bouton pour ajouter des récompenses
-@property (weak, nonatomic) IBOutlet UIButton *buttonAddReward;
-
-//PopOver de la vue
-@property (strong, nonatomic) DDPopOverViewController *popOverViewController;
-
-//AwardViewController pour rajouter des récompenses
-@property (strong, nonatomic) DDAwardViewController *awardViewController;
-
-//Navigation controller qui contient le awardViewController
-@property (strong, nonatomic) UINavigationController *navigationAwardController;
-
 
 #pragma mark - Fonctions
 
 //Fonctions pour mettre à jour les composants
 - (void)updateComponentsAndDisplayProgressBar:(BOOL)display forTypeOfPodium:(TypeOfPodium)typeOfPodium;
-
-//Fonction pour ajouter une récompense
-- (IBAction)onPushAddAward:(id)sender;
 
 @end

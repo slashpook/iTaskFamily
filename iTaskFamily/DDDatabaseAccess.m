@@ -187,8 +187,6 @@
 }
 
 
-#pragma mark - CRUD Award
-
 #pragma mark - CRUD CategoryTask
 
 //On crée la categoryTask donnée
@@ -863,6 +861,55 @@
     return arrayPlayerSorted;
 }
 
+//On récupère tous les players trié en fonction du score qu'ils ont fais la semaine passé
+- (NSArray *)getPlayersSortedByTypeScoreLastWeek
+{
+    NSArray *arrayPlayer = [self getPlayers];
+    NSMutableArray *arrayPlayerSorted = [[NSMutableArray alloc] init];
+    NSMutableArray *arrayScoreSorted = [[NSMutableArray alloc] init];
+    
+    for (Player *player in arrayPlayer)
+    {
+        NSDate *dateNow = [NSDate date];
+        int score = 0;
+        score = [self getScoreWeekForPlayer:player forWeekAndYear:[DDHelperController getWeekAndYearForDate:[DDHelperController getPreviousWeekForDate:dateNow]]];
+
+        
+        if ([arrayScoreSorted count] == 0)
+        {
+            [arrayPlayerSorted addObject:player];
+            [arrayScoreSorted addObject:[NSNumber numberWithInt:score]];
+        }
+        else
+        {
+            int count = (int)[arrayScoreSorted count];
+            for (int i = 0; i < count; i++)
+            {
+                if ([[arrayScoreSorted objectAtIndex:i] intValue] < score)
+                {
+                    [arrayPlayerSorted insertObject:player atIndex:i];
+                    [arrayScoreSorted insertObject:[NSNumber numberWithInt:score] atIndex:i];
+                    break;
+                }
+                else if (i == [arrayScoreSorted count] - 1 && [[arrayScoreSorted objectAtIndex:i] intValue] > score)
+                {
+                    [arrayPlayerSorted addObject:player];
+                    [arrayScoreSorted addObject:[NSNumber numberWithInt:score]];
+                    break;
+                }
+                else if (i == [arrayScoreSorted count] - 1)
+                {
+                    [arrayPlayerSorted insertObject:player atIndex:0];
+                    [arrayScoreSorted insertObject:[NSNumber numberWithInt:score] atIndex:0];
+                    break;
+                }
+            }
+        }
+    }
+    
+    return arrayPlayerSorted;
+}
+
 //On récupère le joueur donné
 - (Player *)getPlayerForPseudo:(NSString *)pseudo
 {
@@ -988,28 +1035,46 @@
 #pragma mark - CRUD Reward
 
 //On sauvegarde le reward après avoir fait quelques tests préalable
-- (NSString *)saveReward:(Reward *)reward
+- (NSString *)createReward:(Reward *)reward
 {
     //On sauvegarde le trophy
     [self saveContext];
     return nil;
 }
 
+//On update la reward donnée
+- (void)updateReward:(Reward *)reward
+{
+    //On sauvegarde la reward
+    [self saveContext];
+}
+
 //On tri le tableau de rewards
-- (NSArray *)getRewardSortedInArray:(NSArray *)arrayTrophies
+- (NSArray *)getRewardSortedForWeekAndYear:(NSString *)weekAndYear
 {
     //On crée le tableau de rewards et on les récupère dans le bon ordre
     NSMutableArray *arrayTrophiesSort = [[NSMutableArray alloc] init];
     
-    [arrayTrophiesSort addObject:[self getTrophyForType:@"Bronze" inArray:arrayTrophies]];
-    [arrayTrophiesSort addObject:[self getTrophyForType:@"Argent" inArray:arrayTrophies]];
-    [arrayTrophiesSort addObject:[self getTrophyForType:@"Or" inArray:arrayTrophies]];
+    if ([self getRewardForType:@"Or" forWeekAndYear:weekAndYear] != nil)
+        [arrayTrophiesSort addObject:[self getRewardForType:@"Or" forWeekAndYear:weekAndYear]];
+    else
+        [arrayTrophiesSort addObject:[NSNull null]];
+    
+    if ([self getRewardForType:@"Argent" forWeekAndYear:weekAndYear] != nil)
+        [arrayTrophiesSort addObject:[self getRewardForType:@"Argent" forWeekAndYear:weekAndYear]];
+    else
+        [arrayTrophiesSort addObject:[NSNull null]];
+    
+    if ([self getRewardForType:@"Bronze" forWeekAndYear:weekAndYear] != nil)
+        [arrayTrophiesSort addObject:[self getRewardForType:@"Bronze" forWeekAndYear:weekAndYear]];
+    else
+        [arrayTrophiesSort addObject:[NSNull null]];
     
     return arrayTrophiesSort;
 }
 
-//On récupère le reward pour le type donnée
-- (Reward *)getRewardForType:(NSString *)type
+//On récupère le reward pour le type donnée et la weekAndYear donnée
+- (Reward *)getRewardForType:(NSString *)type forWeekAndYear:(NSString *)weekAndYear
 {
     //On défini la classe pour la requète
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -1018,7 +1083,7 @@
     [fetchRequest setEntity:entityDescription];
     
     //On rajoute un filtre
-    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"type == %@" , type];
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"type == %@ && weekAndYear == %@" , type, weekAndYear];
     [fetchRequest setPredicate:newPredicate];
     
     NSError *error;

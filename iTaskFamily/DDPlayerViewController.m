@@ -10,6 +10,7 @@
 #import "DDPopOverViewController.h"
 #import "DDPlayerMiniatureCollectionViewCell.h"
 #import "DDRootTrophyViewController.h"
+#import "DDCustomButton.h"
 
 @interface DDPlayerViewController ()
 
@@ -71,11 +72,13 @@
     [self.labelTotalScore setTextColor:COULEUR_BLACK];
     [self.labelTotalScore setFont:POLICE_PLAYER_CONTENT];
     
-    //On initialise le popOver, le navigation controller et le playerManagerViewController
+    //On initialise le popOver, et les controller qu'on affichera dedans
     _popOverViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PopOverViewController"];
     _playerManagerViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PlayerManagerViewController"];
     [self.playerManagerViewController setDelegate:self];
     _navigationPlayerManagerViewController = [[UINavigationController alloc] initWithRootViewController:self.playerManagerViewController];
+    _rewardDetailViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"RewardDetailViewController"];
+    [self.rewardDetailViewController setDelegate:self];
     
     //On s'abonne a un type de cellule
     [self.collectionViewMiniature registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
@@ -91,17 +94,29 @@
                                              selector:@selector(updateComponent)
                                                  name:UPDATE_PLAYER
                                                object:nil];
-
-    //On update les infos du joueurs si on en a un
-    [self updateComponent];
+    
+    //On met en place la notification pour mettre à jour le theme
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateTheme)
+                                                 name:UPDATE_THEME
+                                               object:nil];
+    
+    [self updateTheme];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
+    //On update les infos du joueurs si on en a un
     [self updateComponent];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    //On cache ou non le boutton des récompenses
+    [self updateComponentWithButtonReward];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -140,6 +155,22 @@
         [self openNewPlayerView];
     else
         [self openModifyPlayerView];
+}
+
+//On affiche la récompense donnée
+- (IBAction)onPushDisplayReward:(id)sender
+{
+    //On récupère le tableau des joueurs triés en fonction du score de la semaine passée
+    NSArray *arrayTrophy = [[DDDatabaseAccess instance] getPlayersSortedByTypeScoreLastWeek];
+    int index = [arrayTrophy indexOfObject:self.currentPlayer];
+    
+    Reward *reward = [[[DDDatabaseAccess instance] getRewardSortedForWeekAndYear:[DDHelperController getWeekAndYearForDate:[NSDate date]]] objectAtIndex:index];
+    [self.rewardDetailViewController setReward:reward];
+    [[[[[[UIApplication sharedApplication] delegate] window] rootViewController] view] addSubview:self.popOverViewController.view];
+    
+    //On présente la popUp
+    CGRect frame = self.rewardDetailViewController.view.frame;
+    [self.popOverViewController presentPopOverWithContentView:self.rewardDetailViewController.view andSize:frame.size andOffset:CGPointMake(0, 0)];
 }
 
 //On met à jour les infos du joueur
@@ -196,6 +227,55 @@
     
     //On recharge la collection view
     [self.collectionViewMiniature reloadData];
+}
+
+- (void)updateComponentWithButtonReward
+{
+    //On récupère le tableau des joueurs triés en fonction du score de la semaine passée
+    NSArray *arrayTrophy = [[DDDatabaseAccess instance] getPlayersSortedByTypeScoreLastWeek];
+    int index = [arrayTrophy indexOfObject:self.currentPlayer];
+    
+    if (index != NSNotFound && [[[DDDatabaseAccess instance] getRewardSortedForWeekAndYear:[DDHelperController getWeekAndYearForDate:[NSDate date]]] objectAtIndex:index] != [NSNull null] && self.currentPlayer != nil)
+    {
+        [self.buttonReward setHidden:NO];
+        [self.labelNameProfil setFrame:CGRectMake(25, 566, 350, 30)];
+        [self.labelTitleTotalScore setFrame:CGRectMake(25, 596, 226, 21)];
+        [self.labelTotalScore setFrame:CGRectMake(236, 596, 139, 21)];
+        [self.labelTitleWeekScore setFrame:CGRectMake(25, 619, 226, 21)];
+        [self.labelWeekScore setFrame:CGRectMake(236, 619, 139, 21)];
+        [self.labelTitleNbrTrophy setFrame:CGRectMake(25, 642, 226, 21)];
+        [self.labelNbrTrophy setFrame:CGRectMake(236, 642, 139, 21)];
+        [self.labelTitleNbrTrophy setFont:POLICE_PLAYER_TITLE_REWARD];
+        [self.labelTitleWeekScore setFont:POLICE_PLAYER_TITLE_REWARD];
+        [self.labelTitleTotalScore setFont:POLICE_PLAYER_TITLE_REWARD];
+        [self.labelNbrTrophy setFont:POLICE_PLAYER_CONTENT_REWARD];
+        [self.labelWeekScore setFont:POLICE_PLAYER_CONTENT_REWARD];
+        [self.labelTotalScore setFont:POLICE_PLAYER_CONTENT_REWARD];
+    }
+    else
+    {
+        [self.buttonReward setHidden:YES];
+        [self.labelNameProfil setFrame:CGRectMake(25, 574, 350, 30)];
+        [self.labelTitleTotalScore setFrame:CGRectMake(25, 618, 226, 21)];
+        [self.labelTotalScore setFrame:CGRectMake(236, 618, 139, 21)];
+        [self.labelTitleWeekScore setFrame:CGRectMake(25, 653, 226, 21)];
+        [self.labelWeekScore setFrame:CGRectMake(236, 653, 139, 21)];
+        [self.labelTitleNbrTrophy setFrame:CGRectMake(25, 687, 226, 21)];
+        [self.labelNbrTrophy setFrame:CGRectMake(236, 687, 139, 21)];
+        [self.labelTitleNbrTrophy setFont:POLICE_PLAYER_TITLE];
+        [self.labelTitleWeekScore setFont:POLICE_PLAYER_TITLE];
+        [self.labelTitleTotalScore setFont:POLICE_PLAYER_TITLE];
+        [self.labelNbrTrophy setFont:POLICE_PLAYER_CONTENT];
+        [self.labelWeekScore setFont:POLICE_PLAYER_CONTENT];
+        [self.labelTotalScore setFont:POLICE_PLAYER_CONTENT];
+    }
+}
+
+//On met à jour le theme
+- (void)updateTheme
+{
+    [self.buttonReward setColorTitleEnable:[DDHelperController getMainTheme]];
+    [self.buttonReward setNeedsDisplay];
 }
 
 //On ouvre la fenêtre de nouveau joueur
@@ -292,6 +372,15 @@
     [self setArrayPlayer:[NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getPlayers]]];
     [self updateComponent];
     
+    //On enlève la popUp
+    [self.popOverViewController hide];
+}
+
+
+#pragma mark - DDRewardDetailViewProtocol fonctions
+
+- (void)closeRewardDetailView
+{
     //On enlève la popUp
     [self.popOverViewController hide];
 }

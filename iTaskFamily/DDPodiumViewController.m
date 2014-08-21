@@ -38,24 +38,11 @@
     [self.imageViewTroisieme.layer setCornerRadius:55.0];
     [self.imageViewTroisieme.layer setMasksToBounds:YES];
     
-    //On configure le bouton pour ajouter des récompenses
-    [self.buttonAddReward.layer setCornerRadius:40.0];
-    [self.buttonAddReward.layer setBorderColor:COULEUR_TASK.CGColor];
-    [self.buttonAddReward.layer setBorderWidth:2.0];
-    [self.buttonAddReward.layer setMasksToBounds:YES];
-    
     //On initialise le tableau qui va contenir tous les éléments et on lui ajoutes des sous tableaux
     NSArray *arrayJoueur1 = [NSArray arrayWithObjects:self.labelTitrePremier, self.labelTitrePremierExposant, self.viewSeparationPremier, self.labelScorePremier, self.viewPremier, self.imageViewPremier, self.labelNomPremier, nil];
     NSArray *arrayJoueur2 = [NSArray arrayWithObjects:self.labelTitreSecond, self.labelTitreSecondExposant, self.viewSeparationSecond, self.labelScoreSecond, self.viewSecond, self.imageViewSecond, self.labelNomSecond, nil];
     NSArray *arrayJoueur3 = [NSArray arrayWithObjects:self.labelTitreTroisieme, self.labelTitreTroisiemeExposant, self.viewSeparationTroisieme, self.labelScoreTroisieme, self.viewTroisieme, self.imageViewTroisieme, self.labelNomTroisieme, nil];
     _arrayComponents = [[NSArray alloc] initWithObjects:arrayJoueur1, arrayJoueur2, arrayJoueur3, nil];
-    
-    //On initialise le popOver, le navigation controller et le AwardViewController
-    _popOverViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PopOverViewController"];
-    
-    _awardViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"AwardViewController"];
-    [self.awardViewController setDelegate:self];
-    _navigationAwardController = [[UINavigationController alloc] initWithRootViewController:self.awardViewController];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -191,27 +178,6 @@
     }
 }
 
-//Fonction pour ajouter une récompense
-- (IBAction)onPushAddAward:(id)sender
-{
-    //On pop le navigation controller
-    [self.navigationAwardController popToRootViewControllerAnimated:NO];
-    
-    [[[[[[UIApplication sharedApplication] delegate] window] rootViewController] view] addSubview:self.popOverViewController.view];
-    
-    //On présente la popUp
-    CGRect frame = self.awardViewController.view.frame;
-    [self.popOverViewController presentPopOverWithContentView:self.navigationAwardController.view andSize:frame.size andOffset:CGPointMake(0, 0)];
-}
 
-
-#pragma mark - DDAwardViewProtocol fonctions
-
-//Fonction pour fermer la popUp
-- (void)closeAwardView
-{
-    //On enlève la popUp
-    [self.popOverViewController hide];
-}
 
 @end
