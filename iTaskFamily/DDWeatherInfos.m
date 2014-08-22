@@ -20,6 +20,11 @@
     if (self) {
         [self setDelegate:delegate];
         _webData = [[NSMutableData alloc] init];
+        
+        //On initialise la variable pour se géolocaliser
+        _locationManager = [[CLLocationManager alloc] init];
+        [self.locationManager setDelegate:self];
+        [self.locationManager setDesiredAccuracy:kCLLocationAccuracyThreeKilometers];
     }
     return self;
 }
@@ -35,6 +40,25 @@
     
     _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
+
+//On se géolocalise pour afficher la météo
+- (void)updateMeteoWithGeolocate
+{
+    [self.locationManager startUpdatingLocation];
+}
+
+//On réinitialise les données
+- (void)resetData
+{
+    self.currentTemp = 0;
+    self.lowTemp = 0;
+    self.hightTemp = 0;
+    [self setCondition:@""];
+    [self setLocation:@"Météo"];
+}
+
+
+#pragma mark - NSURLConnection delegate functions
 
 //Récupération des données
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
@@ -97,14 +121,50 @@
     [self.delegate searchEndedWithError:self];
 }
 
-//On réinitialise les données
-- (void)resetData
+
+#pragma mark CLLocationManager delegate functions
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-    self.currentTemp = 0;
-    self.lowTemp = 0;
-    self.hightTemp = 0;
-    [self setCondition:@""];
-    [self setLocation:@"Météo"];
+    //On arrète la recherche pour ne pas consommer trop d'énergie
+    [self.locationManager stopUpdatingLocation];
+    //On désactive la géolocalisation
+    [[DDManagerSingleton instance] setIsGeolocationActivate:NO];
+    
+    //On lance la meteo avec la ville par défault
+    [self updateMeteoWithQuery:[[DDManagerSingleton instance] getMeteo]];
+    
+    [self.delegate searchEndedWithError:self];
+}
+
+- (void)locationManager:(CLLocationManager *)manage didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    //On géolocalisation
+    [[DDManagerSingleton instance] setIsGeolocationActivate:YES];
+    
+    //On arrète la recherche pour ne pas consommer trop d'énergie
+    [self.locationManager stopUpdatingLocation];
+    
+    //On récupère la localisation
+    [self newPhysicalLocation:newLocation];
+}
+
+-(void)newPhysicalLocation:(CLLocation *)location
+{    
+    _geoCoder = [[CLGeocoder alloc] init] ;
+    
+    [self.geoCoder reverseGeocodeLocation:location completionHandler:
+     ^(NSArray *placemarks, NSError *error) {
+         
+         for (CLPlacemark *placemark in placemarks) {
+             if (placemark.locality != nil) {
+                 [self updateMeteoWithQuery:placemark.locality];
+             }
+             //Sinon on rempli les champs avec des informations d'erreur
+             else
+                 [[self delegate] searchEndedWithError:self];
+         }
+     }];
 }
 
 @end

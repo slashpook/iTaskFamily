@@ -75,7 +75,19 @@
     [self.activityIndicator startAnimating];
     [self.activityIndicator setHidden:NO];
     
-    [self.weatherInfos updateMeteoWithQuery:@"Toulouse"];
+    //Si on a pas la géolocalisation d'activé
+    if ([CLLocationManager locationServicesEnabled] == NO || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied || [[DDManagerSingleton instance] isGeolocalisationActivate] == NO)
+    {
+        [[DDManagerSingleton instance] setIsGeolocationActivate:NO];
+        
+        //Si on a une ville par défault, on lance la géolocalisation
+        [self.weatherInfos updateMeteoWithQuery:[[DDManagerSingleton instance] getMeteo]];
+    }
+    //Sinon on géolocalise
+    else
+    {
+        [self.weatherInfos updateMeteoWithGeolocate];
+    }
 }
 
 //On met à jour le graphisme

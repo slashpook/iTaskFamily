@@ -3,11 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "nko_colormap.png"
+      "filename" : "MeteoChangeVille.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "MeteoChangeVille@2x.png"
     }
   ],
   "info" : {

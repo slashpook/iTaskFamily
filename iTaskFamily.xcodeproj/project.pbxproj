@@ -18,6 +18,7 @@
 		6D32CAF0189BFF1200FD2B3F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D32CAEF189BFF1200FD2B3F /* Images.xcassets */; };
 		6D33D449189FA8460057D168 /* DDSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D33D448189FA8460057D168 /* DDSettingViewController.m */; };
 		6D33D7461855D27F001E1B3A /* DDRootPodiumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D33D7451855D27F001E1B3A /* DDRootPodiumViewController.m */; };
+		6D39975D19A737F8005AB9B0 /* DDMeteoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D39975C19A737F8005AB9B0 /* DDMeteoViewController.m */; };
 		6D3A26B818B7956600545FF2 /* DDCustomOccurenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A26B718B7956600545FF2 /* DDCustomOccurenceCell.m */; };
 		6D3A26BC18B7A1FB00545FF2 /* DDCategoriesListEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A26BB18B7A1FB00545FF2 /* DDCategoriesListEventViewController.m */; };
 		6D3CBC5019A4D9210067CBCF /* NKOColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3CBC4F19A4D9210067CBCF /* NKOColorPickerView.m */; };
@@ -125,6 +126,8 @@
 		6D33D448189FA8460057D168 /* DDSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSettingViewController.m; sourceTree = "<group>"; };
 		6D33D7441855D27F001E1B3A /* DDRootPodiumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRootPodiumViewController.h; sourceTree = "<group>"; };
 		6D33D7451855D27F001E1B3A /* DDRootPodiumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRootPodiumViewController.m; sourceTree = "<group>"; };
+		6D39975B19A737F8005AB9B0 /* DDMeteoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMeteoViewController.h; sourceTree = "<group>"; };
+		6D39975C19A737F8005AB9B0 /* DDMeteoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMeteoViewController.m; sourceTree = "<group>"; };
 		6D3A26B618B7956600545FF2 /* DDCustomOccurenceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomOccurenceCell.h; sourceTree = "<group>"; };
 		6D3A26B718B7956600545FF2 /* DDCustomOccurenceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomOccurenceCell.m; sourceTree = "<group>"; };
 		6D3A26BA18B7A1FB00545FF2 /* DDCategoriesListEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCategoriesListEventViewController.h; sourceTree = "<group>"; };
@@ -349,6 +352,7 @@
 		6D33D446189FA82A0057D168 /* SettingViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6D39975A19A737D2005AB9B0 /* MeteoViewController */,
 				6D7E280F189F8F9500BCBA9F /* AwardViewController */,
 				6DB8F1F719A5E18B00B22DB2 /* CustomColorViewController */,
 				6D33D447189FA8460057D168 /* DDSettingViewController.h */,
@@ -365,6 +369,15 @@
 				6D33D7451855D27F001E1B3A /* DDRootPodiumViewController.m */,
 			);
 			name = PodiumViewController;
+			sourceTree = "<group>";
+		};
+		6D39975A19A737D2005AB9B0 /* MeteoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6D39975B19A737F8005AB9B0 /* DDMeteoViewController.h */,
+				6D39975C19A737F8005AB9B0 /* DDMeteoViewController.m */,
+			);
+			name = MeteoViewController;
 			sourceTree = "<group>";
 		};
 		6D3A26B518B7954500545FF2 /* CustomOccurenceCell */ = {
@@ -1143,6 +1156,7 @@
 				6D61F6671851DC1400759AFC /* DDCustomCategoryListCell.m in Sources */,
 				6D6B3ED9183CF75B009542A8 /* DDAppDelegate.m in Sources */,
 				6D5E3D3718C36F2E003BA0F2 /* DDEventInfosViewController.m in Sources */,
+				6D39975D19A737F8005AB9B0 /* DDMeteoViewController.m in Sources */,
 				6DCB2A8A18B6177B000FDFCA /* DDEventManagerViewController.m in Sources */,
 				6DCE47B9183E066100D64363 /* DDPlayerView.m in Sources */,
 				6DF00ED8184F952100F8F3C5 /* DDCategoryMiniatureCollectionViewCell.m in Sources */,

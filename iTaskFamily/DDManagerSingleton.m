@@ -58,7 +58,6 @@
     return self;
 }
 
-
 //On charge les images de la bibliothèque
 -(void)loadImagePicker
 {
@@ -156,4 +155,34 @@
                    forKey: NSURLIsExcludedFromBackupKey
                     error: &error];
 }
+
+//Indique si on se géolocalise ou non
+- (BOOL)isGeolocalisationActivate
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"geolocalisation"];
+}
+
+//Set la géolocalisation
+- (void)setIsGeolocationActivate:(BOOL)isGeolocalisationActivate
+{
+    [[NSUserDefaults standardUserDefaults] setBool:isGeolocalisationActivate forKey:@"geolocalisation"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+//On récupère la météo
+- (NSString *)getMeteo
+{
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"meteo"] == nil)
+        return @"Paris";
+    else
+        return [[NSUserDefaults standardUserDefaults] objectForKey:@"meteo"];
+}
+
+//Set la météo
+- (void)setMeteo:(NSString *)meteo
+{
+    [[NSUserDefaults standardUserDefaults] setObject:meteo forKey:@"meteo"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 @end

@@ -16,6 +16,7 @@
     #import <AssetsLibrary/AssetsLibrary.h>
     #import <QuartzCore/QuartzCore.h>
     #import <CoreData/CoreData.h>
+    #import <MapKit/MapKit.h>
     #import "DDConstant.h"
     #import "Achievement.h"
     #import "CategoryTrophy.h"

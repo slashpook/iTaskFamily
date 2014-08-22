@@ -18,10 +18,16 @@
 
 @end
 
-@interface DDWeatherInfos : NSObject <NSURLConnectionDelegate>
+@interface DDWeatherInfos : NSObject <CLLocationManagerDelegate, NSURLConnectionDelegate>
 
 
 #pragma mark - Variables
+
+//Variable pour se géolocaliser
+@property(strong, nonatomic) CLLocationManager *locationManager;
+
+//GeoCoder pour décoder la géolocalisation
+@property(strong, nonatomic) CLGeocoder *geoCoder;;
 
 //URL Connection pour lancer la récupération du JSON
 @property(strong, nonatomic) NSURLConnection *connection;
@@ -55,5 +61,8 @@
 
 //On met à jour la météo avec la requette passé en paramètre
 - (void)updateMeteoWithQuery:(NSString *)query;
+
+//On se géolocalise pour afficher la météo
+- (void)updateMeteoWithGeolocate;
 
 @end

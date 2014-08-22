@@ -95,12 +95,23 @@
     _popOverViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PopOverViewController"];
     _awardViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"AwardViewController"];
     [self.awardViewController setDelegate:self];
+    _meteoViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"MeteoViewController"];
+    [self.meteoViewController setDelegate:self];
     _customColorViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"CustomColorViewController"];
     [self.customColorViewController setDelegate:self];
     
     //On met à jour les couleurs de la vue
     [self updateTheme];
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    //On set le switch
+    [self.switchMeteo setOn:[[DDManagerSingleton instance] isGeolocalisationActivate]];
+}
+
 
 #pragma mark - Fonctions du controller
 
@@ -136,10 +147,21 @@
     [DDCustomAlertView displayAnswerMessage:@"Voulez-vous vraiment réinitialiser les taches." withDelegate:self];
 }
 
+//On appuie sur le switch de la météo
+- (IBAction)onPushSwitchMeteo:(id)sender
+{
+    [[DDManagerSingleton instance] setIsGeolocationActivate:self.switchMeteo.isOn];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_METEO object:nil];
+}
+
 //Fonction pour changer la ville par défaut de la météo
 - (IBAction)onPushButtonChangeVille:(id)sender
 {
+    [[[[[[UIApplication sharedApplication] delegate] window] rootViewController] view] addSubview:self.popOverViewController.view];
     
+    //On présente la popUp
+    CGRect frame = self.meteoViewController.view.frame;
+    [self.popOverViewController presentPopOverWithContentView:self.meteoViewController.view andSize:frame.size andOffset:CGPointMake(0, 0)];
 }
 
 //Fonction pour changer la couleur de l'appli
@@ -173,6 +195,15 @@
 
 //Fonction pour fermer la popUp
 - (void)closeAwardView
+{
+    //On enlève la popUp
+    [self.popOverViewController hide];
+}
+
+#pragma mark - DDMeteoViewProtocol fonctions
+
+//Fonction pour fermer la popUp
+- (void)closeMeteoView
 {
     //On enlève la popUp
     [self.popOverViewController hide];

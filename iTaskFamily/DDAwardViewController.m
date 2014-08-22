@@ -71,13 +71,6 @@
     [self.textFieldTroisieme.layer setMasksToBounds:YES];
     [self.textFieldTroisieme setDelegate:self];
     
-    //On cache la navigation bar
-    [self.navigationController setNavigationBarHidden:YES];
-    
-    //On configure l'arrondi des vues
-    [self.navigationController.view.layer setCornerRadius:10.0];
-    [self.navigationController.view.layer setMasksToBounds:YES];
-    
     //On met en place la barre de navigation
     _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:[DDHelperController getMainTheme] andImage:[UIImage imageNamed:@"AwardAddButtonNavBar"]];
     [[self.custoNavBar view] setFrame:CGRectMake(0, 0, 380, 50)];

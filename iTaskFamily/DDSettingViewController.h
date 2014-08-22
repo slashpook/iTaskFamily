@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "DDCustomColorViewController.h"
 #import "DDAwardViewController.h"
+#import "DDMeteoViewController.h"
 
 @class DDPopOverViewController;
 @class DDCustomButton;
 
 
-@interface DDSettingViewController : UIViewController <DDCustomColorViewProtocol, DDAwardViewProtocol, UIAlertViewDelegate>
+@interface DDSettingViewController : UIViewController <DDCustomColorViewProtocol, DDAwardViewProtocol, DDMeteoViewProtocol, UIAlertViewDelegate>
 
 
 #pragma mark - Variables
@@ -27,6 +28,9 @@
 
 //AwardViewController pour rajouter des récompenses
 @property (strong, nonatomic) DDAwardViewController *awardViewController;
+
+//MeteoViewController pour configurer la ville par défault
+@property (strong, nonatomic) DDMeteoViewController *meteoViewController;
 
 //Vue de la protection
 @property (weak, nonatomic) IBOutlet UIView *viewRecompense;
@@ -153,6 +157,9 @@
 
 //Fonction pour réinitialiser les taches
 - (IBAction)onPushButtonResetTask:(id)sender;
+
+//On appuie sur le switch de la météo
+- (IBAction)onPushSwitchMeteo:(id)sender;
 
 //Fonction pour changer la ville par défaut de la météo
 - (IBAction)onPushButtonChangeVille:(id)sender;

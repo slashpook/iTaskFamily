@@ -1655,7 +1655,6 @@
                                         </state>
                                         <connections>
                                             <action selector="onPushButtonChangeVille:" destination="oNS-Ip-Z5b" eventType="touchUpInside" id="F92-uA-ZdP"/>
-                                            <action selector="onPushButtonResetTask:" destination="oNS-Ip-Z5b" eventType="touchUpInside" id="RMa-YW-OY4"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Géolocalisation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9O-lJ-98y">
@@ -1668,6 +1667,9 @@
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dVu-VY-zQo">
                                         <rect key="frame" x="181" y="159" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="onPushSwitchMeteo:" destination="oNS-Ip-Z5b" eventType="valueChanged" id="VMA-Yv-fEI"/>
+                                        </connections>
                                     </switch>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -2632,13 +2634,14 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="380" height="490"/>
                     <connections>
                         <outlet property="colorPickerView" destination="6zw-Xv-wWQ" id="MrM-8f-WBj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PsS-hb-PNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2088" y="1594"/>
+            <point key="canvasLocation" x="2088" y="1522"/>
         </scene>
         <!--Award View Controller-->
         <scene sceneID="y4N-mU-Uav">
@@ -2710,7 +2713,64 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sgK-vM-dDR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2088" y="2184"/>
+            <point key="canvasLocation" x="2088" y="2108"/>
+        </scene>
+        <!--Meteo View Controller-->
+        <scene sceneID="QeK-pa-8sr">
+            <objects>
+                <viewController storyboardIdentifier="MeteoViewController" autoresizesArchivedViewToFullSize="NO" id="GZ8-aq-nUF" customClass="DDMeteoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1eR-z0-Rmc"/>
+                        <viewControllerLayoutGuide type="bottom" id="zwP-cv-3gu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eWO-en-IHO">
+                        <rect key="frame" x="0.0" y="0.0" width="380" height="155"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ville" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gja-ox-VyZ">
+                                <rect key="frame" x="10" y="72" width="82" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ville actuelle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8LC-Ax-3Ja">
+                                <rect key="frame" x="10" y="118" width="124" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Toulouse" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BwY-MH-yyM">
+                                <rect key="frame" x="132" y="118" width="238" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9BH-gE-4Jf">
+                                <rect key="frame" x="110" y="68" width="260" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="380" height="155"/>
+                    <connections>
+                        <outlet property="labelChoiceCity" destination="gja-ox-VyZ" id="WIo-GI-rmT"/>
+                        <outlet property="labelDescActualCity" destination="BwY-MH-yyM" id="UNV-2s-vEp"/>
+                        <outlet property="labelTitleActualCity" destination="8LC-Ax-3Ja" id="E5C-sx-aY4"/>
+                        <outlet property="textFieldChoiceCity" destination="9BH-gE-4Jf" id="Gri-Nu-smx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NgH-qE-Xax" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2088" y="2464"/>
         </scene>
         <!--Custom Image Picker View Controller-->
         <scene sceneID="cec-Kz-DX6">
@@ -3466,6 +3526,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="380" height="120"/>
                     <connections>
                         <outlet property="labelReward" destination="fDv-WP-cyx" id="rcI-lW-7Sg"/>
                     </connections>

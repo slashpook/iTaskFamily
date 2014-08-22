@@ -55,4 +55,16 @@
 //On met à jour l'image de profil du joueur
 - (void)updateImgProfilForPlayer:(Player *)player WithPath:(NSString *)path withImage:(UIImage *)imgProfil;
 
+//Indique si on se géolocalise ou non
+- (BOOL)isGeolocalisationActivate;
+
+//Set la géolocalisation
+- (void)setIsGeolocationActivate:(BOOL)isGeolocalisationActivate;
+
+//On récupère la météo
+- (NSString *)getMeteo;
+
+//Set la météo
+- (void)setMeteo:(NSString *)meteo;
+
 @end
