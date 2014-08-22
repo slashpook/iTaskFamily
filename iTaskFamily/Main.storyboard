@@ -1842,7 +1842,6 @@
                                         </state>
                                         <connections>
                                             <action selector="onPushButtonChoiceColorPerso:" destination="oNS-Ip-Z5b" eventType="touchUpInside" id="Qmc-Qo-vMY"/>
-                                            <action selector="onPushButtonResetTask:" destination="oNS-Ip-Z5b" eventType="touchUpInside" id="W9c-SP-DSw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7kA-Da-2xK">

@@ -40,6 +40,9 @@
 //On récupère tous les achievements d pour un player donné (utile pour récupérer les points totaux gagnés)
 - (NSArray *)getAchievementsForPlayer:(Player *)player;
 
+//On récupère tous les achievements pour une tache donnée
+- (NSArray *)getAchievementsForTask:(Task *)task;
+
 //On récupère tous les achievements pour un player donné à la catégorie donnée
 - (NSArray *)getAchievementsForPlayer:(Player *)player forCategory:(CategoryTask *)category;
 
@@ -221,6 +224,9 @@
 
 //On supprime la task donnée
 - (void)deleteTask:(Task *)task;
+
+//On remet les taches à 0
+- (void)resetTasks;
 
 
 #pragma mark - CRUD Trophy

@@ -101,10 +101,9 @@
                                                object:nil];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self setArrayCategories:[NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getCategoryTasks]]];
 }
 
 
@@ -396,30 +395,14 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        //On récupère la tache sélectionnée
-        NSArray *arrayTask = [[DDDatabaseAccess instance] getTasksForCategory:self.currentCategorie];
-        Task *task = [arrayTask objectAtIndex:indexPath.row];
-        
-        //On supprime la tache
-        [[DDDatabaseAccess instance] deleteTask:task];
-        
-        //On recher la tableView
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
-        //On rafraichi les données
-        [self updateComponent];
+        [DDCustomAlertView displayAnswerMessage:@"Voulez vous supprimer cette tache ? Cela entrainera la suppression des évènements qui lui sont liés"  withDelegate:self andSetTag:(int)indexPath.row];
     }
 }
 
-//Empêche la suppression en mode sélection
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+//Pour pouvoir swiper pour supprimer
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView.editing)
-    {
-        return UITableViewCellEditingStyleDelete;
-    }
-    
-    return UITableViewCellEditingStyleNone;
+    return YES;
 }
 
 
@@ -432,6 +415,30 @@
     
     //On enlève la popUp
     [self.popOverViewController hide];
+}
+
+
+#pragma mark - UIAlertViewProtocol delegate functions
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    //On annule pas l'event
+    if (buttonIndex == 0)
+    {
+        //On récupère la tache sélectionnée
+        NSArray *arrayTask = [[DDDatabaseAccess instance] getTasksForCategory:self.currentCategorie];
+        Task *task = [arrayTask objectAtIndex:alertView.tag];
+        self.currentTask = nil;
+        
+        //On supprime la tache
+        [[DDDatabaseAccess instance] deleteTask:task];
+        
+        //On recharge la tableView
+        [self.tableViewCategorie deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:alertView.tag inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+        
+        //On rafraichi les données
+        [self updateComponent];
+    }
 }
 
 @end

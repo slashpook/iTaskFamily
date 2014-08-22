@@ -14,7 +14,7 @@
 @class DDCustomButton;
 
 
-@interface DDSettingViewController : UIViewController <DDCustomColorViewProtocol, DDAwardViewProtocol>
+@interface DDSettingViewController : UIViewController <DDCustomColorViewProtocol, DDAwardViewProtocol, UIAlertViewDelegate>
 
 
 #pragma mark - Variables

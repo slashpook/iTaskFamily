@@ -31,10 +31,6 @@
 //Variable pour connaître l'élément courant
 @property (strong, nonatomic) NSMutableString *currentElement;
 
-//Variable pour savoir si c'est la première ouverture ou non
-@property (assign, nonatomic) BOOL firstOpen;
-
-
 #pragma mark - Fonctions
 
 //On parse le fichier XML

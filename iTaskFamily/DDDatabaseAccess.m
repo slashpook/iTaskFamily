@@ -7,6 +7,7 @@
 //
 
 #import "DDDatabaseAccess.h"
+#import "DDParserXML.h"
 
 @implementation DDDatabaseAccess
 
@@ -110,6 +111,25 @@
     
     //On rajoute un filtre
     NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"player.pseudo == %@", player.pseudo];
+    [fetchRequest setPredicate:newPredicate];
+    
+    NSError *error;
+    
+    //On renvoie le tableau de la requète
+    return [self.dataBaseManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+}
+
+//On récupère tous les achievements pour une tache donnée
+- (NSArray *)getAchievementsForTask:(Task *)task
+{
+    //On défini la classe pour la requète
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Achievement" inManagedObjectContext:self.dataBaseManager.managedObjectContext];
+    [fetchRequest setEntity:entityDescription];
+    
+    //On rajoute un filtre
+    NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"task.libelle == %@", task.libelle];
     [fetchRequest setPredicate:newPredicate];
     
     NSError *error;
@@ -442,6 +462,12 @@
     return [self getAllObjectForEntity:@"Event" andSortWithProperties:nil];
 }
 
+//On récupère toutes les récurrence
+- (NSArray *)getRecurrenceEnd
+{
+    return [self getAllObjectForEntity:@"RecurrenceEnd" andSortWithProperties:nil];
+}
+
 //On récupère tous les events d'un joueur donné, pour une semaine donnée et un jour donné
 - (NSArray *)getEventsForPlayer:(Player *)player atWeekAndYear:(NSString *)weekAndYear andDay:(NSString *)day
 {
@@ -707,6 +733,13 @@
 - (void)deleteEvent:(Event *)event
 {
     [self.dataBaseManager.managedObjectContext deleteObject:event];
+    [self saveContext];
+}
+
+//On supprime la recurrence donnée
+- (void)deleteRecurrenceEnd:(RecurrenceEnd *)recurrenceEnd
+{
+    [self.dataBaseManager.managedObjectContext deleteObject:recurrenceEnd];
     [self saveContext];
 }
 
@@ -1287,8 +1320,63 @@
 //On supprime la task donnée
 - (void)deleteTask:(Task *)task
 {
+    //on supprime tous les objets liés à la tache (event, récurrence, achievement)
+    NSArray *arrayAchievements = [self getAchievementsForTask:task];
+    for (Achievement *achievement in arrayAchievements)
+    {
+        for (Event *event in [achievement.events allObjects])
+        {
+            [self.dataBaseManager.managedObjectContext deleteObject:event.recurrenceEnd];
+            [self.dataBaseManager.managedObjectContext deleteObject:event];
+        }
+        
+        [self.dataBaseManager.managedObjectContext deleteObject:achievement];
+    }
+    
+    for (Trophy *trophy in [task.trophies allObjects])
+        [self.dataBaseManager.managedObjectContext deleteObject:trophy];
+
     [self.dataBaseManager.managedObjectContext deleteObject:task];
+    
     [self saveContext];
+}
+
+//On remet les taches à 0
+- (void)resetTasks
+{
+    NSArray *arrayCategoryTask = [self getCategoryTasks];
+    for (CategoryTask *categoryTask in arrayCategoryTask)
+        [self.dataBaseManager.managedObjectContext deleteObject:categoryTask];
+    
+    NSArray *arrayTasks = [self getTasks];
+    for (Task *task in arrayTasks)
+        [self.dataBaseManager.managedObjectContext deleteObject:task];
+    
+    NSArray *arrayAchievements = [self getAchievements];
+    for (Achievement *achievement in arrayAchievements)
+        [self.dataBaseManager.managedObjectContext deleteObject:achievement];
+    
+    NSArray *arrayEvents = [self getEvents];
+    for (Event *event in arrayEvents)
+        [self.dataBaseManager.managedObjectContext deleteObject:event];
+    
+    NSArray *arrayReccurence = [self getRecurrenceEnd];
+    for (RecurrenceEnd *recurrence in arrayReccurence)
+        [self.dataBaseManager.managedObjectContext deleteObject:recurrence];
+    
+    NSArray *arrayTrophy = [self getTrophies];
+    for (Trophy *trophy in arrayTrophy)
+        [self.dataBaseManager.managedObjectContext deleteObject:trophy];
+    
+    NSArray *arrayCategoryTrophy = [self getCategoryTrophies];
+    for (CategoryTrophy *trophy in arrayCategoryTrophy)
+        [self.dataBaseManager.managedObjectContext deleteObject:trophy];
+    
+    [self saveContext];
+    
+    //On initialise le parser et on récupère les données
+    DDParserXML *parser = [[DDParserXML alloc] init];
+    [parser parseXMLFile];
 }
 
 

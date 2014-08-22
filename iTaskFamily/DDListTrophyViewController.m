@@ -40,6 +40,9 @@
 {
     //On affiche le nom du trophée
     [self.labelLibelleTrophy setText:self.trophy.libelle];
+
+    int numberOfTrophyRealized = [[DDDatabaseAccess instance] getNumberOfTrophyAchievedForPlayer:[[DDManagerSingleton instance] currentPlayer] inCategory:self.category andType:self.trophy.type];
+    [self.labelRealisationTrophy setText:[NSString stringWithFormat:@"%i/%i", numberOfTrophyRealized, (int)[[[DDDatabaseAccess instance] getTasksForCategory:self.category] count]]];
     
     //Suivant le type de trophée, on affiche l'image qui lui correspond
     if ([self.trophy.type isEqualToString:@"Bronze"])

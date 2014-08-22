@@ -19,7 +19,6 @@
         _taskArray = [[NSMutableArray alloc] init];
         _trophyArray = [[NSMutableArray alloc] init];
         _currentElement = [[NSMutableString alloc] init];
-         [self setFirstOpen:true];
     }
     return self;
 }
@@ -27,16 +26,12 @@
 //On pare le fichier XML
 - (void)parseXMLFile
 {
-    if (self.firstOpen == true)
-    {        
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Data" ofType:@"xml"];
-        NSData *myData = [NSData dataWithContentsOfFile:filePath];
-        if ( myData ) { 
-            self.parser = [[NSXMLParser alloc] initWithData:myData];
-            [self.parser setDelegate:self];
-            [self.parser parse];
-            [self setFirstOpen:false];
-        }
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Data" ofType:@"xml"];
+    NSData *myData = [NSData dataWithContentsOfFile:filePath];
+    if ( myData ) {
+        self.parser = [[NSXMLParser alloc] initWithData:myData];
+        [self.parser setDelegate:self];
+        [self.parser parse];
     }
 }
 
@@ -59,7 +54,7 @@
         //On crée une nouvelle category
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"CategoryTask" inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
         _category = [[CategoryTask alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
-
+        
         self.category.libelle = [attributeDict objectForKey:@"libelle"];
         
         //On crée la category
@@ -109,7 +104,7 @@
 //STRING TROUVÉ
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
-
+    
 }
 
 - (void)parser:(NSXMLParser *)parser foundIgnorableWhitespace:(NSString *)whitespaceString
@@ -126,7 +121,7 @@
     if ([self.currentElement isEqualToString:@"task"])
     {
         [[DDDatabaseAccess instance] createTask:self.task forCategory:self.category withTrophies:self.trophyArray];
-
+        
         [[self trophyArray] removeAllObjects];
     }
 }

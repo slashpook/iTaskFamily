@@ -13,7 +13,7 @@
 @class DDPopOverViewController;
 @class DDCustomProgressBar;
 
-@interface DDTaskViewController : UIViewController <DDTaskManagerViewProtocol>
+@interface DDTaskViewController : UIViewController <DDTaskManagerViewProtocol, UIAlertViewDelegate>
 
 
 #pragma mark - Variables

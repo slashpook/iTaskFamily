@@ -133,7 +133,7 @@
 //Fonction pour réinitialiser les taches
 - (IBAction)onPushButtonResetTask:(id)sender
 {
-    
+    [DDCustomAlertView displayAnswerMessage:@"Voulez-vous vraiment réinitialiser les taches." withDelegate:self];
 }
 
 //Fonction pour changer la ville par défaut de la météo
@@ -176,6 +176,19 @@
 {
     //On enlève la popUp
     [self.popOverViewController hide];
+}
+
+
+#pragma mark - UIAlertViewProtocol delegate functions
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    //On annule pas l'event
+    if (buttonIndex == 0)
+    {
+        [[DDDatabaseAccess instance] resetTasks];
+        [DDCustomAlertView displayInfoMessage:@"Les taches ont été réinitialisées"];
+    }
 }
 
 @end
