@@ -34,7 +34,7 @@
         _arrayImagePicker = [[NSMutableArray alloc] init];
         _library = [[ALAssetsLibrary alloc] init];
         _dictImagePlayer = [[NSMutableDictionary alloc] init];
-                
+        
         //On récupère la liste des joueurs
         NSMutableArray *arrayPlayer = [NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getPlayers]];
         
@@ -49,8 +49,12 @@
         //On crée le dictionnaire des couleurs des catégories
         _dictColor = [[NSDictionary alloc] initWithObjectsAndKeys:COULEUR_CUISINE, @"Cuisine", COULEUR_CHAMBRE, @"Chambre", COULEUR_DOUCHE, @"Douche", COULEUR_EXTERIEUR, @"Exterieur", COULEUR_AUTRE, @"Autre", COULEUR_SALON, @"Salon", COULEUR_GARAGE, @"Garage", COULEUR_PLUS_UTILISE, @"Taches les plus utilisées", nil];
         
+
         //On crée le tableau des jours de la semaine
-        _arrayWeek = [[NSArray alloc] initWithObjects:LUNDI, MARDI, MERCREDI, JEUDI, VENDREDI, SAMEDI, DIMANCHE, nil];
+        _arrayWeek = [[NSArray alloc] initWithObjects:NSLocalizedString(@"LUNDI", nil), NSLocalizedString(@"MARDI", nil), NSLocalizedString(@"MERCREDI", nil), NSLocalizedString(@"JEUDI", nil), NSLocalizedString(@"VENDREDI", nil), NSLocalizedString(@"SAMEDI", nil), NSLocalizedString(@"DIMANCHE", nil), nil];
+        
+        //On crée le tableau des jours de la semaine
+        _arrayMonth = [[NSArray alloc] initWithObjects:NSLocalizedString(@"JANVIER", nil), NSLocalizedString(@"FEVRIER", nil), NSLocalizedString(@"MARS", nil), NSLocalizedString(@"AVRIL", nil), NSLocalizedString(@"MAI", nil), NSLocalizedString(@"JUIN", nil), NSLocalizedString(@"JUILLET", nil), NSLocalizedString(@"AOUT", nil), NSLocalizedString(@"SEPTEMBRE", nil), NSLocalizedString(@"OCTOBRE", nil), NSLocalizedString(@"NOVEMBRE", nil), NSLocalizedString(@"DECEMBRE", nil), nil];
         
         //On instancie le storyboard
         _storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

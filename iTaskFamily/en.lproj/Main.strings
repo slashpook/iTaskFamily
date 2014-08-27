@@ -1,0 +1,411 @@
+
+/* Class = "IBUILabel"; text = "300"; ObjectID = "0Hu-eX-PDY"; */
+"0Hu-eX-PDY.text" = "300";
+
+/* Class = "IBUILabel"; text = "Objectives"; ObjectID = "2lC-hH-LEF"; */
+"2lC-hH-LEF.text" = "Objectives";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "3AR-HQ-phY"; */
+"3AR-HQ-phY.text" = "0";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "6CE-gE-2Bm"; */
+"6CE-gE-2Bm.text" = "0";
+
+/* Class = "IBUILabel"; text = "Faire à manger"; ObjectID = "6Qd-rq-Aqv"; */
+"6Qd-rq-Aqv.text" = "Faire à manger";
+
+/* Class = "IBUILabel"; text = "2400 points"; ObjectID = "6UH-al-Kbe"; */
+"6UH-al-Kbe.text" = "2400 points";
+
+/* Class = "IBUILabel"; text = "Pseudo"; ObjectID = "70g-eG-9a3"; */
+"70g-eG-9a3.text" = "Pseudo";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "8IU-KH-JEZ"; */
+"8IU-KH-JEZ.text" = "0";
+
+/* Class = "IBUILabel"; text = "Current city"; ObjectID = "8LC-Ax-3Ja"; */
+"8LC-Ax-3Ja.text" = "Current city";
+
+/* Class = "IBUILabel"; text = "500 points"; ObjectID = "8d6-HG-Sf4"; */
+"8d6-HG-Sf4.text" = "500 points";
+
+/* Class = "IBUILabel"; text = "Task"; ObjectID = "9gy-Nv-eJB"; */
+"9gy-Nv-eJB.text" = "Task";
+
+/* Class = "IBUILabel"; text = "Informations"; ObjectID = "Amo-NS-gT3"; */
+"Amo-NS-gT3.text" = "Informations";
+
+/* Class = "IBUITextField"; text = "0"; ObjectID = "Aqa-SX-0Fc"; */
+"Aqa-SX-0Fc.text" = "0";
+
+/* Class = "IBUILabel"; text = "22"; ObjectID = "AzO-BS-Xv9"; */
+"AzO-BS-Xv9.text" = "22";
+
+/* Class = "IBUIButton"; normalTitle = "Score of the week"; ObjectID = "BCx-oR-U11"; */
+"BCx-oR-U11.normalTitle" = "Score of the week";
+
+/* Class = "IBUILabel"; text = "Total score"; ObjectID = "BFJ-dL-bgA"; */
+"BFJ-dL-bgA.text" = "Total score";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "BS9-CJ-tgx"; */
+"BS9-CJ-tgx.text" = "0";
+
+/* Class = "IBUILabel"; text = "Toulouse"; ObjectID = "BwY-MH-yyM"; */
+"BwY-MH-yyM.text" = "Toulouse";
+
+/* Class = "IBUILabel"; text = "Semaine 48 :  Vendrei 26 Décembre 2014"; ObjectID = "Cwv-2e-K30"; */
+"Cwv-2e-K30.text" = "Semaine 48 :  Vendrei 26 Décembre 2014";
+
+/* Class = "IBUILabel"; text = "150 points"; ObjectID = "D6l-25-HTT"; */
+"D6l-25-HTT.text" = "150 points";
+
+/* Class = "IBUILabel"; text = "Take care in choosing a custom color. Too dark or too light can affect the readability of the application"; ObjectID = "DM7-jF-V2H"; */
+"DM7-jF-V2H.text" = "Take care in choosing a custom color. Too dark or too light can affect the readability of the application";
+
+/* Class = "IBUILabel"; text = "Autre"; ObjectID = "DhU-3j-IRg"; */
+"DhU-3j-IRg.text" = "Autre";
+
+/* Class = "IBUILabel"; text = "Redimensionner l'image"; ObjectID = "DpU-PH-SNP"; */
+"DpU-PH-SNP.text" = "Redimensionner l'image";
+
+/* Class = "IBUILabel"; text = "2"; ObjectID = "Frj-hK-rJg"; */
+"Frj-hK-rJg.text" = "2";
+
+/* Class = "IBUILabel"; text = "Max"; ObjectID = "GLI-jX-dQY"; */
+"GLI-jX-dQY.text" = "Max";
+
+/* Class = "IBUILabel"; text = "1500 points"; ObjectID = "HUA-yl-VPg"; */
+"HUA-yl-VPg.text" = "1500 points";
+
+/* Class = "IBUILabel"; text = "Informations"; ObjectID = "I0R-w3-jAO"; */
+"I0R-w3-jAO.text" = "Informations";
+
+/* Class = "IBUILabel"; text = "Number of trophies"; ObjectID = "I8B-mJ-xgv"; */
+"I8B-mJ-xgv.text" = "Number of trophies";
+
+/* Class = "IBUILabel"; text = "Trophies won for this task"; ObjectID = "ILA-xw-HLs"; */
+"ILA-xw-HLs.text" = "Trophies won for this task";
+
+/* Class = "IBUILabel"; text = "10"; ObjectID = "Ijq-EP-65n"; */
+"Ijq-EP-65n.text" = "10";
+
+/* Class = "IBUILabel"; text = "Second"; ObjectID = "J6o-yf-auf"; */
+"J6o-yf-auf.text" = "Second";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "JEy-t8-9L4"; */
+"JEy-t8-9L4.text" = "0";
+
+/* Class = "IBUILabel"; text = "NO TASKS"; ObjectID = "K06-2S-lnL"; */
+"K06-2S-lnL.text" = "NO TASKS";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "Ke0-cI-CLa"; */
+"Ke0-cI-CLa.text" = "0";
+
+/* Class = "IBUILabel"; text = "Tutorial"; ObjectID = "KpG-8N-jTN"; */
+"KpG-8N-jTN.text" = "Tutorial";
+
+/* Class = "IBUILabel"; text = "Weather"; ObjectID = "KqO-Lf-fcC"; */
+"KqO-Lf-fcC.text" = "Weather";
+
+/* Class = "IBUILabel"; text = "500 points"; ObjectID = "KsF-Yu-N4l"; */
+"KsF-Yu-N4l.text" = "500 points";
+
+/* Class = "IBUILabel"; text = "Damien"; ObjectID = "Kvd-FY-jHw"; */
+"Kvd-FY-jHw.text" = "Damien";
+
+/* Class = "IBUILabel"; text = "Current"; ObjectID = "Lcm-uy-L4z"; */
+"Lcm-uy-L4z.text" = "Current";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "M1m-98-eOM"; */
+"M1m-98-eOM.text" = "0";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "M2J-lu-Ri5"; */
+"M2J-lu-Ri5.text" = "0";
+
+/* Class = "IBUILabel"; text = "Number of trophies won for this category"; ObjectID = "M9W-Xc-MyG"; */
+"M9W-Xc-MyG.text" = "Number of trophies won for this category";
+
+/* Class = "IBUILabel"; text = "Min"; ObjectID = "MQ6-0d-sJy"; */
+"MQ6-0d-sJy.text" = "Min";
+
+/* Class = "IBUILabel"; text = "0/43"; ObjectID = "MTQ-bx-BNe"; */
+"MTQ-bx-BNe.text" = "0/43";
+
+/* Class = "IBUILabel"; text = "Chambre"; ObjectID = "Mrc-yO-lyr"; */
+"Mrc-yO-lyr.text" = "Chambre";
+
+/* Class = "IBUILabel"; text = "Brice"; ObjectID = "N9e-us-n44"; */
+"N9e-us-n44.text" = "Brice";
+
+/* Class = "IBUILabel"; text = "Chambre"; ObjectID = "NpM-II-xQY"; */
+"NpM-II-xQY.text" = "Chambre";
+
+/* Class = "IBUILabel"; text = "Name"; ObjectID = "QQ5-w4-3F0"; */
+"QQ5-w4-3F0.text" = "Name";
+
+/* Class = "IBUILabel"; text = "Autre"; ObjectID = "QTg-VU-T8T"; */
+"QTg-VU-T8T.text" = "Autre";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "Qeb-kf-8eq"; */
+"Qeb-kf-8eq.text" = "0";
+
+/* Class = "IBUILabel"; text = "Faire à manger"; ObjectID = "RBd-nu-PU1"; */
+"RBd-nu-PU1.text" = "Faire à manger";
+
+/* Class = "IBUIButton"; normalTitle = "+ ADD A PLAYER"; ObjectID = "RCJ-Vd-nfh"; */
+"RCJ-Vd-nfh.normalTitle" = "+ ADD A PLAYER";
+
+/* Class = "IBUILabel"; text = "Third"; ObjectID = "RRE-Jr-DHe"; */
+"RRE-Jr-DHe.text" = "Third";
+
+/* Class = "IBUILabel"; text = "34"; ObjectID = "Ryp-oX-d4m"; */
+"Ryp-oX-d4m.text" = "34";
+
+/* Class = "IBUILabel"; text = "AJOUTER UN EVENEMENT"; ObjectID = "T98-o5-1H7"; */
+"T98-o5-1H7.text" = "AJOUTER UN EVENEMENT";
+
+/* Class = "IBUILabel"; text = "3"; ObjectID = "TGB-hc-5Rv"; */
+"TGB-hc-5Rv.text" = "3";
+
+/* Class = "IBUILabel"; text = "Faire à manger"; ObjectID = "TJd-RE-Z3f"; */
+"TJd-RE-Z3f.text" = "Faire à manger";
+
+/* Class = "IBUILabel"; text = "Theme"; ObjectID = "TRB-qx-ZCw"; */
+"TRB-qx-ZCw.text" = "Theme";
+
+/* Class = "IBUILabel"; text = "Autre"; ObjectID = "Tjh-gC-WGw"; */
+"Tjh-gC-WGw.text" = "Autre";
+
+/* Class = "IBUILabel"; text = "Date"; ObjectID = "UIO-C7-BMf"; */
+"UIO-C7-BMf.text" = "Date";
+
+/* Class = "IBUITextField"; text = "0"; ObjectID = "Uul-BY-ITe"; */
+"Uul-BY-ITe.text" = "0";
+
+/* Class = "IBUILabel"; text = "ème"; ObjectID = "VrD-PS-p6H"; */
+"VrD-PS-p6H.text" = "ème";
+
+/* Class = "IBUILabel"; text = "Geolocate you to display the weather or select a default city"; ObjectID = "WF9-RT-uWM"; */
+"WF9-RT-uWM.text" = "Geolocate you to display the weather or select a default city";
+
+/* Class = "IBUIButton"; normalTitle = "CONFIGURE"; ObjectID = "WlG-bW-usZ"; */
+"WlG-bW-usZ.normalTitle" = "CONFIGURE";
+
+/* Class = "IBUITextField"; text = "0"; ObjectID = "Wxh-ts-c11"; */
+"Wxh-ts-c11.text" = "0";
+
+/* Class = "IBUILabel"; text = "4800 points"; ObjectID = "XHK-2V-U77"; */
+"XHK-2V-U77.text" = "4800 points";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "XdI-8P-fto"; */
+"XdI-8P-fto.text" = "0";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "Xdv-qA-Pt4"; */
+"Xdv-qA-Pt4.text" = "Label";
+
+/* Class = "IBUIButton"; normalTitle = "RESET"; ObjectID = "Y9G-FB-lbL"; */
+"Y9G-FB-lbL.normalTitle" = "RESET";
+
+/* Class = "IBUILabel"; text = "3000"; ObjectID = "Yy9-bl-Hqh"; */
+"Yy9-bl-Hqh.text" = "3000";
+
+/* Class = "IBUIButton"; normalTitle = "REWARD WON"; ObjectID = "ZDh-GL-fJe"; */
+"ZDh-GL-fJe.normalTitle" = "REWARD WON";
+
+/* Class = "IBUILabel"; text = "Trophies"; ObjectID = "Zho-Gt-RmM"; */
+"Zho-Gt-RmM.text" = "Trophies";
+
+/* Class = "IBUILabel"; text = "NOV"; ObjectID = "a3e-AI-TVz"; */
+"a3e-AI-TVz.text" = "NOV";
+
+/* Class = "IBUILabel"; text = "Geolocate"; ObjectID = "a9O-lJ-98y"; */
+"a9O-lJ-98y.text" = "Geolocate";
+
+/* Class = "IBUILabel"; text = "Tache"; ObjectID = "aDH-Lk-QoK"; */
+"aDH-Lk-QoK.text" = "Tache";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "aVB-WC-747"; */
+"aVB-WC-747.text" = "0";
+
+/* Class = "IBUIButton"; normalTitle = "Valider"; ObjectID = "bAB-No-g1D"; */
+"bAB-No-g1D.normalTitle" = "Valider";
+
+/* Class = "IBUILabel"; text = "Reward"; ObjectID = "bEh-y9-BGg"; */
+"bEh-y9-BGg.text" = "Reward";
+
+/* Class = "IBUILabel"; text = "Score of the week"; ObjectID = "bUy-Te-bYH"; */
+"bUy-Te-bYH.text" = "Score of the week";
+
+/* Class = "IBUILabel"; text = "Aucun joueur"; ObjectID = "bYv-m1-fdy"; */
+"bYv-m1-fdy.text" = "Aucun joueur";
+
+/* Class = "IBUILabel"; text = "Test Nom Trophées un peu long"; ObjectID = "bpt-9t-JUs"; */
+"bpt-9t-JUs.text" = "Test Nom Trophées un peu long";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "brx-RW-xtk"; */
+"brx-RW-xtk.text" = "0";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "cmi-da-YD7"; */
+"cmi-da-YD7.text" = "0";
+
+/* Class = "IBUILabel"; text = "Image"; ObjectID = "e5h-tr-Vr1"; */
+"e5h-tr-Vr1.text" = "Image";
+
+/* Class = "IBUILabel"; text = "Informations"; ObjectID = "eIy-l2-lEU"; */
+"eIy-l2-lEU.text" = "Informations";
+
+/* Class = "IBUILabel"; text = "Choice a color :"; ObjectID = "eVE-2V-tIi"; */
+"eVE-2V-tIi.text" = "Choice a color :";
+
+/* Class = "IBUILabel"; text = "John"; ObjectID = "ezq-gm-at7"; */
+"ezq-gm-at7.text" = "John";
+
+/* Class = "IBUILabel"; text = "ème"; ObjectID = "f10-Cf-EbH"; */
+"f10-Cf-EbH.text" = "ème";
+
+/* Class = "IBUILabel"; text = "Récompense"; ObjectID = "fDv-WP-cyx"; */
+"fDv-WP-cyx.text" = "Récompense";
+
+/* Class = "IBUILabel"; text = "Commentaire"; ObjectID = "fd8-x6-0iy"; */
+"fd8-x6-0iy.text" = "Commentaire";
+
+/* Class = "IBUILabel"; text = "Weather"; ObjectID = "g7E-sE-abE"; */
+"g7E-sE-abE.text" = "Weather";
+
+/* Class = "IBUILabel"; text = "Points"; ObjectID = "g7K-g0-QTb"; */
+"g7K-g0-QTb.text" = "Points";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "gKm-Gj-QvZ"; */
+"gKm-Gj-QvZ.text" = "0";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "gQa-SF-cj9"; */
+"gQa-SF-cj9.text" = "0";
+
+/* Class = "IBUILabel"; text = "City"; ObjectID = "gja-ox-VyZ"; */
+"gja-ox-VyZ.text" = "City";
+
+/* Class = "IBUILabel"; text = "1"; ObjectID = "gxG-p8-IYq"; */
+"gxG-p8-IYq.text" = "1";
+
+/* Class = "IBUILabel"; text = "5/40"; ObjectID = "hSM-wV-7na"; */
+"hSM-wV-7na.text" = "5/40";
+
+/* Class = "IBUILabel"; text = "er"; ObjectID = "hUs-M5-Ymr"; */
+"hUs-M5-Ymr.text" = "er";
+
+/* Class = "IBUILabel"; text = "First"; ObjectID = "he0-6f-Euu"; */
+"he0-6f-Euu.text" = "First";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "i11-b1-nXe"; */
+"i11-b1-nXe.text" = "0";
+
+/* Class = "IBUILabel"; text = "Répéter chaque semaine"; ObjectID = "i3X-VP-YYP"; */
+"i3X-VP-YYP.text" = "Répéter chaque semaine";
+
+/* Class = "IBUILabel"; text = "Autres"; ObjectID = "iwK-nQ-xg2"; */
+"iwK-nQ-xg2.text" = "Autres";
+
+/* Class = "IBUITextField"; placeholder = "Enter a task name"; ObjectID = "jcS-AC-idD"; */
+"jcS-AC-idD.placeholder" = "Enter a task name";
+
+/* Class = "IBUILabel"; text = "Current theme"; ObjectID = "jgz-Tr-GnW"; */
+"jgz-Tr-GnW.text" = "Current theme";
+
+/* Class = "IBUILabel"; text = "5"; ObjectID = "jqF-IB-Dp3"; */
+"jqF-IB-Dp3.text" = "5";
+
+/* Class = "IBUILabel"; text = "Faire ses devoirs"; ObjectID = "kJV-3R-EQ3"; */
+"kJV-3R-EQ3.text" = "Faire ses devoirs";
+
+/* Class = "IBUIButton"; normalTitle = "DEFAULT CITY"; ObjectID = "l2y-pC-KP9"; */
+"l2y-pC-KP9.normalTitle" = "DEFAULT CITY";
+
+/* Class = "IBUILabel"; text = "You can create rewards that will be won this weekend to people who have the highest scores"; ObjectID = "l6C-mq-vxK"; */
+"l6C-mq-vxK.text" = "You can create rewards that will be won this weekend to people who have the highest scores";
+
+/* Class = "IBUIButton"; normalTitle = "Button"; ObjectID = "lCz-Ge-N83"; */
+"lCz-Ge-N83.normalTitle" = "Button";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "lXO-Yz-3Ob"; */
+"lXO-Yz-3Ob.text" = "0";
+
+/* Class = "IBUILabel"; text = "NO EVENTS CREATED FOR THIS DAY"; ObjectID = "li2-RD-Ae8"; */
+"li2-RD-Ae8.text" = "NO EVENTS CREATED FOR THIS DAY";
+
+/* Class = "IBUIButton"; normalTitle = "Annuler"; ObjectID = "nAa-6n-B2J"; */
+"nAa-6n-B2J.normalTitle" = "Annuler";
+
+/* Class = "IBUILabel"; text = "Autre : 300 points"; ObjectID = "nTX-0R-4ff"; */
+"nTX-0R-4ff.text" = "Autre : 300 points";
+
+/* Class = "IBUITextField"; text = "0"; ObjectID = "njP-Ro-KSe"; */
+"njP-Ro-KSe.text" = "0";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "oik-Hm-Xh4"; */
+"oik-Hm-Xh4.text" = "0";
+
+/* Class = "IBUIButton"; normalTitle = "Today"; ObjectID = "omQ-hf-EtB"; */
+"omQ-hf-EtB.normalTitle" = "Today";
+
+/* Class = "IBUILabel"; text = "Damien"; ObjectID = "pG4-oS-if1"; */
+"pG4-oS-if1.text" = "Damien";
+
+/* Class = "IBUILabel"; text = "Reset tasks will result in removal all player's progressions and all events created"; ObjectID = "pNc-pm-O8s"; */
+"pNc-pm-O8s.text" = "Reset tasks will result in removal all player's progressions and all events created";
+
+/* Class = "IBUIButton"; normalTitle = "AUTRE COULEUR"; ObjectID = "pXy-gf-v2p"; */
+"pXy-gf-v2p.normalTitle" = "AUTRE COULEUR";
+
+/* Class = "IBUILabel"; text = "Trophies won"; ObjectID = "qnI-gk-cQ5"; */
+"qnI-gk-cQ5.text" = "Trophies won";
+
+/* Class = "IBUIButton"; normalTitle = "Button"; ObjectID = "qry-MR-fZO"; */
+"qry-MR-fZO.normalTitle" = "Button";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "rGb-vT-gig"; */
+"rGb-vT-gig.text" = "0";
+
+/* Class = "IBUIButton"; normalTitle = "+ ADD AN EVENT"; ObjectID = "rp2-h1-6l0"; */
+"rp2-h1-6l0.normalTitle" = "+ ADD AN EVENT";
+
+/* Class = "IBUILabel"; text = "Events of the week"; ObjectID = "s3o-EB-2fB"; */
+"s3o-EB-2fB.text" = "Events of the week";
+
+/* Class = "IBUINavigationItem"; title = "Trophées"; ObjectID = "sHm-VP-Ri8"; */
+"sHm-VP-Ri8.title" = "Trophées";
+
+/* Class = "IBUIButton"; normalTitle = "Total score"; ObjectID = "tPJ-pN-OWV"; */
+"tPJ-pN-OWV.normalTitle" = "Total score";
+
+/* Class = "IBUILabel"; text = "Lundi"; ObjectID = "tW4-xs-My1"; */
+"tW4-xs-My1.text" = "Lundi";
+
+/* Class = "IBUILabel"; text = "0/10"; ObjectID = "uaV-u7-RK3"; */
+"uaV-u7-RK3.text" = "0/10";
+
+/* Class = "IBUILabel"; text = "Categories"; ObjectID = "wl0-Iw-5eU"; */
+"wl0-Iw-5eU.text" = "Categories";
+
+/* Class = "IBUILabel"; text = "Tache"; ObjectID = "wtY-Jd-NkC"; */
+"wtY-Jd-NkC.text" = "Tache";
+
+/* Class = "IBUILabel"; text = ":"; ObjectID = "xSE-mA-6hb"; */
+"xSE-mA-6hb.text" = ":";
+
+/* Class = "IBUILabel"; text = "Choisissez un joueur"; ObjectID = "xmd-Ue-NKv"; */
+"xmd-Ue-NKv.text" = "Choisissez un joueur";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "yW9-mQ-YtX"; */
+"yW9-mQ-YtX.text" = "0";
+
+/* Class = "IBUILabel"; text = "2013"; ObjectID = "yxR-JU-JJS"; */
+"yxR-JU-JJS.text" = "2013";
+
+/* Class = "IBUIButton"; normalTitle = "Total number of throphies"; ObjectID = "zBf-Kd-XhS"; */
+"zBf-Kd-XhS.normalTitle" = "Total number of throphies";
+
+/* Class = "IBUILabel"; text = "Points won"; ObjectID = "zU9-GZ-Yb4"; */
+"zU9-GZ-Yb4.text" = "Points won";
+
+/* Class = "IBUILabel"; text = "Trophies earned by type"; ObjectID = "zrX-w9-VgC"; */
+"zrX-w9-VgC.text" = "Trophies earned by type";

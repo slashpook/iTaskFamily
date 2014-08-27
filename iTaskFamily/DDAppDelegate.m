@@ -9,12 +9,14 @@
 #import "DDAppDelegate.h"
 #import "DDParserXML.h"
 
-#warning A implémenter un format générique pour gérer les dates
-
 @implementation DDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //On initialise la couleur par default de l'appli
+    if ([DDHelperController getMainTheme] == nil)
+        [DDHelperController saveThemeWithColor:COULEUR_HOME];
+    
     //On set le booléen pour indiquer que l'on vient de lancer l'application pour la première fois
     [self setIsFirstLaunch:YES];
     
@@ -37,10 +39,6 @@
     _parser = [[DDParserXML alloc] init];
     //On parse les données
     [self parseData];
-    
-    //On initialise la couleur par default de l'appli
-    if ([DDHelperController getMainTheme] == nil)
-        [DDHelperController saveThemeWithColor:COULEUR_HOME];
     
     return YES;
 }

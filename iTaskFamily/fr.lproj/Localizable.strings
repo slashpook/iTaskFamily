@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  iTaskFamily
+
+  Created by Damien DELES on 22/08/2014.
+  Copyright (c) 2014 Damien DELES. All rights reserved.
+*/
+
+"LUNDI" = "Lundi";
+"MARDI" = "Mardi";
+"MERCREDI" = "Mercredi";
+"JEUDI" = "Jeudi";
+"VENDREDI" = "Vendredi";
+"SAMEDI" = "Samedi";
+"DIMANCHE" = "Dimanche";
+
+"JANVIER" = "Janvier";
+"FEVRIER" = "Février";
+"MARS" = "Mars";
+"AVRIL" = "Avril";
+"MAI" = "Mai";
+"JUIN" = "Juin";
+"JUILLET" = "Juillet";
+"AOUT" = "Août";
+"SEPTEMBRE" = "Septembre";
+"OCTOBRE" = "Octobre";
+"NOVEMBRE" = "Novembre";
+"DECEMBRE" = "Décembre";

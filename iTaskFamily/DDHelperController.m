@@ -62,8 +62,8 @@
 {
     NSDate *today = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat: @"EEEE"];
-    NSString *weekday = [formatter stringFromDate:today];
+    [formatter setDateFormat: @"e"];
+    NSString *weekday = [[[DDManagerSingleton instance] arrayWeek] objectAtIndex:([[formatter stringFromDate:today] intValue] - 1)];
     
     return [weekday capitalizedString];
 }
@@ -84,8 +84,8 @@
 {
     NSDate *today = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat: @"MMMM"];
-    NSString *month = [formatter stringFromDate:today];
+    [formatter setDateFormat: @"M"];
+    NSString *month = [[[DDManagerSingleton instance] arrayMonth] objectAtIndex:([[formatter stringFromDate:today] intValue] - 1)];
     
     return [[month substringToIndex:3] uppercaseString];
 }
@@ -126,15 +126,26 @@
 //Récupère la date à l'évènement donné en lettre
 + (NSString *)getDateInLetterForDate:(NSDate *)date
 {
-    //On configure un formatteur
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat: @"EEEE dd MMMM YYYY"];
+    //On configure les formatters
+    NSDateFormatter *formatterDayInLetter = [[NSDateFormatter alloc] init];
+    [formatterDayInLetter setDateFormat: @"e"];
+    NSString *dayInLetter = [[[DDManagerSingleton instance] arrayWeek] objectAtIndex:([[formatterDayInLetter stringFromDate:date] intValue] - 1)];
+    
+    NSDateFormatter *formatterDayInNumber = [[NSDateFormatter alloc] init];
+    [formatterDayInNumber setDateFormat: @"dd"];
+    
+    NSDateFormatter *formatterMonthInLetter = [[NSDateFormatter alloc] init];
+    [formatterMonthInLetter setDateFormat: @"M"];
+    NSString *monthInLetter = [[[DDManagerSingleton instance] arrayMonth] objectAtIndex:([[formatterMonthInLetter stringFromDate:date] intValue] - 1)];
+    
+    NSDateFormatter *formatterYear = [[NSDateFormatter alloc] init];
+    [formatterYear setDateFormat: @"YYYY"];
     
     //On récupère le numéro de semaine
     NSString *stringWeek = [self getWeekForDate:date];
     
     //On renvoie la date
-    return [NSString stringWithFormat:@"Semaine %@ : %@", stringWeek, [formatter stringFromDate:date]];
+    return [NSString stringWithFormat:@"Semaine %@ : %@ %@ %@ %@", stringWeek, dayInLetter, [formatterDayInNumber stringFromDate:date], monthInLetter, [formatterYear stringFromDate:date]];
 }
 
 //Récupère la date à l'évènement donné en date

@@ -22,6 +22,9 @@
 //Array des jours de la semaine
 @property (strong, nonatomic) NSArray *arrayWeek;
 
+//Array des mois de l'année
+@property (strong, nonatomic) NSArray *arrayMonth;
+
 //Référence vers la bibliothèque
 @property (strong, nonatomic) ALAssetsLibrary *library;
 

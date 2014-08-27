@@ -172,6 +172,7 @@
             [self loadScrollViewWithPage:i];
         
         [self.buttonAddPlayer setHidden:YES];
+        [self.pageControl setHidden:NO];
     }
     else
     {
@@ -179,6 +180,9 @@
         [self.labelNamePlayer setText:@""];
         [self.labelPointPlayer setText:@""];
         [self.buttonAddPlayer setHidden:NO];
+        [self.pageControl setNumberOfPages:1];
+        [self.pageControl setHidden:YES];
+        [self.pageControl setCurrentPageIndicatorTintColor:[DDHelperController getMainTheme]];
     }
 }
 

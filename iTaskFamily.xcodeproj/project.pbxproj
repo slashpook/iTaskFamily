@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6D030BA318CB8BC900C3B95C /* DDCustomValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D030BA218CB8BC900C3B95C /* DDCustomValidation.m */; };
 		6D03B0AF184C976800399A7D /* DDPlayerMiniatureCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D03B0AE184C976800399A7D /* DDPlayerMiniatureCollectionViewCell.m */; };
-		6D03B0B7184CE77500399A7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D03B0B6184CE77500399A7D /* Main.storyboard */; };
 		6D1B756918B7AF4B000D0B12 /* DDTaskEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1B756818B7AF4B000D0B12 /* DDTaskEventViewController.m */; };
 		6D29FC00184282C90059AA35 /* DDEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D29FBFF184282C90059AA35 /* DDEventView.m */; };
 		6D2E618318D0E976001A971B /* DDEventManagerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E618218D0E976001A971B /* DDEventManagerTableViewController.m */; };
@@ -19,6 +18,8 @@
 		6D33D449189FA8460057D168 /* DDSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D33D448189FA8460057D168 /* DDSettingViewController.m */; };
 		6D33D7461855D27F001E1B3A /* DDRootPodiumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D33D7451855D27F001E1B3A /* DDRootPodiumViewController.m */; };
 		6D39975D19A737F8005AB9B0 /* DDMeteoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D39975C19A737F8005AB9B0 /* DDMeteoViewController.m */; };
+		6D39976219A7A411005AB9B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D39976419A7A411005AB9B0 /* Localizable.strings */; };
+		6D39976819A7A687005AB9B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D39976A19A7A687005AB9B0 /* Main.storyboard */; };
 		6D3A26B818B7956600545FF2 /* DDCustomOccurenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A26B718B7956600545FF2 /* DDCustomOccurenceCell.m */; };
 		6D3A26BC18B7A1FB00545FF2 /* DDCategoriesListEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A26BB18B7A1FB00545FF2 /* DDCategoriesListEventViewController.m */; };
 		6D3CBC5019A4D9210067CBCF /* NKOColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3CBC4F19A4D9210067CBCF /* NKOColorPickerView.m */; };
@@ -110,7 +111,6 @@
 		6D030BA218CB8BC900C3B95C /* DDCustomValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomValidation.m; sourceTree = "<group>"; };
 		6D03B0AD184C976800399A7D /* DDPlayerMiniatureCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPlayerMiniatureCollectionViewCell.h; sourceTree = "<group>"; };
 		6D03B0AE184C976800399A7D /* DDPlayerMiniatureCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPlayerMiniatureCollectionViewCell.m; sourceTree = "<group>"; };
-		6D03B0B6184CE77500399A7D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6D1B756718B7AF4B000D0B12 /* DDTaskEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTaskEventViewController.h; sourceTree = "<group>"; };
 		6D1B756818B7AF4B000D0B12 /* DDTaskEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTaskEventViewController.m; sourceTree = "<group>"; };
 		6D29FBFE184282C90059AA35 /* DDEventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDEventView.h; sourceTree = "<group>"; };
@@ -128,6 +128,9 @@
 		6D33D7451855D27F001E1B3A /* DDRootPodiumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRootPodiumViewController.m; sourceTree = "<group>"; };
 		6D39975B19A737F8005AB9B0 /* DDMeteoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMeteoViewController.h; sourceTree = "<group>"; };
 		6D39975C19A737F8005AB9B0 /* DDMeteoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMeteoViewController.m; sourceTree = "<group>"; };
+		6D39976519A7A422005AB9B0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6D39976619A7A422005AB9B0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6D39976719A7A422005AB9B0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6D3A26B618B7956600545FF2 /* DDCustomOccurenceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomOccurenceCell.h; sourceTree = "<group>"; };
 		6D3A26B718B7956600545FF2 /* DDCustomOccurenceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomOccurenceCell.m; sourceTree = "<group>"; };
 		6D3A26BA18B7A1FB00545FF2 /* DDCategoriesListEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCategoriesListEventViewController.h; sourceTree = "<group>"; };
@@ -146,6 +149,10 @@
 		6D5549EF1844ECC7009022C5 /* DDPopOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPopOverViewController.m; sourceTree = "<group>"; };
 		6D5549F21844F823009022C5 /* DDPlayerManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPlayerManagerViewController.h; sourceTree = "<group>"; };
 		6D5549F31844F823009022C5 /* DDPlayerManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPlayerManagerViewController.m; sourceTree = "<group>"; };
+		6D5D665719ACE9F900E70B53 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6D5D665819ACE9F900E70B53 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6D5D665919ACEB8200E70B53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6D5D665D19ACEE1E00E70B53 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = fr; path = fr.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6D5E3D3518C36F2E003BA0F2 /* DDEventInfosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDEventInfosViewController.h; sourceTree = "<group>"; };
 		6D5E3D3618C36F2E003BA0F2 /* DDEventInfosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDEventInfosViewController.m; sourceTree = "<group>"; };
 		6D5E3D3918C374AF003BA0F2 /* DDCustomEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomEventCell.h; sourceTree = "<group>"; };
@@ -163,7 +170,6 @@
 		6D6B3ECA183CF75B009542A8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6D6B3ECC183CF75B009542A8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6D6B3ED0183CF75B009542A8 /* iTaskFamily-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iTaskFamily-Info.plist"; sourceTree = "<group>"; };
-		6D6B3ED2183CF75B009542A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6D6B3ED4183CF75B009542A8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6D6B3ED6183CF75B009542A8 /* iTaskFamily-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iTaskFamily-Prefix.pch"; sourceTree = "<group>"; };
 		6D6B3ED7183CF75B009542A8 /* DDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDAppDelegate.h; sourceTree = "<group>"; };
@@ -173,7 +179,6 @@
 		6D6B3EE6183CF75C009542A8 /* iTaskFamilyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTaskFamilyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D6B3EE7183CF75C009542A8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6D6B3EEF183CF75C009542A8 /* iTaskFamilyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iTaskFamilyTests-Info.plist"; sourceTree = "<group>"; };
-		6D6B3EF1183CF75C009542A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6D6B3EF3183CF75C009542A8 /* iTaskFamilyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iTaskFamilyTests.m; sourceTree = "<group>"; };
 		6D6B3F02183CF92B009542A8 /* iTaskFamily.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iTaskFamily.xcdatamodel; sourceTree = "<group>"; };
 		6D6B3F08183CFA11009542A8 /* DDConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDConstant.h; sourceTree = "<group>"; };
@@ -554,6 +559,7 @@
 				6D6B3ED1183CF75B009542A8 /* InfoPlist.strings */,
 				6D6B3ED4183CF75B009542A8 /* main.m */,
 				6D6B3ED6183CF75B009542A8 /* iTaskFamily-Prefix.pch */,
+				6D39976419A7A411005AB9B0 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -580,7 +586,7 @@
 			isa = PBXGroup;
 			children = (
 				6DDAE5D7184CFE2200B6DA70 /* Data.xml */,
-				6D03B0B6184CE77500399A7D /* Main.storyboard */,
+				6D39976A19A7A687005AB9B0 /* Main.storyboard */,
 			);
 			name = Ressources;
 			sourceTree = "<group>";
@@ -1106,6 +1112,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 6D6B3EBC183CF75B009542A8;
 			productRefGroup = 6D6B3EC6183CF75B009542A8 /* Products */;
@@ -1123,7 +1130,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D03B0B7184CE77500399A7D /* Main.storyboard in Resources */,
+				6D39976219A7A411005AB9B0 /* Localizable.strings in Resources */,
+				6D39976819A7A687005AB9B0 /* Main.storyboard in Resources */,
 				6D32CAF0189BFF1200FD2B3F /* Images.xcassets in Resources */,
 				6DDAE5D8184CFE2200B6DA70 /* Data.xml in Resources */,
 				6D6B3ED3183CF75B009542A8 /* InfoPlist.strings in Resources */,
@@ -1239,10 +1247,29 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		6D39976419A7A411005AB9B0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D39976619A7A422005AB9B0 /* fr */,
+				6D5D665819ACE9F900E70B53 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		6D39976A19A7A687005AB9B0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D5D665919ACEB8200E70B53 /* Base */,
+				6D5D665D19ACEE1E00E70B53 /* fr */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		6D6B3ED1183CF75B009542A8 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6D6B3ED2183CF75B009542A8 /* en */,
+				6D39976519A7A422005AB9B0 /* fr */,
+				6D5D665719ACE9F900E70B53 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1250,7 +1277,7 @@
 		6D6B3EF0183CF75C009542A8 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6D6B3EF1183CF75C009542A8 /* en */,
+				6D39976719A7A422005AB9B0 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
