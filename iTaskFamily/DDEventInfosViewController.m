@@ -7,6 +7,7 @@
 //
 
 #import "DDEventInfosViewController.h"
+#import "DDAddEventCell.h"
 #import "DDCustomEventCell.h"
 #import "DDCustomCheckbox.h"
 #import "DDCustomValidation.h"
@@ -240,7 +241,9 @@
     //Si on est sur la dernière cellule
     if ([self.arrayEvent count] == 0 || indexPath.row == [self.arrayEvent count])
     {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddEventCell" forIndexPath:indexPath];
+        DDAddEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddEventCell" forIndexPath:indexPath];
+        [cell.labelAddEvent setTextColor:[DDHelperController getMainTheme]];
+        
         return cell;
     }
     

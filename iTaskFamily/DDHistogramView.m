@@ -22,7 +22,7 @@
 - (void)awakeFromNib
 {
     //Couleur de base
-    [self setColorView:COULEUR_PODIUM];
+    [self setColorView:COULEUR_BLEU];
 }
 
 - (void)drawRect:(CGRect)rect

@@ -36,13 +36,13 @@
     [self.buttonToday setColorTitleEnable:COULEUR_WHITE];
     
     //On initialise le tableau des notifications et les boutons
-    [[self.buttonLundi labelDay] setText:@"LUN"];
-    [[self.buttonMardi labelDay] setText:@"MAR"];
-    [[self.buttonMercredi labelDay] setText:@"MER"];
-    [[self.buttonJeudi labelDay] setText:@"JEU"];
-    [[self.buttonVendredi labelDay] setText:@"VEN"];
-    [[self.buttonSamedi labelDay] setText:@"SAM"];
-    [[self.buttonDimanche labelDay] setText:@"DIM"];
+    [[self.buttonLundi labelDay] setText:NSLocalizedString(@"LUN", nil)];
+    [[self.buttonMardi labelDay] setText:NSLocalizedString(@"MAR", nil)];
+    [[self.buttonMercredi labelDay] setText:NSLocalizedString(@"MER", nil)];
+    [[self.buttonJeudi labelDay] setText:NSLocalizedString(@"JEU", nil)];
+    [[self.buttonVendredi labelDay] setText:NSLocalizedString(@"VEN", nil)];
+    [[self.buttonSamedi labelDay] setText:NSLocalizedString(@"SAM", nil)];
+    [[self.buttonDimanche labelDay] setText:NSLocalizedString(@"DIM", nil)];
     _arrayWeekNotification = [[NSArray alloc] initWithObjects:self.buttonLundi, self.buttonMardi, self.buttonMercredi, self.buttonJeudi, self.buttonVendredi, self.buttonSamedi, self.buttonDimanche, nil];
     for (DDCustomButtonNotification *buttonNotification in self.arrayWeekNotification)
         [[buttonNotification labelNumberNotification] setText:@""];

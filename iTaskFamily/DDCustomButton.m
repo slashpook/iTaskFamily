@@ -14,7 +14,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self setColorTitleEnable:COULEUR_HOME];
+        [self setColorTitleEnable:COULEUR_BLEU];
         [self setColorTitleDisable:COULEUR_DISABLED];
     }
     return self;

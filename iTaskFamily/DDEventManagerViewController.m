@@ -63,8 +63,8 @@
     //On met en place la barre de navigation
     _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:[DDHelperController getMainTheme] andImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
     [[self.custoNavBar view] setFrame:CGRectMake(0, 0, 380, 50)];
-    [[self.custoNavBar buttonRight] setTitle:@"Sauver" forState:UIControlStateNormal];
-    [[self.custoNavBar buttonLeft] setTitle:@"Annuler" forState:UIControlStateNormal];
+    [[self.custoNavBar buttonRight] setTitle:NSLocalizedString(@"SAUVER", nil) forState:UIControlStateNormal];
+    [[self.custoNavBar buttonLeft] setTitle:NSLocalizedString(@"ANNULER", nil) forState:UIControlStateNormal];
     [self.view addSubview:self.custoNavBar.view];
     
     //On met en place la notification pour savoir quand le clavier est caché

@@ -32,7 +32,7 @@
     [self.lblTitre setBackgroundColor:[UIColor clearColor]];
     [self.lblTitre setFont:POLICE_CROPPER_TITLE];
     [self.lblTitre setTextColor:COULEUR_WHITE];
-    [self.lblTitre setText:@"Choisissez un joueur"];
+    [self.lblTitre setText:NSLocalizedString(@"CHOIX_JOUEUR", nil)];
     
     //On configure le gestureRecognizer
     [self.gestureRecognizer setDelegate:self];

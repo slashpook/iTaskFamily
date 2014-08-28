@@ -60,13 +60,10 @@
     
     //Initialisation des podiums et configuration
     _podiumSemaineEnCours = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PodiumViewController"];
-    [self.podiumSemaineEnCours setColorProgressView:COULEUR_CHAMBRE];
     
     _podiumSemainePrecedente = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PodiumViewController"];
-    [self.podiumSemainePrecedente setColorProgressView:COULEUR_HOME];
-    
+
     _podiumTotalTrophees = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PodiumViewController"];
-    [self.podiumTotalTrophees setColorProgressView:COULEUR_PLAYER];
     
     //Initialisation du tableau de controllers
     _arrayPodiums = [[NSArray alloc] initWithObjects:self.podiumSemaineEnCours, self.podiumSemainePrecedente, self.podiumTotalTrophees, nil];
@@ -108,6 +105,9 @@
 {
     [[self imageViewSelection] setBackgroundColor:[DDHelperController getMainTheme]];
     [self.pageControlPodium setCurrentPageIndicatorTintColor:[DDHelperController getMainTheme]];
+    [self.podiumSemaineEnCours setColorProgressView:[DDHelperController getMainTheme]];
+    [self.podiumSemainePrecedente setColorProgressView:[DDHelperController getMainTheme]];
+    [self.podiumTotalTrophees setColorProgressView:[DDHelperController getMainTheme]];
 }
 
 //On met à jour les podiums

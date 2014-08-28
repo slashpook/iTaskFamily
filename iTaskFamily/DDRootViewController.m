@@ -46,6 +46,9 @@
                                              selector:@selector(onPushAddPlayer)
                                                  name:ADD_PLAYER
                                                object:nil];
+    
+    //On est pas en train d'animer
+    [self setIsAnimating:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,30 +62,39 @@
 
 - (void)displayController:(UIViewController *)controller andSens:(int)sens
 {
-    //On crée le snapshot de la vue et on l'ajoute à la vue container
-    UIView *viewSnapshot;
-    if (!SYSTEM_VERSION_LESS_THAN(@"7.0"))
-        viewSnapshot = [[self.currentViewController view] snapshotViewAfterScreenUpdates:YES];
-    else
-        viewSnapshot = (UIView *)[DDHelperController snapshotFromView:self.currentViewController.view withRect:self.currentViewController.view.frame];
-    
-    [self.viewContainer addSubview:viewSnapshot];
-    
-    //On insère la vue à afficher en dessous et on lui set une position
-    [self.viewContainer insertSubview:controller.view belowSubview:viewSnapshot];
-    [[controller view] setFrame:CGRectMake(controller.view.frame.origin.x, 768 * sens, controller.view.frame.size.width, controller.view.frame.size.height)];
-    
-    //On enlève la vue précédente
-    [[self.currentViewController view] removeFromSuperview];
-    
-    [UIView animateWithDuration:0.3 animations:^{
-        [viewSnapshot setFrame:CGRectMake(controller.view.frame.origin.x, 768 * -sens, controller.view.frame.size.width, controller.view.frame.size.height)];
-        [[controller view] setFrame:CGRectMake(controller.view.frame.origin.x, 0, controller.view.frame.size.width, controller.view.frame.size.height)];
-        [[self viewMenu] moveView:self.viewMenu.frameImageSelection andColor:self.viewMenu.colorSelection];
-    } completion:^(BOOL finished) {
-        [self setCurrentViewController:controller];
-        [viewSnapshot removeFromSuperview];
-    }];
+    if ([self isAnimating] == NO)
+    {
+        //On bloque les appels d'autres boutons
+        [self setIsAnimating:YES];
+        
+        //On crée le snapshot de la vue et on l'ajoute à la vue container
+        UIView *viewSnapshot;
+        if (!SYSTEM_VERSION_LESS_THAN(@"7.0"))
+            viewSnapshot = [[self.currentViewController view] snapshotViewAfterScreenUpdates:YES];
+        else
+            viewSnapshot = (UIView *)[DDHelperController snapshotFromView:self.currentViewController.view withRect:self.currentViewController.view.frame];
+        
+        [self.viewContainer addSubview:viewSnapshot];
+        
+        //On insère la vue à afficher en dessous et on lui set une position
+        [self.viewContainer insertSubview:controller.view belowSubview:viewSnapshot];
+        [[controller view] setFrame:CGRectMake(controller.view.frame.origin.x, 768 * sens, controller.view.frame.size.width, controller.view.frame.size.height)];
+        
+        //On enlève la vue précédente
+        [[self.currentViewController view] removeFromSuperview];
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            [viewSnapshot setFrame:CGRectMake(controller.view.frame.origin.x, 768 * -sens, controller.view.frame.size.width, controller.view.frame.size.height)];
+            [[controller view] setFrame:CGRectMake(controller.view.frame.origin.x, 0, controller.view.frame.size.width, controller.view.frame.size.height)];
+            [[self viewMenu] moveView:self.viewMenu.frameImageSelection andColor:self.viewMenu.colorSelection];
+        } completion:^(BOOL finished) {
+            [self setCurrentViewController:controller];
+            [viewSnapshot removeFromSuperview];
+            
+            //On permet aux boutons des autres menus d'être cliquables
+            [self setIsAnimating:NO];
+        }];
+    }
 }
 
 
@@ -124,5 +136,20 @@
     [self.viewMenu onPushPlayerButton:self.viewMenu.buttonPlayerPage];
     [self.playerViewController onPushAddPlayer:nil];
 }
+//
+//
+//- (void)test
+//{
+//    if ([[self currentViewController] isKindOfClass:[DDHomeViewController class]])
+//        [self.viewMenu onPushHomeButton:nil];
+//    else if ([[self currentViewController] isKindOfClass:[DDPlayerViewController class]])
+//        [self.viewMenu onPushPlayerButton:nil];
+//    else if ([[self currentViewController] isKindOfClass:[DDTaskViewController class]])
+//        [self.viewMenu onPushTaskButton:nil];
+//    else if ([[self currentViewController] isKindOfClass:[DDRootPodiumViewController class]])
+//        [self.viewMenu onPushTrophyButton:nil];
+//    else
+//        [self.viewMenu onPushSettingButton:nil];
+//}
 
 @end

@@ -7,12 +7,20 @@
 */
 
 "LUNDI" = "Monday";
-"MARDI" = "Thuesday";
+"MARDI" = "Tuesday";
 "MERCREDI" = "Wednesday";
-"JEUDI" = "Thirsday";
+"JEUDI" = "Thursday";
 "VENDREDI" = "Friday";
 "SAMEDI" = "Saturday";
 "DIMANCHE" = "Sunday";
+
+"LUN" = "MON";
+"MAR" = "TUE";
+"MER" = "WED";
+"JEU" = "THU";
+"VEN" = "FRI";
+"SAM" = "SAT";
+"DIM" = "SUN";
 
 "JANVIER" = "January";
 "FEVRIER" = "February";
@@ -26,3 +34,20 @@
 "OCTOBRE" = "October";
 "NOVEMBRE" = "November";
 "DECEMBRE" = "December";
+
+"AUTRE" = "Other";
+"CUISINE" = "Kitchen";
+"CHAMBRE" = "Bedroom";
+"DOUCHE" = "Shower";
+"EXTERIEUR" = "Outside";
+"SALON" = "Salon";
+"GARAGE" = "Garage";
+"PLUS_UTILISE" = "Most used tasks";
+
+"OUI" = "Yes";
+"NON" = "No";
+"ERREUR" = "Error";
+"SAUVER" = "Save";
+"RETOUR" = "Back";
+"ANNULER" = "Cancel";
+"CHOIX_JOUEUR" = "Choose a player";

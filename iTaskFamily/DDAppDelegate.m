@@ -15,7 +15,7 @@
 {
     //On initialise la couleur par default de l'appli
     if ([DDHelperController getMainTheme] == nil)
-        [DDHelperController saveThemeWithColor:COULEUR_HOME];
+        [DDHelperController saveThemeWithColor:COULEUR_BLEU];
     
     //On set le booléen pour indiquer que l'on vient de lancer l'application pour la première fois
     [self setIsFirstLaunch:YES];
@@ -66,7 +66,10 @@
     
     //Si ce n'est pas le premier lancement, on met à jour la météo et la date
     if (!self.isFirstLaunch)
+    {
         [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(updateDateAndMeteo) userInfo:nil repeats:NO];
+         
+    }
     
     [self setIsFirstLaunch:NO];
 }

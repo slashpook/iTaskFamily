@@ -22,21 +22,21 @@
 //Affiche un message d'erreur
 + (void)displayErrorMessage:(NSString *)message
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Erreur" message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERREUR", nil) message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
     [alertView show];
 }
 
 //On affiche un message de confirmation
 + (void)displayAnswerMessage:(NSString *)message withDelegate:(id<UIAlertViewDelegate>)delegate
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:message delegate:delegate cancelButtonTitle:@"Ok" otherButtonTitles:@"Non", nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:message delegate:delegate cancelButtonTitle:@"Ok" otherButtonTitles:NSLocalizedString(@"NON", nil), nil];
     [alertView show];
 }
 
 //On affiche un message de confirmation et on modifie le tag
 + (void)displayAnswerMessage:(NSString *)message withDelegate:(id<UIAlertViewDelegate>)delegate andSetTag:(int)tagInfo
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:message delegate:delegate cancelButtonTitle:@"Ok" otherButtonTitles:@"Non", nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:message delegate:delegate cancelButtonTitle:@"Ok" otherButtonTitles:NSLocalizedString(@"NON", nil), nil];
     [alertView setTag:tagInfo];
     [alertView show];
 }

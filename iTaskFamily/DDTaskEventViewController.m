@@ -36,7 +36,7 @@
     _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:[DDHelperController getMainTheme] andImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
     [[self.custoNavBar view] setFrame:CGRectMake(0, 0, 380, 50)];
     [[self.custoNavBar buttonRight] setHidden:YES];
-    [[self.custoNavBar buttonLeft] setTitle:@"Retour" forState:UIControlStateNormal];
+    [[self.custoNavBar buttonLeft] setTitle:NSLocalizedString(@"RETOUR", nil) forState:UIControlStateNormal];
     [self.view addSubview:self.custoNavBar.view];
     
     //On s'abonne a un type de cellule pour la table view

@@ -44,6 +44,9 @@
 //Setting controller
 @property (strong, nonatomic) DDSettingViewController *settingViewController;
 
+//Booléen pour savoir si on est en train d'animer ou non
+@property (assign, nonatomic) BOOL isAnimating;
+
 
 #pragma mark - Fonctions
 

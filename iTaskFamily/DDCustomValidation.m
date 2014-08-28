@@ -14,7 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setColorValidation:COULEUR_HOME];
+        [self setColorValidation:COULEUR_BLEU];
     }
     return self;
 }

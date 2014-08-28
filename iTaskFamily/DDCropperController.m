@@ -40,10 +40,13 @@
     
     //On customise les boutons et label
     [self.labelRedimensionner setFont:POLICE_CROPPER_TITLE];
-    [self.buttonAnnuler.layer setCornerRadius:5.0];
+    [self.labelRedimensionner setTextColor:COULEUR_WHITE];
     [self.buttonValider.titleLabel setFont:POLICE_CROPPER_BUTTON];
+    [self.buttonValider setBackgroundColor:COULEUR_VERT];
     [self.buttonValider.layer setCornerRadius:5.0];
     [self.buttonAnnuler.titleLabel setFont:POLICE_CROPPER_BUTTON];
+    [self.buttonAnnuler setBackgroundColor:COULEUR_ROUGE];
+    [self.buttonAnnuler.layer setCornerRadius:5.0];
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -14,6 +14,14 @@
 "SAMEDI" = "Samedi";
 "DIMANCHE" = "Dimanche";
 
+"LUN" = "LUN";
+"MAR" = "MAR";
+"MER" = "MER";
+"JEU" = "JEU";
+"VEN" = "VEN";
+"SAM" = "SAM";
+"DIM" = "DIM";
+
 "JANVIER" = "Janvier";
 "FEVRIER" = "Février";
 "MARS" = "Mars";
@@ -26,3 +34,20 @@
 "OCTOBRE" = "Octobre";
 "NOVEMBRE" = "Novembre";
 "DECEMBRE" = "Décembre";
+
+"AUTRE" = "Autre";
+"CUISINE" = "Cuisine";
+"CHAMBRE" = "Chambre";
+"DOUCHE" = "Douche";
+"EXTERIEUR" = "Extérieur";
+"SALON" = "Salon";
+"GARAGE" = "Garage";
+"PLUS_UTILISE" = "Taches les plus utilisées";
+
+"OUI" = "Oui";
+"NON" = "Non";
+"ERREUR" = "Erreur";
+"SAUVER" = "Sauver";
+"RETOUR" = "Retour";
+"ANNULER" = "Annuler";
+"CHOIX_JOUEUR" = "Choisissez un joueur";
