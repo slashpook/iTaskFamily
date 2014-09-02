@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <categories>
-    <category libelle="Other">
+    <category libelle="Autre">
         <trophy libelle="Roi Tout Terrain" type="Bronze">
         </trophy>
         <trophy libelle="Chuck Norris" type="Argent">
@@ -72,7 +72,7 @@
             </realisation>
         </task>
     </category>
-    <category libelle="Kitchen">
+    <category libelle="Cuisine">
         <trophy libelle="Roi de la Cuisine" type="Bronze">
         </trophy>
         <trophy libelle="Empereur de la Cuisine" type="Argent">
@@ -192,7 +192,7 @@
             </realisation>
         </task>
     </category>
-    <category libelle="Bedroom">
+    <category libelle="Chambre">
         <trophy libelle="La chambre est mon ami" type="Bronze">
         </trophy>
         <trophy libelle="Marry Poppin" type="Argent">
@@ -304,7 +304,7 @@
             </realisation>
         </task>
     </category>
-    <category libelle="Shower">
+    <category libelle="Douche">
         <trophy libelle="Bob L'éponge" type="Bronze">
         </trophy>
         <trophy libelle="Je lave les chiottes et je l'assume" type="Argent">
@@ -392,7 +392,7 @@
             </realisation>
         </task>
     </category>
-    <category libelle="Outside">
+    <category libelle="Extérieur">
         <trophy libelle="Conducteur de tracteur" type="Bronze">
         </trophy>
         <trophy libelle="Roi du jardinage" type="Argent">

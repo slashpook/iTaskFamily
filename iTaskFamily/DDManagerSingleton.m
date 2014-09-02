@@ -47,11 +47,11 @@
         }
         
         //On crée le dictionnaire des couleurs des catégories
-        _dictColor = [[NSDictionary alloc] initWithObjectsAndKeys:COULEUR_CUISINE, NSLocalizedString(@"CUISINE", nil), COULEUR_CHAMBRE, NSLocalizedString(@"CHAMBRE", nil), COULEUR_DOUCHE, NSLocalizedString(@"DOUCHE", nil), COULEUR_EXTERIEUR, NSLocalizedString(@"EXTERIEUR", nil), COULEUR_AUTRE, NSLocalizedString(@"AUTRE", nil), COULEUR_SALON, NSLocalizedString(@"SALON", nil), COULEUR_GARAGE, NSLocalizedString(@"GARAGE", nil), COULEUR_PLUS_UTILISE, NSLocalizedString(@"PLUS_UTILISE", nil), nil];
+        _dictColor = [[NSDictionary alloc] initWithObjectsAndKeys:COULEUR_CUISINE, @"Cuisine", COULEUR_CHAMBRE, @"Chambre", COULEUR_DOUCHE, @"Douche", COULEUR_EXTERIEUR, @"Extérieur", COULEUR_AUTRE, @"Autre", COULEUR_SALON, @"Salon", COULEUR_GARAGE, @"Garage", COULEUR_PLUS_UTILISE, NSLocalizedString(@"PLUS_UTILISE", nil), nil];
         
 
         //On crée le tableau des jours de la semaine
-        _arrayWeek = [[NSArray alloc] initWithObjects:NSLocalizedString(@"LUNDI", nil), NSLocalizedString(@"MARDI", nil), NSLocalizedString(@"MERCREDI", nil), NSLocalizedString(@"JEUDI", nil), NSLocalizedString(@"VENDREDI", nil), NSLocalizedString(@"SAMEDI", nil), NSLocalizedString(@"DIMANCHE", nil), nil];
+        _arrayWeek = [[NSArray alloc] initWithObjects:NSLocalizedString(@"DIMANCHE", nil), NSLocalizedString(@"LUNDI", nil), NSLocalizedString(@"MARDI", nil), NSLocalizedString(@"MERCREDI", nil), NSLocalizedString(@"JEUDI", nil), NSLocalizedString(@"VENDREDI", nil), NSLocalizedString(@"SAMEDI", nil), nil];
         
         //On crée le tableau des jours de la semaine
         _arrayMonth = [[NSArray alloc] initWithObjects:NSLocalizedString(@"JANVIER", nil), NSLocalizedString(@"FEVRIER", nil), NSLocalizedString(@"MARS", nil), NSLocalizedString(@"AVRIL", nil), NSLocalizedString(@"MAI", nil), NSLocalizedString(@"JUIN", nil), NSLocalizedString(@"JUILLET", nil), NSLocalizedString(@"AOUT", nil), NSLocalizedString(@"SEPTEMBRE", nil), NSLocalizedString(@"OCTOBRE", nil), NSLocalizedString(@"NOVEMBRE", nil), NSLocalizedString(@"DECEMBRE", nil), nil];
@@ -177,7 +177,7 @@
 - (NSString *)getMeteo
 {
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"meteo"] == nil)
-        return @"Paris";
+        return @"Toulouse";
     else
         return [[NSUserDefaults standardUserDefaults] objectForKey:@"meteo"];
 }

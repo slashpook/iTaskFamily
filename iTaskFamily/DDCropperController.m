@@ -90,7 +90,7 @@
 {
     if ([self.imageCropper getCroppedImage] == nil)
     {
-        [DDCustomAlertView displayErrorMessage:@"L'image redimensionnée est trop petite."];
+        [DDCustomAlertView displayErrorMessage:NSLocalizedString(@"TAILLE_IMAGE", nil)];
     }
     else
     {

@@ -138,7 +138,7 @@
 //On appuie sur le bouton pour supprimer le joueur sélectionné
 - (IBAction)onPushDeletePlayer:(id)sender
 {
-    [DDCustomAlertView displayAnswerMessage:@"Voulez vous vraiment supprimer ce joueur ?" withDelegate:self];
+    [DDCustomAlertView displayAnswerMessage:NSLocalizedString(@"SUPR_JOUEUR", nil) withDelegate:self];
 }
 
 //On appuie sur la modification du joueur

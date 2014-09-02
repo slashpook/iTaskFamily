@@ -117,7 +117,7 @@
     [self setCurrentPlayer:[[DDManagerSingleton instance] currentPlayer]];
     
     //On récupère le dictionnaire des couleurs des catégories
-    [self.labelCategory setText:self.currentCategorie.libelle];
+    [self.labelCategory setText:NSLocalizedString([self.currentCategorie.libelle uppercaseString], nil)];
     
     //On récupère le tableau de tache
     NSMutableArray *arrayTask = [NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getTasksForCategory:self.currentCategorie]];
@@ -313,7 +313,7 @@
     //On configure le label du nom de la catégorie
     [cell.labelName setTextColor:COULEUR_WHITE];
     [cell.labelName setFont:POLICE_CATEGORY_MINIATURE];
-    [cell.labelName setText:category.libelle];
+    [cell.labelName setText:NSLocalizedString([category.libelle uppercaseString], nil)];
     
     return cell;
 }

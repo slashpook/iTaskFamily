@@ -41,7 +41,7 @@
     //On rempli le tableau avec les catégories
     [self.arrayCategory addObject:PLUS_UTILISE];
     for (CategoryTask *category in [[DDDatabaseAccess instance] getCategoryTasks])
-        [self.arrayCategory addObject:category.libelle];
+        [self.arrayCategory addObject:NSLocalizedString([category.libelle uppercaseString], nil)];
     
     //On s'abonne a un type de cellule pour la table view
     [self.tableViewCategorie registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CategorieTaskCell"];
@@ -78,9 +78,15 @@
     
     //On récupère la catégorie en cours
     NSString *categorie = [self.arrayCategory objectAtIndex:indexPath.row];
+    NSString *categorieColor;
+    
+    if (indexPath.row > 0)
+        categorieColor = [[[[DDDatabaseAccess instance] getCategoryTasks] objectAtIndex:(indexPath.row - 1)] libelle];
+    else
+        categorieColor = NSLocalizedString(@"PLUS_UTILISE", nil);
     
     //On configure les infos de la cellule
-    [cell.imageViewCategoryColor setBackgroundColor:[dictColor objectForKey:categorie]];
+    [cell.imageViewCategoryColor setBackgroundColor:[dictColor objectForKey:categorieColor]];
     [cell.labelNameCategory setTextColor:COULEUR_BLACK];
     [cell.labelNameCategory setText:categorie];
     [cell.labelNameCategory setFont:POLICE_TASK_CELL];

@@ -300,7 +300,7 @@
     [[DDManagerSingleton instance] setCurrentDateSelected:[NSDate date]];
     
     //On récupère l'index du jour dans le tableau de la semaine. On l'incrémente de 1 car Le premier tag des boutons est 1
-    [self setDaySelected:[NSString stringWithFormat:@"%i",(int)[[[DDManagerSingleton instance] arrayWeek] indexOfObject:currentDay]]];
+    [self setDaySelected:[NSString stringWithFormat:@"%i",((int)[[[DDManagerSingleton instance] arrayWeek] indexOfObject:currentDay] - 1)]];
 }
 
 

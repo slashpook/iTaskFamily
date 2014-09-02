@@ -80,7 +80,7 @@
     //On configure les infos de la cellule
     [cell.imageViewCategoryColor setBackgroundColor:[dictColor objectForKey:category.libelle]];
     [cell.labelNameCategory setTextColor:COULEUR_BLACK];
-    [cell.labelNameCategory setText:category.libelle];
+    [cell.labelNameCategory setText:NSLocalizedString([category.libelle uppercaseString], nil)];
     [cell.labelNameCategory setFont:POLICE_TASK_CELL];
     
     return cell;

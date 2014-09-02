@@ -207,9 +207,9 @@
 
     //On gère le résultat
     if (self.isModifyPlayer == NO && errorMessage == nil)
-        [DDCustomAlertView displayInfoMessage:@"Joueur enregistré"];
+        [DDCustomAlertView displayInfoMessage:NSLocalizedString(@"JOUEUR_SAUVE", nil)];
     else if (self.isModifyPlayer == YES && errorMessage == nil)
-        [DDCustomAlertView displayInfoMessage:@"Joueur modifié"];
+        [DDCustomAlertView displayInfoMessage:NSLocalizedString(@"JOUEUR_MODIFIE", nil)];
     else
     {
         [DDCustomAlertView displayInfoMessage:errorMessage];

@@ -70,7 +70,7 @@
     int numberOfTask = (int)[[[DDDatabaseAccess instance] getTasksForCategory:self.category] count];
     
     //On met à jour les infos qui ne bougeront pas si on a ou pas un joueur
-    [self.labelLibelleCategory setText:self.category.libelle];
+    [self.labelLibelleCategory setText:NSLocalizedString([self.category.libelle uppercaseString], nil)];
     [self.imageViewCategory setBackgroundColor:[[[DDManagerSingleton instance] dictColor] objectForKey:self.category.libelle]];
     [self.labelTotalBronze setText:[NSString stringWithFormat:@"%i", numberOfTask]];
     [self.progressBarBronze setCategory:self.category];

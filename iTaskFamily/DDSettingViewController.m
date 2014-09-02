@@ -144,7 +144,7 @@
 //Fonction pour réinitialiser les taches
 - (IBAction)onPushButtonResetTask:(id)sender
 {
-    [DDCustomAlertView displayAnswerMessage:@"Voulez-vous vraiment réinitialiser les taches." withDelegate:self];
+    [DDCustomAlertView displayAnswerMessage:NSLocalizedString(@"RESET_TACHE", nil) withDelegate:self];
 }
 
 //On appuie sur le switch de la météo
@@ -218,7 +218,7 @@
     if (buttonIndex == 0)
     {
         [[DDDatabaseAccess instance] resetTasks];
-        [DDCustomAlertView displayInfoMessage:@"Les taches ont été réinitialisées"];
+        [DDCustomAlertView displayInfoMessage:NSLocalizedString(@"RESET_TACHE_FINI", nil)];
     }
 }
 

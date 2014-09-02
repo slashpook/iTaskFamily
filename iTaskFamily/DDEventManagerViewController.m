@@ -196,12 +196,12 @@
             
             if ([arrayEvent count] > 0 && self.isModifyEvent == NO)
             {
-                [DDCustomAlertView displayCustomMessage:[NSString stringWithFormat:@"L'évènement que vous créez est récurrent dans le futur pour le %@. Que souhaitez vous faire ?", day] withDelegate:self andSetTag:0 withFirstChoice:@"Créer l'évènement et mettre à jour les récurrences" secondChoice:@"Annuler" andThirdChoice:@"Créer uniquement cet évènement"];
+                [DDCustomAlertView displayCustomMessage:[NSString stringWithFormat:@"%@ %@. %@", NSLocalizedString(@"AJOUT_EVENT_QUESTION_1_PART_1", nil), day, NSLocalizedString(@"AJOUT_EVENT_QUESTION_1_PART_2", nil)] withDelegate:self andSetTag:0 withFirstChoice:NSLocalizedString(@"AJOUT_EVENT_REPONSE_1", nil) secondChoice:NSLocalizedString(@"ANNULER", nil) andThirdChoice:NSLocalizedString(@"AJOUT_EVENT_REPONSE_2", nil)];
                 return;
             }
             else if (([arrayEvent count] > 0 || [self.eventToModify.recurrenceEnd.weekAndYear intValue] != -1) && self.isModifyEvent == YES && self.tableViewEvent.switchRecurrence.isOn == YES)
             {
-                [DDCustomAlertView displayCustomMessage:[NSString stringWithFormat:@"L'évènement que vous allez mettre à jour est récurrent dans le futur pour le %@. Que souhaitez vous faire ?", day] withDelegate:self andSetTag:0 withFirstChoice:@"Mettre à jour cet évènement et ses récurrences" secondChoice:@"Annuler" andThirdChoice:@"Mettre à jour uniquement cet évènement"];
+                [DDCustomAlertView displayCustomMessage:[NSString stringWithFormat:@"%@ %@. %@", NSLocalizedString(@"AJOUT_EVENT_QUESTION_2_PART_1", nil), day, NSLocalizedString(@"AJOUT_EVENT_QUESTION_2_PART_2", nil)] withDelegate:self andSetTag:0 withFirstChoice:NSLocalizedString(@"AJOUT_EVENT_REPONSE_3", nil) secondChoice:NSLocalizedString(@"ANNULER", nil) andThirdChoice:NSLocalizedString(@"AJOUT_EVENT_REPONSE_4", nil)];
                 return;
             }
             else
@@ -220,7 +220,7 @@
     }
     else
     {
-        [DDCustomAlertView displayErrorMessage:@"Veuillez choisir un ou plusieurs jours pour la tache à accomplir"];
+        [DDCustomAlertView displayErrorMessage:NSLocalizedString(@"CHOIX_JOUR", nil)];
         return;
     }
 }
@@ -253,12 +253,12 @@
         if (self.isModifyEvent == NO)
         {
             if ([self.arrayOccurence count] == 1)
-                [DDCustomAlertView displayInfoMessage:@"Evènement enregistré"];
+                [DDCustomAlertView displayInfoMessage:NSLocalizedString(@"EVENT_SAUVE", nil)];
             else
-                [DDCustomAlertView displayInfoMessage:@"Evènements enregistrés"];
+                [DDCustomAlertView displayInfoMessage:NSLocalizedString(@"EVENTS_SAUVE", nil)];
         }
         else
-            [DDCustomAlertView displayInfoMessage:@"Evènement modifié"];
+            [DDCustomAlertView displayInfoMessage:NSLocalizedString(@"EVENT_MODIFIE", nil)];
         
         //On ferme la vue
         [self.delegate closeEventManagerView];

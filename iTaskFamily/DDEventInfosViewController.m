@@ -99,7 +99,7 @@
     
     //On met à jour les 3 carrés de la vue info
     [self.imageViewCategory setBackgroundColor:[dictColor objectForKey:category.libelle]];
-    [self.labelCategory setText:category.libelle];
+    [self.labelCategory setText:NSLocalizedString([category.libelle uppercaseString], nil)];
     [self.imageViewPoints setBackgroundColor:[dictColor objectForKey:category.libelle]];
     [self.labelPoint setText:task.point.stringValue];
     [self.imageViewRepetition setBackgroundColor:[dictColor objectForKey:category.libelle]];
@@ -146,11 +146,11 @@
 {
     if (![[[event recurrenceEnd] weekAndYear] isEqualToString:@"-1"])
     {
-        [DDCustomAlertView displayCustomMessage:@"Vous allez supprimer un évènement récurrent. Que souhaitez vous faire ?" withDelegate:self andSetTag:(int)[self.arrayEvent indexOfObject:event] withFirstChoice:@"Supprimer cet évènement et ses récurrences" secondChoice:@"Annuler" andThirdChoice:@"Supprimer uniquement cet évènement"];
+        [DDCustomAlertView displayCustomMessage:NSLocalizedString(@"SUPR_EVENT_QUESTION_1", nil) withDelegate:self andSetTag:(int)[self.arrayEvent indexOfObject:event] withFirstChoice:NSLocalizedString(@"SUPR_EVENT_REPONSE_1", nil) secondChoice:NSLocalizedString(@"ANNULER", nil) andThirdChoice:NSLocalizedString(@"SUPR_EVENT_REPONSE_2", nil)];
     }
     else
     {
-        [DDCustomAlertView displayAnswerMessage:@"Voulez vous vraiment supprimer cet évènement ?" withDelegate:self andSetTag:(int)[self.arrayEvent indexOfObject:event]];
+        [DDCustomAlertView displayAnswerMessage:NSLocalizedString(@"SUPR_EVENT_QUESTION_2", nil) withDelegate:self andSetTag:(int)[self.arrayEvent indexOfObject:event]];
     }
 }
 
@@ -220,7 +220,7 @@
     }
     else
     {
-        [DDCustomAlertView displayInfoMessage:@"Vous ne pouvez pas cocher un évènement d'une semaine future à celle-ci."];
+        [DDCustomAlertView displayInfoMessage:NSLocalizedString(@"SELECT_EVENT_ERREUR", nil)];
     }
 }
 
@@ -269,7 +269,7 @@
     [cell.labelTask setText:task.libelle];
     [cell.labelInfo setTextColor:COULEUR_BLACK];
     [cell.labelInfo setFont:POLICE_EVENTINFOCELL_POINT];
-    [cell.labelInfo setText:[NSString stringWithFormat:@"%@ : %i points", category.libelle, [task.point intValue]]];
+    [cell.labelInfo setText:[NSString stringWithFormat:@"%@ : %i points", NSLocalizedString([category.libelle uppercaseString], nil), [task.point intValue]]];
     [cell.imageViewSeparation setBackgroundColor:COULEUR_BACKGROUND];
     [cell.customCheckbox setTag:indexPath.row];
     

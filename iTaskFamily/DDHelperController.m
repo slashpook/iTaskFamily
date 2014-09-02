@@ -61,11 +61,13 @@
 + (NSString *)getDayInLetter
 {
     NSDate *today = [NSDate date];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat: @"e"];
-    NSString *weekday = [[[DDManagerSingleton instance] arrayWeek] objectAtIndex:([[formatter stringFromDate:today] intValue] - 1)];
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSGregorianCalendar];
     
-    return [weekday capitalizedString];
+    NSDateComponents *weekdayComponents =
+    [gregorian components:(NSDayCalendarUnit | NSWeekdayCalendarUnit) fromDate:today];
+    NSInteger weekday = [weekdayComponents weekday];
+    return [[[DDManagerSingleton instance] arrayWeek] objectAtIndex:(weekday - 1)];
 }
 
 //Récupère le numéro du jour

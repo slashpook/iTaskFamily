@@ -119,7 +119,7 @@
     //On configure le label du nom de la catégorie
     [cell.labelName setTextColor:COULEUR_WHITE];
     [cell.labelName setFont:POLICE_CATEGORY_TROPHY_MINIATURE];
-    [cell.labelName setText:categoryMiniature.libelle];
+    [cell.labelName setText:NSLocalizedString([categoryMiniature.libelle uppercaseString], nil)];
     
     return cell;
 }

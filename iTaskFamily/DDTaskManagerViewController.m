@@ -99,7 +99,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.tableViewTask.labelNameCategory setText:self.currentCategory.libelle];
+    [self.tableViewTask.labelNameCategory setText:NSLocalizedString([self.currentCategory.libelle uppercaseString], nil)];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -125,7 +125,7 @@
     {
         [self.custoNavBar.imageViewBackground setImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
         [self.tableViewTask.textFieldNameTask setText:@""];
-        [self.tableViewTask.labelNameCategory setText:self.currentCategory.libelle];
+        [self.tableViewTask.labelNameCategory setText:NSLocalizedString([self.currentCategory.libelle uppercaseString], nil)];
         [self.tableViewTask.textFieldPoint setText:@"0"];
         [self.textFieldBronze setText:@"0"];
         [self.textFieldArgent setText:@"0"];
@@ -135,7 +135,7 @@
     {
         [self.custoNavBar.imageViewBackground setImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
         [self.tableViewTask.textFieldNameTask setText:self.task.libelle];
-        [self.tableViewTask.labelNameCategory setText:self.currentCategory.libelle];
+        [self.tableViewTask.labelNameCategory setText:NSLocalizedString([self.currentCategory.libelle uppercaseString], nil)];
         [self.tableViewTask.textFieldPoint setText:[NSString stringWithFormat:@"%i",self.task.point.intValue]];
         
         //On boucle sur les réalisations de la tache pour les mettres à jour
@@ -220,7 +220,7 @@
     
     //Si on a pas de message d'erreur on ferme la popUp
     if (errorMessage == nil)
-        [DDCustomAlertView displayInfoMessage:@"Tache enregistrée"];
+        [DDCustomAlertView displayInfoMessage:NSLocalizedString(@"TACHE_SAUVE", nil)];
     else
     {
         [DDCustomAlertView displayInfoMessage:errorMessage];
@@ -256,7 +256,7 @@
     
     //Si on a pas de message d'erreur on ferme la popUp
     if (errorMessage == nil)
-        [DDCustomAlertView displayInfoMessage:@"Tache modifiée"];
+        [DDCustomAlertView displayInfoMessage:NSLocalizedString(@"TACHE_MODIFIE", nil)];
     else
     {
         [DDCustomAlertView displayInfoMessage:errorMessage];
@@ -324,10 +324,10 @@
             [self saveTask];
         }
         else
-            [DDCustomAlertView displayErrorMessage:@"Veuillez rentrer des objectifs supérieurs à 0"];
+            [DDCustomAlertView displayErrorMessage:NSLocalizedString(@"OBJECTIF_INFO", nil)];
     }
     else
-        [DDCustomAlertView displayErrorMessage:@"Veuillez ne rentrer que des chiffres pour les points et les objectifs"];
+        [DDCustomAlertView displayErrorMessage:NSLocalizedString(@"OBJECTIF_POSITIF", nil)];
 }
 
 
@@ -337,7 +337,7 @@
 {
     //On met à jour la catégorie en cours et on change le texte
     [self setCurrentCategory:category];
-    [self.tableViewTask.labelNameCategory setText:category.libelle];
+    [self.tableViewTask.labelNameCategory setText:NSLocalizedString([category.libelle uppercaseString], nil)];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
