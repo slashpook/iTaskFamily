@@ -39,7 +39,7 @@
     [self.view addSubview:self.custoNavBar.view];
     
     //On rempli le tableau avec les catégories
-    [self.arrayCategory addObject:PLUS_UTILISE];
+    [self.arrayCategory addObject:NSLocalizedString(@"PLUS_UTILISE", nil)];
     for (CategoryTask *category in [[DDDatabaseAccess instance] getCategoryTasks])
         [self.arrayCategory addObject:NSLocalizedString([category.libelle uppercaseString], nil)];
     
@@ -97,10 +97,17 @@
 //On ouvre la cellule sélectionné
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //On récupère la catégorie en cours
+    NSString *categorie;
+    if (indexPath.row > 0)
+        categorie = [[[[DDDatabaseAccess instance] getCategoryTasks] objectAtIndex:(indexPath.row - 1)] libelle];
+    else
+        categorie = NSLocalizedString(@"PLUS_UTILISE", nil);
+    
     //On crée la vue des taches et on la push
     DDTaskEventViewController *taskEventViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"TaskEventViewController"];
     [taskEventViewController setDelegate:self.delegate];
-    [taskEventViewController setDatabaseForCategory:[self.arrayCategory objectAtIndex:indexPath.row]];
+    [taskEventViewController setDatabaseForCategory:categorie];
     [self.navigationController pushViewController:taskEventViewController animated:YES];
 }
 

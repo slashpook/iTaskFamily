@@ -147,7 +147,7 @@
     NSString *stringWeek = [self getWeekForDate:date];
     
     //On renvoie la date
-    return [NSString stringWithFormat:@"Semaine %@ : %@ %@ %@ %@", stringWeek, dayInLetter, [formatterDayInNumber stringFromDate:date], monthInLetter, [formatterYear stringFromDate:date]];
+    return [NSString stringWithFormat:@"%@ %@ : %@ %@ %@ %@", NSLocalizedString(@"SEMAINE", nil), stringWeek, dayInLetter, [formatterDayInNumber stringFromDate:date], monthInLetter, [formatterYear stringFromDate:date]];
 }
 
 //Récupère la date à l'évènement donné en date

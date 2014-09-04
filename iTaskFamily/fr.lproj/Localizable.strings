@@ -50,7 +50,10 @@
 "SAUVER" = "Sauver";
 "RETOUR" = "Retour";
 "ANNULER" = "Annuler";
+"SEMAINE" = "Semaine";
+"AUCUN_JOUEUR" = "Aucun joueur";
 "CHOIX_JOUEUR" = "Choisissez un joueur";
+"NON_DEFINI" = "Non défini";
 
 "TAILLE_IMAGE" = "L'image redimensionnée est trop petite.";
 "SUPR_EVENT_QUESTION_1" = "Vous allez supprimer un évènement récurrent. Que souhaitez vous faire ?";

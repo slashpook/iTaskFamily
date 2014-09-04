@@ -154,16 +154,11 @@
             
             if ([[[[DDManagerSingleton instance] currentPlayer] pseudo] isEqualToString:player.pseudo])
             {
-               [imageViewProfil setFrame:CGRectMake(viewSeparation.frame.origin.x - 10, 473, 130, 130)];
-                [imageViewProfil.layer setCornerRadius:65.0];
-                [labelPseudo setFont:POLICE_PODIUM_PLAYER_SELECTED];
+                [imageViewProfil.layer setBorderColor:[DDHelperController getMainTheme].CGColor];
+                [imageViewProfil.layer setBorderWidth:3.0];
             }
             else
-            {
-                [imageViewProfil setFrame:CGRectMake(viewSeparation.frame.origin.x, 483, 110, 110)];
-                [imageViewProfil.layer setCornerRadius:55.0];
-                [labelPseudo setFont:POLICE_PODIUM_PLAYER_NORMAL];
-            }
+                [imageViewProfil.layer setBorderWidth:0.0];
  
             //Mise à jour du nom du joueur
             [labelPseudo setText:player.pseudo];
@@ -173,7 +168,7 @@
             //On reset les données
             [labelScore setText:@"0 points"];
             [imageViewProfil setImage:[UIImage imageNamed:@"PlayerManageProfil"]];
-            [labelPseudo setText:@"Non défini"];
+            [labelPseudo setText:NSLocalizedString(@"NON_DEFINI", nil)];
         }
     }
 }

@@ -48,8 +48,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [self.custoNavBar.view setFrame:CGRectMake(0, 0, 380, 50)];
     [self.tableViewCategory reloadData];
-    [[self.custoNavBar view] setBackgroundColor:self.couleurBackground];
 }
 
 - (void)didReceiveMemoryWarning

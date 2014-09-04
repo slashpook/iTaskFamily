@@ -55,7 +55,7 @@
 //On rempli la database avec les taches de la catégorie correspondante
 - (void)setDatabaseForCategory:(NSString *)categoryName
 {
-    if ([categoryName isEqualToString:PLUS_UTILISE])
+    if ([categoryName isEqualToString:NSLocalizedString(@"PLUS_UTILISE", nil)])
         [self setArrayTasks:[NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getArrayHistoriqueTask]]];
     //Si on est sur une catégorie, on la récupère pour récupérer les taches
     else

@@ -216,7 +216,7 @@
         
         //On met à jour les informations du joueur en cours
         [self.imageViewProfil setImage:[UIImage imageNamed:@"PlayerProfil"]];
-        [self.labelNameProfil setText:@"Aucun joueur"];
+        [self.labelNameProfil setText:NSLocalizedString(@"AUCUN_JOUEUR", nil)];
         [self.labelNbrTrophy setText:[NSString stringWithFormat:@"0/%i", totalTrophyCategory]];
         [self.labelWeekScore setText:@"0"];
         [self.labelTotalScore setText:@"0"];
@@ -234,8 +234,9 @@
     //On récupère le tableau des joueurs triés en fonction du score de la semaine passée
     NSArray *arrayTrophy = [[DDDatabaseAccess instance] getPlayersSortedByTypeScoreLastWeek];
     int index = [arrayTrophy indexOfObject:self.currentPlayer];
+    NSDate *datePrevious = [DDHelperController getPreviousWeekForDate:[NSDate date]];
     
-    if (index != NSNotFound && [[[DDDatabaseAccess instance] getRewardSortedForWeekAndYear:[DDHelperController getWeekAndYearForDate:[NSDate date]]] objectAtIndex:index] != [NSNull null] && self.currentPlayer != nil)
+    if (index != NSNotFound && [[[DDDatabaseAccess instance] getRewardSortedForWeekAndYear:[DDHelperController getWeekAndYearForDate:datePrevious]] objectAtIndex:index] != [NSNull null] && self.currentPlayer != nil)
     {
         [self.buttonReward setHidden:NO];
         [self.labelNameProfil setFrame:CGRectMake(25, 566, 350, 30)];

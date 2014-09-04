@@ -151,7 +151,6 @@ typedef enum {
 
 #pragma mark - Autres
 
-#define PLUS_UTILISE @"Taches les plus utilisées"
 #define SCALE_HEIGHT_BLUR 0.2083
 
 @end
