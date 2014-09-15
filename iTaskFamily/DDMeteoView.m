@@ -77,9 +77,7 @@
     
     //Si on a pas la géolocalisation d'activé
     if ([CLLocationManager locationServicesEnabled] == NO || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied || [[DDManagerSingleton instance] isGeolocalisationActivate] == NO)
-    {
-        [[DDManagerSingleton instance] setIsGeolocationActivate:NO];
-        
+    {        
         //Si on a une ville par défault, on lance la géolocalisation
         [self.weatherInfos updateMeteoWithQuery:[[DDManagerSingleton instance] getMeteo]];
     }

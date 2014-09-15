@@ -35,6 +35,9 @@
 //Tableau des occurences sauvées
 @property (strong, nonatomic) NSMutableArray *arrayOccurenceSaved;
 
+//Tableau des jours de la semaine
+@property (strong, nonatomic) NSArray *arrayOccurence;
+
 //Navigation bar
 @property (strong, nonatomic) DDCustomNavigationBarController *custoNavBar;
 

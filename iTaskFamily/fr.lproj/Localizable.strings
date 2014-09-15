@@ -39,7 +39,7 @@
 "CUISINE" = "Cuisine";
 "CHAMBRE" = "Chambre";
 "DOUCHE" = "Douche";
-"EXTÉRIEUR" = "Extérieur";
+"EXTERIEUR" = "Exterieur";
 "SALON" = "Salon";
 "GARAGE" = "Garage";
 "PLUS_UTILISE" = "Taches les plus utilisées";

@@ -47,7 +47,7 @@
         }
         
         //On crée le dictionnaire des couleurs des catégories
-        _dictColor = [[NSDictionary alloc] initWithObjectsAndKeys:COULEUR_CUISINE, @"Cuisine", COULEUR_CHAMBRE, @"Chambre", COULEUR_DOUCHE, @"Douche", COULEUR_EXTERIEUR, @"Extérieur", COULEUR_AUTRE, @"Autre", COULEUR_SALON, @"Salon", COULEUR_GARAGE, @"Garage", COULEUR_PLUS_UTILISE, NSLocalizedString(@"PLUS_UTILISE", nil), nil];
+        _dictColor = [[NSDictionary alloc] initWithObjectsAndKeys:COULEUR_CUISINE, @"Cuisine", COULEUR_CHAMBRE, @"Chambre", COULEUR_DOUCHE, @"Douche", COULEUR_EXTERIEUR, @"Exterieur", COULEUR_AUTRE, @"Autre", COULEUR_SALON, @"Salon", COULEUR_GARAGE, @"Garage", COULEUR_PLUS_UTILISE, NSLocalizedString(@"PLUS_UTILISE", nil), nil];
         
 
         //On crée le tableau des jours de la semaine

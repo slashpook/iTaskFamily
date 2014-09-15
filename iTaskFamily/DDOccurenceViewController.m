@@ -21,6 +21,7 @@
     if (self) {
         _arrayIndexPath = [[NSMutableArray alloc] init];
         _arrayOccurenceSaved = [[NSMutableArray alloc] init];
+        _arrayOccurence = [[NSArray alloc] initWithObjects:NSLocalizedString(@"LUNDI", nil), NSLocalizedString(@"MARDI", nil), NSLocalizedString(@"MERCREDI", nil), NSLocalizedString(@"JEUDI", nil), NSLocalizedString(@"VENDREDI", nil), NSLocalizedString(@"SAMEDI", nil), NSLocalizedString(@"DIMANCHE", nil), nil];
     }
     return self;
 }
@@ -68,7 +69,7 @@
     [self.arrayIndexPath removeAllObjects];
     for (NSString *day in self.arrayOccurenceSaved)
     {
-        int row = (int)[[[DDManagerSingleton instance] arrayWeek] indexOfObject:day];
+        int row = (int)[[self arrayOccurence] indexOfObject:day];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
         [self.arrayIndexPath addObject:indexPath];
     }
@@ -82,7 +83,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[[DDManagerSingleton instance] arrayWeek] count];
+    return [self.arrayOccurence count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -93,7 +94,7 @@
     //On configure la cellule
     [[cell textLabel] setFont:POLICE_EVENT_CELL];
     [[cell textLabel] setTextColor:COULEUR_BLACK];
-    [[cell textLabel] setText:[[[DDManagerSingleton instance] arrayWeek] objectAtIndex:indexPath.row]];
+    [[cell textLabel] setText:[self.arrayOccurence objectAtIndex:indexPath.row]];
     [[cell textLabel] setBackgroundColor:[UIColor clearColor]];
     
     //On met ou non le checkmark sur les cellules en fonctions de celle qui ont été sélectionné
@@ -185,7 +186,7 @@
 
     //On rempli le tableau avec les jours sélectionnés
     for (NSIndexPath *indexPath in self.arrayIndexPath)
-        [self.arrayOccurenceSaved addObject:[[[DDManagerSingleton instance] arrayWeek] objectAtIndex:indexPath.row]];
+        [self.arrayOccurenceSaved addObject:[self.arrayOccurence objectAtIndex:indexPath.row]];
     
     //On appelle le delegate pour mettre la vue d'event à jour
     [self.delegate saveOccurencewithArray:self.arrayOccurenceSaved];

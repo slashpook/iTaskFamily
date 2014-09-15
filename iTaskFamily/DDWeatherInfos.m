@@ -128,8 +128,6 @@
 {
     //On arrète la recherche pour ne pas consommer trop d'énergie
     [self.locationManager stopUpdatingLocation];
-    //On désactive la géolocalisation
-    [[DDManagerSingleton instance] setIsGeolocationActivate:NO];
     
     //On lance la meteo avec la ville par défault
     [self updateMeteoWithQuery:[[DDManagerSingleton instance] getMeteo]];

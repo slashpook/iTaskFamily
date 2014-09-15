@@ -39,7 +39,7 @@
 "CUISINE" = "Kitchen";
 "CHAMBRE" = "Bedroom";
 "DOUCHE" = "Shower";
-"EXTÉRIEUR" = "Outside";
+"EXTERIEUR" = "Outside";
 "SALON" = "Salon";
 "GARAGE" = "Garage";
 "PLUS_UTILISE" = "Most used tasks";

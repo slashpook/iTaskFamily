@@ -129,9 +129,13 @@
 + (NSString *)getDateInLetterForDate:(NSDate *)date
 {
     //On configure les formatters
-    NSDateFormatter *formatterDayInLetter = [[NSDateFormatter alloc] init];
-    [formatterDayInLetter setDateFormat: @"e"];
-    NSString *dayInLetter = [[[DDManagerSingleton instance] arrayWeek] objectAtIndex:([[formatterDayInLetter stringFromDate:date] intValue] - 1)];
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    NSDateComponents *weekdayComponents =
+    [gregorian components:(NSDayCalendarUnit | NSWeekdayCalendarUnit | NSYearCalendarUnit) fromDate:date];
+    NSInteger weekday = [weekdayComponents weekday];
+    NSString *dayInLetter = [[[DDManagerSingleton instance] arrayWeek] objectAtIndex:(weekday - 1)];
     
     NSDateFormatter *formatterDayInNumber = [[NSDateFormatter alloc] init];
     [formatterDayInNumber setDateFormat: @"dd"];
@@ -147,7 +151,7 @@
     NSString *stringWeek = [self getWeekForDate:date];
     
     //On renvoie la date
-    return [NSString stringWithFormat:@"%@ %@ : %@ %@ %@ %@", NSLocalizedString(@"SEMAINE", nil), stringWeek, dayInLetter, [formatterDayInNumber stringFromDate:date], monthInLetter, [formatterYear stringFromDate:date]];
+    return [NSString stringWithFormat:@"%@ %@ : %@ %@ %@ %i", NSLocalizedString(@"SEMAINE", nil), stringWeek, dayInLetter, [formatterDayInNumber stringFromDate:date], monthInLetter, (int)[weekdayComponents year]];
 }
 
 //Récupère la date à l'évènement donné en date

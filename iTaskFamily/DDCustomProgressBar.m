@@ -41,7 +41,7 @@
         //On récupère le nombre de fois qu'on a réalisé la tache
         int countOfTaskRealized = 0;
         if (self.player != nil)
-            [[DDDatabaseAccess instance] getNumberOfEventCheckedForPlayer:self.player forTask:self.trophy.task];
+            countOfTaskRealized = [[DDDatabaseAccess instance] getNumberOfEventCheckedForPlayer:self.player forTask:self.trophy.task];
         
         //Si on a un début de progression
         if (countOfTaskRealized != 0)

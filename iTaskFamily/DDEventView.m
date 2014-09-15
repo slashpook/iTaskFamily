@@ -43,7 +43,7 @@
     [[self.buttonVendredi labelDay] setText:NSLocalizedString(@"VEN", nil)];
     [[self.buttonSamedi labelDay] setText:NSLocalizedString(@"SAM", nil)];
     [[self.buttonDimanche labelDay] setText:NSLocalizedString(@"DIM", nil)];
-    _arrayWeekNotification = [[NSArray alloc] initWithObjects:self.buttonLundi, self.buttonMardi, self.buttonMercredi, self.buttonJeudi, self.buttonVendredi, self.buttonSamedi, self.buttonDimanche, nil];
+    _arrayWeekNotification = [[NSArray alloc] initWithObjects:self.buttonDimanche, self.buttonLundi, self.buttonMardi, self.buttonMercredi, self.buttonJeudi, self.buttonVendredi, self.buttonSamedi, nil];
     for (DDCustomButtonNotification *buttonNotification in self.arrayWeekNotification)
         [[buttonNotification labelNumberNotification] setText:@""];
     
@@ -106,12 +106,17 @@
         [self.eventInfosViewController.buttonDeleteEvent setEnabled:YES];
         [self.eventInfosViewController.buttonModifyEvent setEnabled:YES];
 
+        int daySelectedInNumber = [self.daySelected intValue];
+        
+        if (daySelectedInNumber == 7)
+            daySelectedInNumber = 0;
+
         //Si il n'y a pas d'évènement on désactive certains boutons.
-        if ([[[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer atWeekAndYear:weekAndYearSelected andDay:self.daySelected] count] > 0)
+        if ([[[DDDatabaseAccess instance] getEventsForPlayer:currentPlayer atWeekAndYear:weekAndYearSelected andDay:[NSString stringWithFormat:@"%i", daySelectedInNumber]] count] > 0)
         {
             [self.imageViewPlus setHidden:YES];
             [self.eventInfosViewController.view setHidden:NO];
-            [self.eventInfosViewController getEventsForDay:self.daySelected];
+            [self.eventInfosViewController getEventsForDay:[NSString stringWithFormat:@"%i", daySelectedInNumber]];
             //Si on a fini la tache sélectionnée, on désactive le bouton pour modifier l'évènement
             if (([self.eventInfosViewController.currentEvent.checked boolValue] == YES && [self.eventInfosViewController.currentEvent.achievement.weekAndYear intValue] == [weekAndYearSelected intValue]) || [weekAndYearSelected intValue] < [currentWeekAndYear intValue])
                 [[self.eventInfosViewController buttonModifyEvent] setEnabled:NO];
@@ -158,7 +163,11 @@
 {
     //On met le booléen à NO pour empêcher de lancer l'animation
     [self setMustAnimateSelectionDay:NO];
-    [self onPushDayButton:[self viewWithTag:(self.daySelected.intValue +1)]];
+    int selectedDay = [self.daySelected intValue] + 1;
+    if (selectedDay == 8)
+        selectedDay = 1;
+    
+    [self onPushDayButton:[self viewWithTag:selectedDay]];
 }
 
 //On met à jour les notifications
@@ -209,8 +218,16 @@
     
     //On récupère le tag du bouton et on lui enlève un car la première entrée d'un tableau est 0
     int daySelectedInNumber = (int)([(UIButton *)sender tag] - 1);
+    
+    if (daySelectedInNumber == 0)
+        daySelectedInNumber = 7;
+    
+    if ([self.daySelected intValue] == 0)
+       [self setDaySelected:@"7"];
+    
     //On récupère la différence de jour et l'ancienne date sélectionnée
     int differenceDay = daySelectedInNumber - [[self daySelected] intValue];
+    
     NSDate *dateEvent = [[DDManagerSingleton instance] currentDateSelected];
     
     //On met à jour la date sélectionnée ainsi que le jour sélectionné
@@ -259,12 +276,16 @@
 //On appuie sur le bouton pour ajouter un évènement
 - (IBAction)onPushAddEventButton:(id)sender
 {
+    int daySelectedNumber = [self.daySelected intValue];
+    if (daySelectedNumber == 7)
+        daySelectedNumber = 0;
+    
     //On configure le controller
     [self.eventManagerViewController setIsModifyEvent:NO];
     [self.eventManagerViewController setEventToModify:nil];
     [self.eventManagerViewController setTask:nil];
     [[self.eventManagerViewController arrayOccurence] removeAllObjects];
-    [[self.eventManagerViewController arrayOccurence] addObject:[[[DDManagerSingleton instance] arrayWeek]  objectAtIndex:self.daySelected.intValue]];
+    [[self.eventManagerViewController arrayOccurence] addObject:[[[DDManagerSingleton instance] arrayWeek]  objectAtIndex:daySelectedNumber]];
     [self.eventManagerViewController initiateComponent];
     
     //On ouvre la popUp
@@ -300,7 +321,7 @@
     [[DDManagerSingleton instance] setCurrentDateSelected:[NSDate date]];
     
     //On récupère l'index du jour dans le tableau de la semaine. On l'incrémente de 1 car Le premier tag des boutons est 1
-    [self setDaySelected:[NSString stringWithFormat:@"%i",((int)[[[DDManagerSingleton instance] arrayWeek] indexOfObject:currentDay] - 1)]];
+    [self setDaySelected:[NSString stringWithFormat:@"%i",(int)[[[DDManagerSingleton instance] arrayWeek] indexOfObject:currentDay]]];
 }
 
 
