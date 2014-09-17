@@ -233,7 +233,7 @@
 {
     //On récupère le tableau des joueurs triés en fonction du score de la semaine passée
     NSArray *arrayTrophy = [[DDDatabaseAccess instance] getPlayersSortedByTypeScoreLastWeek];
-    int index = [arrayTrophy indexOfObject:self.currentPlayer];
+    NSInteger index = (int)[arrayTrophy indexOfObject:self.currentPlayer];
     NSDate *datePrevious = [DDHelperController getPreviousWeekForDate:[NSDate date]];
     
     if (index != NSNotFound && [[[DDDatabaseAccess instance] getRewardSortedForWeekAndYear:[DDHelperController getWeekAndYearForDate:datePrevious]] objectAtIndex:index] != [NSNull null] && self.currentPlayer != nil)
