@@ -129,7 +129,8 @@
         imagePicker.allowsEditing = NO;
         
         //On cache la barre de statue
-        [self presentViewController:imagePicker animated:YES completion:NO];
+        [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController: imagePicker animated:YES completion:NO];
+//        [self presentViewController:imagePicker animated:YES completion:NO];
     }
 }
 
@@ -252,7 +253,7 @@
 //On annule la sélection d'image
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [[[[UIApplication sharedApplication] keyWindow] rootViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 
