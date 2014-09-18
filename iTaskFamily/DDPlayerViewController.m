@@ -236,7 +236,7 @@
     NSInteger index = (int)[arrayTrophy indexOfObject:self.currentPlayer];
     NSDate *datePrevious = [DDHelperController getPreviousWeekForDate:[NSDate date]];
     
-    if (index != NSNotFound && [[[DDDatabaseAccess instance] getRewardSortedForWeekAndYear:[DDHelperController getWeekAndYearForDate:datePrevious]] objectAtIndex:index] != [NSNull null] && self.currentPlayer != nil)
+    if (index != NSNotFound && index <=2 && [[[DDDatabaseAccess instance] getRewardSortedForWeekAndYear:[DDHelperController getWeekAndYearForDate:datePrevious]] objectAtIndex:index] != [NSNull null] && self.currentPlayer != nil)
     {
         [self.buttonReward setHidden:NO];
         [self.labelNameProfil setFrame:CGRectMake(25, 566, 350, 30)];

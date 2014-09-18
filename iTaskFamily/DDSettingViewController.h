@@ -146,8 +146,20 @@
 //Label titre de la vue du tutoriel
 @property (weak, nonatomic) IBOutlet UILabel *labelTitreTutoriel;
 
-//ScrollView du tutoriel
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollViewTutoriel;
+//Vue d'affichage des achats in app
+@property (weak, nonatomic) IBOutlet UIView *viewAchat;
+
+//Image du header de la vue des achats in app
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewHeaderAchat;
+
+//Label titre de la vue des achats in app
+@property (weak, nonatomic) IBOutlet UILabel *labelTitreAchat;
+
+//Boutton pour acheter l'appli
+@property (weak, nonatomic) IBOutlet DDCustomButton *buttonAchatInApp;
+
+//Boutton pour restaurer les achats
+@property (weak, nonatomic) IBOutlet DDCustomButton *buttonRestaureAchatInApp;
 
 
 #pragma mark - Fonctions

@@ -162,7 +162,7 @@
 - (void)updatePositionOfSelectedDay
 {
     //On met le booléen à NO pour empêcher de lancer l'animation
-    [self setMustAnimateSelectionDay:NO];
+    [self setMustAnimateSelectionDay:YES];
     int selectedDay = [self.daySelected intValue] + 1;
     if (selectedDay == 8)
         selectedDay = 1;

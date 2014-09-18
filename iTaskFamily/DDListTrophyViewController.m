@@ -32,6 +32,10 @@
     [self.tableViewTrophy registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CellTableView"];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
 
 #pragma mark - Fonctions du controller
 
@@ -40,17 +44,33 @@
 {
     //On affiche le nom du trophée
     [self.labelLibelleTrophy setText:self.trophy.libelle];
-
+    
     int numberOfTrophyRealized = [[DDDatabaseAccess instance] getNumberOfTrophyAchievedForPlayer:[[DDManagerSingleton instance] currentPlayer] inCategory:self.category andType:self.trophy.type];
-    [self.labelRealisationTrophy setText:[NSString stringWithFormat:@"%i/%i", numberOfTrophyRealized, (int)[[[DDDatabaseAccess instance] getTasksForCategory:self.category] count]]];
+    int numberTotalOfTrophy = (int)[[[DDDatabaseAccess instance] getTasksForCategory:self.category] count];
+    [self.labelRealisationTrophy setText:[NSString stringWithFormat:@"%i/%i", numberOfTrophyRealized, numberTotalOfTrophy]];
     
     //Suivant le type de trophée, on affiche l'image qui lui correspond
     if ([self.trophy.type isEqualToString:@"Bronze"])
-       [self.imageViewTrophy setImage:[UIImage imageNamed:@"TrophyManager3"]];
+        [self.imageViewTrophy setImage:[UIImage imageNamed:@"TrophyManager3"]];
     else if ([self.trophy.type isEqualToString:@"Argent"])
         [self.imageViewTrophy setImage:[UIImage imageNamed:@"TrophyManager2"]];
     else
         [self.imageViewTrophy setImage:[UIImage imageNamed:@"TrophyManager1"]];
+    
+    
+    //On affiche ou non le coche
+    if (numberOfTrophyRealized >= numberTotalOfTrophy)
+    {
+        [self.imageViewCheck setAlpha:1.0];
+        [self.imageViewCheck setFrame:CGRectMake(423, 6, 20, 20)];
+        [self.labelRealisationTrophy setFrame:CGRectMake(340, -5, 76, 45)];
+    }
+    else
+    {
+        [self.imageViewCheck setAlpha:0.0];
+        [self.imageViewCheck setFrame:CGRectMake(458, 6, 20, 20)];
+        [self.labelRealisationTrophy setFrame:CGRectMake(365, -5, 76, 45)];
+    }
     
     [self.tableViewTrophy reloadData];
 }
@@ -77,7 +97,7 @@
     
     //On récupère le dictionnaire des couleurs des catégories
     NSDictionary *dictColor = [[DDManagerSingleton instance] dictColor];
-
+    
     //On récupère le nombre de fois que le player a réalisé la task
     int numberOfEventChecked = 0;
     if (currentPlayer != nil)

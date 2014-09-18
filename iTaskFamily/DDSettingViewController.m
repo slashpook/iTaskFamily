@@ -49,6 +49,8 @@
     [self.viewTheme.layer setMasksToBounds:YES];
     [self.viewTutoriel.layer setCornerRadius:10.0];
     [self.viewTutoriel.layer setMasksToBounds:YES];
+    [self.viewAchat.layer setCornerRadius:10.0];
+    [self.viewAchat.layer setMasksToBounds:YES];
     [self.viewCurrentColor.layer setCornerRadius:5.0];
     [self.buttonColor1.layer setCornerRadius:5.0];
     [self.buttonColor2.layer setCornerRadius:5.0];
@@ -69,6 +71,7 @@
     [self.imageViewHeaderMeteo setBackgroundColor:COULEUR_BLACK];
     [self.imageViewHeaderTheme setBackgroundColor:COULEUR_BLACK];
     [self.imageViewHeaderTutoriel setBackgroundColor:COULEUR_BLACK];
+    [self.imageViewHeaderAchat setBackgroundColor:COULEUR_BLACK];
     
     //On set la police et la couleur des labels et boutons
     [self.labelTitreRecompense setFont:POLICE_HEADER];
@@ -90,6 +93,8 @@
     [[self.buttonColorPerso titleLabel] setTextColor:COULEUR_WHITE];
     [self.labelTitreTutoriel setFont:POLICE_HEADER];
     [self.labelTitreTutoriel setTextColor:COULEUR_WHITE];
+    [self.labelTitreAchat setFont:POLICE_HEADER];
+    [self.labelTitreAchat setTextColor:COULEUR_WHITE];
     
     //On initialise le popOver, le navigation controller et le playerManagerViewController
     _popOverViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PopOverViewController"];
@@ -127,6 +132,11 @@
     [self.buttonChangeVille setNeedsDisplay];
     [self.buttonColorPerso setColorTitleEnable:[DDHelperController getMainTheme]];
     [self.buttonColorPerso setNeedsDisplay];
+    [self.buttonAchatInApp setColorTitleEnable:[DDHelperController getMainTheme]];
+    [self.buttonAchatInApp setNeedsDisplay];
+    [self.buttonRestaureAchatInApp setColorTitleEnable:[DDHelperController getMainTheme]];
+    [self.buttonRestaureAchatInApp setNeedsDisplay];
+    
     //On configure la couleur de teinte des switchs
     [self.switchMeteo setOnTintColor:[DDHelperController getMainTheme]];
 }

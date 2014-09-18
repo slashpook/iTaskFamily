@@ -31,6 +31,8 @@
 //Le trophée à traiter
 @property (strong, nonatomic) CategoryTrophy *trophy;
 
+//ImageView du check des trophées
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewCheck;
 
 #pragma mark - Fonctions
 

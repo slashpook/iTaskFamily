@@ -130,7 +130,6 @@
         
         //On cache la barre de statue
         [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController: imagePicker animated:YES completion:NO];
-//        [self presentViewController:imagePicker animated:YES completion:NO];
     }
 }
 

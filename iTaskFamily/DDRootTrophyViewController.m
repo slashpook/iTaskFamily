@@ -66,6 +66,12 @@
     [self updateComponent];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self.listTrophyBronzeViewController updateComponent];
+    [self.listTrophyArgentViewController updateComponent];
+    [self.listTrophyOrViewController updateComponent];
+}
 
 #pragma mark - Fonctions du controller
 
