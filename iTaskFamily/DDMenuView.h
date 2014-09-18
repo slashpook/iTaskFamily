@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DDPlayerListViewController.h"
+#import "DDAboutViewController.h"
 
 @class DDPopOverViewController;
 
@@ -31,7 +32,7 @@
 @end
 
 
-@interface DDMenuView : UIView <DDPlayerListViewProtocol>
+@interface DDMenuView : UIView <DDPlayerListViewProtocol, DDAboutViewProtocol>
 
 
 #pragma mark - Variables
@@ -59,6 +60,9 @@
 
 //ViewController de la liste de joueur
 @property (strong, nonatomic) DDPlayerListViewController *playerListViewController;
+
+//ABoutViewController pour voir le A propos
+@property (strong, nonatomic) DDAboutViewController *aboutViewController;
 
 //Joueur principal
 @property (strong, nonatomic) Player *currentPlayer;
@@ -89,6 +93,9 @@
 
 //On ouvre la popUp pour changer de joueur
 - (IBAction)onPushSelectPlayerButton:(UIButton *)sender;
+
+//On ouvre la popUp pour affiche l'a propos
+- (IBAction)onPushAboutButton:(UIButton *)sender;
 
 //On bouge la vue qui sélectionne la page
 - (void)moveView:(CGRect)location andColor:(UIColor *)color;

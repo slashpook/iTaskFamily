@@ -49,11 +49,13 @@
 "ERREUR" = "Erreur";
 "SAUVER" = "Sauver";
 "RETOUR" = "Retour";
+"FERMER" = "Fermer";
 "ANNULER" = "Annuler";
 "SEMAINE" = "Semaine";
 "AUCUN_JOUEUR" = "Aucun joueur";
 "CHOIX_JOUEUR" = "Choisissez un joueur";
 "NON_DEFINI" = "Non défini";
+"APROPOS" = "À propos";
 
 "TAILLE_IMAGE" = "L'image redimensionnée est trop petite.";
 "SUPR_EVENT_QUESTION_1" = "Vous allez supprimer un évènement récurrent. Que souhaitez vous faire ?";

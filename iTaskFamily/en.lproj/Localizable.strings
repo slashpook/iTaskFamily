@@ -49,11 +49,13 @@
 "ERREUR" = "Error";
 "SAUVER" = "Save";
 "RETOUR" = "Back";
+"FERMER" = "Close";
 "ANNULER" = "Cancel";
 "SEMAINE" = "Week";
 "AUCUN_JOUEUR" = "No player";
 "CHOIX_JOUEUR" = "Choose a player";
 "NON_DEFINI" = "Undefined";
+"APROPOS" = "About";
 
 "TAILLE_IMAGE" = "The resized image is too small.";
 "SUPR_EVENT_QUESTION_1" = "You are about to delete a recurring event. What would you do ?";

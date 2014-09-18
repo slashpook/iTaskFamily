@@ -77,6 +77,7 @@
 		6DB39C92199D21F7004D3155 /* DDMainInformationTrophyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB39C91199D21F7004D3155 /* DDMainInformationTrophyViewController.m */; };
 		6DB8F1FA19A5E19F00B22DB2 /* DDCustomColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8F1F919A5E19F00B22DB2 /* DDCustomColorViewController.m */; };
 		6DB8F1FE19A638F400B22DB2 /* DDRewardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8F1FD19A638F400B22DB2 /* DDRewardDetailViewController.m */; };
+		6DC65CC519C9E3B100B31C0D /* DDAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC65CC419C9E3B100B31C0D /* DDAboutViewController.m */; };
 		6DC986F6185092A200A5A65F /* DDCustomProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC986F5185092A200A5A65F /* DDCustomProgressBar.m */; };
 		6DC986FA1850E89B00A5A65F /* DDTaskManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC986F91850E89B00A5A65F /* DDTaskManagerViewController.m */; };
 		6DCB2A8A18B6177B000FDFCA /* DDEventManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB2A8918B6177B000FDFCA /* DDEventManagerViewController.m */; };
@@ -241,6 +242,8 @@
 		6DB8F1F919A5E19F00B22DB2 /* DDCustomColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomColorViewController.m; sourceTree = "<group>"; };
 		6DB8F1FC19A638F400B22DB2 /* DDRewardDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRewardDetailViewController.h; sourceTree = "<group>"; };
 		6DB8F1FD19A638F400B22DB2 /* DDRewardDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRewardDetailViewController.m; sourceTree = "<group>"; };
+		6DC65CC319C9E3B100B31C0D /* DDAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAboutViewController.h; sourceTree = "<group>"; };
+		6DC65CC419C9E3B100B31C0D /* DDAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAboutViewController.m; sourceTree = "<group>"; };
 		6DC986F4185092A200A5A65F /* DDCustomProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomProgressBar.h; sourceTree = "<group>"; };
 		6DC986F5185092A200A5A65F /* DDCustomProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomProgressBar.m; sourceTree = "<group>"; };
 		6DC986F81850E89B00A5A65F /* DDTaskManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTaskManagerViewController.h; sourceTree = "<group>"; };
@@ -600,6 +603,7 @@
 		6D6B3EFE183CF8A9009542A8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6DC65CC219C9E39500B31C0D /* AboutViewController */,
 				6DF00EC9184F413C00F8F3C5 /* PlayerListViewController */,
 				6D8970DB1848DCF700F815CD /* CropperViewController */,
 				6D8970C81848926500F815CD /* CustomImagePickerViewController */,
@@ -881,6 +885,15 @@
 				6D32CAE6189B9FCC00FD2B3F /* DDPodiumViewController.m */,
 			);
 			name = PodiumViewController;
+			sourceTree = "<group>";
+		};
+		6DC65CC219C9E39500B31C0D /* AboutViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6DC65CC319C9E3B100B31C0D /* DDAboutViewController.h */,
+				6DC65CC419C9E3B100B31C0D /* DDAboutViewController.m */,
+			);
+			name = AboutViewController;
 			sourceTree = "<group>";
 		};
 		6DC8501C197DB87F00DDBEF4 /* Entities */ = {
@@ -1189,6 +1202,7 @@
 				6DF00ED4184F8DE100F8F3C5 /* DDTaskViewController.m in Sources */,
 				6D5549F01844ECC7009022C5 /* DDPopOverViewController.m in Sources */,
 				6D1B756918B7AF4B000D0B12 /* DDTaskEventViewController.m in Sources */,
+				6DC65CC519C9E3B100B31C0D /* DDAboutViewController.m in Sources */,
 				6DCE47BD183E08AA00D64363 /* UIImage+ImageEffects.m in Sources */,
 				6DCB2A8E18B66A0B000FDFCA /* DDOccurenceViewController.m in Sources */,
 				6D2E618318D0E976001A971B /* DDEventManagerTableViewController.m in Sources */,

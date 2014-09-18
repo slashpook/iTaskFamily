@@ -91,9 +91,6 @@
     [self.taskManagerViewController setDelegate:self];
     _navigationTaskManagerViewController = [[UINavigationController alloc] initWithRootViewController:self.taskManagerViewController];
     
-    //On met à jour les composants
-    [self updateComponent];
-    
     //On met en place la notification pour modifier le joueur
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateComponent)
@@ -104,6 +101,9 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [self setArrayCategories:[NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getCategoryTasks]]];
+    
+    //On met à jour les composants
+    [self updateComponent];
 }
 
 
@@ -113,6 +113,19 @@
 //On met à jour les composents
 - (void)updateComponent
 {
+    //On vérifie que l'on a une catégorie, sinon on récupère la première (notamment si on a réinitialisé les taches)
+    if (self.currentCategorie.libelle == nil)
+    {
+        [self setCurrentCategorie:[self.arrayCategories objectAtIndex:0]];
+        
+        //On récupère un tableau des taches de la catégorie sélectionnée
+        NSMutableArray *taskArray = [NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getTasksForCategory:self.currentCategorie]];
+        if ([taskArray count] > 0)
+            [self setCurrentTask:[taskArray objectAtIndex:0]];
+        else
+            [self setCurrentTask:nil];
+    }
+    
     //On set le joueur sélectionné
     [self setCurrentPlayer:[[DDManagerSingleton instance] currentPlayer]];
     

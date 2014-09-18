@@ -38,6 +38,10 @@
     _playerListViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PlayerListViewController"];
     [self.playerListViewController setDelegate:self];
     
+    //On intialise la vue about
+    _aboutViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"AboutViewController"];
+    [self.aboutViewController setDelegate:self];
+    
     //On met à jour le joueur principal
     [self updateMainPlayer];
     
@@ -197,6 +201,16 @@
     }
 }
 
+//On affiche la popup de l'à propos
+- (void)onPushAboutButton:(UIButton *)sender
+{
+    [[[[[[UIApplication sharedApplication] delegate] window] rootViewController] view] addSubview:self.popOverViewController.view];
+    
+    //On présente la popUp
+    CGRect frame = self.aboutViewController.view.frame;
+    [self.popOverViewController presentPopOverWithContentView:self.aboutViewController.view andSize:frame.size andOffset:CGPointMake(0, 0)];
+}
+
 
 #pragma mark Fonctions de PlayerListViewProtocol
 
@@ -213,6 +227,16 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_PLAYER object:nil];
     }
     
+    //On enlève la popUp
+    [self.popOverViewController hide];
+}
+
+
+#pragma mark - DDAboutViewProtocol fonctions
+
+//Fonction pour fermer la popUp
+- (void)closeAboutView
+{
     //On enlève la popUp
     [self.popOverViewController hide];
 }
