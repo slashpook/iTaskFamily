@@ -9,18 +9,22 @@
 #import "DDSettingViewController.h"
 #import "DDCustomButton.h"
 #import "DDPopOverViewController.h"
+#import "DDSettingTableViewCell.h"
 
 @interface DDSettingViewController ()
 
 @end
 
 @implementation DDSettingViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    NSArray *arrayTutorial;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
     if (self) {
-        // Custom initialization
+        arrayTutorial = [NSArray arrayWithObjects:NSLocalizedString(@"TUTO1", nil), NSLocalizedString(@"TUTO2", nil), NSLocalizedString(@"TUTO3", nil), NSLocalizedString(@"TUTO4", nil), NSLocalizedString(@"TUTO5", nil), NSLocalizedString(@"TUTO6", nil), NSLocalizedString(@"TUTO7", nil), NSLocalizedString(@"TUTO8", nil), NSLocalizedString(@"TUTO9", nil), NSLocalizedString(@"TUTO10", nil), NSLocalizedString(@"TUTO11", nil), nil];
     }
     return self;
 }
@@ -96,6 +100,10 @@
     [self.labelTitreAchat setFont:POLICE_HEADER];
     [self.labelTitreAchat setTextColor:COULEUR_WHITE];
     
+    //On set le delegate de la tableView
+    [self.tableViewTutorial setDelegate:self];
+    [self.tableViewTutorial setDataSource:self];
+    
     //On initialise le popOver, le navigation controller et le playerManagerViewController
     _popOverViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PopOverViewController"];
     _awardViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"AwardViewController"];
@@ -136,6 +144,8 @@
     [self.buttonAchatInApp setNeedsDisplay];
     [self.buttonRestaureAchatInApp setColorTitleEnable:[DDHelperController getMainTheme]];
     [self.buttonRestaureAchatInApp setNeedsDisplay];
+    [self.buttonTutoriel setColorTitleEnable:[DDHelperController getMainTheme]];
+    [self.buttonTutoriel setNeedsDisplay];
     
     //On configure la couleur de teinte des switchs
     [self.switchMeteo setOnTintColor:[DDHelperController getMainTheme]];
@@ -217,6 +227,37 @@
 {
     //On enlève la popUp
     [self.popOverViewController hide];
+}
+
+
+#pragma mark - TableView Delegate fonctions
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [arrayTutorial count];
+}
+
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [self.tableViewTutorial cellForRowAtIndexPath:indexPath];
+    [cell setBackgroundColor:COULEUR_CELL_SELECTED];
+}
+
+- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [self.tableViewTutorial cellForRowAtIndexPath:indexPath];
+    [cell setBackgroundColor:COULEUR_WHITE];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //On récupère la cellule
+    DDSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DefaultCell" forIndexPath:indexPath];
+    
+    [cell.labelTutorial setText:[arrayTutorial objectAtIndex:indexPath.row]];
+    [cell.labelTutorial setBackgroundColor:COULEUR_TRANSPARENT];
+    
+    return cell;
 }
 
 

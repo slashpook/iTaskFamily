@@ -74,6 +74,7 @@
 		6D9B3C28191BF45C0001C672 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3C27191BF45C0001C672 /* Player.m */; };
 		6D9B3C2E191BF45D0001C672 /* CategoryTrophy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3C2D191BF45D0001C672 /* CategoryTrophy.m */; };
 		6DAE048418D086E100F6765E /* DDCustomButtonNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAE048318D086E100F6765E /* DDCustomButtonNotification.m */; };
+		6DB1BF8219CC798400D3C076 /* DDSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB1BF8119CC798400D3C076 /* DDSettingTableViewCell.m */; };
 		6DB39C92199D21F7004D3155 /* DDMainInformationTrophyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB39C91199D21F7004D3155 /* DDMainInformationTrophyViewController.m */; };
 		6DB8F1FA19A5E19F00B22DB2 /* DDCustomColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8F1F919A5E19F00B22DB2 /* DDCustomColorViewController.m */; };
 		6DB8F1FE19A638F400B22DB2 /* DDRewardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8F1FD19A638F400B22DB2 /* DDRewardDetailViewController.m */; };
@@ -236,6 +237,8 @@
 		6D9B3C2D191BF45D0001C672 /* CategoryTrophy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTrophy.m; sourceTree = "<group>"; };
 		6DAE048218D086E100F6765E /* DDCustomButtonNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomButtonNotification.h; sourceTree = "<group>"; };
 		6DAE048318D086E100F6765E /* DDCustomButtonNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomButtonNotification.m; sourceTree = "<group>"; };
+		6DB1BF8019CC798400D3C076 /* DDSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSettingTableViewCell.h; sourceTree = "<group>"; };
+		6DB1BF8119CC798400D3C076 /* DDSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSettingTableViewCell.m; sourceTree = "<group>"; };
 		6DB39C90199D21F7004D3155 /* DDMainInformationTrophyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMainInformationTrophyViewController.h; sourceTree = "<group>"; };
 		6DB39C91199D21F7004D3155 /* DDMainInformationTrophyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMainInformationTrophyViewController.m; sourceTree = "<group>"; };
 		6DB8F1F819A5E19F00B22DB2 /* DDCustomColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomColorViewController.h; sourceTree = "<group>"; };
@@ -775,6 +778,7 @@
 		6D8970DA1848DCD700F815CD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				6DB1BF7F19CC793B00D3C076 /* CustomSettingCell */,
 				6D5E3D3818C37498003BA0F2 /* CustomEventCell */,
 				6D3A26B518B7954500545FF2 /* CustomOccurenceCell */,
 				6D61F6641851DBE100759AFC /* CustomCategoryListCell */,
@@ -849,6 +853,15 @@
 				6DAE048318D086E100F6765E /* DDCustomButtonNotification.m */,
 			);
 			name = CustomNotification;
+			sourceTree = "<group>";
+		};
+		6DB1BF7F19CC793B00D3C076 /* CustomSettingCell */ = {
+			isa = PBXGroup;
+			children = (
+				6DB1BF8019CC798400D3C076 /* DDSettingTableViewCell.h */,
+				6DB1BF8119CC798400D3C076 /* DDSettingTableViewCell.m */,
+			);
+			name = CustomSettingCell;
 			sourceTree = "<group>";
 		};
 		6DB39C8F199D21D4004D3155 /* MainInformationTrophyViewController */ = {
@@ -1183,6 +1196,7 @@
 				6D61F6671851DC1400759AFC /* DDCustomCategoryListCell.m in Sources */,
 				6D6B3ED9183CF75B009542A8 /* DDAppDelegate.m in Sources */,
 				6D5E3D3718C36F2E003BA0F2 /* DDEventInfosViewController.m in Sources */,
+				6DB1BF8219CC798400D3C076 /* DDSettingTableViewCell.m in Sources */,
 				6D39975D19A737F8005AB9B0 /* DDMeteoViewController.m in Sources */,
 				6DCB2A8A18B6177B000FDFCA /* DDEventManagerViewController.m in Sources */,
 				6DCE47B9183E066100D64363 /* DDPlayerView.m in Sources */,

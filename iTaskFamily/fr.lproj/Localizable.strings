@@ -84,3 +84,15 @@
 "TACHE_MODIFIE" = "Tache modifié";
 "OBJECTIF_INFO" = "Veuillez rentrer des objectifs supérieurs à 0.";
 "OBJECTIF_POSITIF" = "Veuillez ne rentrer que des chiffres pour les points et les objectifs.";
+
+"TUTO1" = "1. Bienvenue dans iTaskFamily";
+"TUTO2" = "2. Créer un joueur";
+"TUTO3" = "3. Consulter ses informations";
+"TUTO4" = "4. Créer une tache";
+"TUTO5" = "5. Créer un évènement";
+"TUTO6" = "6. Gérer ses évènements";
+"TUTO7" = "7. Consulter les podiums";
+"TUTO8" = "8. Créer des récompenses";
+"TUTO9" = "9. Paramétrer la météo";
+"TUTO10" = "10. Réinitialiser l'application";
+"TUTO11" = "11. Changer le thème";

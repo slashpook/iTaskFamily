@@ -15,7 +15,7 @@
 @class DDCustomButton;
 
 
-@interface DDSettingViewController : UIViewController <DDCustomColorViewProtocol, DDAwardViewProtocol, DDMeteoViewProtocol, UIAlertViewDelegate>
+@interface DDSettingViewController : UIViewController <DDCustomColorViewProtocol, DDAwardViewProtocol, DDMeteoViewProtocol, UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 
 #pragma mark - Variables
@@ -146,6 +146,12 @@
 //Label titre de la vue du tutoriel
 @property (weak, nonatomic) IBOutlet UILabel *labelTitreTutoriel;
 
+//TableView du tutoriel
+@property (weak, nonatomic) IBOutlet UITableView *tableViewTutorial;
+
+//Boutton du tutoriel
+@property (weak, nonatomic) IBOutlet DDCustomButton *buttonTutoriel;
+
 //Vue d'affichage des achats in app
 @property (weak, nonatomic) IBOutlet UIView *viewAchat;
 
@@ -160,7 +166,6 @@
 
 //Boutton pour restaurer les achats
 @property (weak, nonatomic) IBOutlet DDCustomButton *buttonRestaureAchatInApp;
-
 
 #pragma mark - Fonctions
 

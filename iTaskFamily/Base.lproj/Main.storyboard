@@ -1971,6 +1971,49 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xnc-Il-gb1" customClass="DDCustomButton">
+                                        <rect key="frame" x="10" y="336" width="220" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="TOUT VISIONNER">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="45" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="znU-OM-dkA">
+                                        <rect key="frame" x="0.0" y="50" width="240" height="278"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DefaultCell" id="WHW-kl-Of2" customClass="DDSettingTableViewCell">
+                                                <rect key="frame" x="0.0" y="22" width="240" height="45"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WHW-kl-Of2" id="OWx-Oi-Cv1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vkS-jM-dCR">
+                                                            <rect key="frame" x="0.0" y="44" width="240" height="1"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                        </view>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbg-k1-gYS">
+                                                            <rect key="frame" x="5" y="0.0" width="225" height="45"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </tableViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <outlet property="labelTutorial" destination="Nbg-k1-gYS" id="upM-E0-pfX"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <sections/>
+                                    </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -1990,24 +2033,23 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cette application possède un bandeau publicitaire. Pour pouvoir l'enlever, il vous faut l'acheter" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="230" translatesAutoresizingMaskIntoConstraints="NO" id="aEM-vX-iwC">
-                                        <rect key="frame" x="5" y="48" width="230" height="113"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This application has a banner. To remove it, you must buy it" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="230" translatesAutoresizingMaskIntoConstraints="NO" id="aEM-vX-iwC">
+                                        <rect key="frame" x="5" y="49" width="230" height="113"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="19"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I0R-47-1cr" customClass="DDCustomButton">
-                                        <rect key="frame" x="10" y="161" width="220" height="37"/>
+                                        <rect key="frame" x="10" y="153" width="220" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="iTaskFamily   1,39 €">
+                                        <state key="normal" title="BUY                   1,79 $">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="230" translatesAutoresizingMaskIntoConstraints="NO" id="ZVO-m9-6f9">
-                                        <rect key="frame" x="5" y="214" width="230" height="113"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="If you have already purchased iTaskFamily and just download it again, remove the banner by clicking here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="218" translatesAutoresizingMaskIntoConstraints="NO" id="ZVO-m9-6f9">
+                                        <rect key="frame" x="5" y="215" width="218" height="113"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <string key="text">Si vous avez déjà acheté l'application et venez de la télécharger une nouvelle fois, enlevez le bandeau publicitaire en appuyant ici</string>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="19"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -2015,12 +2057,12 @@
                                         <rect key="frame" x="10" y="336" width="220" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="Restaurer Achat">
+                                        <state key="normal" title="RESTORE PURCHASE">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QzN-Gu-g3J">
-                                        <rect key="frame" x="20" y="210" width="200" height="1"/>
+                                        <rect key="frame" x="20" y="202" width="200" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
@@ -2053,6 +2095,7 @@
                         <outlet property="buttonConfigureRecompense" destination="WlG-bW-usZ" id="ZuG-d4-RaI"/>
                         <outlet property="buttonResetTask" destination="Y9G-FB-lbL" id="N7i-6w-rFb"/>
                         <outlet property="buttonRestaureAchatInApp" destination="UTu-t6-DKf" id="VVr-Rl-LsQ"/>
+                        <outlet property="buttonTutoriel" destination="Xnc-Il-gb1" id="m63-IP-Cbr"/>
                         <outlet property="imageViewHeaderAchat" destination="XEM-hh-iye" id="vhV-FZ-mHP"/>
                         <outlet property="imageViewHeaderMeteo" destination="HiO-Ws-5Bw" id="ccu-JR-5WA"/>
                         <outlet property="imageViewHeaderRecompense" destination="u1n-77-ZsN" id="wqz-SM-AbU"/>
@@ -2071,6 +2114,7 @@
                         <outlet property="labelTitreTheme" destination="TRB-qx-ZCw" id="c0s-Aq-um4"/>
                         <outlet property="labelTitreTutoriel" destination="KpG-8N-jTN" id="VZU-56-iLa"/>
                         <outlet property="switchMeteo" destination="dVu-VY-zQo" id="kQm-af-p0F"/>
+                        <outlet property="tableViewTutorial" destination="znU-OM-dkA" id="Tav-TR-Eyl"/>
                         <outlet property="viewAchat" destination="RzO-Gf-fMO" id="lC1-WP-u2P"/>
                         <outlet property="viewCurrentColor" destination="2WE-v6-Efv" id="Cm6-cH-INu"/>
                         <outlet property="viewMeteo" destination="yd5-2a-7Dq" id="KaH-Jb-4xm"/>

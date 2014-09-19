@@ -1887,6 +1887,49 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="45" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fc5-Kr-k08">
+                                        <rect key="frame" x="0.0" y="50" width="240" height="278"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DefaultCell" id="Irc-mS-GAa" customClass="DDSettingTableViewCell">
+                                                <rect key="frame" x="0.0" y="22" width="240" height="45"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Irc-mS-GAa" id="Hbd-S3-xnk">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vRE-fs-L4g">
+                                                            <rect key="frame" x="0.0" y="44" width="240" height="1"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                        </view>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNA-pQ-gTA">
+                                                            <rect key="frame" x="5" y="0.0" width="225" height="45"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </tableViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <outlet property="labelTutorial" destination="NNA-pQ-gTA" id="zCQ-D0-dlk"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <sections/>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDK-Vh-epT" customClass="DDCustomButton">
+                                        <rect key="frame" x="10" y="336" width="220" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="TOUT VISIONNER">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -1916,7 +1959,7 @@
                                         <rect key="frame" x="10" y="161" width="220" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="iTaskFamily   1,39 €">
+                                        <state key="normal" title="ACHETER           1,79 €">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1934,7 +1977,7 @@
                                         <rect key="frame" x="10" y="336" width="220" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="Restaurer Achat">
+                                        <state key="normal" title="RESTAURER ACHAT">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1975,6 +2018,7 @@
                         <outlet property="buttonConfigureRecompense" destination="WlG-bW-usZ" id="ZuG-d4-RaI"/>
                         <outlet property="buttonResetTask" destination="Y9G-FB-lbL" id="N7i-6w-rFb"/>
                         <outlet property="buttonRestaureAchatInApp" destination="1eM-W4-fgM" id="pIG-u0-Zh4"/>
+                        <outlet property="buttonTutoriel" destination="iDK-Vh-epT" id="DAh-cc-Vw3"/>
                         <outlet property="imageViewHeaderAchat" destination="007-pP-K0g" id="idg-cU-VaI"/>
                         <outlet property="imageViewHeaderMeteo" destination="HiO-Ws-5Bw" id="ccu-JR-5WA"/>
                         <outlet property="imageViewHeaderRecompense" destination="u1n-77-ZsN" id="wqz-SM-AbU"/>
@@ -1993,6 +2037,7 @@
                         <outlet property="labelTitreTheme" destination="TRB-qx-ZCw" id="c0s-Aq-um4"/>
                         <outlet property="labelTitreTutoriel" destination="KpG-8N-jTN" id="VZU-56-iLa"/>
                         <outlet property="switchMeteo" destination="dVu-VY-zQo" id="kQm-af-p0F"/>
+                        <outlet property="tableViewTutorial" destination="fc5-Kr-k08" id="IBy-HJ-Bfi"/>
                         <outlet property="viewAchat" destination="Q3v-Fr-dIo" id="5oB-dC-Oqq"/>
                         <outlet property="viewCurrentColor" destination="2WE-v6-Efv" id="Cm6-cH-INu"/>
                         <outlet property="viewMeteo" destination="yd5-2a-7Dq" id="KaH-Jb-4xm"/>
