@@ -38,11 +38,16 @@
         //On récupère la liste des joueurs
         NSMutableArray *arrayPlayer = [NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getPlayers]];
         
+        //On récupère le directory Document
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        
         int compteur = 0;
         for (Player *player in arrayPlayer)
         {
+            NSString *pathImage = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg", player.pathImage]];
             //On rajoute l'image
-            [self.dictImagePlayer setObject:[UIImage imageWithContentsOfFile:player.pathImage] forKey:player.pseudo];
+            [self.dictImagePlayer setObject:[UIImage imageWithContentsOfFile:pathImage] forKey:player.pseudo];
             compteur ++;
         }
         
@@ -115,10 +120,10 @@
 }
 
 //On met à jour l'image de profil du joueur
-- (void)updateImgProfilForPlayer:(Player *)player WithPath:(NSString *)path withImage:(UIImage *)imgProfil
+- (void)updateImgProfilForPlayer:(Player *)player WithImageName:(NSString *)imageName withImage:(UIImage *)imgProfil
 {
     //On supprime l'ancienne image
-    [self deleteImgProfilForPath:path];
+    [self deleteImgProfilForName:imageName];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         //On crée le chemin de l'image
@@ -138,13 +143,18 @@
 }
 
 //On supprime l'image de profil du joueur que l'on va supprimer
-- (void)deleteImgProfilForPath:(NSString *)path
+- (void)deleteImgProfilForName:(NSString *)name
 {
+    //On supprime l'image du joueur
+    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *imagePathToDelete = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg", name]];
+    
     //On supprime l'image si elle existe
-    if ([UIImage imageWithContentsOfFile:path] != nil)
+    if ([UIImage imageWithContentsOfFile:imagePathToDelete] != nil)
     {
         NSError *error = [[NSError alloc] init];
-        [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+        [[NSFileManager defaultManager] removeItemAtPath:imagePathToDelete error:&error];
+        [self.dictImagePlayer removeObjectForKey:name];
     }
 }
 

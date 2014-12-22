@@ -112,6 +112,9 @@
 - (void)updateComponent
 {
     Player *currentPlayer = [[DDManagerSingleton instance] currentPlayer];
+    [self setArrayPlayer:[NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getPlayers]]];
+    [self.pageControl setNumberOfPages:self.arrayPlayer.count];
+    self.scrollViewPlayer.contentSize = CGSizeMake(self.scrollViewPlayer.frame.size.width * [self.arrayPlayer count], self.scrollViewPlayer.frame.size.height);
     int indexPlayer = (int)[[[DDDatabaseAccess instance] getPlayers] indexOfObject:currentPlayer];
     [self.pageControl setCurrentPage:indexPlayer];
     

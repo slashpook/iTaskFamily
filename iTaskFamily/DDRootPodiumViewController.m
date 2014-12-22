@@ -129,7 +129,7 @@
 - (void)updateCurrentPodium
 {
     DDPodiumViewController *podiumViewController = (DDPodiumViewController *)[self.arrayPodiums objectAtIndex:self.pageControlPodium.currentPage];
-    [podiumViewController updateComponentsAndDisplayProgressBar:YES forTypeOfPodium:self.pageControlPodium.currentPage];
+    [podiumViewController updateComponentsAndDisplayProgressBar:YES forTypeOfPodium:(int)self.pageControlPodium.currentPage];
 }
 
 //On appuie sur le menu

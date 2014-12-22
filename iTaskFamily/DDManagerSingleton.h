@@ -56,7 +56,10 @@
 - (void)saveImgProfilForPlayer:(Player *)player withImage:(UIImage *)imgProfil;
 
 //On met à jour l'image de profil du joueur
-- (void)updateImgProfilForPlayer:(Player *)player WithPath:(NSString *)path withImage:(UIImage *)imgProfil;
+- (void)updateImgProfilForPlayer:(Player *)player WithImageName:(NSString *)imageName withImage:(UIImage *)imgProfil;
+
+//On supprime l'image de profil du joueur que l'on va supprimer
+- (void)deleteImgProfilForName:(NSString *)name;
 
 //Indique si on se géolocalise ou non
 - (BOOL)isGeolocalisationActivate;

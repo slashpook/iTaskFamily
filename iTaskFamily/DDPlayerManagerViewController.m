@@ -129,7 +129,7 @@
         imagePicker.allowsEditing = NO;
         
         //On cache la barre de statue
-        [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController: imagePicker animated:YES completion:NO];
+        [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController: imagePicker animated:YES completion:nil];
     }
 }
 
@@ -174,23 +174,21 @@
 {
     //On met en place le message d'erreur
     NSString *errorMessage = nil;
+    NSString *oldPathImage = nil;
     
     //Si c'est un nouveau player
     if (self.isModifyPlayer == NO)
     {
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"Player" inManagedObjectContext:[DDDatabaseAccess instance].dataBaseManager.managedObjectContext];
         _player = [[Player alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    } else {
+        oldPathImage = self.player.pathImage;
     }
-    
-    //On crée le chemin de l'image
-    NSArray *defaultPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *imgProfilPath = [defaultPaths objectAtIndex:0];
-    imgProfilPath = [imgProfilPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg", self.textFieldPseudo.text]];
     
     //On set le pseudo
     [self.player setPseudo:self.textFieldPseudo.text];
     //On configure le path de l'image
-    [self.player setPathImage:imgProfilPath];
+    [self.player setPathImage:self.textFieldPseudo.text];
     
     //Si on ajoute un joueur
     if (self.isModifyPlayer == NO)
@@ -202,7 +200,7 @@
     else
     {
         errorMessage = [[DDDatabaseAccess instance] updatePlayer:self.player];
-        [[DDManagerSingleton instance] updateImgProfilForPlayer:self.player WithPath:self.player.pseudo withImage:self.imageViewProfil.image];
+        [[DDManagerSingleton instance] updateImgProfilForPlayer:self.player WithImageName:oldPathImage withImage:self.imageViewProfil.image];
     }
 
     //On gère le résultat

@@ -875,7 +875,7 @@
                     [arrayScoreSorted insertObject:[NSNumber numberWithInt:score] atIndex:i];
                     break;
                 }
-                else if (i == [arrayScoreSorted count] - 1 && [[arrayScoreSorted objectAtIndex:i] intValue] > score)
+                else if (i == [arrayScoreSorted count] - 1 && [[arrayScoreSorted objectAtIndex:i] intValue] >= score)
                 {
                     [arrayPlayerSorted addObject:player];
                     [arrayScoreSorted addObject:[NSNumber numberWithInt:score]];
@@ -1060,6 +1060,7 @@
 //On supprime le player donné
 - (void)deletePlayer:(Player *)player
 {
+    [[DDManagerSingleton instance] deleteImgProfilForName:player.pathImage];
     [self.dataBaseManager.managedObjectContext deleteObject:player];
     [self saveContext];
 }
