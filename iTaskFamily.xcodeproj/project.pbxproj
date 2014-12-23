@@ -15,6 +15,7 @@
 		6D32CAE7189B9FCC00FD2B3F /* DDPodiumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D32CAE6189B9FCC00FD2B3F /* DDPodiumViewController.m */; };
 		6D32CAEB189BDBEB00FD2B3F /* DDHistogramView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D32CAEA189BDBEB00FD2B3F /* DDHistogramView.m */; };
 		6D32CAF0189BFF1200FD2B3F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D32CAEF189BFF1200FD2B3F /* Images.xcassets */; };
+		6D3378891A48ED2C0098B53D /* DDTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3378881A48ED2C0098B53D /* DDTutorialViewController.m */; };
 		6D33D449189FA8460057D168 /* DDSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D33D448189FA8460057D168 /* DDSettingViewController.m */; };
 		6D33D7461855D27F001E1B3A /* DDRootPodiumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D33D7451855D27F001E1B3A /* DDRootPodiumViewController.m */; };
 		6D39975D19A737F8005AB9B0 /* DDMeteoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D39975C19A737F8005AB9B0 /* DDMeteoViewController.m */; };
@@ -125,6 +126,8 @@
 		6D32CAE9189BDBEB00FD2B3F /* DDHistogramView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHistogramView.h; sourceTree = "<group>"; };
 		6D32CAEA189BDBEB00FD2B3F /* DDHistogramView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHistogramView.m; sourceTree = "<group>"; };
 		6D32CAEF189BFF1200FD2B3F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = iTaskFamily/Images.xcassets; sourceTree = "<group>"; };
+		6D3378871A48ED2C0098B53D /* DDTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTutorialViewController.h; sourceTree = "<group>"; };
+		6D3378881A48ED2C0098B53D /* DDTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTutorialViewController.m; sourceTree = "<group>"; };
 		6D33D447189FA8460057D168 /* DDSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSettingViewController.h; sourceTree = "<group>"; };
 		6D33D448189FA8460057D168 /* DDSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSettingViewController.m; sourceTree = "<group>"; };
 		6D33D7441855D27F001E1B3A /* DDRootPodiumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRootPodiumViewController.h; sourceTree = "<group>"; };
@@ -362,6 +365,15 @@
 				6D32CAEA189BDBEB00FD2B3F /* DDHistogramView.m */,
 			);
 			name = HitogramView;
+			sourceTree = "<group>";
+		};
+		6D3378861A48ED0C0098B53D /* TutorialViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6D3378871A48ED2C0098B53D /* DDTutorialViewController.h */,
+				6D3378881A48ED2C0098B53D /* DDTutorialViewController.m */,
+			);
+			name = TutorialViewController;
 			sourceTree = "<group>";
 		};
 		6D33D446189FA82A0057D168 /* SettingViewController */ = {
@@ -606,6 +618,7 @@
 		6D6B3EFE183CF8A9009542A8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6D3378861A48ED0C0098B53D /* TutorialViewController */,
 				6DC65CC219C9E39500B31C0D /* AboutViewController */,
 				6DF00EC9184F413C00F8F3C5 /* PlayerListViewController */,
 				6D8970DB1848DCF700F815CD /* CropperViewController */,
@@ -1257,6 +1270,7 @@
 				6D8970E11848DD2D00F815CD /* DDCropperController.m in Sources */,
 				6D9B3C28191BF45C0001C672 /* Player.m in Sources */,
 				6DF00ECC184F416800F8F3C5 /* DDPlayerListViewController.m in Sources */,
+				6D3378891A48ED2C0098B53D /* DDTutorialViewController.m in Sources */,
 				6DB8F1FE19A638F400B22DB2 /* DDRewardDetailViewController.m in Sources */,
 				6DF00EDC184F9E3600F8F3C5 /* DDCustomCategoryCell.m in Sources */,
 				6D32CAE7189B9FCC00FD2B3F /* DDPodiumViewController.m in Sources */,

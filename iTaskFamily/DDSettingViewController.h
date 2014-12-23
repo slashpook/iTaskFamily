@@ -10,12 +10,13 @@
 #import "DDCustomColorViewController.h"
 #import "DDAwardViewController.h"
 #import "DDMeteoViewController.h"
+#import "DDTutorialViewController.h"
 
 @class DDPopOverViewController;
 @class DDCustomButton;
 
 
-@interface DDSettingViewController : UIViewController <DDCustomColorViewProtocol, DDAwardViewProtocol, DDMeteoViewProtocol, UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface DDSettingViewController : UIViewController <DDCustomColorViewProtocol, DDAwardViewProtocol, DDMeteoViewProtocol, DDTutorialViewControllerProtocol, UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 
 #pragma mark - Variables
@@ -31,6 +32,9 @@
 
 //MeteoViewController pour configurer la ville par défault
 @property (strong, nonatomic) DDMeteoViewController *meteoViewController;
+
+//TutorialViewController pour visionner les tutoriels
+@property (strong, nonatomic) DDTutorialViewController *tutorialViewController;
 
 //Vue de la protection
 @property (weak, nonatomic) IBOutlet UIView *viewRecompense;

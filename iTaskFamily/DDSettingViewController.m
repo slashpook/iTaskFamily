@@ -112,7 +112,9 @@
     [self.meteoViewController setDelegate:self];
     _customColorViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"CustomColorViewController"];
     [self.customColorViewController setDelegate:self];
-    
+    _tutorialViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"TutorialViewController"];
+    [self.tutorialViewController setDelegate:self];
+
     //On met à jour les couleurs de la vue
     [self updateTheme];
 }
@@ -220,10 +222,21 @@
     [self.popOverViewController hide];
 }
 
+
 #pragma mark - DDMeteoViewProtocol fonctions
 
 //Fonction pour fermer la popUp
 - (void)closeMeteoView
+{
+    //On enlève la popUp
+    [self.popOverViewController hide];
+}
+
+
+#pragma mark - DDTutorialViewControllerProtocol fonctions
+
+//Fonction pour fermer la popUp
+- (void)closeTutorialView
 {
     //On enlève la popUp
     [self.popOverViewController hide];
@@ -258,6 +271,15 @@
     [cell.labelTutorial setBackgroundColor:COULEUR_TRANSPARENT];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [[[[[[UIApplication sharedApplication] delegate] window] rootViewController] view] addSubview:self.popOverViewController.view];
+    
+    //On présente la popUp
+    CGRect frame = [[UIScreen mainScreen] bounds];
+    [self.popOverViewController presentPopOverWithContentView:self.tutorialViewController.view andSize:frame.size andOffset:CGPointMake(0, 0)];
+
 }
 
 
