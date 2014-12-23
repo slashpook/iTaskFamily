@@ -10,11 +10,11 @@
 
 @implementation DDHistogramView
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithCoder:coder];
     if (self) {
-        // Initialization code
+        
     }
     return self;
 }

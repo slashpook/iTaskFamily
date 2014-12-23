@@ -16,11 +16,11 @@
 
 @implementation DDRootPodiumViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithCoder:coder];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -87,13 +87,14 @@
 
     //On met à jour le thème
     [self updateTheme];
+    
+    //On met à jour le premier podium après un labs de temps
+    [self performSelector:@selector(updateCurrentPodium) withObject:nil afterDelay:0.3];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    //On met à jour les podiums
     [self updateDisplayOfComponent];
 }
 
