@@ -37,7 +37,6 @@
     
     //On configure le pageControl
     [self.pageControlPlayer setTintColor:COULEUR_BLACK];
-
     
     //On set le pageControl à la vue
     [self.viewPlayer setPageControl:self.pageControlPlayer];
@@ -98,6 +97,8 @@
 //Fonction pour mettre le theme à jour
 - (void)updateTheme
 {
+    self.pageControlPlayer.numberOfPages = 1;
+    self.pageControlPlayer.currentPage = 0;
     [self.viewDate updateTheme];
     [self.viewEvent updateTheme];
     [self.pageControlPlayer setCurrentPageIndicatorTintColor:[DDHelperController getMainTheme]];

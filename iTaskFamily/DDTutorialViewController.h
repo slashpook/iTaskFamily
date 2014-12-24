@@ -14,13 +14,16 @@
 
 @end
 
-@interface DDTutorialViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface DDTutorialViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
 
 #pragma mark - Variables
 
 //Delegate de la vue
 @property (weak, nonatomic) id<DDTutorialViewControllerProtocol> delegate;
+
+//Index du chapitre
+@property (assign, nonatomic) int tutorialChapter;
 
 //Label du titre de la tableView
 @property (weak, nonatomic) IBOutlet UILabel *labelTitreTableView;
@@ -45,6 +48,9 @@
 
 //Tableau de données de la tableView
 @property (strong, nonatomic) NSArray *arrayTutorial;
+
+//Tableau de données de la scrollview
+@property (strong, nonatomic) NSMutableArray *arrayTutorialInfo;
 
 
 #pragma mark - Fonctions

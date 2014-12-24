@@ -146,8 +146,6 @@
     [self.buttonAchatInApp setNeedsDisplay];
     [self.buttonRestaureAchatInApp setColorTitleEnable:[DDHelperController getMainTheme]];
     [self.buttonRestaureAchatInApp setNeedsDisplay];
-    [self.buttonTutoriel setColorTitleEnable:[DDHelperController getMainTheme]];
-    [self.buttonTutoriel setNeedsDisplay];
     
     //On configure la couleur de teinte des switchs
     [self.switchMeteo setOnTintColor:[DDHelperController getMainTheme]];
@@ -275,6 +273,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [[[[[[UIApplication sharedApplication] delegate] window] rootViewController] view] addSubview:self.popOverViewController.view];
+    
+    [self.tutorialViewController setTutorialChapter:indexPath.row];
     
     //On présente la popUp
     CGRect frame = [[UIScreen mainScreen] bounds];

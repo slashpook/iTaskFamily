@@ -1717,16 +1717,8 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Xnc-Il-gb1" customClass="DDCustomButton">
-                                        <rect key="frame" x="10" y="336" width="220" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="TOUT VISIONNER">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="45" sectionHeaderHeight="22" sectionFooterHeight="22" id="znU-OM-dkA">
-                                        <rect key="frame" x="0.0" y="50" width="240" height="278"/>
+                                        <rect key="frame" x="0.0" y="50" width="240" height="330"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1772,7 +1764,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In App purchase" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qZH-qS-P5O">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qZH-qS-P5O">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -1841,7 +1833,6 @@
                         <outlet property="buttonConfigureRecompense" destination="WlG-bW-usZ" id="ZuG-d4-RaI"/>
                         <outlet property="buttonResetTask" destination="Y9G-FB-lbL" id="N7i-6w-rFb"/>
                         <outlet property="buttonRestaureAchatInApp" destination="UTu-t6-DKf" id="VVr-Rl-LsQ"/>
-                        <outlet property="buttonTutoriel" destination="Xnc-Il-gb1" id="m63-IP-Cbr"/>
                         <outlet property="imageViewHeaderAchat" destination="XEM-hh-iye" id="vhV-FZ-mHP"/>
                         <outlet property="imageViewHeaderMeteo" destination="HiO-Ws-5Bw" id="ccu-JR-5WA"/>
                         <outlet property="imageViewHeaderRecompense" destination="u1n-77-ZsN" id="wqz-SM-AbU"/>

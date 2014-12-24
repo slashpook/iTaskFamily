@@ -33,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+    
     //On set le background de la vue
     [[self view] setBackgroundColor:COULEUR_BACKGROUND];
     
@@ -107,7 +107,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
+    
     //On update les infos du joueurs si on en a un
     [self updateComponent];
 }
@@ -178,7 +178,7 @@
 {
     //On met à jour le tableau des joueurs
     [self setArrayPlayer:[NSMutableArray arrayWithArray:[[DDDatabaseAccess instance] getPlayers]]];
-   
+    
     //On récupère une référence vers le trophyRootViewController
     DDRootTrophyViewController *rootTrophyViewController = [[self.rootTrophyNavigationViewController viewControllers] objectAtIndex:0];
     
@@ -196,7 +196,7 @@
         }
         else
             self.currentPlayer = [[DDManagerSingleton instance] currentPlayer];
-
+        
         //On configure les boutons de modification et suppression des joueur
         [self.buttonRemovePlayer setEnabled:YES];
         [self.buttonUpdatePlayer setEnabled:YES];
@@ -233,43 +233,47 @@
 {
     //On récupère le tableau des joueurs triés en fonction du score de la semaine passée
     NSArray *arrayTrophy = [[DDDatabaseAccess instance] getPlayersSortedByTypeScoreLastWeek];
-    NSInteger index = (int)[arrayTrophy indexOfObject:self.currentPlayer];
-    NSDate *datePrevious = [DDHelperController getPreviousWeekForDate:[NSDate date]];
     
-    if (index != NSNotFound && index <=2 && [[[DDDatabaseAccess instance] getRewardSortedForWeekAndYear:[DDHelperController getWeekAndYearForDate:datePrevious]] objectAtIndex:index] != [NSNull null] && self.currentPlayer != nil)
-    {
-        [self.buttonReward setHidden:NO];
-        [self.labelNameProfil setFrame:CGRectMake(25, 566, 350, 30)];
-        [self.labelTitleTotalScore setFrame:CGRectMake(25, 596, 226, 21)];
-        [self.labelTotalScore setFrame:CGRectMake(236, 596, 139, 21)];
-        [self.labelTitleWeekScore setFrame:CGRectMake(25, 619, 226, 21)];
-        [self.labelWeekScore setFrame:CGRectMake(236, 619, 139, 21)];
-        [self.labelTitleNbrTrophy setFrame:CGRectMake(25, 642, 226, 21)];
-        [self.labelNbrTrophy setFrame:CGRectMake(236, 642, 139, 21)];
-        [self.labelTitleNbrTrophy setFont:POLICE_PLAYER_TITLE_REWARD];
-        [self.labelTitleWeekScore setFont:POLICE_PLAYER_TITLE_REWARD];
-        [self.labelTitleTotalScore setFont:POLICE_PLAYER_TITLE_REWARD];
-        [self.labelNbrTrophy setFont:POLICE_PLAYER_CONTENT_REWARD];
-        [self.labelWeekScore setFont:POLICE_PLAYER_CONTENT_REWARD];
-        [self.labelTotalScore setFont:POLICE_PLAYER_CONTENT_REWARD];
+    //On vérifie d'abord qu'on a un joueur et qu'il est dans le trophyArray
+    if (self.currentPlayer != nil && [arrayTrophy containsObject:self.currentPlayer]) {
+        NSInteger index = (int)[arrayTrophy indexOfObject:self.currentPlayer];
+        NSDate *datePrevious = [DDHelperController getPreviousWeekForDate:[NSDate date]];
+        
+        if (index <=2 && [[[DDDatabaseAccess instance] getRewardSortedForWeekAndYear:[DDHelperController getWeekAndYearForDate:datePrevious]] objectAtIndex:index] != [NSNull null] )
+        {
+            [self.buttonReward setHidden:NO];
+            [self.labelNameProfil setFrame:CGRectMake(25, 566, 350, 30)];
+            [self.labelTitleTotalScore setFrame:CGRectMake(25, 596, 226, 21)];
+            [self.labelTotalScore setFrame:CGRectMake(236, 596, 139, 21)];
+            [self.labelTitleWeekScore setFrame:CGRectMake(25, 619, 226, 21)];
+            [self.labelWeekScore setFrame:CGRectMake(236, 619, 139, 21)];
+            [self.labelTitleNbrTrophy setFrame:CGRectMake(25, 642, 226, 21)];
+            [self.labelNbrTrophy setFrame:CGRectMake(236, 642, 139, 21)];
+            [self.labelTitleNbrTrophy setFont:POLICE_PLAYER_TITLE_REWARD];
+            [self.labelTitleWeekScore setFont:POLICE_PLAYER_TITLE_REWARD];
+            [self.labelTitleTotalScore setFont:POLICE_PLAYER_TITLE_REWARD];
+            [self.labelNbrTrophy setFont:POLICE_PLAYER_CONTENT_REWARD];
+            [self.labelWeekScore setFont:POLICE_PLAYER_CONTENT_REWARD];
+            [self.labelTotalScore setFont:POLICE_PLAYER_CONTENT_REWARD];
+            return;
+        }
     }
-    else
-    {
-        [self.buttonReward setHidden:YES];
-        [self.labelNameProfil setFrame:CGRectMake(25, 574, 350, 30)];
-        [self.labelTitleTotalScore setFrame:CGRectMake(25, 618, 226, 21)];
-        [self.labelTotalScore setFrame:CGRectMake(236, 618, 139, 21)];
-        [self.labelTitleWeekScore setFrame:CGRectMake(25, 653, 226, 21)];
-        [self.labelWeekScore setFrame:CGRectMake(236, 653, 139, 21)];
-        [self.labelTitleNbrTrophy setFrame:CGRectMake(25, 687, 226, 21)];
-        [self.labelNbrTrophy setFrame:CGRectMake(236, 687, 139, 21)];
-        [self.labelTitleNbrTrophy setFont:POLICE_PLAYER_TITLE];
-        [self.labelTitleWeekScore setFont:POLICE_PLAYER_TITLE];
-        [self.labelTitleTotalScore setFont:POLICE_PLAYER_TITLE];
-        [self.labelNbrTrophy setFont:POLICE_PLAYER_CONTENT];
-        [self.labelWeekScore setFont:POLICE_PLAYER_CONTENT];
-        [self.labelTotalScore setFont:POLICE_PLAYER_CONTENT];
-    }
+    
+    [self.buttonReward setHidden:YES];
+    [self.labelNameProfil setFrame:CGRectMake(25, 574, 350, 30)];
+    [self.labelTitleTotalScore setFrame:CGRectMake(25, 618, 226, 21)];
+    [self.labelTotalScore setFrame:CGRectMake(236, 618, 139, 21)];
+    [self.labelTitleWeekScore setFrame:CGRectMake(25, 653, 226, 21)];
+    [self.labelWeekScore setFrame:CGRectMake(236, 653, 139, 21)];
+    [self.labelTitleNbrTrophy setFrame:CGRectMake(25, 687, 226, 21)];
+    [self.labelNbrTrophy setFrame:CGRectMake(236, 687, 139, 21)];
+    [self.labelTitleNbrTrophy setFont:POLICE_PLAYER_TITLE];
+    [self.labelTitleWeekScore setFont:POLICE_PLAYER_TITLE];
+    [self.labelTitleTotalScore setFont:POLICE_PLAYER_TITLE];
+    [self.labelNbrTrophy setFont:POLICE_PLAYER_CONTENT];
+    [self.labelWeekScore setFont:POLICE_PLAYER_CONTENT];
+    [self.labelTotalScore setFont:POLICE_PLAYER_CONTENT];
+    
 }
 
 //On met à jour le theme

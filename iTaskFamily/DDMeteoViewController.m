@@ -71,6 +71,12 @@
                                                object:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.labelDescActualCity setText:[[DDManagerSingleton instance] getMeteo]];
+}
+
 
 #pragma mark - Fonctions de base
 

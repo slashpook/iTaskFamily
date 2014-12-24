@@ -153,9 +153,6 @@
 //TableView du tutoriel
 @property (weak, nonatomic) IBOutlet UITableView *tableViewTutorial;
 
-//Boutton du tutoriel
-@property (weak, nonatomic) IBOutlet DDCustomButton *buttonTutoriel;
-
 //Vue d'affichage des achats in app
 @property (weak, nonatomic) IBOutlet UIView *viewAchat;
 

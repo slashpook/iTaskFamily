@@ -29,6 +29,9 @@
 //On récupère la couleur
 + (UIColor *)getMainTheme;
 
+//On récupère le tutorial pour le chapitre donné
++ (NSMutableArray *)getTutorialForChapter:(int)chapter;
+
 
 #pragma mark - Fonctions Date
 

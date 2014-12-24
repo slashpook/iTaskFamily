@@ -55,6 +55,18 @@
     return color;
 }
 
+//On récupère le tutorial pour le chapitre donné
++ (NSMutableArray *)getTutorialForChapter:(int)chapter {
+    NSMutableArray *arrayChapter;
+    
+//    if (chapter == 0) {
+        arrayChapter = [NSMutableArray arrayWithObjects:@"Label1", @"Label2", @"Label3", @"Label4", @"Label5", @"Label6", nil];
+//    }
+    
+    return arrayChapter;
+}
+
+
 #pragma mark - Date fonctions
 
 //Récupère le jour en lettre

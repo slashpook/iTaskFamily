@@ -85,14 +85,14 @@
 "OBJECTIF_INFO" = "Your objectives must be higher than 0.";
 "OBJECTIF_POSITIF" = "Please enter only positive numbers for points and objectives.";
 
-"TUTO1" = "Welcome iTaskFamily";
-"TUTO2" = "Create a player";
-"TUTO3" = "Look its informations";
-"TUTO4" = "Create a task";
-"TUTO5" = "Create an event";
-"TUTO6" = "Manage its events";
-"TUTO7" = "Look at the podiums";
-"TUTO8" = "Create rewards";
-"TUTO9" = "Set the weather";
-"TUTO10" = "Reset the application";
-"TUTO11" = "Change theme";
+"TUTO1" = "1. Welcome iTaskFamily";
+"TUTO2" = "2. Create a player";
+"TUTO3" = "3. Look its informations";
+"TUTO4" = "4. Create a task";
+"TUTO5" = "5. Create an event";
+"TUTO6" = "6. Manage its events";
+"TUTO7" = "7. Look at the podiums";
+"TUTO8" = "8. Create rewards";
+"TUTO9" = "9. Set the weather";
+"TUTO10" = "10. Reset the application";
+"TUTO11" = "11. Change theme";
