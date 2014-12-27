@@ -59,10 +59,37 @@
 + (NSMutableArray *)getTutorialForChapter:(int)chapter {
     NSMutableArray *arrayChapter;
     
-//    if (chapter == 0) {
-        arrayChapter = [NSMutableArray arrayWithObjects:@"Label1", @"Label2", @"Label3", @"Label4", @"Label5", @"Label6", nil];
-//    }
-    
+    switch (chapter) {
+        case 0: {
+            arrayChapter = [NSMutableArray arrayWithObjects:NSLocalizedString(@"TUTO0-0", nil), nil];
+        }
+            break;
+        case 1: {
+            arrayChapter = [NSMutableArray arrayWithObjects:NSLocalizedString(@"TUTO1-0", nil), NSLocalizedString(@"TUTO1-1", nil), NSLocalizedString(@"TUTO1-2", nil), NSLocalizedString(@"TUTO1-3", nil), nil];
+        }
+            break;
+        case 2: {
+            arrayChapter = [NSMutableArray arrayWithObjects:NSLocalizedString(@"TUTO2-0", nil), NSLocalizedString(@"TUTO2-1", nil), nil];
+        }
+            break;
+        case 3: {
+            arrayChapter = [NSMutableArray arrayWithObjects:NSLocalizedString(@"TUTO3-0", nil), NSLocalizedString(@"TUTO3-1", nil), NSLocalizedString(@"TUTO3-2", nil), nil];
+        }
+            break;
+        case 4: {
+            arrayChapter = [NSMutableArray arrayWithObjects:NSLocalizedString(@"TUTO4-0", nil), NSLocalizedString(@"TUTO4-1", nil), NSLocalizedString(@"TUTO4-2", nil), nil];
+        }
+            break;
+        case 5: {
+            arrayChapter = [NSMutableArray arrayWithObjects:NSLocalizedString(@"TUTO5-0", nil), NSLocalizedString(@"TUTO5-1", nil), nil];
+        }
+            break;
+        default: {
+            arrayChapter = [NSMutableArray arrayWithObjects:NSLocalizedString(@"TUTO0-0", nil), nil];
+        }
+            break;
+    }
+
     return arrayChapter;
 }
 

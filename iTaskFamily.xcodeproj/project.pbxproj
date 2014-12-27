@@ -24,6 +24,21 @@
 		6D3A26B818B7956600545FF2 /* DDCustomOccurenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A26B718B7956600545FF2 /* DDCustomOccurenceCell.m */; };
 		6D3A26BC18B7A1FB00545FF2 /* DDCategoriesListEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A26BB18B7A1FB00545FF2 /* DDCategoriesListEventViewController.m */; };
 		6D3CBC5019A4D9210067CBCF /* NKOColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3CBC4F19A4D9210067CBCF /* NKOColorPickerView.m */; };
+		6D40B0BC1A4C610D009485D9 /* Tutorial0-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D40B0BB1A4C610D009485D9 /* Tutorial0-0.png */; };
+		6D40B0C41A4C7279009485D9 /* Tutorial1-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D40B0C01A4C7279009485D9 /* Tutorial1-0.png */; };
+		6D40B0C51A4C7279009485D9 /* Tutorial1-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D40B0C11A4C7279009485D9 /* Tutorial1-1.png */; };
+		6D40B0C61A4C7279009485D9 /* Tutorial1-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D40B0C21A4C7279009485D9 /* Tutorial1-2.png */; };
+		6D40B0C71A4C7279009485D9 /* Tutorial1-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D40B0C31A4C7279009485D9 /* Tutorial1-3.png */; };
+		6D40B0CC1A4C7898009485D9 /* Tutorial2-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D40B0CA1A4C7898009485D9 /* Tutorial2-1.png */; };
+		6D40B0CE1A4C79BC009485D9 /* Tutorial2-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D40B0CD1A4C79BC009485D9 /* Tutorial2-0.png */; };
+		6D40B0D31A4EF4A8009485D9 /* Tutorial3-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D40B0D01A4EF4A8009485D9 /* Tutorial3-0.png */; };
+		6D40B0D41A4EF4A8009485D9 /* Tutorial3-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D40B0D11A4EF4A8009485D9 /* Tutorial3-1.png */; };
+		6D40B0D51A4EF4A8009485D9 /* Tutorial3-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D40B0D21A4EF4A8009485D9 /* Tutorial3-2.png */; };
+		6D40B0DA1A4EF8CE009485D9 /* Tutorial4-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D40B0D71A4EF8CE009485D9 /* Tutorial4-0.png */; };
+		6D40B0DB1A4EF8CE009485D9 /* Tutorial4-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D40B0D81A4EF8CE009485D9 /* Tutorial4-1.png */; };
+		6D40B0DC1A4EF8CE009485D9 /* Tutorial4-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D40B0D91A4EF8CE009485D9 /* Tutorial4-2.png */; };
+		6D40B0E11A4EFADE009485D9 /* Tutorial5-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D40B0DF1A4EFADE009485D9 /* Tutorial5-1.png */; };
+		6D40B0E51A4EFBE1009485D9 /* Tutorial5-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D40B0E41A4EFBE1009485D9 /* Tutorial5-0.png */; };
 		6D4563CF19752CC400FB668A /* RecurrenceEnd.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4563CE19752CC400FB668A /* RecurrenceEnd.m */; };
 		6D4563D219752CC500FB668A /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4563D119752CC500FB668A /* Event.m */; };
 		6D46EB9A1843486F00287ACC /* DDPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D46EB991843486F00287ACC /* DDPlayerViewController.m */; };
@@ -90,12 +105,6 @@
 		6DCE47BD183E08AA00D64363 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE47BC183E08AA00D64363 /* UIImage+ImageEffects.m */; };
 		6DCE47C1183E10E000D64363 /* DDHelperController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE47C0183E10E000D64363 /* DDHelperController.m */; };
 		6DCE47C3183E12FF00D64363 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DCE47C2183E12FF00D64363 /* Accelerate.framework */; };
-		6DD36FAC1A4B40ED008F52A9 /* Tutorial0-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD36FA61A4B40ED008F52A9 /* Tutorial0-0.png */; };
-		6DD36FAD1A4B40ED008F52A9 /* Tutorial0-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD36FA71A4B40ED008F52A9 /* Tutorial0-1.png */; };
-		6DD36FAE1A4B40ED008F52A9 /* Tutorial0-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD36FA81A4B40ED008F52A9 /* Tutorial0-2.png */; };
-		6DD36FAF1A4B40ED008F52A9 /* Tutorial0-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD36FA91A4B40ED008F52A9 /* Tutorial0-3.png */; };
-		6DD36FB01A4B40ED008F52A9 /* Tutorial0-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD36FAA1A4B40ED008F52A9 /* Tutorial0-4.png */; };
-		6DD36FB11A4B40ED008F52A9 /* Tutorial0-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD36FAB1A4B40ED008F52A9 /* Tutorial0-5.png */; };
 		6DDAE5D6184CFBFF00B6DA70 /* DDTrophyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDAE5D5184CFBFF00B6DA70 /* DDTrophyCell.m */; };
 		6DEBDD2719A3B7F1006866DD /* Reward.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DEBDD2619A3B7F1006866DD /* Reward.m */; };
 		6DED092A18D0EE50004F2F3D /* DDTaskManagerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DED092918D0EE50004F2F3D /* DDTaskManagerTableViewController.m */; };
@@ -149,6 +158,21 @@
 		6D3A26BB18B7A1FB00545FF2 /* DDCategoriesListEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCategoriesListEventViewController.m; sourceTree = "<group>"; };
 		6D3CBC4E19A4D9210067CBCF /* NKOColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKOColorPickerView.h; sourceTree = "<group>"; };
 		6D3CBC4F19A4D9210067CBCF /* NKOColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKOColorPickerView.m; sourceTree = "<group>"; };
+		6D40B0BB1A4C610D009485D9 /* Tutorial0-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Tutorial0-0.png"; path = "iTaskFamily/Tutorial0-0.png"; sourceTree = "<group>"; };
+		6D40B0C01A4C7279009485D9 /* Tutorial1-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial1-0.png"; sourceTree = "<group>"; };
+		6D40B0C11A4C7279009485D9 /* Tutorial1-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial1-1.png"; sourceTree = "<group>"; };
+		6D40B0C21A4C7279009485D9 /* Tutorial1-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial1-2.png"; sourceTree = "<group>"; };
+		6D40B0C31A4C7279009485D9 /* Tutorial1-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial1-3.png"; sourceTree = "<group>"; };
+		6D40B0CA1A4C7898009485D9 /* Tutorial2-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial2-1.png"; sourceTree = "<group>"; };
+		6D40B0CD1A4C79BC009485D9 /* Tutorial2-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial2-0.png"; sourceTree = "<group>"; };
+		6D40B0D01A4EF4A8009485D9 /* Tutorial3-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial3-0.png"; sourceTree = "<group>"; };
+		6D40B0D11A4EF4A8009485D9 /* Tutorial3-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial3-1.png"; sourceTree = "<group>"; };
+		6D40B0D21A4EF4A8009485D9 /* Tutorial3-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial3-2.png"; sourceTree = "<group>"; };
+		6D40B0D71A4EF8CE009485D9 /* Tutorial4-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial4-0.png"; sourceTree = "<group>"; };
+		6D40B0D81A4EF8CE009485D9 /* Tutorial4-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial4-1.png"; sourceTree = "<group>"; };
+		6D40B0D91A4EF8CE009485D9 /* Tutorial4-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial4-2.png"; sourceTree = "<group>"; };
+		6D40B0DF1A4EFADE009485D9 /* Tutorial5-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial5-1.png"; sourceTree = "<group>"; };
+		6D40B0E41A4EFBE1009485D9 /* Tutorial5-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial5-0.png"; sourceTree = "<group>"; };
 		6D4563CD19752CC400FB668A /* RecurrenceEnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecurrenceEnd.h; sourceTree = "<group>"; };
 		6D4563CE19752CC400FB668A /* RecurrenceEnd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecurrenceEnd.m; sourceTree = "<group>"; };
 		6D4563D019752CC500FB668A /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
@@ -275,12 +299,6 @@
 		6DCE47BF183E10E000D64363 /* DDHelperController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHelperController.h; sourceTree = "<group>"; };
 		6DCE47C0183E10E000D64363 /* DDHelperController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHelperController.m; sourceTree = "<group>"; };
 		6DCE47C2183E12FF00D64363 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		6DD36FA61A4B40ED008F52A9 /* Tutorial0-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial0-0.png"; sourceTree = "<group>"; };
-		6DD36FA71A4B40ED008F52A9 /* Tutorial0-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial0-1.png"; sourceTree = "<group>"; };
-		6DD36FA81A4B40ED008F52A9 /* Tutorial0-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial0-2.png"; sourceTree = "<group>"; };
-		6DD36FA91A4B40ED008F52A9 /* Tutorial0-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial0-3.png"; sourceTree = "<group>"; };
-		6DD36FAA1A4B40ED008F52A9 /* Tutorial0-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial0-4.png"; sourceTree = "<group>"; };
-		6DD36FAB1A4B40ED008F52A9 /* Tutorial0-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial0-5.png"; sourceTree = "<group>"; };
 		6DDAE5D4184CFBFF00B6DA70 /* DDTrophyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTrophyCell.h; sourceTree = "<group>"; };
 		6DDAE5D5184CFBFF00B6DA70 /* DDTrophyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTrophyCell.m; sourceTree = "<group>"; };
 		6DEBDD2519A3B7F1006866DD /* Reward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reward.h; sourceTree = "<group>"; };
@@ -445,6 +463,55 @@
 				6D3CBC4F19A4D9210067CBCF /* NKOColorPickerView.m */,
 			);
 			name = CustomColorPicker;
+			sourceTree = "<group>";
+		};
+		6D40B0BD1A4C723A009485D9 /* Tutorial1 */ = {
+			isa = PBXGroup;
+			children = (
+				6D40B0C01A4C7279009485D9 /* Tutorial1-0.png */,
+				6D40B0C11A4C7279009485D9 /* Tutorial1-1.png */,
+				6D40B0C21A4C7279009485D9 /* Tutorial1-2.png */,
+				6D40B0C31A4C7279009485D9 /* Tutorial1-3.png */,
+			);
+			name = Tutorial1;
+			sourceTree = "<group>";
+		};
+		6D40B0C81A4C7889009485D9 /* Tutorial2 */ = {
+			isa = PBXGroup;
+			children = (
+				6D40B0CD1A4C79BC009485D9 /* Tutorial2-0.png */,
+				6D40B0CA1A4C7898009485D9 /* Tutorial2-1.png */,
+			);
+			name = Tutorial2;
+			sourceTree = "<group>";
+		};
+		6D40B0CF1A4EF499009485D9 /* Tutorial3 */ = {
+			isa = PBXGroup;
+			children = (
+				6D40B0D01A4EF4A8009485D9 /* Tutorial3-0.png */,
+				6D40B0D11A4EF4A8009485D9 /* Tutorial3-1.png */,
+				6D40B0D21A4EF4A8009485D9 /* Tutorial3-2.png */,
+			);
+			name = Tutorial3;
+			sourceTree = "<group>";
+		};
+		6D40B0D61A4EF8BE009485D9 /* Tutorial4 */ = {
+			isa = PBXGroup;
+			children = (
+				6D40B0D71A4EF8CE009485D9 /* Tutorial4-0.png */,
+				6D40B0D81A4EF8CE009485D9 /* Tutorial4-1.png */,
+				6D40B0D91A4EF8CE009485D9 /* Tutorial4-2.png */,
+			);
+			name = Tutorial4;
+			sourceTree = "<group>";
+		};
+		6D40B0DD1A4EFACC009485D9 /* Tutorial5 */ = {
+			isa = PBXGroup;
+			children = (
+				6D40B0E41A4EFBE1009485D9 /* Tutorial5-0.png */,
+				6D40B0DF1A4EFADE009485D9 /* Tutorial5-1.png */,
+			);
+			name = Tutorial5;
 			sourceTree = "<group>";
 		};
 		6D46EB971843485600287ACC /* PlayerViewController */ = {
@@ -622,6 +689,11 @@
 			isa = PBXGroup;
 			children = (
 				6DD36FB21A4B40F4008F52A9 /* Tutorial0 */,
+				6D40B0BD1A4C723A009485D9 /* Tutorial1 */,
+				6D40B0C81A4C7889009485D9 /* Tutorial2 */,
+				6D40B0CF1A4EF499009485D9 /* Tutorial3 */,
+				6D40B0D61A4EF8BE009485D9 /* Tutorial4 */,
+				6D40B0DD1A4EFACC009485D9 /* Tutorial5 */,
 				6D837C6C19AF8FD20053E4C0 /* Data.xml */,
 				6D39976A19A7A687005AB9B0 /* Main.storyboard */,
 			);
@@ -1049,12 +1121,7 @@
 		6DD36FB21A4B40F4008F52A9 /* Tutorial0 */ = {
 			isa = PBXGroup;
 			children = (
-				6DD36FA61A4B40ED008F52A9 /* Tutorial0-0.png */,
-				6DD36FA71A4B40ED008F52A9 /* Tutorial0-1.png */,
-				6DD36FA81A4B40ED008F52A9 /* Tutorial0-2.png */,
-				6DD36FA91A4B40ED008F52A9 /* Tutorial0-3.png */,
-				6DD36FAA1A4B40ED008F52A9 /* Tutorial0-4.png */,
-				6DD36FAB1A4B40ED008F52A9 /* Tutorial0-5.png */,
+				6D40B0BB1A4C610D009485D9 /* Tutorial0-0.png */,
 			);
 			name = Tutorial0;
 			path = ..;
@@ -1172,6 +1239,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Damien DELES";
 				TargetAttributes = {
+					6D6B3EC4183CF75B009542A8 = {
+						DevelopmentTeam = F2T286J99J;
+					};
 					6D6B3EE5183CF75C009542A8 = {
 						TestTargetID = 6D6B3EC4183CF75B009542A8;
 					};
@@ -1202,17 +1272,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D40B0DB1A4EF8CE009485D9 /* Tutorial4-1.png in Resources */,
+				6D40B0DC1A4EF8CE009485D9 /* Tutorial4-2.png in Resources */,
 				6D39976219A7A411005AB9B0 /* Localizable.strings in Resources */,
+				6D40B0C41A4C7279009485D9 /* Tutorial1-0.png in Resources */,
+				6D40B0CC1A4C7898009485D9 /* Tutorial2-1.png in Resources */,
 				6D39976819A7A687005AB9B0 /* Main.storyboard in Resources */,
+				6D40B0C71A4C7279009485D9 /* Tutorial1-3.png in Resources */,
+				6D40B0CE1A4C79BC009485D9 /* Tutorial2-0.png in Resources */,
+				6D40B0E51A4EFBE1009485D9 /* Tutorial5-0.png in Resources */,
 				6D32CAF0189BFF1200FD2B3F /* Images.xcassets in Resources */,
-				6DD36FAC1A4B40ED008F52A9 /* Tutorial0-0.png in Resources */,
-				6DD36FB11A4B40ED008F52A9 /* Tutorial0-5.png in Resources */,
+				6D40B0DA1A4EF8CE009485D9 /* Tutorial4-0.png in Resources */,
+				6D40B0D41A4EF4A8009485D9 /* Tutorial3-1.png in Resources */,
+				6D40B0D31A4EF4A8009485D9 /* Tutorial3-0.png in Resources */,
+				6D40B0BC1A4C610D009485D9 /* Tutorial0-0.png in Resources */,
+				6D40B0D51A4EF4A8009485D9 /* Tutorial3-2.png in Resources */,
+				6D40B0C51A4C7279009485D9 /* Tutorial1-1.png in Resources */,
 				6D837C6A19AF8FD20053E4C0 /* Data.xml in Resources */,
-				6DD36FAE1A4B40ED008F52A9 /* Tutorial0-2.png in Resources */,
-				6DD36FAF1A4B40ED008F52A9 /* Tutorial0-3.png in Resources */,
-				6DD36FB01A4B40ED008F52A9 /* Tutorial0-4.png in Resources */,
-				6DD36FAD1A4B40ED008F52A9 /* Tutorial0-1.png in Resources */,
+				6D40B0E11A4EFADE009485D9 /* Tutorial5-1.png in Resources */,
 				6D6B3ED3183CF75B009542A8 /* InfoPlist.strings in Resources */,
+				6D40B0C61A4C7279009485D9 /* Tutorial1-2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

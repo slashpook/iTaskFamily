@@ -21,8 +21,6 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        _arrayTutorial = [NSArray arrayWithObjects:NSLocalizedString(@"TUTO1", nil), NSLocalizedString(@"TUTO2", nil), NSLocalizedString(@"TUTO3", nil), NSLocalizedString(@"TUTO4", nil), NSLocalizedString(@"TUTO5", nil), NSLocalizedString(@"TUTO6", nil), NSLocalizedString(@"TUTO7", nil), NSLocalizedString(@"TUTO8", nil), NSLocalizedString(@"TUTO9", nil), NSLocalizedString(@"TUTO10", nil), NSLocalizedString(@"TUTO11", nil), nil];
-
     }
     return self;
 }
@@ -39,15 +37,7 @@
 {
     [super viewWillAppear:animated];
  
-    //On récupère les infos du tutoriel
-    _arrayTutorialInfo = [DDHelperController getTutorialForChapter:self.tutorialChapter];
-    
-    self.pageControlTutorial.numberOfPages = [self.arrayTutorialInfo count];
-    self.pageControlTutorial.currentPage = 0;
-    
-    //On set la couleur du thème principal
-    [self.labelTitreTableView setTextColor:[DDHelperController getMainTheme]];
-    
+    //On charge tout
     [self loadPageControl];
 }
 
@@ -88,12 +78,39 @@
     }
 }
 
+//On lance le chapitre précédent
+- (IBAction)onPushButtonPreviousChapter:(id)sender {
+    [self setTutorialChapter:(self.tutorialChapter - 1)];
+    
+    //On charge tout
+    [self loadPageControl];
+}
+
+//On lance le chapitre suivant
+- (IBAction)onPushButtonNextChapter:(id)sender {
+    [self setTutorialChapter:(self.tutorialChapter + 1)];
+    
+    //On charge tout
+    [self loadPageControl];
+}
+
 
 #pragma mark UIPageControl et UIScrollViewDelegate fonctions
 
 //On appelle la fonction pour rafraichir le page control et la scroll view
 -(void)loadPageControl
 {
+    //On récupère les infos du tutoriel
+    _arrayTutorialInfo = [DDHelperController getTutorialForChapter:self.tutorialChapter];
+    
+    self.pageControlTutorial.numberOfPages = [self.arrayTutorialInfo count];
+    self.pageControlTutorial.currentPage = 0;
+    
+    //On set la couleur du thème principal
+    [self.labelTitreTableView setTextColor:[DDHelperController getMainTheme]];
+    [self.buttonPreviousChapter setTitleColor:[DDHelperController getMainTheme] forState:UIControlStateNormal];
+    [self.buttonNextChapter setTitleColor:[DDHelperController getMainTheme] forState:UIControlStateNormal];
+    
     //On vide la scrollView
     [self clearScrollView];
     
@@ -107,9 +124,23 @@
         [self.scrollViewTutorial addSubview:imageViewTutorial];
     }
     
+    //On met à jour le titre du tutoriel ainsi que la première description
+    NSString *titleTuto = [NSString stringWithFormat:@"TUTO%i", self.tutorialChapter];
+    [self.labelTitre setText:NSLocalizedString(titleTuto, nil)];
+    
     [self.labelDescription setText:[self.arrayTutorialInfo objectAtIndex:0]];
     [self.scrollViewTutorial setContentSize:CGSizeMake(self.scrollViewTutorial.frame.size.width * [self.arrayTutorialInfo count], self.scrollViewTutorial.frame.size.height)];
     [self.scrollViewTutorial setContentOffset:CGPointMake(0, 0) animated:NO];
+    
+    //On affiche ou cache les bouton pour charger les autres chapitres
+    [self.buttonPreviousChapter setHidden:NO];
+    [self.buttonNextChapter setHidden:NO];
+    if (self.tutorialChapter == 0) {
+        [self.buttonPreviousChapter setHidden:YES];
+    }
+    if (self.tutorialChapter == 10) {
+        [self.buttonNextChapter setHidden:NO];
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -140,7 +171,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.arrayTutorial count];
+    return 11;
 }
 
 - (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
@@ -160,10 +191,15 @@
     //On récupère la cellule
     DDSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellTutorial" forIndexPath:indexPath];
     
-    [cell.labelTutorial setText:[self.arrayTutorial objectAtIndex:indexPath.row]];
+    NSString *titleTuto = [NSString stringWithFormat:@"TUTO%i", (int)indexPath.row];
+    [cell.labelTutorial setText:NSLocalizedString(titleTuto, nil)];
     [cell.labelTutorial setBackgroundColor:COULEUR_TRANSPARENT];
     
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.tutorialChapter = (int)indexPath.row;
+    [self loadPageControl];
+}
 @end

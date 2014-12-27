@@ -52,6 +52,12 @@
 //Tableau de données de la scrollview
 @property (strong, nonatomic) NSMutableArray *arrayTutorialInfo;
 
+//Bouton du chapitre précédent
+@property (weak, nonatomic) IBOutlet UIButton *buttonPreviousChapter;
+
+//Bouton du chapitre suivant
+@property (weak, nonatomic) IBOutlet UIButton *buttonNextChapter;
+
 
 #pragma mark - Fonctions
 

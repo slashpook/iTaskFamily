@@ -142,13 +142,13 @@
     for (int i = 0; i < [self.arrayOccurence count]; i++)
     {
         if ([self.arrayOccurence count] == 7) {
-            occurenceString = SEMAINE_ENTIERE;
+            occurenceString = NSLocalizedString(@"TOUTE_SEMAINE", nil);
         }
         else if ([self.arrayOccurence count] < 3)
         {
             if ([self.arrayOccurence count] == 2 && [self.arrayOccurence containsObject:SAMEDI] && [self.arrayOccurence containsObject:DIMANCHE])
             {
-                occurenceString = WEEK_END;
+                occurenceString = NSLocalizedString(@"WEEK_END", nil);
                 break;
             }
             else
@@ -160,7 +160,7 @@
             }
         }
         else if ([self.arrayOccurence count] == 5 && [self.arrayOccurence containsObject:SAMEDI] == false && [self.arrayOccurence containsObject:DIMANCHE] == false) {
-            occurenceString = JOUR_SEMAINE;
+            occurenceString = NSLocalizedString(@"SEMAINE", nil);
             break;
         }
         else

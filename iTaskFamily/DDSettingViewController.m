@@ -16,15 +16,12 @@
 @end
 
 @implementation DDSettingViewController
-{
-    NSArray *arrayTutorial;
-}
+
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        arrayTutorial = [NSArray arrayWithObjects:NSLocalizedString(@"TUTO1", nil), NSLocalizedString(@"TUTO2", nil), NSLocalizedString(@"TUTO3", nil), NSLocalizedString(@"TUTO4", nil), NSLocalizedString(@"TUTO5", nil), NSLocalizedString(@"TUTO6", nil), NSLocalizedString(@"TUTO7", nil), NSLocalizedString(@"TUTO8", nil), NSLocalizedString(@"TUTO9", nil), NSLocalizedString(@"TUTO10", nil), NSLocalizedString(@"TUTO11", nil), nil];
     }
     return self;
 }
@@ -245,7 +242,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [arrayTutorial count];
+    return 11;
 }
 
 - (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
@@ -265,7 +262,8 @@
     //On récupère la cellule
     DDSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DefaultCell" forIndexPath:indexPath];
     
-    [cell.labelTutorial setText:[arrayTutorial objectAtIndex:indexPath.row]];
+    NSString *titleTuto = [NSString stringWithFormat:@"TUTO%i", (int)indexPath.row];
+    [cell.labelTutorial setText:NSLocalizedString(titleTuto, nil)];
     [cell.labelTutorial setBackgroundColor:COULEUR_TRANSPARENT];
     
     return cell;
@@ -274,7 +272,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [[[[[[UIApplication sharedApplication] delegate] window] rootViewController] view] addSubview:self.popOverViewController.view];
     
-    [self.tutorialViewController setTutorialChapter:indexPath.row];
+    [self.tutorialViewController setTutorialChapter:(int)indexPath.row];
     
     //On présente la popUp
     CGRect frame = [[UIScreen mainScreen] bounds];

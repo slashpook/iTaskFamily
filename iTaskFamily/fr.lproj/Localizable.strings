@@ -14,6 +14,10 @@
 "SAMEDI" = "Samedi";
 "DIMANCHE" = "Dimanche";
 
+"TOUTE_SEMAINE" = "Semaine entière";
+"SEMAINE" = "Jour de la semaine";
+"WEEK_END" = "Week end";
+
 "LUN" = "LUN";
 "MAR" = "MAR";
 "MER" = "MER";
@@ -85,14 +89,31 @@
 "OBJECTIF_INFO" = "Veuillez rentrer des objectifs supérieurs à 0.";
 "OBJECTIF_POSITIF" = "Veuillez ne rentrer que des chiffres pour les points et les objectifs.";
 
-"TUTO1" = "1. Bienvenue dans iTaskFamily";
-"TUTO2" = "2. Créer un joueur";
-"TUTO3" = "3. Consulter ses informations";
-"TUTO4" = "4. Créer une tache";
-"TUTO5" = "5. Créer un évènement";
-"TUTO6" = "6. Gérer ses évènements";
-"TUTO7" = "7. Consulter les podiums";
-"TUTO8" = "8. Créer des récompenses";
-"TUTO9" = "9. Paramétrer la météo";
-"TUTO10" = "10. Réinitialiser l'application";
-"TUTO11" = "11. Changer le thème";
+"TUTO0" = "1. Bienvenue dans iTaskFamily";
+"TUTO1" = "2. Créer un joueur";
+"TUTO2" = "3. Consulter ses informations";
+"TUTO3" = "4. Créer une tache";
+"TUTO4" = "5. Créer un évènement";
+"TUTO5" = "6. Gérer ses évènements";
+"TUTO6" = "7. Consulter les podiums";
+"TUTO7" = "8. Créer des récompenses";
+"TUTO8" = "9. Paramétrer la météo";
+"TUTO9" = "10. Réinitialiser l'application";
+"TUTO10" = "11. Changer le thème";
+
+"TUTO0-0" = "iTaskFamily est une application de gestion de taches ménagères. Mais attention, celle-ci se veut ludique. Vous gagnerez ainsi des points en accomplissant vos taches et débloquerez des trophées et des récompenses. Êtes vous prêt ?";
+
+"TUTO1-0" = "Pour créer un nouveau joueur, il vous suffit de vous rendre sur la page de gestion dédiée (1) et d'appuyer sur le bouton de création (2).";
+"TUTO1-1" = "Une fois arrivé sur la page de création, vous devez renseigner un pseudo (1) et choisir une image de profil. Pour cela, vous pouvez soit récupérer une photo de votre bibliothèque ou bien prendre une photo (2).";
+"TUTO1-2" = "Lorsque la photo est choisie, vous pouvez la redimensionner.";
+"TUTO1-3" = "Enfin pour terminer votre profil, appuyez sur le bouton de validation de la page de création. Un message de confirmation vous indiquera que votre joueur est bien crée.";
+
+"TUTO2-0" = "Pour consulter ses informations, il suffit d'aller sur la page de gestion des joueurs. Sélectionnez votre profil dans la liste des joueurs (1). Il est possible d'effectuer des action d'ajout, suppression et modification (2). Une fois votre avatar choisi, les informations lui correspondant apparaissent. Vous pourre ainsi voir le score que vous avez ainsi que les trophées que vous avez débloqués (3).";
+"TUTO2-1" = "La partie droite de la page est consacrée au détail de vos actions. Vous pourrez ainsi voir combien de fois vous avez réalisées les taches de l'application. Vous pourrez également consulter le nombre de réalisation à effectuer avant de débloquer certains trophées. Pour naviguer à travers les catégories de taches, il vous suffit de sélectionner celle qui vous intéresse dans la liste présente en haut de la section.";
+
+"TUTO4-0" = "Pour créer un nouvel évènement, il vous suffit de vous rendre sur la page de gestion dédiée (1), choisir la personne qui devra réaliser la tache (2), appuyer sur le bouton de création (3).";
+"TUTO4-1" = "Une fois arrivé sur la page de création, vous devez choisir une tache, indiquer pour quel jour vous voulez qu'elle soit réalisée et mettre en place ou non une récurrence pour que celle-ci soit répétée chaque semaine (1). Il est également possible de renseigner un commentaire pour donner des informations complémentaires (2).";
+"TUTO4-2" = "Enfin appuyez sur le bouton de validation de la page de création. Un message de confirmation vous indiquera que votre évènement est bien créée.";
+
+"TUTO5-0" = "Une fois un évènement crée, il vous suffit de le cocher (1) pour indiquer qu'il a été réalisé. Vous pouvez également le modifier (2), ou bien le supprimer (3).";
+"TUTO5-1" = "Attention toutefois, vous ne pouvez pas valider un évènement qui postérieur à la semaine actuelle.";

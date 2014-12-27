@@ -3732,17 +3732,41 @@
                                         <rect key="frame" x="492" y="619" width="38" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </pageControl>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fgx-Dt-d4F">
-                                        <rect key="frame" x="77" y="670" width="870" height="90"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fgx-Dt-d4F">
+                                        <rect key="frame" x="77" y="660" width="870" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ifb-CK-jzP">
-                                        <rect key="frame" x="170" y="86" width="682" height="525"/>
+                                        <rect key="frame" x="170" y="86" width="682" height="512"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </scrollView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vYS-QF-75T">
+                                        <rect key="frame" x="170" y="619" width="250" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" title="&lt; Previous chapter">
+                                            <color key="titleColor" red="0.21960784310000001" green="0.56078431370000004" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onPushButtonPreviousChapter:" destination="PC9-wI-wbi" eventType="touchUpInside" id="EBN-sw-tPu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pMn-yK-Nf5">
+                                        <rect key="frame" x="602" y="619" width="250" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" title="Next chapter &gt;">
+                                            <color key="titleColor" red="0.21960784310000001" green="0.56078431370000004" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onPushButtonNextChapter:" destination="PC9-wI-wbi" eventType="touchUpInside" id="jEs-oz-DnU"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -3754,6 +3778,8 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="1024" height="768"/>
                     <connections>
+                        <outlet property="buttonNextChapter" destination="pMn-yK-Nf5" id="QkQ-Aw-jCu"/>
+                        <outlet property="buttonPreviousChapter" destination="vYS-QF-75T" id="kgF-w0-d6m"/>
                         <outlet property="labelDescription" destination="Fgx-Dt-d4F" id="ewD-U2-qZ9"/>
                         <outlet property="labelTitre" destination="Xpe-W7-nZ4" id="oJf-kQ-mlI"/>
                         <outlet property="labelTitreTableView" destination="O7l-Nq-I3D" id="DcJ-7E-Hvd"/>
