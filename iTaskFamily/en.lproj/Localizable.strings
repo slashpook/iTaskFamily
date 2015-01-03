@@ -121,3 +121,13 @@
 
 "TUTO5-0" = "Une fois un évènement crée, il vous suffit de le cocher (1) pour indiquer qu'il a été réalisé. Vous pouvez également le modifier (2), ou bien le supprimer (3).";
 "TUTO5-1" = "Attention toutefois, vous ne pouvez pas valider un évènement qui postérieur à la semaine actuelle.";
+
+"TUTO6-0" = "Dans iTaskFamily, vous pouvez gagner des points et débloquer des trophées en réalisant des taches. Ces scores sont reportés sous forme de podium. Pour pouvoir les consulter, il vous suffit de vous rendre sur la page dédiée (1). Trois types de podiums existent : Le podium pour indiquer qui fait le meilleur score lors de la semaine en cours, un pour désigner la personne qui a le score total le plus élevé et enfin un pour montrer qui a débloqué le plus de trophées. Qui sera le meilleur joueur !";
+
+"TUTO7-0" = "Pour créer des récompenses, il vous suffit de vous rendre sur la page des settings (1) et d'appuyer sur le bouton de gestion des récompenses (2).";
+"TUTO7-1" = "Vous pouvez allouer jusqu'à 3 récompenses, pour le premier (1), le second (2) et le troisième (3). Ces récompenses seront accessible pour la semaine suivante.";
+"TUTO7-2" = "Pour pouvoir savoir si vous avez eu une récompense, il vous suffit de vous rendre sur la page de gestion des joueurs, choisir votre profil et voir si vous avez un bouton vous indiquant quelle récompense vous avez gagné (1).";
+
+"TUTO8-0" = "Pour gérer la météo, il vous suffit de vous rendre sur la page des settings (1) et d'appuyer sur le bouton de gestion de la météo (2). Vous pouvez soit afficher la météo en fonction de votre géolocalisation, soit en rentrant une ville spécifique.";
+"TUTO8-1" = "Une fois la vue ouverte, vous pouvez changer la ville utilisé pour afficher la météo (1). Vous pouvez également voir la ville par défault actuelle.";
+"TUTO8-2" = "Une fois la mise à jour faite, il vous suffit de retourner sur la vue principale pour voir la nouvelle météo s'afficher (1).";

@@ -84,6 +84,19 @@
             arrayChapter = [NSMutableArray arrayWithObjects:NSLocalizedString(@"TUTO5-0", nil), NSLocalizedString(@"TUTO5-1", nil), nil];
         }
             break;
+        case 6: {
+            arrayChapter = [NSMutableArray arrayWithObjects:NSLocalizedString(@"TUTO6-0", nil), nil];
+        }
+            break;
+        case 7: {
+            arrayChapter = [NSMutableArray arrayWithObjects:NSLocalizedString(@"TUTO7-0", nil), NSLocalizedString(@"TUTO7-1", nil), NSLocalizedString(@"TUTO7-2", nil), nil];
+        }
+            break;
+        case 8: {
+            arrayChapter = [NSMutableArray arrayWithObjects:NSLocalizedString(@"TUTO8-0", nil), NSLocalizedString(@"TUTO8-1", nil), NSLocalizedString(@"TUTO8-2", nil), nil];
+        }
+            break;
+
         default: {
             arrayChapter = [NSMutableArray arrayWithObjects:NSLocalizedString(@"TUTO0-0", nil), nil];
         }

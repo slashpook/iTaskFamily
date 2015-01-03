@@ -105,6 +105,13 @@
 		6DCE47BD183E08AA00D64363 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE47BC183E08AA00D64363 /* UIImage+ImageEffects.m */; };
 		6DCE47C1183E10E000D64363 /* DDHelperController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE47C0183E10E000D64363 /* DDHelperController.m */; };
 		6DCE47C3183E12FF00D64363 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DCE47C2183E12FF00D64363 /* Accelerate.framework */; };
+		6DD537A71A5841E000A351BB /* Tutorial6-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD537A61A5841E000A351BB /* Tutorial6-0.png */; };
+		6DD537AC1A58476700A351BB /* Tutorial7-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD537A91A58476700A351BB /* Tutorial7-0.png */; };
+		6DD537AD1A58476700A351BB /* Tutorial7-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD537AA1A58476700A351BB /* Tutorial7-1.png */; };
+		6DD537AE1A58476700A351BB /* Tutorial7-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD537AB1A58476700A351BB /* Tutorial7-2.png */; };
+		6DD537B31A584B1200A351BB /* Tutorial8-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD537B01A584B1200A351BB /* Tutorial8-0.png */; };
+		6DD537B41A584B1200A351BB /* Tutorial8-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD537B11A584B1200A351BB /* Tutorial8-1.png */; };
+		6DD537B51A584B1200A351BB /* Tutorial8-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD537B21A584B1200A351BB /* Tutorial8-2.png */; };
 		6DDAE5D6184CFBFF00B6DA70 /* DDTrophyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDAE5D5184CFBFF00B6DA70 /* DDTrophyCell.m */; };
 		6DEBDD2719A3B7F1006866DD /* Reward.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DEBDD2619A3B7F1006866DD /* Reward.m */; };
 		6DED092A18D0EE50004F2F3D /* DDTaskManagerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DED092918D0EE50004F2F3D /* DDTaskManagerTableViewController.m */; };
@@ -299,6 +306,13 @@
 		6DCE47BF183E10E000D64363 /* DDHelperController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHelperController.h; sourceTree = "<group>"; };
 		6DCE47C0183E10E000D64363 /* DDHelperController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHelperController.m; sourceTree = "<group>"; };
 		6DCE47C2183E12FF00D64363 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		6DD537A61A5841E000A351BB /* Tutorial6-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial6-0.png"; sourceTree = "<group>"; };
+		6DD537A91A58476700A351BB /* Tutorial7-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial7-0.png"; sourceTree = "<group>"; };
+		6DD537AA1A58476700A351BB /* Tutorial7-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial7-1.png"; sourceTree = "<group>"; };
+		6DD537AB1A58476700A351BB /* Tutorial7-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial7-2.png"; sourceTree = "<group>"; };
+		6DD537B01A584B1200A351BB /* Tutorial8-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial8-0.png"; sourceTree = "<group>"; };
+		6DD537B11A584B1200A351BB /* Tutorial8-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial8-1.png"; sourceTree = "<group>"; };
+		6DD537B21A584B1200A351BB /* Tutorial8-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial8-2.png"; sourceTree = "<group>"; };
 		6DDAE5D4184CFBFF00B6DA70 /* DDTrophyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTrophyCell.h; sourceTree = "<group>"; };
 		6DDAE5D5184CFBFF00B6DA70 /* DDTrophyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTrophyCell.m; sourceTree = "<group>"; };
 		6DEBDD2519A3B7F1006866DD /* Reward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reward.h; sourceTree = "<group>"; };
@@ -694,6 +708,9 @@
 				6D40B0CF1A4EF499009485D9 /* Tutorial3 */,
 				6D40B0D61A4EF8BE009485D9 /* Tutorial4 */,
 				6D40B0DD1A4EFACC009485D9 /* Tutorial5 */,
+				6DD537A31A58404600A351BB /* Tutorial6 */,
+				6DD537A81A5841E400A351BB /* Tutorial7 */,
+				6DD537AF1A584B0200A351BB /* Tutorial8 */,
 				6D837C6C19AF8FD20053E4C0 /* Data.xml */,
 				6D39976A19A7A687005AB9B0 /* Main.storyboard */,
 			);
@@ -1127,6 +1144,34 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		6DD537A31A58404600A351BB /* Tutorial6 */ = {
+			isa = PBXGroup;
+			children = (
+				6DD537A61A5841E000A351BB /* Tutorial6-0.png */,
+			);
+			name = Tutorial6;
+			sourceTree = "<group>";
+		};
+		6DD537A81A5841E400A351BB /* Tutorial7 */ = {
+			isa = PBXGroup;
+			children = (
+				6DD537A91A58476700A351BB /* Tutorial7-0.png */,
+				6DD537AA1A58476700A351BB /* Tutorial7-1.png */,
+				6DD537AB1A58476700A351BB /* Tutorial7-2.png */,
+			);
+			name = Tutorial7;
+			sourceTree = "<group>";
+		};
+		6DD537AF1A584B0200A351BB /* Tutorial8 */ = {
+			isa = PBXGroup;
+			children = (
+				6DD537B01A584B1200A351BB /* Tutorial8-0.png */,
+				6DD537B11A584B1200A351BB /* Tutorial8-1.png */,
+				6DD537B21A584B1200A351BB /* Tutorial8-2.png */,
+			);
+			name = Tutorial8;
+			sourceTree = "<group>";
+		};
 		6DDAE5D3184CFBE600B6DA70 /* CustomTrophyCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1239,9 +1284,6 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Damien DELES";
 				TargetAttributes = {
-					6D6B3EC4183CF75B009542A8 = {
-						DevelopmentTeam = F2T286J99J;
-					};
 					6D6B3EE5183CF75C009542A8 = {
 						TestTargetID = 6D6B3EC4183CF75B009542A8;
 					};
@@ -1272,11 +1314,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DD537B31A584B1200A351BB /* Tutorial8-0.png in Resources */,
+				6DD537A71A5841E000A351BB /* Tutorial6-0.png in Resources */,
 				6D40B0DB1A4EF8CE009485D9 /* Tutorial4-1.png in Resources */,
 				6D40B0DC1A4EF8CE009485D9 /* Tutorial4-2.png in Resources */,
+				6DD537AD1A58476700A351BB /* Tutorial7-1.png in Resources */,
+				6DD537B51A584B1200A351BB /* Tutorial8-2.png in Resources */,
 				6D39976219A7A411005AB9B0 /* Localizable.strings in Resources */,
 				6D40B0C41A4C7279009485D9 /* Tutorial1-0.png in Resources */,
 				6D40B0CC1A4C7898009485D9 /* Tutorial2-1.png in Resources */,
+				6DD537B41A584B1200A351BB /* Tutorial8-1.png in Resources */,
+				6DD537AC1A58476700A351BB /* Tutorial7-0.png in Resources */,
 				6D39976819A7A687005AB9B0 /* Main.storyboard in Resources */,
 				6D40B0C71A4C7279009485D9 /* Tutorial1-3.png in Resources */,
 				6D40B0CE1A4C79BC009485D9 /* Tutorial2-0.png in Resources */,
@@ -1289,6 +1337,7 @@
 				6D40B0D51A4EF4A8009485D9 /* Tutorial3-2.png in Resources */,
 				6D40B0C51A4C7279009485D9 /* Tutorial1-1.png in Resources */,
 				6D837C6A19AF8FD20053E4C0 /* Data.xml in Resources */,
+				6DD537AE1A58476700A351BB /* Tutorial7-2.png in Resources */,
 				6D40B0E11A4EFADE009485D9 /* Tutorial5-1.png in Resources */,
 				6D6B3ED3183CF75B009542A8 /* InfoPlist.strings in Resources */,
 				6D40B0C61A4C7279009485D9 /* Tutorial1-2.png in Resources */,
@@ -1534,6 +1583,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iTaskFamily/iTaskFamily-Prefix.pch";
 				INFOPLIST_FILE = "iTaskFamily/iTaskFamily-Info.plist";
@@ -1548,6 +1598,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iTaskFamily/iTaskFamily-Prefix.pch";
 				INFOPLIST_FILE = "iTaskFamily/iTaskFamily-Info.plist";

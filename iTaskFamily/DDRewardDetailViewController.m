@@ -43,7 +43,7 @@
     //On met en place la barre de navigation
     _custoNavBar = [[DDCustomNavigationBarController alloc] initWithDelegate:self andTitle:@"" andBackgroundColor:[DDHelperController getMainTheme] andImage:[UIImage imageNamed:@"RewardDetailButtonAdd"]];
     [[self.custoNavBar view] setFrame:CGRectMake(0, 0, 380, 50)];
-    [[self.custoNavBar buttonRight] setTitle:@"Fermer" forState:UIControlStateNormal];
+    [[self.custoNavBar buttonRight] setTitle:NSLocalizedString(@"FERMER", nil) forState:UIControlStateNormal];
     [self.view addSubview:self.custoNavBar.view];
     
     
