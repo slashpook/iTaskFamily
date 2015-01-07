@@ -9,7 +9,7 @@
 #import "DDAppDelegate.h"
 #import "DDParserXML.h"
 
-@implementation DDAppDelegate
+@implementation DDAppDelegate 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -33,6 +33,7 @@
     //Set the tabBar controller
 	_rootViewController = [[[DDManagerSingleton instance] storyboard] instantiateInitialViewController];
     [self.window setRootViewController:self.rootViewController];
+    
     [self.window makeKeyAndVisible];
     
     //On initialise le parser
@@ -40,12 +41,33 @@
     //On parse les données
     [self parseData];
     
+    //Si on est sur le premier lancement, on affiche le tutoriel de base
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"isFirstLaunch"] == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:true] forKey:@"isFirstLaunch"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        [self performSelector:@selector(displayTutorial) withObject:nil afterDelay:1.0];
+    }
+    
     return YES;
+}
+
+- (void)displayTutorial {
+    DDTutorialViewController *tutorialViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"TutorialViewController"];
+    [tutorialViewController setDelegate:self];
+    _popOverViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PopOverViewController"];
+    
+    [self.window.rootViewController.view addSubview:self.popOverViewController.view];
+    [tutorialViewController setTutorialChapter:0];
+    
+    //On présente la popUp
+    CGRect frame = [[UIScreen mainScreen] bounds];
+    [self.popOverViewController presentPopOverWithContentView:tutorialViewController.view andSize:frame.size andOffset:CGPointMake(0, 0)];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-
+    
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -97,6 +119,16 @@
         //On parse
         [self.parser parseXMLFile];
     }
+}
+
+
+#pragma mark - DDTutorialViewControllerProtocol fonctions
+
+//Fonction pour fermer la popUp
+- (void)closeTutorialView
+{
+    //On enlève la popUp
+    [self.popOverViewController hide];
 }
 
 @end

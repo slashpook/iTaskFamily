@@ -2717,7 +2717,8 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="M1G-lq-4vk" appends="YES" id="dfY-Zv-SAA"/>
+                                    <outletCollection property="gestureRecognizers" destination="0hh-e1-MB8" appends="YES" id="dFE-VS-VJA"/>
+                                    <outletCollection property="gestureRecognizers" destination="KdC-aA-Mvx" appends="YES" id="Vgw-to-6eS"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -2735,16 +2736,23 @@
                         <outlet property="labelTitreTableView" destination="oTi-EU-8m4" id="LVe-hG-ADb"/>
                         <outlet property="pageControlTutorial" destination="0X8-9Q-TEc" id="Nak-oT-Ng1"/>
                         <outlet property="scrollViewTutorial" destination="dQO-MC-2Bk" id="paZ-bI-saa"/>
+                        <outlet property="swipeGestureLeftTutorial" destination="KdC-aA-Mvx" id="7UA-mb-UXL"/>
+                        <outlet property="swipeGestureRightTutorial" destination="0hh-e1-MB8" id="OFU-S3-LGS"/>
                         <outlet property="tableViewChapitre" destination="9Os-7A-sLa" id="1En-44-qgk"/>
                         <outlet property="viewTutorial" destination="nPH-br-FEO" id="cQc-4i-Bcv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RAp-2x-iKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="M1G-lq-4vk">
+                <swipeGestureRecognizer direction="right" id="0hh-e1-MB8">
                     <connections>
-                        <action selector="onPushGesture:" destination="1eu-EH-ePp" id="3Gd-8X-SaL"/>
+                        <action selector="onPushGestureRight:" destination="1eu-EH-ePp" id="le8-ht-NEe"/>
                     </connections>
-                </panGestureRecognizer>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="KdC-aA-Mvx">
+                    <connections>
+                        <action selector="onPushGestureLeft:" destination="1eu-EH-ePp" id="0La-1m-ynl"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2130" y="2472"/>
         </scene>

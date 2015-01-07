@@ -31,6 +31,8 @@
     //On configure la scrollView et le page control
     [[self scrollViewTutorial] setDelegate:self];
     [self.scrollViewTutorial setPagingEnabled:true];
+    self.swipeGestureRightTutorial.direction = UISwipeGestureRecognizerDirectionRight;
+    self.swipeGestureLeftTutorial.direction = UISwipeGestureRecognizerDirectionLeft;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -99,10 +101,19 @@
     [self.scrollViewTutorial setContentOffset:CGPointMake(self.scrollViewTutorial.frame.size.width * sender.currentPage, 0) animated:YES];
 }
 
-//On appuie sur le gesture
-- (IBAction)onPushGesture:(id)sender {
+//On appuie sur le gesture pour ouvrir
+- (IBAction)onPushGestureRight:(id)sender {
+        [UIView animateWithDuration:0.3 animations:^{
+            [self.viewTutorial setFrame:CGRectMake(300, 0, self.viewTutorial.frame.size.width, self.viewTutorial.frame.size.height)];
+        }];
 }
 
+//On appuie sur le gesture pour fermer
+- (IBAction)onPushGestureLeft:(id)sender {
+           [UIView animateWithDuration:0.3 animations:^{
+            [self.viewTutorial setFrame:CGRectMake(0, 0, self.viewTutorial.frame.size.width, self.viewTutorial.frame.size.height)];
+        }];
+}
 
 #pragma mark UIPageControl et UIScrollViewDelegate fonctions
 

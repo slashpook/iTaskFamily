@@ -14,7 +14,7 @@
 
 @end
 
-@interface DDTutorialViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface DDTutorialViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
 
 #pragma mark - Variables
@@ -57,6 +57,12 @@
 
 //Bouton du chapitre suivant
 @property (weak, nonatomic) IBOutlet UIButton *buttonNextChapter;
+
+//Swipe pour ouvrir la vue
+@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeGestureRightTutorial;
+
+//Swipe pour ferme la vue
+@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeGestureLeftTutorial;
 
 
 #pragma mark - Fonctions

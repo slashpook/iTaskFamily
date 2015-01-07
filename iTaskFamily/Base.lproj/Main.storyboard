@@ -3774,7 +3774,8 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="lSa-eh-Z2k" appends="YES" id="efV-6q-vb3"/>
+                                    <outletCollection property="gestureRecognizers" destination="hfJ-j3-FzG" appends="YES" id="08a-QX-c4e"/>
+                                    <outletCollection property="gestureRecognizers" destination="mgK-nw-oh6" appends="YES" id="zWE-oJ-t2C"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -3792,16 +3793,23 @@
                         <outlet property="labelTitreTableView" destination="O7l-Nq-I3D" id="DcJ-7E-Hvd"/>
                         <outlet property="pageControlTutorial" destination="mqz-KY-qib" id="uc5-cM-435"/>
                         <outlet property="scrollViewTutorial" destination="ifb-CK-jzP" id="Aiu-pb-jfu"/>
+                        <outlet property="swipeGestureLeftTutorial" destination="mgK-nw-oh6" id="bDc-XD-ilE"/>
+                        <outlet property="swipeGestureRightTutorial" destination="hfJ-j3-FzG" id="jFY-Pe-9Zz"/>
                         <outlet property="tableViewChapitre" destination="RHW-CR-6IR" id="Oxn-x9-4Wx"/>
                         <outlet property="viewTutorial" destination="Ro0-Nw-RkX" id="HQA-r2-Pgy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0a-Ij-LDC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="lSa-eh-Z2k">
+                <swipeGestureRecognizer direction="right" id="hfJ-j3-FzG">
                     <connections>
-                        <action selector="onPushGesture:" destination="PC9-wI-wbi" id="083-Cc-IhJ"/>
+                        <action selector="onPushGestureRight:" destination="PC9-wI-wbi" id="fkZ-2t-Jrh"/>
                     </connections>
-                </panGestureRecognizer>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="mgK-nw-oh6">
+                    <connections>
+                        <action selector="onPushGestureLeft:" destination="PC9-wI-wbi" id="pcC-H7-KFh"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2130" y="2472"/>
         </scene>

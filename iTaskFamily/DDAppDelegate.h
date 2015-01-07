@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DDTutorialViewController.h"
+#import "DDPopOverViewController.h"
 
 @class DDRootViewController;
 @class DDParserXML;
 
-@interface DDAppDelegate : UIResponder <UIApplicationDelegate>
+@interface DDAppDelegate : UIResponder <UIApplicationDelegate, DDTutorialViewControllerProtocol>
 
 
 #pragma mark - Variables
@@ -27,6 +29,9 @@
 
 //On crée le parser pour récupérer les taches et les trophées
 @property (strong, nonatomic) DDParserXML *parser;
+
+//PopOver de la vue
+@property (strong, nonatomic) DDPopOverViewController *popOverViewController;
 
 
 #pragma mark - Fonctions
