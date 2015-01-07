@@ -2665,8 +2665,11 @@
                                         </connections>
                                     </button>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="0X8-9Q-TEc">
-                                        <rect key="frame" x="493" y="619" width="38" height="36"/>
+                                        <rect key="frame" x="379" y="619" width="267" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="onPushPageControl:" destination="1eu-EH-ePp" eventType="valueChanged" id="jDh-4i-iYC"/>
+                                        </connections>
                                     </pageControl>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="Jv6-eG-eOO">
                                         <rect key="frame" x="57" y="660" width="910" height="90"/>
@@ -2712,6 +2715,10 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="M1G-lq-4vk" appends="YES" id="dfY-Zv-SAA"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2733,6 +2740,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RAp-2x-iKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="M1G-lq-4vk">
+                    <connections>
+                        <action selector="onPushGesture:" destination="1eu-EH-ePp" id="3Gd-8X-SaL"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2130" y="2472"/>
         </scene>

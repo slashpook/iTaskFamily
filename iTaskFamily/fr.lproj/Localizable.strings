@@ -127,3 +127,10 @@
 "TUTO8-0" = "Pour gérer la météo, il vous suffit de vous rendre sur la page des settings (1) et d'appuyer sur le bouton de gestion de la météo (2). Vous pouvez soit afficher la météo en fonction de votre géolocalisation, soit en rentrant une ville spécifique.";
 "TUTO8-1" = "Une fois la vue ouverte, vous pouvez changer la ville utilisé pour afficher la météo (1). Vous pouvez également voir la ville par défault actuelle.";
 "TUTO8-2" = "Une fois la mise à jour faite, il vous suffit de retourner sur la vue principale pour voir la nouvelle météo s'afficher (1).";
+
+"TUTO9-0" = "Pour réinitialiser les taches, il vous suffit de vous rendre sur la page des settings (1) et d'appuyer sur le bouton associé aux taches (2).";
+"TUTO9-1" = "L'application va dans un premier temps vous demander si vous confirmez la réinitialisation des taches. Après avoir validé, un message de confirmation s'affichera.";
+
+"TUTO10-0" = "Pour changer le thème, il vous suffit de vous rendre sur la page des settings (1). Dans la section consacrée (2), vous pouvez soit choisir une couleur prédéfinie, soit en choisir une personnalisée.";
+"TUTO10-1" = "À partir de cette fenêtre, vous pouvez choisir la couleur que vous voulez sur la palette (1) et choisir sa clarté (2).";
+"TUTO10-1" = "Une fois la couleur choisie, tous le thème de l'application se met à jour immédiatement";

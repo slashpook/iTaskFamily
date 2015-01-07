@@ -94,6 +94,15 @@
     [self loadPageControl];
 }
 
+//On appuie sur le page control
+- (IBAction)onPushPageControl:(UIPageControl *)sender {
+    [self.scrollViewTutorial setContentOffset:CGPointMake(self.scrollViewTutorial.frame.size.width * sender.currentPage, 0) animated:YES];
+}
+
+//On appuie sur le gesture
+- (IBAction)onPushGesture:(id)sender {
+}
+
 
 #pragma mark UIPageControl et UIScrollViewDelegate fonctions
 
@@ -161,8 +170,7 @@
         int currentPage = floor((self.scrollViewTutorial.contentOffset.x - scrollView.frame.size.width / 2) / scrollView.frame.size.width) + 1;
         
         [self.labelDescription setText:[self.arrayTutorialInfo objectAtIndex:currentPage]];
-        
-        self.pageControlTutorial.currentPage = currentPage;
+
     }
 }
 
