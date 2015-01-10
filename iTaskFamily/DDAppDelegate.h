@@ -33,6 +33,9 @@
 //PopOver de la vue
 @property (strong, nonatomic) DDPopOverViewController *popOverViewController;
 
+//Tutoriel de la vue
+@property (strong, nonatomic) DDTutorialViewController *tutorialViewController;
+
 
 #pragma mark - Fonctions
 

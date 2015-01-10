@@ -89,6 +89,7 @@
 "OBJECTIF_INFO" = "Your objectives must be higher than 0.";
 "OBJECTIF_POSITIF" = "Please enter only positive numbers for points and objectives.";
 
+"TUTO" = "Tutorial";
 "TUTO0" = "1. Welcome iTaskFamily";
 "TUTO1" = "2. Create a player";
 "TUTO2" = "3. Look its informations";

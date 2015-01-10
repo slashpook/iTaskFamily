@@ -53,16 +53,16 @@
 }
 
 - (void)displayTutorial {
-    DDTutorialViewController *tutorialViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"TutorialViewController"];
-    [tutorialViewController setDelegate:self];
+    _tutorialViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"TutorialViewController"];
+    [self.tutorialViewController setDelegate:self];
     _popOverViewController = [[[DDManagerSingleton instance] storyboard] instantiateViewControllerWithIdentifier:@"PopOverViewController"];
     
     [self.window.rootViewController.view addSubview:self.popOverViewController.view];
-    [tutorialViewController setTutorialChapter:0];
+    [self.tutorialViewController setTutorialChapter:0];
     
     //On présente la popUp
     CGRect frame = [[UIScreen mainScreen] bounds];
-    [self.popOverViewController presentPopOverWithContentView:tutorialViewController.view andSize:frame.size andOffset:CGPointMake(0, 0)];
+    [self.popOverViewController presentPopOverWithContentView:self.tutorialViewController.view andSize:frame.size andOffset:CGPointMake(0, 0)];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

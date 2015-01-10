@@ -8,6 +8,7 @@
 
 #import "DDTutorialViewController.h"
 #import "DDSettingTableViewCell.h"
+#import "Haneke.h"
 
 @interface DDTutorialViewController ()
 
@@ -75,6 +76,7 @@
 - (void)clearScrollView {
     for (UIView *subview in [self.scrollViewTutorial subviews]) {
         if ([subview isKindOfClass:[UIImageView class]]) {
+            [(UIImageView *) subview setImage:nil];
             [subview removeFromSuperview];
         }
     }
@@ -137,10 +139,10 @@
     //On rempli la scrollView
     for (int i = 0; i < [self.arrayTutorialInfo count]; i++)
     {
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"Tutorial%i-%i", self.tutorialChapter, i] ofType:@"png"];
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@%i-%i", NSLocalizedString(@"TUTO", nil), self.tutorialChapter, i] ofType:@"png"];
         
         UIImageView *imageViewTutorial = [[UIImageView alloc] initWithFrame:CGRectMake(self.scrollViewTutorial.frame.size.width * (i), 0, self.scrollViewTutorial.frame.size.width, self.scrollViewTutorial.frame.size.height)];
-        [imageViewTutorial setImage:[UIImage imageWithContentsOfFile:filePath]];
+        [imageViewTutorial hnk_setImageFromFile:filePath];
         [self.scrollViewTutorial addSubview:imageViewTutorial];
     }
     
@@ -158,8 +160,8 @@
     if (self.tutorialChapter == 0) {
         [self.buttonPreviousChapter setHidden:YES];
     }
-    if (self.tutorialChapter == 10) {
-        [self.buttonNextChapter setHidden:NO];
+    if (self.tutorialChapter >= 10) {
+        [self.buttonNextChapter setHidden:YES];
     }
 }
 
