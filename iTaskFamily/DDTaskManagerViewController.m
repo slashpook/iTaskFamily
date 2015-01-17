@@ -126,10 +126,10 @@
         [self.custoNavBar.imageViewBackground setImage:[UIImage imageNamed:@"TaskButtonNavigationBarAdd"]];
         [self.tableViewTask.textFieldNameTask setText:@""];
         [self.tableViewTask.labelNameCategory setText:NSLocalizedString([self.currentCategory.libelle uppercaseString], nil)];
-        [self.tableViewTask.textFieldPoint setText:@"0"];
-        [self.textFieldBronze setText:@"0"];
-        [self.textFieldArgent setText:@"0"];
-        [self.textFieldOr setText:@"0"];
+        [self.tableViewTask.textFieldPoint setText:@""];
+        [self.textFieldBronze setText:@""];
+        [self.textFieldArgent setText:@""];
+        [self.textFieldOr setText:@""];
     }
     else
     {
@@ -219,8 +219,10 @@
     errorMessage = [[DDDatabaseAccess instance] createTask:self.task forCategory:self.currentCategory withTrophies:[NSArray arrayWithObjects:trophyBronze, trophyArgent, trophyOr, nil]];
     
     //Si on a pas de message d'erreur on ferme la popUp
-    if (errorMessage == nil)
-        [DDCustomAlertView displayInfoMessage:NSLocalizedString(@"TACHE_SAUVE", nil)];
+    if (errorMessage == nil) {
+        //[DDCustomAlertView displayInfoMessage:NSLocalizedString(@"TACHE_SAUVE", nil)];
+        NSLog(@"Tache sauvé");
+    }
     else
     {
         [DDCustomAlertView displayInfoMessage:errorMessage];
@@ -255,8 +257,10 @@
     [[DDDatabaseAccess instance] updateTask:self.task];
     
     //Si on a pas de message d'erreur on ferme la popUp
-    if (errorMessage == nil)
-        [DDCustomAlertView displayInfoMessage:NSLocalizedString(@"TACHE_MODIFIE", nil)];
+    if (errorMessage == nil) {
+        //[DDCustomAlertView displayInfoMessage:NSLocalizedString(@"TACHE_MODIFIE", nil)];
+        NSLog(@"Tache modifié");
+    }
     else
     {
         [DDCustomAlertView displayInfoMessage:errorMessage];
@@ -300,6 +304,25 @@
     return true;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    //On change le focus des champs
+    if (self.tableViewTask.textFieldNameTask == textField) {
+        [self.tableViewTask.textFieldPoint becomeFirstResponder];
+        return false;
+    } else if (self.tableViewTask.textFieldPoint == textField) {
+        [self.textFieldBronze becomeFirstResponder];
+        return false;
+    } else if (self.textFieldBronze == textField) {
+        [self.textFieldArgent becomeFirstResponder];
+        return false;
+    } else if (self.textFieldArgent == textField) {
+        [self.textFieldOr becomeFirstResponder];
+        return false;
+    } else {
+        [textField resignFirstResponder];
+        return true;
+    }
+}
 
 
 #pragma mark - NavigationBar fonctions

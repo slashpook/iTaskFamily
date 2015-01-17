@@ -102,6 +102,12 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithInteger:0]];
 }
 
+//On fait redescendre le clavier
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return true;
+}
+
 
 #pragma mark - NavigationBar fonctions
 

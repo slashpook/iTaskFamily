@@ -46,6 +46,7 @@
     [self.buttonPhoto.layer setMasksToBounds:YES];
     [self.textFieldPseudo.layer setCornerRadius:5.0];
     [self.textFieldPseudo.layer setMasksToBounds:YES];
+    [self.textFieldPseudo setDelegate:self];
     
     //On rajoute un padding sur le textfield
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 5)];
@@ -204,10 +205,14 @@
     }
 
     //On gère le résultat
-    if (self.isModifyPlayer == NO && errorMessage == nil)
-        [DDCustomAlertView displayInfoMessage:NSLocalizedString(@"JOUEUR_SAUVE", nil)];
-    else if (self.isModifyPlayer == YES && errorMessage == nil)
-        [DDCustomAlertView displayInfoMessage:NSLocalizedString(@"JOUEUR_MODIFIE", nil)];
+    if (self.isModifyPlayer == NO && errorMessage == nil) {
+        //[DDCustomAlertView displayInfoMessage:NSLocalizedString(@"JOUEUR_SAUVE", nil)];
+        NSLog(@"Joueur sauvé");
+    }
+    else if (self.isModifyPlayer == YES && errorMessage == nil) {
+        //[DDCustomAlertView displayInfoMessage:NSLocalizedString(@"JOUEUR_MODIFIE", nil)];
+        NSLog(@"Joueur modifié");
+    }
     else
     {
         [DDCustomAlertView displayInfoMessage:errorMessage];
@@ -236,7 +241,15 @@
 }
 
 
-#pragma mark Fonctions de UIImagePickerViewProtocol
+#pragma mark - UITextFieldDelegate fonctions
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return true;
+}
+
+
+#pragma mark - Fonctions de UIImagePickerViewProtocol
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {

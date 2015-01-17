@@ -120,7 +120,7 @@
 - (void)selectFirstRow
 {
     //Si on a des event, on sélectionne la première cellule
-    if ([self.arrayEvent count] > 0 && self.currentEvent == nil)
+    if ([self.arrayEvent count] > 0 && (self.currentEvent == nil || [self.arrayEvent containsObject:self.currentEvent] == false))
     {
         [self setCurrentEvent:[self.arrayEvent objectAtIndex:0]];
     }

@@ -225,12 +225,20 @@
         
         //On met à jour le joueur principal
         [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_PLAYER object:nil];
+        
+        [self performSelector:@selector(updatePlayer) withObject:nil afterDelay:0.3];
     }
     
     //On enlève la popUp
     [self.popOverViewController hide];
 }
 
+//On met à jour le joueur
+- (void)updatePlayer {
+    //On met à jour le joueur principal
+    [[DDManagerSingleton instance] setCurrentPlayer:self.currentPlayer];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_PLAYER object:nil];
+}
 
 #pragma mark - DDAboutViewProtocol fonctions
 

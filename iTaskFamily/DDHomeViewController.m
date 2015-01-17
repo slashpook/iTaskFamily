@@ -70,12 +70,6 @@
     [self.viewEvent updatePositionOfSelectedDay];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     //On récupère la référence du controller contenu dans eventView

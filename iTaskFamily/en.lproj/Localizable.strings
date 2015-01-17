@@ -102,40 +102,40 @@
 "TUTO9" = "10. Reset the application";
 "TUTO10" = "11. Change theme";
 
-"TUTO0-0" = "iTaskFamily est une application de gestion de taches ménagères. Mais attention, celle-ci se veut ludique. Vous gagnerez ainsi des points en accomplissant vos taches et débloquerez des trophées et des récompenses. Êtes vous prêt ?";
+"TUTO0-0" = "iTaskFamily is a household tasks management application. But this is a playful application. You will gain points by completing your tasks and unlock trophies and awards. Are you ready ?";
 
-"TUTO1-0" = "Pour créer un nouveau joueur, il vous suffit de vous rendre sur la page de gestion dédiée (1) et d'appuyer sur le bouton de création (2).";
-"TUTO1-1" = "Une fois arrivé sur la page de création, vous devez renseigner un pseudo (1) et choisir une image de profil. Pour cela, vous pouvez soit récupérer une photo de votre bibliothèque ou bien prendre une photo (2).";
-"TUTO1-2" = "Lorsque la photo est choisie, vous pouvez la redimensionner.";
-"TUTO1-3" = "Enfin pour terminer votre profil, appuyez sur le bouton de validation de la page de création. Un message de confirmation vous indiquera que votre joueur est bien crée.";
+"TUTO1-0" = "To create a new player, you just need to go to the dedicated page (1) and press the associated button (2).";
+"TUTO1-1" = "Once on page creation, you must provide your nickname (1) and select a profile image. For this you can either grab a photo from your library or take a picture (2).";
+"TUTO1-2" = "When the picture is selected, you can resize it.";
+"TUTO1-3" = "Finally to complete your profile, press the submit button. A confirmation message will tell you that your player is created.";
 
-"TUTO2-0" = "Pour consulter ses informations, il suffit d'aller sur la page de gestion des joueurs. Sélectionnez votre profil dans la liste des joueurs (1). Il est possible d'effectuer des action d'ajout, suppression et modification (2). Une fois votre avatar choisi, les informations lui correspondant apparaissent. Vous pourre ainsi voir le score que vous avez ainsi que les trophées que vous avez débloqués (3).";
-"TUTO2-1" = "La partie droite de la page est consacrée au détail de vos actions. Vous pourrez ainsi voir combien de fois vous avez réalisées les taches de l'application. Vous pourrez également consulter le nombre de réalisation à effectuer avant de débloquer certains trophées. Pour naviguer à travers les catégories de taches, il vous suffit de sélectionner celle qui vous intéresse dans la liste présente en haut de la section.";
+"TUTO2-0" = "To consult his information, simply go to the players' management page. Select your profile in the list of players (1). It is possible to perform actions like addition, deletion and modification (2). Once your chosen avatar, the information appears. You can see the score you have and the trophies that you have unlocked (3).";
+"TUTO2-1" = "The right part of the page is dedicated to the details of your actions. So you can see how many times you have completed tasks. You can also view the achievement of yours trophies. To navigate through the task's categories, simply select the one you want in this list at the top of the section.";
 
-"TUTO3-0" = "Pour créer une nouvelle tache, il vous suffit de vous rendre sur la page de gestion dédiée (1) et d'appuyer sur le bouton de création (2).";
-"TUTO3-1" = "Une fois arrivé sur la page de création, vous devez renseigner un nom pour la tache, la catégoriser et lui donner le nombre de point que l'on gagne quand on la rempli (1). Il vous faudra également renseigner combien de fois il faut terminer la tache pour remporter les différents trophées associés (2).";
-"TUTO3-2" = "Enfin appuyez sur le bouton de validation de la page de création. Un message de confirmation vous indiquera que votre tache est bien créée.";
+"TUTO3-0" = "To create a task, simply go to the dedicated page (1) and press the create button (2).";
+"TUTO3-1" = "Once on the creation page, you must enter a name for the task, choose a category and give the number of points we earn when we complete the task (1). You will also learn how many times we must done the task to win associated trophies (2).";
+"TUTO3-2" = "Finally press the submit button. A confirmation message will tell you that your task is created.";
 
-"TUTO4-0" = "Pour créer un nouvel évènement, il vous suffit de vous rendre sur la page de gestion dédiée (1), choisir la personne qui devra réaliser la tache (2), appuyer sur le bouton de création (3).";
-"TUTO4-1" = "Une fois arrivé sur la page de création, vous devez choisir une tache, indiquer pour quel jour vous voulez qu'elle soit réalisée et mettre en place ou non une récurrence pour que celle-ci soit répétée chaque semaine (1). Il est également possible de renseigner un commentaire pour donner des informations complémentaires (2).";
-"TUTO4-2" = "Enfin appuyez sur le bouton de validation de la page de création. Un message de confirmation vous indiquera que votre évènement est bien créée.";
+"TUTO4-0" = "To create a new event, you simply go to the dedicated page (1), choose the person who will perform the task (2), press the creation button (3).";
+"TUTO4-1" = "Once on the creation page, you must choose a task, days you want it to be done and establish whether a recurrence for it to be repeated every week (1). It is also possible to enter a comment to provide additional information (2).";
+"TUTO4-2" = "Finally press the submit button. A confirmation message will tell you that your event is created.";
 
-"TUTO5-0" = "Une fois un évènement crée, il vous suffit de le cocher (1) pour indiquer qu'il a été réalisé. Vous pouvez également le modifier (2), ou bien le supprimer (3).";
-"TUTO5-1" = "Attention toutefois, vous ne pouvez pas valider un évènement qui postérieur à la semaine actuelle.";
+"TUTO5-0" = "After creating an event, just check it (1) to indicate that it has been achieved. You can also change (2), or delete it (3).";
+"TUTO5-1" = "Be careful, you can't validate an event subsequent to the current week.";
 
-"TUTO6-0" = "Dans iTaskFamily, vous pouvez gagner des points et débloquer des trophées en réalisant des taches. Ces scores sont reportés sous forme de podium. Pour pouvoir les consulter, il vous suffit de vous rendre sur la page dédiée (1). Trois types de podiums existent : Le podium pour indiquer qui fait le meilleur score lors de la semaine en cours, un pour désigner la personne qui a le score total le plus élevé et enfin un pour montrer qui a débloqué le plus de trophées. Qui sera le meilleur joueur !";
+"TUTO6-0" = "In iTaskFamily, you can earn points and unlock trophies by carrying out tasks. These scores are reported as podiums. To view them, simply visit the dedicated page (1). Three types of podiums exist: The podium to indicate who makes the best score in the current week, one to describe the person who has the highest total score and finally a podium to show who unlocked trophies. Who will be the best player !";
 
-"TUTO7-0" = "Pour créer des récompenses, il vous suffit de vous rendre sur la page des settings (1) et d'appuyer sur le bouton de gestion des récompenses (2).";
-"TUTO7-1" = "Vous pouvez allouer jusqu'à 3 récompenses, pour le premier (1), le second (2) et le troisième (3). Ces récompenses seront accessible pour la semaine suivante.";
-"TUTO7-2" = "Pour pouvoir savoir si vous avez eu une récompense, il vous suffit de vous rendre sur la page de gestion des joueurs, choisir votre profil et voir si vous avez un bouton vous indiquant quelle récompense vous avez gagné (1).";
+"TUTO7-0" = "To create rewards, simply go to the settings page (1) and press the button rewards management (2).";
+"TUTO7-1" = "You can set 3 awards for the first (1), the second (2) and third (3). These awards will be available for the following week.";
+"TUTO7-2" = "To find out if you have had a reward, you simply go to the players' management page, select a profile and see if you have a button indicating what reward you earned (1).";
 
-"TUTO8-0" = "Pour gérer la météo, il vous suffit de vous rendre sur la page des settings (1) et d'appuyer sur le bouton de gestion de la météo (2). Vous pouvez soit afficher la météo en fonction de votre géolocalisation, soit en rentrant une ville spécifique.";
-"TUTO8-1" = "Une fois la vue ouverte, vous pouvez changer la ville utilisé pour afficher la météo (1). Vous pouvez également voir la ville par défault actuelle.";
-"TUTO8-2" = "Une fois la mise à jour faite, il vous suffit de retourner sur la vue principale pour voir la nouvelle météo s'afficher (1).";
+"TUTO8-0" = "To handle the weather, you just need to go to the settings page (1) and press the associated button (2). You can either view the weather based on your geo-location, or by returning a specific city.";
+"TUTO8-1" = "After opening the view, you can change the city used to display the weather (1). You can also see the default city set for the weather.";
+"TUTO8-2" = "After the update done, return to the main view to see the new weather display (1).";
 
-"TUTO9-0" = "Pour réinitialiser les taches, il vous suffit de vous rendre sur la page des settings (1) et d'appuyer sur le bouton associé aux taches (2).";
-"TUTO9-1" = "L'application va dans un premier temps vous demander si vous confirmez la réinitialisation des taches. Après avoir validé, un message de confirmation s'affichera.";
+"TUTO9-0" = "To reset tasks, go to the settings page (1) and press the button associated (2).";
+"TUTO9-1" = "The application will ask you if you you really want to reset all tasks. After submitting, a confirmation message will display.";
 
-"TUTO10-0" = "Pour changer le thème, il vous suffit de vous rendre sur la page des settings (1). Dans la section consacrée (2), vous pouvez soit choisir une couleur prédéfinie, soit en choisir une personnalisée.";
-"TUTO10-1" = "À partir de cette fenêtre, vous pouvez choisir la couleur que vous voulez sur la palette (1) et choisir sa clarté (2).";
-"TUTO10-1" = "Une fois la couleur choisie, tous le thème de l'application se met à jour immédiatement";
+"TUTO10-0" = "To change the theme, go to the page of settings (1). In the dedicated section (2), you can either choose a preset color or choose a custom.";
+"TUTO10-1" = "From this window, you can choose the color you want on the pallet (1) and choose its clarity (2).";
+"TUTO10-2" = "Once the chosen color, all the theme of the application is updated immediately.";

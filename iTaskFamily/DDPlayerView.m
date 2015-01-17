@@ -288,10 +288,18 @@
         [[DDManagerSingleton instance] setCurrentPlayer:[self.arrayPlayer objectAtIndex:index]];
         [self.pageControl setCurrentPage:index];
         [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_PLAYER object:nil];
+        
+        //On relance l'update des composants une seconde fois pour que ça passe bien
+        [self performSelector:@selector(updatePlayer:) withObject:[self.arrayPlayer objectAtIndex:index] afterDelay:0.3];
     }
     
     //On enlève la popUp
     [self.popOverViewController hide];
+}
+
+- (void)updatePlayer:(Player *)player {
+    [[DDManagerSingleton instance] setCurrentPlayer:player];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_PLAYER object:nil];
 }
 
 @end

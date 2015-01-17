@@ -252,13 +252,19 @@
         //On affiche un message d'info pour indiquer qu'on a crée ou modifié un évènement
         if (self.isModifyEvent == NO)
         {
-            if ([self.arrayOccurence count] == 1)
-                [DDCustomAlertView displayInfoMessage:NSLocalizedString(@"EVENT_SAUVE", nil)];
-            else
-                [DDCustomAlertView displayInfoMessage:NSLocalizedString(@"EVENTS_SAUVE", nil)];
+            if ([self.arrayOccurence count] == 1) {
+                //[DDCustomAlertView displayInfoMessage:NSLocalizedString(@"EVENT_SAUVE", nil)];
+                NSLog(@"Event sauvé");
+            }
+            else {
+                //[DDCustomAlertView displayInfoMessage:NSLocalizedString(@"EVENTS_SAUVE", nil)];
+                NSLog(@"Events sauvés");
+            }
         }
-        else
-            [DDCustomAlertView displayInfoMessage:NSLocalizedString(@"EVENT_MODIFIE", nil)];
+        else {
+            //[DDCustomAlertView displayInfoMessage:NSLocalizedString(@"EVENT_MODIFIE", nil)];
+            NSLog(@"Event modifié");
+        }
         
         //On ferme la vue
         [self.delegate closeEventManagerView];

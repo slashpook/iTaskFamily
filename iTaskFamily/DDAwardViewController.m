@@ -133,7 +133,7 @@
 //Fonction appelé lorsque l'on commence l'édition d'un champs
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithInteger:100]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithInteger:130]];
 }
 
 //Fonction appelé lorsqu'on l'on termine l'édition d'un champs
@@ -141,6 +141,20 @@
 {
     //On redescend la vue
     [[NSNotificationCenter defaultCenter] postNotificationName:UP_POPOVER object:[NSNumber numberWithInteger:0]];
+}
+
+//On change le focus du textfield
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (self.textFieldPremier == textField) {
+        [self.textFieldSecond becomeFirstResponder];
+        return false;
+    } else if (self.textFieldSecond == textField) {
+        [self.textFieldTroisieme becomeFirstResponder];
+        return false;
+    } else {
+        [textField resignFirstResponder];
+        return true;
+    }
 }
 
 

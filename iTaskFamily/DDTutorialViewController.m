@@ -142,7 +142,6 @@
         NSString *filePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@%i-%i", NSLocalizedString(@"TUTO", nil), self.tutorialChapter, i] ofType:@"png"];
         
         UIImageView *imageViewTutorial = [[UIImageView alloc] initWithFrame:CGRectMake(self.scrollViewTutorial.frame.size.width * (i), 0, self.scrollViewTutorial.frame.size.width, self.scrollViewTutorial.frame.size.height)];
-//        [imageViewTutorial hnk_setImageFromFile:filePath];
         imageViewTutorial.image = [UIImage imageWithContentsOfFile:filePath];
         [self.scrollViewTutorial addSubview:imageViewTutorial];
     }
@@ -223,5 +222,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.tutorialChapter = (int)indexPath.row;
     [self loadPageControl];
+    [self onPushGestureLeft:self.swipeGestureLeftTutorial];
 }
 @end

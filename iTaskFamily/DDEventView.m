@@ -116,6 +116,7 @@
         {
             [self.imageViewPlus setHidden:YES];
             [self.eventInfosViewController.view setHidden:NO];
+
             [self.eventInfosViewController getEventsForDay:[NSString stringWithFormat:@"%i", daySelectedInNumber]];
             //Si on a fini la tache sélectionnée, on désactive le bouton pour modifier l'évènement
             if (([self.eventInfosViewController.currentEvent.checked boolValue] == YES && [self.eventInfosViewController.currentEvent.achievement.weekAndYear intValue] == [weekAndYearSelected intValue]) || [weekAndYearSelected intValue] < [currentWeekAndYear intValue])

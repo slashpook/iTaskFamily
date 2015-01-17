@@ -19,7 +19,7 @@
 @end
 
 @interface DDPlayerManagerViewController : UIViewController <UIImagePickerControllerDelegate,
-UINavigationControllerDelegate, DDCustomNavBarProtocol, DDCropperProtocol>
+UINavigationControllerDelegate, DDCustomNavBarProtocol, DDCropperProtocol, UITextFieldDelegate>
 
 
 #pragma mark - Variables
