@@ -107,18 +107,18 @@
 "TUTO1-0" = "To create a new player, you just need to go to the dedicated page (1) and press the associated button (2).";
 "TUTO1-1" = "Once on page creation, you must provide your nickname (1) and select a profile image. For this you can either grab a photo from your library or take a picture (2).";
 "TUTO1-2" = "When the picture is selected, you can resize it.";
-"TUTO1-3" = "Finally to complete your profile, press the submit button. A confirmation message will tell you that your player is created.";
+"TUTO1-3" = "Finally to complete your profile, press the submit button. The player will be added on the page.";
 
 "TUTO2-0" = "To consult his information, simply go to the players' management page. Select your profile in the list of players (1). It is possible to perform actions like addition, deletion and modification (2). Once your chosen avatar, the information appears. You can see the score you have and the trophies that you have unlocked (3).";
 "TUTO2-1" = "The right part of the page is dedicated to the details of your actions. So you can see how many times you have completed tasks. You can also view the achievement of yours trophies. To navigate through the task's categories, simply select the one you want in this list at the top of the section.";
 
 "TUTO3-0" = "To create a task, simply go to the dedicated page (1) and press the create button (2).";
 "TUTO3-1" = "Once on the creation page, you must enter a name for the task, choose a category and give the number of points we earn when we complete the task (1). You will also learn how many times we must done the task to win associated trophies (2).";
-"TUTO3-2" = "Finally press the submit button. A confirmation message will tell you that your task is created.";
+"TUTO3-2" = "Finally press the submit button. The task will be added on the page.";
 
 "TUTO4-0" = "To create a new event, you simply go to the dedicated page (1), choose the person who will perform the task (2), press the creation button (3).";
 "TUTO4-1" = "Once on the creation page, you must choose a task, days you want it to be done and establish whether a recurrence for it to be repeated every week (1). It is also possible to enter a comment to provide additional information (2).";
-"TUTO4-2" = "Finally press the submit button. A confirmation message will tell you that your event is created.";
+"TUTO4-2" = "Finally press the submit button. The event will be added on the page.";
 
 "TUTO5-0" = "After creating an event, just check it (1) to indicate that it has been achieved. You can also change (2), or delete it (3).";
 "TUTO5-1" = "Be careful, you can't validate an event subsequent to the current week.";

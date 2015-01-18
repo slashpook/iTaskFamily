@@ -50,6 +50,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {    
     [[self collectionView] reloadData];
+    [[self.custoNavBar view] setBackgroundColor:[DDHelperController getMainTheme]];
 }
 
 

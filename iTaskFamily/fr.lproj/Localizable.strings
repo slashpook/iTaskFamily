@@ -107,18 +107,18 @@
 "TUTO1-0" = "Pour créer un nouveau joueur, il vous suffit de vous rendre sur la page de gestion dédiée (1) et d'appuyer sur le bouton de création (2).";
 "TUTO1-1" = "Une fois arrivé sur la page de création, vous devez renseigner un pseudo (1) et choisir une image de profil. Pour cela, vous pouvez soit récupérer une photo de votre bibliothèque ou bien prendre une photo (2).";
 "TUTO1-2" = "Lorsque la photo est choisie, vous pouvez la redimensionner.";
-"TUTO1-3" = "Enfin pour terminer votre profil, appuyez sur le bouton de validation de la page de création. Un message de confirmation vous indiquera que votre joueur est bien crée.";
+"TUTO1-3" = "Enfin pour terminer votre profil, appuyez sur le bouton de validation de la page de création. Le joueur sera rajouté sur la page.";
 
 "TUTO2-0" = "Pour consulter ses informations, il suffit d'aller sur la page de gestion des joueurs. Sélectionnez votre profil dans la liste des joueurs (1). Il est possible d'effectuer des action d'ajout, suppression et modification (2). Une fois votre avatar choisi, les informations lui correspondant apparaissent. Vous pourrez ainsi voir le score que vous avez ainsi que les trophées que vous avez débloqués (3).";
 "TUTO2-1" = "La partie droite de la page est consacrée au détail de vos actions. Vous pourrez ainsi voir combien de fois vous avez réalisées les taches de l'application. Vous pourrez également consulter le nombre de réalisation à effectuer avant de débloquer certains trophées. Pour naviguer à travers les catégories de taches, il vous suffit de sélectionner celle qui vous intéresse dans la liste présente en haut de la section.";
 
 "TUTO3-0" = "Pour créer une nouvelle tache, il vous suffit de vous rendre sur la page de gestion dédiée (1) et d'appuyer sur le bouton de création (2).";
 "TUTO3-1" = "Une fois arrivé sur la page de création, vous devez renseigner un nom pour la tache, la catégoriser et lui donner le nombre de point que l'on gagne quand on la rempli (1). Il vous faudra également renseigner combien de fois il faut terminer la tache pour remporter les différents trophées associés (2).";
-"TUTO3-2" = "Enfin appuyez sur le bouton de validation de la page de création. Un message de confirmation vous indiquera que votre tache est bien créée.";
+"TUTO3-2" = "Enfin appuyez sur le bouton de validation de la page de création. La tache sera rajoutée sur la page";
 
 "TUTO4-0" = "Pour créer un nouvel évènement, il vous suffit de vous rendre sur la page de gestion dédiée (1), choisir la personne qui devra réaliser la tache (2), appuyer sur le bouton de création (3).";
 "TUTO4-1" = "Une fois arrivé sur la page de création, vous devez choisir une tache, indiquer pour quel jour vous voulez qu'elle soit réalisée et mettre en place ou non une récurrence pour que celle-ci soit répétée chaque semaine (1). Il est également possible de renseigner un commentaire pour donner des informations complémentaires (2).";
-"TUTO4-2" = "Enfin appuyez sur le bouton de validation de la page de création. Un message de confirmation vous indiquera que votre évènement est bien créée.";
+"TUTO4-2" = "Enfin appuyez sur le bouton de validation de la page de création. L'évènement sera rajouté sur la page.";
 
 "TUTO5-0" = "Une fois un évènement crée, il vous suffit de le cocher (1) pour indiquer qu'il a été réalisé. Vous pouvez également le modifier (2), ou bien le supprimer (3).";
 "TUTO5-1" = "Attention toutefois, vous ne pouvez pas valider un évènement qui postérieur à la semaine actuelle.";
