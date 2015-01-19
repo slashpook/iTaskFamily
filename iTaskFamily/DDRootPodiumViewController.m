@@ -117,9 +117,10 @@
     for (int i = 0; i<3; i++)
     {
         DDPodiumViewController *podiumViewController = (DDPodiumViewController *)[self.arrayPodiums objectAtIndex:i];
+        UIColor *colorHistogramme = [[[podiumViewController.arrayComponents objectAtIndex:0] objectAtIndex:4] colorView];
         
         //Si on est sur une nouvelle page
-        if (i == self.pageControlPodium.currentPage && podiumViewController.viewPremier.frame.size.height == 0)
+        if ((i == self.pageControlPodium.currentPage && podiumViewController.viewPremier.frame.size.height == 0) || ([colorHistogramme isEqual:[DDHelperController getMainTheme]] == NO))
             [podiumViewController updateComponentsAndDisplayProgressBar:YES forTypeOfPodium:i];
         else if (i != self.pageControlPodium.currentPage)
             [podiumViewController updateComponentsAndDisplayProgressBar:NO forTypeOfPodium:i];

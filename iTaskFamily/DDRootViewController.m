@@ -136,20 +136,6 @@
     [self.viewMenu onPushPlayerButton:self.viewMenu.buttonPlayerPage];
     [self.playerViewController onPushAddPlayer:nil];
 }
-//
-//
-//- (void)test
-//{
-//    if ([[self currentViewController] isKindOfClass:[DDHomeViewController class]])
-//        [self.viewMenu onPushHomeButton:nil];
-//    else if ([[self currentViewController] isKindOfClass:[DDPlayerViewController class]])
-//        [self.viewMenu onPushPlayerButton:nil];
-//    else if ([[self currentViewController] isKindOfClass:[DDTaskViewController class]])
-//        [self.viewMenu onPushTaskButton:nil];
-//    else if ([[self currentViewController] isKindOfClass:[DDRootPodiumViewController class]])
-//        [self.viewMenu onPushTrophyButton:nil];
-//    else
-//        [self.viewMenu onPushSettingButton:nil];
-//}
+
 
 @end

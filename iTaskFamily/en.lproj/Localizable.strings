@@ -63,7 +63,7 @@
 
 "TAILLE_IMAGE" = "The resized image is too small.";
 "SUPR_EVENT_QUESTION_1" = "You are about to delete a recurring event. What would you do ?";
-"SUPR_EVENT_QUESTION_2" = "Do you want delete this event ?";
+"SUPR_EVENT_QUESTION_2" = "Do you want to delete this event ?";
 "SUPR_EVENT_REPONSE_1" = "Delete this event and its recurrences";
 "SUPR_EVENT_REPONSE_2" = "Delete this event only";
 "SELECT_EVENT_ERREUR" = "You can't validate an event which is in the future.";
