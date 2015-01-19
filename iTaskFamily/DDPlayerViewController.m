@@ -164,7 +164,9 @@
     NSArray *arrayTrophy = [[DDDatabaseAccess instance] getPlayersSortedByTypeScoreLastWeek];
     int index = (int)[arrayTrophy indexOfObject:self.currentPlayer];
     
-    Reward *reward = [[[DDDatabaseAccess instance] getRewardSortedForWeekAndYear:[DDHelperController getWeekAndYearForDate:[NSDate date]]] objectAtIndex:index];
+    //On récupère la semaine précédente
+    NSDate *datePrevious = [DDHelperController getPreviousWeekForDate:[NSDate date]];
+    Reward *reward = [[[DDDatabaseAccess instance] getRewardSortedForWeekAndYear:[DDHelperController getWeekAndYearForDate:datePrevious]] objectAtIndex:index];
     [self.rewardDetailViewController setReward:reward];
     [[[[[[UIApplication sharedApplication] delegate] window] rootViewController] view] addSubview:self.popOverViewController.view];
     
@@ -225,6 +227,9 @@
     //On update les trophées
     [rootTrophyViewController updateComponent];
     
+    //On met à jour le bouton de récompense
+    [self updateComponentWithButtonReward];
+    
     //On recharge la collection view
     [self.collectionViewMiniature reloadData];
 }
@@ -239,7 +244,7 @@
         NSInteger index = (int)[arrayTrophy indexOfObject:self.currentPlayer];
         NSDate *datePrevious = [DDHelperController getPreviousWeekForDate:[NSDate date]];
         
-        if (index <=2 && [[[DDDatabaseAccess instance] getRewardSortedForWeekAndYear:[DDHelperController getWeekAndYearForDate:datePrevious]] objectAtIndex:index] != [NSNull null] )
+        if (index <=2 && [[[DDDatabaseAccess instance] getRewardSortedForWeekAndYear:[DDHelperController getWeekAndYearForDate:datePrevious]] objectAtIndex:index] != [NSNull null])
         {
             [self.buttonReward setHidden:NO];
             [self.labelNameProfil setFrame:CGRectMake(25, 566, 350, 30)];

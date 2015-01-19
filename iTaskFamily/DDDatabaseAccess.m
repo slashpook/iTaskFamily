@@ -903,10 +903,7 @@
     
     for (Player *player in arrayPlayer)
     {
-        NSDate *dateNow = [NSDate date];
-        int score = 0;
-        score = [self getScoreWeekForPlayer:player forWeekAndYear:[DDHelperController getWeekAndYearForDate:[DDHelperController getPreviousWeekForDate:dateNow]]];
-
+        int score = [self getScoreWeekForPlayer:player forWeekAndYear:[DDHelperController getWeekAndYearForDate:[DDHelperController getPreviousWeekForDate:[NSDate date]]]];
         
         if ([arrayScoreSorted count] == 0)
         {
@@ -924,7 +921,7 @@
                     [arrayScoreSorted insertObject:[NSNumber numberWithInt:score] atIndex:i];
                     break;
                 }
-                else if (i == [arrayScoreSorted count] - 1 && [[arrayScoreSorted objectAtIndex:i] intValue] > score)
+                else if (i == [arrayScoreSorted count] - 1 && [[arrayScoreSorted objectAtIndex:i] intValue] >= score)
                 {
                     [arrayPlayerSorted addObject:player];
                     [arrayScoreSorted addObject:[NSNumber numberWithInt:score]];

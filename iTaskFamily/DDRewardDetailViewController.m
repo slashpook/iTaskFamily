@@ -14,11 +14,11 @@
 
 @implementation DDRewardDetailViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithCoder:coder];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
