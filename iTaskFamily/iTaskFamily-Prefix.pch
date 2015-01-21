@@ -17,6 +17,8 @@
     #import <QuartzCore/QuartzCore.h>
     #import <CoreData/CoreData.h>
     #import <MapKit/MapKit.h>
+
+    #import "AFNetworking.h"
     #import "DDConstant.h"
     #import "Achievement.h"
     #import "CategoryTrophy.h"
@@ -32,4 +34,5 @@
     #import "DDRootViewController.h"
     #import "DDManagerSingleton.h"
     #import "DDCustomAlertView.h"
+
 #endif

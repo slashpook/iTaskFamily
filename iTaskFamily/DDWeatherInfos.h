@@ -18,7 +18,7 @@
 
 @end
 
-@interface DDWeatherInfos : NSObject <CLLocationManagerDelegate, NSURLConnectionDelegate>
+@interface DDWeatherInfos : NSObject <CLLocationManagerDelegate>
 
 
 #pragma mark - Variables
@@ -27,13 +27,7 @@
 @property(strong, nonatomic) CLLocationManager *locationManager;
 
 //GeoCoder pour décoder la géolocalisation
-@property(strong, nonatomic) CLGeocoder *geoCoder;;
-
-//URL Connection pour lancer la récupération du JSON
-@property(strong, nonatomic) NSURLConnection *connection;
-
-//Web data pour récupérer le JSON de météo
-@property(strong, nonatomic) NSMutableData *webData;
+@property(strong, nonatomic) CLGeocoder *geoCoder;
 
 //Condition pour savoir quelle image afficher
 @property(strong, nonatomic) NSString *condition;

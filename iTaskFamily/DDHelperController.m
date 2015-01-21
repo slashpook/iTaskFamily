@@ -122,10 +122,10 @@
 {
     NSDate *today = [NSDate date];
     NSCalendar *gregorian = [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSGregorianCalendar];
+                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     
     NSDateComponents *weekdayComponents =
-    [gregorian components:(NSDayCalendarUnit | NSWeekdayCalendarUnit) fromDate:today];
+    [gregorian components:(NSCalendarUnitDay | NSCalendarUnitWeekday) fromDate:today];
     NSInteger weekday = [weekdayComponents weekday];
     return [[[DDManagerSingleton instance] arrayWeek] objectAtIndex:(weekday - 1)];
 }
@@ -190,10 +190,10 @@
 {
     //On configure les formatters
     NSCalendar *gregorian = [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSGregorianCalendar];
+                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     
     NSDateComponents *weekdayComponents =
-    [gregorian components:(NSDayCalendarUnit | NSWeekdayCalendarUnit | NSYearCalendarUnit) fromDate:date];
+    [gregorian components:(NSCalendarUnitDay | NSCalendarUnitWeekday | NSCalendarUnitYear) fromDate:date];
     NSInteger weekday = [weekdayComponents weekday];
     NSString *dayInLetter = [[[DDManagerSingleton instance] arrayWeek] objectAtIndex:(weekday - 1)];
     
@@ -243,7 +243,7 @@
 {
     NSCalendar *calender = [NSCalendar currentCalendar];
     
-    NSDateComponents *dateComponent = [calender components:(NSWeekOfYearCalendarUnit |           NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:date];
+    NSDateComponents *dateComponent = [calender components:(NSCalendarUnitWeekOfYear | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear) fromDate:date];
     
     //On gère le fait que la semaine doit toujours avoir 2 digit
     NSString *weakOfYear = nil;
@@ -260,7 +260,7 @@
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
-    NSDateComponents *dateComponent = [calendar components:(NSWeekOfYearCalendarUnit |           NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:date];
+    NSDateComponents *dateComponent = [calendar components:(NSCalendarUnitWeekOfYear | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear) fromDate:date];
     
     //On gère le fait que la semaine doit toujours avoir 2 digit
     NSString *weakOfYear = nil;
