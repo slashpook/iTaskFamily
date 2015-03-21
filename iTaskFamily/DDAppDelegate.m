@@ -8,11 +8,27 @@
 
 #import "DDAppDelegate.h"
 #import "DDParserXML.h"
+@import SystemConfiguration.CaptiveNetwork;
 
 @implementation DDAppDelegate 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+//    NSArray *interfaceNames = CFBridgingRelease(CNCopySupportedInterfaces());
+//    NSLog(@"%s: Supported interfaces: %@", __func__, interfaceNames);
+//    
+//    NSDictionary *SSIDInfo;
+//    for (NSString *interfaceName in interfaceNames) {
+//        SSIDInfo = CFBridgingRelease(
+//                                     CNCopyCurrentNetworkInfo((__bridge CFStringRef)interfaceName));
+//        NSLog(@"%s: %@ => %@", __func__, interfaceName, SSIDInfo);
+//        
+//        BOOL isNotEmpty = (SSIDInfo.count > 0);
+//        if (isNotEmpty) {
+//            break;
+//        }
+//    }
+    
     //On initialise la couleur par default de l'appli
     if ([DDHelperController getMainTheme] == nil)
         [DDHelperController saveThemeWithColor:COULEUR_BLEU];

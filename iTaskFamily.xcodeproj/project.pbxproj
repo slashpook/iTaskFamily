@@ -149,6 +149,7 @@
 		6DCF12781A70447700550DD0 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF126D1A70447700550DD0 /* AFURLRequestSerialization.m */; };
 		6DCF12791A70447700550DD0 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF126F1A70447700550DD0 /* AFURLResponseSerialization.m */; };
 		6DCF127A1A70447700550DD0 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF12711A70447700550DD0 /* AFURLSessionManager.m */; };
+		6DCF127D1A782C7500550DD0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DCF127C1A782C7500550DD0 /* SystemConfiguration.framework */; };
 		6DD537A71A5841E000A351BB /* Tutorial6-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD537A61A5841E000A351BB /* Tutorial6-0.png */; };
 		6DD537AC1A58476700A351BB /* Tutorial7-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD537A91A58476700A351BB /* Tutorial7-0.png */; };
 		6DD537AD1A58476700A351BB /* Tutorial7-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD537AA1A58476700A351BB /* Tutorial7-1.png */; };
@@ -418,6 +419,7 @@
 		6DCF126F1A70447700550DD0 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		6DCF12701A70447700550DD0 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		6DCF12711A70447700550DD0 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		6DCF127C1A782C7500550DD0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6DD537A61A5841E000A351BB /* Tutorial6-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial6-0.png"; sourceTree = "<group>"; };
 		6DD537A91A58476700A351BB /* Tutorial7-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial7-0.png"; sourceTree = "<group>"; };
 		6DD537AA1A58476700A351BB /* Tutorial7-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial7-1.png"; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DCF127D1A782C7500550DD0 /* SystemConfiguration.framework in Frameworks */,
 				6D8970D518489FF300F815CD /* AssetsLibrary.framework in Frameworks */,
 				6DCE47C3183E12FF00D64363 /* Accelerate.framework in Frameworks */,
 				6D6B3ECB183CF75B009542A8 /* CoreGraphics.framework in Frameworks */,
@@ -759,6 +762,7 @@
 		6D6B3EC7183CF75B009542A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6DCF127C1A782C7500550DD0 /* SystemConfiguration.framework */,
 				6D8970D418489FF300F815CD /* AssetsLibrary.framework */,
 				6DCE47C2183E12FF00D64363 /* Accelerate.framework */,
 				6D6B3EC8183CF75B009542A8 /* Foundation.framework */,
@@ -1677,6 +1681,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Damien DELES";
 				TargetAttributes = {
+					6D6B3EC4183CF75B009542A8 = {
+						DevelopmentTeam = 52B25NFRV6;
+					};
 					6D6B3EE5183CF75C009542A8 = {
 						TestTargetID = 6D6B3EC4183CF75B009542A8;
 					};
@@ -2025,7 +2032,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Damien DELES (MYR2RWFF23)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iTaskFamily/iTaskFamily-Prefix.pch";
 				INFOPLIST_FILE = "iTaskFamily/iTaskFamily-Info.plist";
@@ -2040,7 +2047,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Damien DELES (MYR2RWFF23)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iTaskFamily/iTaskFamily-Prefix.pch";
 				INFOPLIST_FILE = "iTaskFamily/iTaskFamily-Info.plist";

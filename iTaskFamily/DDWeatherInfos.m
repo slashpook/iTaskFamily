@@ -34,11 +34,11 @@
 {
     //On met à jour la ville
     [self setLocation:query];
-    
+    //8ccdc437a62d21dd23904499fb270
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:[NSString stringWithFormat:@"http://api.worldweatheronline.com/free/v1/weather.ashx?key=zjt4n7rtpx9ehmy4m8byy7ew&q=%@&num_of_days=1&format=json", query] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        NSLog(@"JSON: %@", responseObject);
+//        NSLog(@"JSON: %@", responseObject);
         
         //Recupération du json
         NSDictionary *dictMeteo = responseObject;
